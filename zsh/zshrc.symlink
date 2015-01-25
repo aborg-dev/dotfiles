@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -53,11 +53,22 @@ key[PageDown]=${terminfo[knp]}
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git virtualenv)
+plugins=(git virtualenv osx)
 
-bindkey "[1;3D" backward-word
-bindkey "[1;3C" forward-word
-#bindkey '^i' expand-or-complete-prefix
+# Skip forward/back a word with opt-arrow
+bindkey '[C' forward-word
+bindkey '[D' backward-word
+
+# Skip to start/end of line with cmd-arrow
+bindkey '[E' beginning-of-line
+bindkey '[F' end-of-line
+
+# Delete word with opt-backspace/opt-delete
+bindkey '[G' backward-kill-word
+bindkey '[H' kill-word
+
+# Delete line with cmd-backspace
+bindkey '[I' kill-whole-line
 
 up-line-or-search-prefix () {
   local CURSOR_before_search=$CURSOR
@@ -73,11 +84,13 @@ down-line-or-search-prefix () {
 }
 zle -N down-line-or-search-prefix
 
-
 bindkey "${key[Up]}"  up-line-or-search-prefix
 bindkey "${key[Down]}"  down-line-or-search-prefix
 
 source $ZSH/oh-my-zsh.sh
+
+# Turn on VIM mode
+bindkey -v
 
 # Customize to your needs...
 export PATH=$PATH:/home/acid/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/acid/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
@@ -86,3 +99,6 @@ autoload -U promptinit
 promptinit
 prompt adam2
 
+# Activate Russian characters in terminal
+export LANG=ru
+export LC_ALL=ru_RU.utf-8
