@@ -2,7 +2,7 @@
 #
 # bootstrap installs things.
 
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")"
 DOTFILES_ROOT=$(pwd)
 
 set -e
@@ -137,7 +137,7 @@ install_dotfiles () {
   done
 }
 
-#setup_gitconfig
+setup_gitconfig
 install_dotfiles
 
 echo ''
