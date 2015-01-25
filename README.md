@@ -11,7 +11,7 @@ This will symlink all configs to your home directory and configure your git prof
 
 If you have old configs in your home folder, you will be given an option to backup or overwrite them.
 
-Later you should push/pull changed to your dotfiles using usual git workflow.
+Later you should push/pull changes to your dotfiles using usual git workflow.
 
 ```bash
     cd dotfiles
