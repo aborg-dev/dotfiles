@@ -55,21 +55,6 @@ key[PageDown]=${terminfo[knp]}
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git virtualenv osx)
 
-# Skip forward/back a word with opt-arrow
-bindkey '[C' forward-word
-bindkey '[D' backward-word
-
-# Skip to start/end of line with cmd-arrow
-bindkey '[E' beginning-of-line
-bindkey '[F' end-of-line
-
-# Delete word with opt-backspace/opt-delete
-bindkey '[G' backward-kill-word
-bindkey '[H' kill-word
-
-# Delete line with cmd-backspace
-bindkey '[I' kill-whole-line
-
 up-line-or-search-prefix () {
   local CURSOR_before_search=$CURSOR
   zle up-line-or-search "$LBUFFER"
@@ -84,13 +69,25 @@ down-line-or-search-prefix () {
 }
 zle -N down-line-or-search-prefix
 
+# Prefix search from current command
 bindkey "${key[Up]}"  up-line-or-search-prefix
 bindkey "${key[Down]}"  down-line-or-search-prefix
+
+# emacs-like search in vim mode
+bindkey '^R' history-incremental-search-backward
 
 source $ZSH/oh-my-zsh.sh
 
 # Turn on VIM mode
 bindkey -v
+
+# The time the shell waits, in hundredths of seconds, for another key
+# to be pressed when reading bound multi-character sequences.
+# 
+# Set to shortest possible delay is 1/100 second.
+# This allows escape sequences like cursor/arrow keys to work,
+# while eliminating the delay exiting vi insert mode.
+KEYTIMEOUT=1
 
 # Customize to your needs...
 export PATH=$PATH:/home/acid/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/acid/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
