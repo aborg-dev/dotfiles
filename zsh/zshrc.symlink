@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="af-magic" 
+ZSH_THEME="candy"
 
 typeset -A key
 
@@ -53,7 +53,7 @@ key[PageDown]=${terminfo[knp]}
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git virtualenv osx)
+plugins=(git virtualenv osx vi-mode)
 
 up-line-or-search-prefix () {
   local CURSOR_before_search=$CURSOR
@@ -73,13 +73,25 @@ zle -N down-line-or-search-prefix
 bindkey "${key[Up]}"  up-line-or-search-prefix
 bindkey "${key[Down]}"  down-line-or-search-prefix
 
-# emacs-like search in vim mode
-bindkey '^R' history-incremental-search-backward
-
 source $ZSH/oh-my-zsh.sh
 
 # Turn on VIM mode
 bindkey -v
+
+# Use vim cli mode
+bindkey '^P' up-history
+bindkey '^N' down-history
+
+# backspace and ^h working even after
+# returning from command mode
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+
+# ctrl-w removed word backwards
+bindkey '^w' backward-kill-word
+
+# ctrl-r starts searching history backward
+bindkey '^r' history-incremental-search-backward
 
 # The time the shell waits, in hundredths of seconds, for another key
 # to be pressed when reading bound multi-character sequences.
@@ -92,9 +104,10 @@ KEYTIMEOUT=1
 # Customize to your needs...
 export PATH=$PATH:/home/acid/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/acid/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 
-autoload -U promptinit
-promptinit
-prompt adam2
+# No idea what this thing is doing
+#autoload -U promptinit
+#promptinit
+#prompt adam2
 
 # Activate Russian characters in terminal
 export LANG=ru
