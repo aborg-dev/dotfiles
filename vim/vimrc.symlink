@@ -23,7 +23,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'mileszs/ack.vim'
+"Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 Plugin 'git@github.com:kien/ctrlp.vim.git'
 
 call vundle#end()
@@ -111,4 +112,5 @@ menu Encoding.koi8-u :e ++enc=koi8-u ++ff=unix<CR>
 
 map <F9> :emenu Encoding.<TAB>
 
-noremap <Leader>a :Ack <cword><cr>
+"noremap <Leader>a :Ack <cword><cr>
+noremap <Leader>a :Ag <cword><cr>
