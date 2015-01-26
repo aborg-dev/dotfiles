@@ -114,3 +114,9 @@ map <F9> :emenu Encoding.<TAB>
 
 "noremap <Leader>a :Ack <cword><cr>
 noremap <Leader>a :Ag <cword><cr>
+
+" Speedup ctrlp
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
