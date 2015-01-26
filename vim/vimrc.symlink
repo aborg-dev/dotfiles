@@ -130,3 +130,6 @@ if executable('ag')
 
     let g:ctrlp_use_caching = 0
 endif
+
+" Return more search results
+let g:ctrlp_match_window = 'results:20'
