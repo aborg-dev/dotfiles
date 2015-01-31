@@ -44,6 +44,9 @@ syntax enable
 colorscheme slate
 set background=dark
 
+" rebind leader from backslash to comma
+let mapleader=","
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -60,25 +63,25 @@ noremap ;; :%s:::g<Left><Left><Left>
 noremap ;' :%s:::cg<Left><Left><Left><Left>
 
 func CompileRunGcc()
-	w
-	!g++ -D_DEBUG -std=c++0x -O2 % -o %<
-	!./%<
+    w
+    !g++ -D_DEBUG -std=c++0x -O2 % -o %<
+    !./%<
 endfunc
 
 func RunPython2()
-  w
-  !python2 %
+    w
+    !python2 %
 endfunc
 
 func RunPython3()
-  w
-  !python3 %
+    w
+    !python3 %
 endfunc
 
 func CompileRunTeX()
-	w
-  !pdflatex %
-  !open %<.pdf
+    w
+    !pdflatex %
+    !open %<.pdf
 endfunc
 
 au BufRead,BufNewFile *.thrift set filetype=thrift
