@@ -50,6 +50,9 @@ let mapleader=","
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+" Disable autoindenting when pasting large chunk of code
+set pastetoggle=<F2>
+
 " Highlight spaces and tabs in the end of line
 set list listchars=tab:>-,trail:.,precedes:<,extends:>
 set list
