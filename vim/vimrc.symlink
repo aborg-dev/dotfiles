@@ -26,6 +26,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 "Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
 Plugin 'git@github.com:kien/ctrlp.vim.git'
+Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()
 
@@ -40,9 +41,14 @@ set expandtab
 set colorcolumn=100
 set laststatus=2
 syntax on
+
 syntax enable
-colorscheme slate
 set background=dark
+"let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+let g:solarized_visibility="high"
+let g:solarized_contrast="high"
+colorscheme solarized
 
 " rebind leader from backslash to comma
 let mapleader=","
@@ -57,13 +63,9 @@ set pastetoggle=<F2>
 set list listchars=tab:>-,trail:.,precedes:<,extends:>
 set list
 
-let g:solarized_termcolors=256
-se t_Co=16
-
 set fileencodings=utf-8,default,cp1251
 
-noremap ;; :%s:::g<Left><Left><Left>
-noremap ;' :%s:::cg<Left><Left><Left><Left>
+inoremap jj <ESC>
 
 func CompileRunGcc()
     w
