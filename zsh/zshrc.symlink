@@ -110,5 +110,5 @@ export PATH=$PATH:/home/acid/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/u
 #prompt adam2
 
 # Activate Russian characters in terminal
-export LANG=ru
+#export LANG=ru
 export LC_ALL=ru_RU.utf-8
