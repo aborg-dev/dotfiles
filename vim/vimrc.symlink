@@ -28,6 +28,8 @@ Plugin 'rking/ag.vim'
 Plugin 'git@github.com:kien/ctrlp.vim.git'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim'}
+Plugin 'octol/vim-cpp-enhanced-highlight'
 
 call vundle#end()
 
@@ -51,6 +53,11 @@ let g:solarized_visibility="high"
 let g:solarized_contrast="high"
 colorscheme zellner
 
+let g:Powerline_symbols = 'fancy'
+set encoding=utf-8
+set fillchars+=stl:\ ,stlnc:\
+set termencoding=utf-8
+
 " rebind leader from backslash to comma
 let mapleader=","
 
@@ -72,8 +79,12 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
 func CompileRunGcc()
     w
-    !g++ -D_DEBUG -std=c++0x -O2 % -o %<
-    !./%<
+    !g++ -DHOME -std=c++0x -O2 % -o %<
+    !time ./%<
+endfunc
+
+func RunGcc()
+    !time ./%<
 endfunc
 
 func RunPython2()
@@ -101,9 +112,10 @@ au! Syntax yacc source /usr/share/vim/vim73/syntax/yacc.vim
 cmap w!! %!sudo tee > /dev/null %
 
 map <F5> :call CompileRunGcc() <CR>
+"map <F6> :call RunGcc() <CR>
 map <F6> :call RunPython2() <CR>
 map <F7> :call RunPython3() <CR>
-map <F8> :call CompileRunTeX() <CR>
+"map <F8> :call CompileRunTeX() <CR>
 
 " Completion lists when opening a file from ex
 set wildmenu
@@ -138,3 +150,7 @@ endif
 
 " Return more search results
 let g:ctrlp_match_window = 'results:20'
+
+if filereadable(glob(".vimrc.local")) 
+    source .vimrc.local
+endif
