@@ -33,3 +33,7 @@ set -g status-keys vi
 
 # Make scroll history larger
 set -g history-limit 10000
+
+setenv -g SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock
+
+set-window-option -g aggressive-resize on

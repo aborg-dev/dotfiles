@@ -104,10 +104,18 @@ KEYTIMEOUT=1
 # Customize to your needs...
 export PATH=$PATH:/home/acid/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/acid/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 
+# Fix SSH Forwarding after reconnecting to tmux session
+if [[ -S "$SSH_AUTH_SOCK" && ! -h "$SSH_AUTH_SOCK" ]]; then
+    ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock;
+fi
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
+
 # No idea what this thing is doing
 #autoload -U promptinit
 #promptinit
 #prompt adam2
+
+autoload zmv
 
 # Activate Russian characters in terminal
 #export LANG=ru
