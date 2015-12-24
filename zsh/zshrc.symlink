@@ -118,5 +118,12 @@ export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
 autoload zmv
 
 # Activate Russian characters in terminal
-#export LANG=ru
-export LC_ALL=ru_RU.utf-8
+export LC_ALL=en_US.utf-8
+
+# Add fzf support
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Add z.sh support
+[ -f ~/z.sh ] && source ~/z.sh
+alias j=z
+alias jj=zz
