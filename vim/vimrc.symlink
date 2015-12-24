@@ -30,6 +30,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim'}
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'terryma/vim-multiple-cursors'
+
 
 call vundle#end()
 
@@ -79,7 +81,7 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
 func CompileRunGcc()
     w
-    !g++ -DHOME -std=c++0x -O2 % -o %<
+    !g++-5 -DHOME -std=c++0x -O2 % -o %<
     !time ./%<
 endfunc
 
