@@ -23,12 +23,11 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'git://git.wincent.com/command-t.git'
-"Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
-Plugin 'git@github.com:kien/ctrlp.vim.git'
+Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim'}
+Plugin 'bling/vim-airline'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'terryma/vim-multiple-cursors'
 
@@ -55,7 +54,6 @@ let g:solarized_visibility="high"
 let g:solarized_contrast="high"
 colorscheme zellner
 
-let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set termencoding=utf-8
