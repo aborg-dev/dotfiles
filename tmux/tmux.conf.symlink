@@ -37,3 +37,4 @@ set -g history-limit 10000
 setenv -g SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock
 
 set-window-option -g aggressive-resize on
+set -g default-terminal "screen-256color"
