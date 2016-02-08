@@ -115,7 +115,7 @@ map <F5> :call CompileRunGcc() <CR>
 "map <F6> :call RunGcc() <CR>
 map <F6> :call RunPython2() <CR>
 map <F7> :call RunPython3() <CR>
-"map <F8> :call CompileRunTeX() <CR>
+map <F8> :call CompileRunTeX() <CR>
 
 " Completion lists when opening a file from ex
 set wildmenu
