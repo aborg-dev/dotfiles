@@ -78,6 +78,15 @@ source $ZSH/oh-my-zsh.sh
 # Turn on VIM mode
 bindkey -v
 
+# Shortcut to exit insert mode
+bindkey -M viins 'jj' vi-cmd-mode
+
+# Set to shortest possible delay is 1/100 second.
+# This allows escape sequences like cursor/arrow keys to work,
+# while eliminating the delay exiting vi insert mode.
+# Note: This doesn't work nicely with jj combination, so we need to turn it off.
+#KEYTIMEOUT=1
+
 # Use vim cli mode
 bindkey '^P' up-history
 bindkey '^N' down-history
@@ -92,14 +101,6 @@ bindkey '^w' backward-kill-word
 
 # ctrl-r starts searching history backward
 bindkey '^r' history-incremental-search-backward
-
-# Set to shortest possible delay is 1/100 second.
-# This allows escape sequences like cursor/arrow keys to work,
-# while eliminating the delay exiting vi insert mode.
-KEYTIMEOUT=1
-
-# Shortcut to exit insert mode
-#bindkey -M viins 'jj' vi-cmd-mode
 
 # Customize to your needs...
 export PATH=$PATH:/home/acid/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/acid/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/Users/acid/bin
