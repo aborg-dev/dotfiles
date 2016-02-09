@@ -28,9 +28,9 @@ Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
-Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'terryma/vim-multiple-cursors'
-
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'yssl/QFEnter'
 
 call vundle#end()
 
@@ -154,3 +154,7 @@ let g:ctrlp_match_window = 'results:20'
 if filereadable(glob(".vimrc.local")) 
     source .vimrc.local
 endif
+
+" vimdiff color scheme
+highlight DiffChange cterm=none ctermfg=black ctermbg=LightGreen gui=none guifg=bg guibg=LightGreen
+highlight DiffText cterm=none ctermfg=black ctermbg=Red gui=none guifg=bg guibg=Red
