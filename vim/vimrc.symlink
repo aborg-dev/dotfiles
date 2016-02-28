@@ -25,6 +25,7 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'xuhdev/SingleCompile'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vimwiki/vimwiki'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 
