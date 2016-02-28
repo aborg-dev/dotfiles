@@ -11,15 +11,18 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rking/ag.vim'
-Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'yssl/QFEnter'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 
 call vundle#end()
+
+set rtp+=~/.fzf
 
 filetype plugin indent on
 
@@ -44,6 +47,8 @@ colorscheme zellner
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set termencoding=utf-8
+
+let g:airline_powerline_fonts=1
 
 " rebind leader from backslash to comma
 let mapleader=","
@@ -125,18 +130,20 @@ map <F9> :emenu Encoding.<TAB>
 "noremap <Leader>a :Ack <cword><cr>
 noremap <Leader>a :Ag <cword><cr>
 
+nnoremap <silent> <C-p> :Files<CR>
+
 " Speedup ctrlp
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
+"let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+"if executable('ag')
+    "set grepprg=ag\ --nogroup\ --nocolor
 
-    let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden --ignore .git --ignore .svn --ignore .hg --ignore .DS_Store --ignore "**/*.pyc" --ignore CMakeFiles -g ""'
+    "let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden --ignore .git --ignore .svn --ignore .hg --ignore .DS_Store --ignore "**/*.pyc" --ignore CMakeFiles -g ""'
 
-    let g:ctrlp_use_caching = 0
-endif
+    "let g:ctrlp_use_caching = 0
+"endif
 
 " Return more search results
-let g:ctrlp_match_window = 'results:20'
+"let g:ctrlp_match_window = 'results:20'
 
 if filereadable(glob(".vimrc.local")) 
     source .vimrc.local
