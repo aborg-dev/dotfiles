@@ -137,3 +137,5 @@ command_exists () {
 if command_exists nvim ; then
     alias vim=nvim
 fi
+
+export ENSCRIPT="-2rj -M A4 --line-numbers --highlight=cpp --fancy-header=simple --color=1"
