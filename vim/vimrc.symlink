@@ -77,6 +77,7 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 cmap w!! %!sudo tee > /dev/null %
 noremap <Leader>a :Ag <C-r><C-w><cr>
 nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
 
 func CompileRunGcc()
     w
@@ -113,6 +114,12 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" Set passive mode by default
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+noremap <C-w>e :SyntasticCheck<CR>
+noremap <C-w>f :SyntasticToggleMode<CR>
+
 
 " Enable shortcut for autoformatting
 noremap <F3> :Autoformat<CR>
