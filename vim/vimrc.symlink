@@ -21,6 +21,7 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'xuhdev/SingleCompile'
 
 call vundle#end()
 
@@ -79,20 +80,32 @@ noremap <Leader>a :Ag <C-r><C-w><cr>
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 
-func CompileRunGcc()
-    w
-    !g++-5 -DHOME -std=c++0x -O2 % -o %<
-    :bot split | term time ./%<
-endfunc
+" Configure SingleCompile
+let g:SingleCompile_showquickfixiferror = 1
+let g:SingleCompile_silentcompileifshowquickfix = 1
 
-func CompileRunTeX()
-    w
-    !pdflatex %
-    !open %<.pdf
-endfunc
+let g:SingleCompile_resultsize = 80
+let g:SingleCompile_split = 'vsplit'
 
-map <F5> :call CompileRunGcc() <CR>
-map <F8> :call CompileRunTeX() <CR>
+" Setup proper compile flags
+let common_run_command = './$(FILE_TITLE)$.out'
+let common_out_file = '$(FILE_TITLE)$.out'
+let common_flags = '-O2 -std=c++0x -DHOME -o ' . common_out_file
+
+call SingleCompile#SetCompilerTemplate(
+    \'cpp', 'clang', 'Clang', 'clang++', common_flags, common_run_command)
+call SingleCompile#SetOutfile('cpp', 'clang', common_out_file)
+
+call SingleCompile#SetCompilerTemplate(
+    \'cpp', 'g++', 'GCC', 'g++', common_flags, common_run_command)
+call SingleCompile#SetOutfile('gcc', 'g++', common_out_file)
+
+" Use clang by default, otherwise fallback to g++
+call SingleCompile#SetPriority('cpp', 'clang', 10)
+call SingleCompile#SetPriority('cpp', 'g++', 20)
+
+nmap <F5> :SCCompile<cr>
+nnoremap <silent> <leader>r :SCCompileRun<CR>
 
 " Completion lists when opening a file from ex
 set wildmenu
