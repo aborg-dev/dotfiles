@@ -21,8 +21,32 @@ key[PageUp]=${terminfo[kpp]}
 key[PageDown]=${terminfo[knp]}
 
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias in="task add +in"
+alias tn="task next"
+alias tl="task list"
+alias tin="task in"
+alias ta="task add"
+alias tm="task modify"
+alias td="task done"
+alias tc="task context"
+
+tickle () {
+    deadline=$1
+    shift
+    in +tickle wait:$deadline $@
+}
+alias tick=tickle
+
+note () {
+  local id="$1"
+  local dir="$HOME/notes"
+  local file="$dir/$id.wiki"
+
+  mkdir -p $dir
+  nvim "$file"
+}
+
+alias n=note
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
