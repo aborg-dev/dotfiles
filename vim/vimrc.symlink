@@ -23,6 +23,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'xuhdev/SingleCompile'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'vimwiki/vimwiki'
 
 call vundle#end()
 
@@ -155,6 +156,11 @@ let g:ycm_show_diagnostics_ui = 0
 noremap <F3> :Autoformat<CR>
 let g:formatdef_autopep8 = "'autopep8 - --aggressive --max-line-length 80 --range '.a:firstline.' '.a:lastline"
 let g:formatters_python = ['autopep8']
+
+" Configure vimwiki
+let s:vimwiki = {}
+let s:vimwiki.path="~/notes"
+let g:vimwiki_list = [s:vimwiki]
 
 if filereadable(glob(".vimrc.local"))
     source .vimrc.local
