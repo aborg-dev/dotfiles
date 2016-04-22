@@ -85,6 +85,10 @@ noremap <Leader>a :Ag <C-r><C-w><cr>
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 
+" Speedup copy and paste from global buffer
+noremap <Leader>y "+y
+noremap <Leader>p "+p
+
 " Fix alt key usage for Alt+A fzf.vim shortcut
 tnoremap å <A-a>
 
@@ -160,6 +164,7 @@ let g:formatters_python = ['autopep8']
 " Configure vimwiki
 let s:vimwiki = {}
 let s:vimwiki.path="~/notes"
+let s:vimwiki.nested_syntaxes={'python': 'python', 'bash': 'sh'}
 let g:vimwiki_list = [s:vimwiki]
 
 if filereadable(glob(".vimrc.local"))
