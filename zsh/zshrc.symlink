@@ -158,3 +158,4 @@ if command_exists nvim ; then
 fi
 
 export ENSCRIPT="-2rj -M A4 --line-numbers --highlight=cpp --fancy-header=simple --color=1"
+alias xs='pdsh -R ssh -f 1024 -t 64 -w -'
