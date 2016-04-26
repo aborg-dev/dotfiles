@@ -22,7 +22,7 @@ key[PageDown]=${terminfo[knp]}
 
 # Example aliases
 alias in="task add +in"
-alias tn="task next"
+alias tn="task next && ~/.task/project-next.py"
 alias tl="task list"
 alias tin="task in"
 alias ta="task add"
