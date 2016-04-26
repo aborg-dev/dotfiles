@@ -171,7 +171,9 @@ nnoremap <silent> <leader>b :Buffers<CR>
 map <silent> <leader>e :NERDTreeToggle<CR>
 
 " Fix alt key usage for Alt+A fzf.vim shortcut
-tnoremap å <A-a>
+if exists(':tnoremap')
+    tnoremap å <A-a>
+endif
 
 " }}}
 
