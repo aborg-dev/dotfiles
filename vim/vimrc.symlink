@@ -140,6 +140,9 @@ nnoremap <silent> <leader>b :Buffers<CR>
 " Shortcut to open NERDTree drawer
 map <silent> <leader>e :NERDTreeToggle<CR>
 
+" Select text that you've just pasted
+noremap gV `[v`]
+
 " }}}
 
 " Search {{{
