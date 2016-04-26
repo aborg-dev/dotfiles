@@ -94,6 +94,54 @@ set backspace=indent,eol,start
 
 " }}}
 
+" Shortcuts {{{
+
+let mapleader=","       " Rebind leader from backslash to comma
+
+" Fast search word under cursor
+nnoremap <Leader>a :Ag <C-r><C-w><cr>
+" Fast search and replace word under cursor
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+" Speedup copy and paste from global buffer
+nnoremap <Leader>y "+y
+nnoremap <Leader>p "+p
+" Save files faster
+nnoremap <Leader>w :w<CR>
+
+if has('nvim')
+  " Hack to get C-h working in NeoVim
+  noremap <BS> <C-W>h
+endif
+
+" Fix alt key usage in OSX terminals
+if exists(':tnoremap')
+    tnoremap å <A-a>
+endif
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <cr> <c-w>w
+
+" Leave insert mode with jj
+inoremap jj <ESC>
+
+" Disable autoindenting when pasting large chunk of code
+set pastetoggle=<F2>
+
+" Save write-protected file
+cmap w!! %!sudo tee > /dev/null %
+
+" Access fzf commands to search across files and buffers
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+
+" Shortcut to open NERDTree drawer
+map <silent> <leader>e :NERDTreeToggle<CR>
+
+" }}}
+
 " Search {{{
 
 set incsearch " Search as characters are entered
@@ -137,43 +185,6 @@ menu Encoding.cp866 :e ++enc=cp866 ++ff=dos<CR>
 menu Encoding.utf-8 :e ++enc=utf8 <CR>
 menu Encoding.koi8-u :e ++enc=koi8-u ++ff=unix<CR>
 map <F9> :emenu Encoding.<TAB>
-
-" }}}
-
-" Shortcuts {{{
-
-let mapleader=","       " Rebind leader from backslash to comma
-
-" Fast search word under cursor
-noremap <Leader>a :Ag <C-r><C-w><cr>
-" Fast search and replace word under cursor
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
-" Speedup copy and paste from global buffer
-noremap <Leader>y "+y
-noremap <Leader>p "+p
-" Save files faster
-nnoremap <Leader>w :w<CR>
-
-" Leave insert mode with jj
-inoremap jj <ESC>
-
-" Disable autoindenting when pasting large chunk of code
-set pastetoggle=<F2>
-
-" Save write-protected file
-cmap w!! %!sudo tee > /dev/null %
-
-" Access fzf commands to search across files and buffers
-nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
-
-" Shortcut to open NERDTree drawer
-map <silent> <leader>e :NERDTreeToggle<CR>
-
-" Fix alt key usage for Alt+A fzf.vim shortcut
-if exists(':tnoremap')
-    tnoremap å <A-a>
-endif
 
 " }}}
 
