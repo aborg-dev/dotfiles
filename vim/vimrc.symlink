@@ -1,104 +1,193 @@
-set nocompatible
-filetype off
+" Plugins {{{
 
 " In order to get Vundle working you need to clone a repo
 " git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+set nocompatible
+filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'rking/ag.vim'
+
+" Visual-improvement plugins
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-vinegar'
-Plugin 'bling/vim-airline'
-Plugin 'terryma/vim-multiple-cursors'
 Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'yssl/QFEnter'
+Plugin 'bling/vim-airline'
+
+" Code navigation plugins
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
-Plugin 'scrooloose/syntastic'
+Plugin 'rking/ag.vim'
+Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-vinegar'
+
+" Coding plugins
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'scrooloose/syntastic'
 Plugin 'xuhdev/SingleCompile'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'vimwiki/vimwiki'
 Plugin 'fatih/vim-go'
+
+" Notes-organizing plugins
+Plugin 'vimwiki/vimwiki'
+Plugin 'tbabej/taskwiki'
+
+" Other plugins
+Plugin 'tpope/vim-fugitive'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'yssl/QFEnter'
 
 call vundle#end()
 
 set rtp+=~/.fzf
 
-filetype plugin indent on
+" }}}
 
-set nu
-set tabstop=4
-set shiftwidth=4
-set autoindent
-set showmatch
-set expandtab
-set colorcolumn=100
-set laststatus=2
+" Colors {{{
 
-" `:vs filename` will open split on the right
-set splitright
-
-" Set default file encodings
-set encoding=utf-8
-set fillchars+=stl:\ ,stlnc:\
-set termencoding=utf-8
-set fileencodings=utf-8,default,cp1251
-
-" Allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-" Disable autoindenting when pasting large chunk of code
-set pastetoggle=<F2>
-
-" Highlight spaces and tabs in the end of line
-set list listchars=tab:>-,trail:.,precedes:<,extends:>
-set list
-
-" Color tweaks
 syntax on
 syntax enable
-let g:solarized_termtrans=1
-set background=dark
-let g:solarized_visibility="high"
-let g:solarized_contrast="high"
-colorscheme zellner
+colorscheme badwolf
 
 " Vimdiff color scheme
 highlight DiffChange cterm=none ctermfg=black ctermbg=LightGreen gui=none guifg=bg guibg=LightGreen
 highlight DiffText cterm=none ctermfg=black ctermbg=Red gui=none guifg=bg guibg=Red
 
-" Generate airline fonts
-let g:airline_powerline_fonts=1
+" }}}
 
-" Rebind leader from backslash to comma
-let mapleader=","
+" Spaces and Tabs {{{
 
-inoremap jj <ESC>
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
-cmap w!! %!sudo tee > /dev/null %
+set tabstop=4
+set shiftwidth=4
+set expandtab       " Replace tabs with spaces
+set autoindent
+filetype plugin indent on   " Use language-dependent indentation
+
+" }}}
+
+" UI Config {{{
+
+set number                  " Show line numbers
+set cursorline              " Highlight current line
+set showmatch               " Highlight matching parenthesis
+
+set wildmenu                " Show visual autocomplete menu
+set wildmode=longest,list
+set wcm=<Tab>
+
+set colorcolumn=100              " Display 100-characters border
+set laststatus=2                 " Always display the status line
+let g:airline_powerline_fonts=1  " Generate airline fonts
+
+" Highlight spaces and tabs in the end of line
+set list listchars=tab:>-,trail:.,precedes:<,extends:>
+set list
+
+set splitright     " `:vs filename` will open split on the right
+
+" Allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+" }}}
+
+" Search {{{
+
+set incsearch " Search as characters are entered
+set hlsearch  " Highlight current matches
+
+" Turn off current highlighting
+nnoremap <Leader>c :nohlsearch<CR>
+
+" }}}
+
+" Folding {{{
+
+set foldenable          " Enable folding
+set foldmethod=indent   " Fold by indentation
+set foldnestmax=10      " Open all folds on levels < 10
+
+" Space opens/closes folds
+nnoremap <space> za
+
+" }}}
+
+" Movement {{{
+
+" Move vertically by visual line, allows to iterate over long wrapped lines
+nnoremap j gj
+nnoremap k gk
+
+" }}}
+
+" Encodings {{{
+
+" Set default file encodings
+set fillchars+=stl:\ ,stlnc:\
+set termencoding=utf-8
+set fileencodings=utf-8,default,cp1251
+
+" Allow changing encoding of the file on the fly
+menu Encoding.koi8-r :e ++enc=koi8-r ++ff=unix<CR>
+menu Encoding.windows-1251 :e ++enc=cp1251 ++ff=dos<CR>
+menu Encoding.cp866 :e ++enc=cp866 ++ff=dos<CR>
+menu Encoding.utf-8 :e ++enc=utf8 <CR>
+menu Encoding.koi8-u :e ++enc=koi8-u ++ff=unix<CR>
+map <F9> :emenu Encoding.<TAB>
+
+" }}}
+
+" Shortcuts {{{
+
+let mapleader=","       " Rebind leader from backslash to comma
+
+" Fast search word under cursor
 noremap <Leader>a :Ag <C-r><C-w><cr>
-nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
-
+" Fast search and replace word under cursor
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 " Speedup copy and paste from global buffer
 noremap <Leader>y "+y
 noremap <Leader>p "+p
+" Save files faster
+nnoremap <Leader>w :w<CR>
 
-" Fix alt key usage for Alt+A fzf.vim shortcut
-tnoremap å <A-a>
+" Leave insert mode with jj
+inoremap jj <ESC>
+
+" Disable autoindenting when pasting large chunk of code
+set pastetoggle=<F2>
+
+" Save write-protected file
+cmap w!! %!sudo tee > /dev/null %
+
+" Access fzf commands to search across files and buffers
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
 
 " Shortcut to open NERDTree drawer
 map <silent> <leader>e :NERDTreeToggle<CR>
 
-" Configure SingleCompile
+" Fix alt key usage for Alt+A fzf.vim shortcut
+tnoremap å <A-a>
+
+" }}}
+
+" Backup {{{
+
+" Move backups to separate folder
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
+
+" }}}
+
+" SingleCompile {{{
+
 let g:SingleCompile_showquickfixiferror = 1
 let g:SingleCompile_silentcompileifshowquickfix = 1
 
@@ -127,21 +216,14 @@ nmap <F5> :SCCompile<cr>
 nmap <F6> :call AssembleFile()<cr>
 nnoremap <silent> <leader>r :SCCompileRun<CR>
 
-func AssembleFile()
+func! AssembleFile()
     :w
     !/Users/acid/Yandex.Disk.localized/Code/fugo/combine_headers.py % /Users/acid/Yandex.Disk.localized/Code > %<_full.cpp
 endfunc
 
-" Completion lists when opening a file from ex
-set wildmenu
-set wildmode=longest,list
-set wcm=<Tab>
-menu Encoding.koi8-r :e ++enc=koi8-r ++ff=unix<CR>
-menu Encoding.windows-1251 :e ++enc=cp1251 ++ff=dos<CR>
-menu Encoding.cp866 :e ++enc=cp866 ++ff=dos<CR>
-menu Encoding.utf-8 :e ++enc=utf8 <CR>
-menu Encoding.koi8-u :e ++enc=koi8-u ++ff=unix<CR>
-map <F9> :emenu Encoding.<TAB>
+" }}}
+
+" Syntastic {{{
 
 " Basic syntastic settings
 set statusline+=%#warningmsg#
@@ -158,21 +240,30 @@ let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_
 noremap <C-w>e :SyntasticCheck<CR>
 noremap <C-w>f :SyntasticToggleMode<CR>
 
+" }}}
+
+" YouCompleteMe {{{
 
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_show_diagnostics_ui = 0
 
-" Enable shortcut for autoformatting
+" }}}
+
+" Autoformat {{{
+
 noremap <F3> :Autoformat<CR>
 let g:formatdef_autopep8 = "'autopep8 - --aggressive --max-line-length 80 --range '.a:firstline.' '.a:lastline"
 let g:formatters_python = ['autopep8']
 
-" Configure vimwiki
+" }}}
+
+" Vimwiki {{{
+
 let s:vimwiki = {}
 let s:vimwiki.path="~/notes"
 let s:vimwiki.nested_syntaxes={'python': 'python', 'bash': 'sh'}
 let g:vimwiki_list = [s:vimwiki]
 
-if filereadable(glob(".vimrc.local"))
-    source .vimrc.local
-endif
+" }}}
+
+" vim:foldmethod=marker:foldlevel=0
