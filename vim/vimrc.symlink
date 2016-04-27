@@ -33,6 +33,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'yssl/QFEnter'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
 
 call plug#end()
 
@@ -287,6 +289,20 @@ let s:vimwiki = {}
 let s:vimwiki.path="~/notes"
 let s:vimwiki.nested_syntaxes={'python': 'python', 'bash': 'sh'}
 let g:vimwiki_list = [s:vimwiki]
+
+" }}}
+
+" session.vim {{{
+
+" Autosave session on exit and every 5 minutes
+let g:session_autosave = 'yes'
+let g:session_autosave_periodic = 5
+
+" Load default session on vim start
+let g:session_autoload = 'yes'
+
+" Keybindings to quickly save and load sessions
+nnoremap <Leader>os :OpenSession<cr>
 
 " }}}
 

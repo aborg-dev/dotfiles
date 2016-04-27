@@ -157,5 +157,10 @@ if command_exists nvim ; then
     alias vim=nvim
 fi
 
+open_vim_session() {
+    vim -S ~/.vim/sessions/${1}.vim
+}
+alias vims=open_vim_session
+
 export ENSCRIPT="-2rj -M A4 --line-numbers --highlight=cpp --fancy-header=simple --color=1"
 alias xs='pdsh -R ssh -f 1024 -t 64 -w -'
