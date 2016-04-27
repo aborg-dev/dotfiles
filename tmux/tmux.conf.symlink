@@ -8,8 +8,8 @@ bind r source-file ~/.tmux.conf
 
 # Open new window with the same path
 bind c new-window -c "#{pane_current_path}"
-bind k split-window -h -c "#{pane_current_path}"
-bind j split-window -v -c "#{pane_current_path}"
+bind j split-window -h -c "#{pane_current_path}"
+bind k split-window -v -c "#{pane_current_path}"
 
 # quick pane cycling
 unbind ^A
