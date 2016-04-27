@@ -153,7 +153,7 @@ nnoremap <Leader>c :nohlsearch<CR>
 " Folding {{{
 
 set foldenable          " Enable folding
-set foldmethod=indent   " Fold by indentation
+set foldmethod=marker   " Fold by marker
 set foldnestmax=10      " Open all folds on levels < 10
 
 " Space opens/closes folds
