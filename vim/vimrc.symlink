@@ -1,47 +1,40 @@
 " Plugins {{{
 
-" In order to get Vundle working you need to clone a repo
-" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" To setup vim-plug for neovim just do:
+" curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+"   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-set nocompatible
-filetype off
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " Visual-improvement plugins
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'bling/vim-airline'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'bling/vim-airline'
 
 " Code navigation plugins
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plugin 'junegunn/fzf.vim'
-Plugin 'rking/ag.vim'
-Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-vinegar'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Coding plugins
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'scrooloose/syntastic'
-Plugin 'xuhdev/SingleCompile'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'fatih/vim-go'
+Plug 'scrooloose/nerdcommenter'
+Plug 'Chiel92/vim-autoformat'
+Plug 'scrooloose/syntastic'
+Plug 'xuhdev/SingleCompile'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'fatih/vim-go'
 
 " Notes-organizing plugins
-Plugin 'vimwiki/vimwiki'
-Plugin 'tbabej/taskwiki'
+Plug 'vimwiki/vimwiki'
+"Plug 'tbabej/taskwiki'
 
 " Other plugins
-Plugin 'tpope/vim-fugitive'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'yssl/QFEnter'
+Plug 'tpope/vim-fugitive'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'yssl/QFEnter'
+Plug 'christoomey/vim-tmux-navigator'
 
-call vundle#end()
+call plug#end()
 
 set rtp+=~/.fzf
 
