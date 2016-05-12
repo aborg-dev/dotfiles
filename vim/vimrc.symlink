@@ -27,12 +27,12 @@ Plug 'fatih/vim-go'
 " Notes-organizing plugins
 Plug 'vimwiki/vimwiki'
 "Plug 'tbabej/taskwiki'
+Plug 'blindFS/vim-taskwarrior'
 
 " Other plugins
 Plug 'tpope/vim-fugitive'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'yssl/QFEnter'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
@@ -98,25 +98,30 @@ nnoremap <Leader>a :Ag <C-r><C-w><cr>
 " Fast search and replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 " Speedup copy and paste from global buffer
-nnoremap <Leader>y "+y
-nnoremap <Leader>p "+p
+noremap <Leader>y "+y
+vnoremap <Leader>y "+y
+noremap <Leader>p "+p
 " Save files faster
 nnoremap <Leader>w :w<CR>
-
-if has('nvim')
-  " Hack to get C-h working in NeoVim
-  noremap <BS> <C-W>h
-endif
 
 " Fix alt key usage in OSX terminals
 if exists(':tnoremap')
     tnoremap å <A-a>
 endif
 
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+function! TmuxMove(direction)
+    let wnr = winnr()
+    silent! execute 'wincmd ' . a:direction
+    " If the winnr is still the same after we moved, it is the last pane
+    if wnr == winnr()
+        call system('tmux select-pane -' .  tr(a:direction, 'phjkl', 'lLDUR'))
+    end
+endfunction
+
+nnoremap <silent> <c-h> :call TmuxMove('h')<cr>
+nnoremap <silent> <c-j> :call TmuxMove('j')<cr>
+nnoremap <silent> <c-k> :call TmuxMove('k')<cr>
+nnoremap <silent> <c-l> :call TmuxMove('l')<cr>
 nnoremap <cr> <c-w>w
 
 " Leave insert mode with jj
@@ -158,6 +163,10 @@ set foldnestmax=10      " Open all folds on levels < 10
 
 " Space opens/closes folds
 nnoremap <space> za
+
+" Save state of the folds for vimwiki files
+autocmd BufWinLeave *.md* mkview
+autocmd BufWinEnter *.md* silent! loadview
 
 " }}}
 
@@ -209,6 +218,12 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
+
+" }}}
+
+" {{{ Abbreviations
+
+abbr Include include
 
 " }}}
 
@@ -285,10 +300,19 @@ let g:formatters_python = ['autopep8']
 
 " Vimwiki {{{
 
+" Specify notes path and turn on syntax highlighting
 let s:vimwiki = {}
 let s:vimwiki.path="~/notes"
 let s:vimwiki.nested_syntaxes={'python': 'python', 'bash': 'sh'}
+let s:vimwiki.syntax="markdown"
+let s:vimwiki.ext=".md"
 let g:vimwiki_list = [s:vimwiki]
+
+" Highlight headers with different colors
+let g:vimwiki_hl_headers = 1
+
+" Set folding mode
+let g:vimwiki_folding = 'expr'
 
 " }}}
 
