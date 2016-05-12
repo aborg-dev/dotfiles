@@ -22,13 +22,21 @@ key[PageDown]=${terminfo[knp]}
 
 # Example aliases
 alias in="task add +in"
-alias tn="task next && ~/.task/project-next.py"
+tn() { task next +next $@ && ~/.task/project-next.py }
 alias tl="task list"
 alias tin="task in"
 alias ta="task add"
 alias tm="task modify"
 alias td="task done"
 alias tc="task context"
+
+alias work="task rc.color=off rc.data.location=~/.task/work"
+wn() { work next $@ && ~/.task/project-next.py --location ~/.task/work }
+alias wl="work list"
+alias win="work in"
+alias wa="work add"
+alias wm="work modify"
+alias wd="work done"
 
 tickle () {
     deadline=$1
@@ -38,15 +46,21 @@ tickle () {
 alias tick=tickle
 
 note () {
-  local id="$1"
-  local dir="$HOME/notes"
-  local file="$dir/$id.wiki"
+  if [ "$#" -ne 1 ]
+  then
+    nvim "$(find ~/notes/* -type f | fzf)"
+  else
+    local id="$1"
+    local dir="$HOME/notes"
+    local file="$dir/$id.md"
 
-  mkdir -p $dir
-  nvim "$file"
+    mkdir -p $dir
+    nvim "$file"
+  fi
 }
 
 alias n=note
+alias nd="vim -c VimwikiMakeDiaryNote"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -77,7 +91,7 @@ alias n=note
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git virtualenv osx vi-mode brew pip)
+plugins=(git virtualenv osx vi-mode brew pip taskwarrior)
 
 up-line-or-search-prefix () {
   local CURSOR_before_search=$CURSOR
