@@ -137,8 +137,16 @@ install_dotfiles () {
   done
 }
 
+configure_vim () {
+  info 'configuring vim'
+
+  mkdir -p ~/.vim/colors
+  curl -s https://raw.githubusercontent.com/sjl/badwolf/master/colors/badwolf.vim > ~/.vim/colors/badwolf.vim
+}
+
 setup_gitconfig
 install_dotfiles
+configure_vim
 
 echo ''
 echo '  All installed!'
