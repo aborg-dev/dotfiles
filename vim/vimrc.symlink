@@ -26,8 +26,12 @@ Plug 'fatih/vim-go'
 
 " Notes-organizing plugins
 Plug 'vimwiki/vimwiki'
-"Plug 'tbabej/taskwiki'
-Plug 'blindFS/vim-taskwarrior'
+
+" Taskwarrior plugins
+if has('task')
+    Plug 'tbabej/taskwiki'
+    Plug 'blindFS/vim-taskwarrior'
+endif
 
 " Other plugins
 Plug 'tpope/vim-fugitive'
@@ -35,6 +39,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'yssl/QFEnter'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
@@ -109,19 +114,7 @@ if exists(':tnoremap')
     tnoremap å <A-a>
 endif
 
-function! TmuxMove(direction)
-    let wnr = winnr()
-    silent! execute 'wincmd ' . a:direction
-    " If the winnr is still the same after we moved, it is the last pane
-    if wnr == winnr()
-        call system('tmux select-pane -' .  tr(a:direction, 'phjkl', 'lLDUR'))
-    end
-endfunction
-
-nnoremap <silent> <c-h> :call TmuxMove('h')<cr>
-nnoremap <silent> <c-j> :call TmuxMove('j')<cr>
-nnoremap <silent> <c-k> :call TmuxMove('k')<cr>
-nnoremap <silent> <c-l> :call TmuxMove('l')<cr>
+" Switch between panels with <Enter> key
 nnoremap <cr> <c-w>w
 
 " Leave insert mode with jj
