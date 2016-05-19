@@ -136,6 +136,16 @@ map <silent> <leader>e :NERDTreeToggle<CR>
 " Select text that you've just pasted
 noremap gV `[v`]
 
+" Disable tmux navigator mappings by default
+let g:tmux_navigator_no_mappings = 1
+
+" Add manual tmux navigator mappings
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
+
 " }}}
 
 " Search {{{
