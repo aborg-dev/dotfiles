@@ -28,7 +28,7 @@ Plug 'fatih/vim-go'
 Plug 'vimwiki/vimwiki'
 
 " Taskwarrior plugins
-if has('task')
+if executable('task')
     Plug 'tbabej/taskwiki'
     Plug 'blindFS/vim-taskwarrior'
 endif
