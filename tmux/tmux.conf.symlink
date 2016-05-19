@@ -29,6 +29,10 @@ set-option -g default-shell /bin/zsh
 setw -g mode-keys vi
 set -g status-keys vi
 
+# Enable visual mode/copy shortcuts from vim
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
+
 # Make scroll history larger
 set -g history-limit 10000
 
