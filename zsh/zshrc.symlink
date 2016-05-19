@@ -157,8 +157,25 @@ export LC_ALL=en_US.utf-8
 # Add fzf support
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# fco - checkout git branch/tag
+fco() {
+  local branches branch
+  branches=$(git branch) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
 # Add z.sh support
 [ -f ~/bin/z.sh ] && source ~/bin/z.sh
+
+# Integrate z with fzf
+unalias z 2> /dev/null
+z() {
+  [ $# -gt 0 ] && _z "$*" && return
+  cd "$(_z -l 2>&1 | fzf-tmux +s --tac --query "$*" | sed 's/^[0-9,.]* *//')"
+}
+
+# Use more convinient shortcut
 alias j=z
 alias jj=zz
 
