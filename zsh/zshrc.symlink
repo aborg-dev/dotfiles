@@ -200,3 +200,7 @@ export ENSCRIPT="-2rj -M A4 --line-numbers --highlight=cpp --fancy-header=simple
 alias xs='pdsh -R ssh -f 1024 -t 64 -w -'
 
 export GIT_EDITOR=nvim
+
+alias dcj=/Users/acid/Yandex.Disk.localized/Code/contests/GCJ/2016/distributed/tester/dcj.sh
+alias db='dcj build --source'
+alias dr='dcj run --nodes 10 --executable'
