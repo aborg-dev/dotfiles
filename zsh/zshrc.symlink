@@ -174,7 +174,14 @@ open_vim_session() {
 }
 alias vims=open_vim_session
 
+function ssh_vi { ssh -t $1 "bash -i -o vi" }
+alias ssh=ssh_vi
+
 export ENSCRIPT="-2rj -M A4 --line-numbers --highlight=cpp --fancy-header=simple --color=1"
 alias xs='pdsh -R ssh -f 1024 -t 64 -w -'
 
 export GIT_EDITOR=nvim
+
+if [[ -f $HOME/.zshrc.work ]]; then
+    source $HOME/.zshrc.work
+fi
