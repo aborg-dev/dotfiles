@@ -40,6 +40,7 @@ Plug 'yssl/QFEnter'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
