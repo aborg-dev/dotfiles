@@ -100,6 +100,19 @@ export ENSCRIPT="-2rj -M A4 --line-numbers --highlight=cpp --fancy-header=simple
 # Run parallel ssh command on a list of machines
 alias xs='pdsh -R ssh -f 1024 -t 64 -w -'
 
+# Store longer commands history
+HISTSIZE=10000000
+SAVEHIST=$HISTSIZE
+
+# Search history by matching prefix
+setopt   extended_history share_history inc_append_history
+setopt   hist_ignore_space hist_ignore_dups hist_expire_dups_first
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
+
 command_exists () {
     type "$1" &> /dev/null ;
 }
