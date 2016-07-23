@@ -1,26 +1,5 @@
-# Path to your oh-my-zsh configuration.
-export ZSH=$HOME/.oh-my-zsh
+# Taskwarrior {{{
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="pure"
-
-typeset -A key
-
-key[Home]=${terminfo[khome]}
-key[End]=${terminfo[kend]}
-key[Insert]=${terminfo[kich1]}
-key[Delete]=${terminfo[kdch1]}
-key[Up]=${terminfo[kcuu1]}
-key[Down]=${terminfo[kcud1]}
-key[Left]=${terminfo[kcub1]}
-key[Right]=${terminfo[kcuf1]}
-key[PageUp]=${terminfo[kpp]}
-key[PageDown]=${terminfo[knp]}
-
-# Example aliases
 alias in="task add +in"
 tn() { task next +next $@ && ~/.task/project-next.py }
 alias tl="task list"
@@ -45,6 +24,10 @@ tickle () {
 }
 alias tick=tickle
 
+# }}}
+
+# Notes {{{
+
 note () {
   if [ "$#" -ne 1 ]
   then
@@ -66,60 +49,24 @@ note () {
 alias n=note
 alias nd="vim -c VimwikiMakeDiaryNote"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
+# }}}
+
+# oh-my-zsh {{{
+
+# Set name of the theme to load.
+ZSH_THEME="pure"
+
+# Path to your oh-my-zsh configuration.
+export ZSH=$HOME/.oh-my-zsh
+
+# Load oh-my-zsh plugins
 plugins=(git virtualenv osx vi-mode brew pip taskwarrior)
-
-up-line-or-search-prefix () {
-  local CURSOR_before_search=$CURSOR
-  zle up-line-or-search "$LBUFFER"
-  CURSOR=$CURSOR_before_search
-}
-zle -N up-line-or-search-prefix
-
-down-line-or-search-prefix () {
-  local CURSOR_before_search=$CURSOR
-  zle down-line-or-search "$LBUFFER"
-  CURSOR=$CURSOR_before_search
-}
-zle -N down-line-or-search-prefix
-
-# Prefix search from current command
-bindkey "${key[Up]}"  up-line-or-search-prefix
-bindkey "${key[Down]}"  down-line-or-search-prefix
 
 source $ZSH/oh-my-zsh.sh
 
-# Turn on VIM mode
-bindkey -v
+# }}}
 
-# Shortcut to exit insert mode
-bindkey -M viins 'jj' vi-cmd-mode
-
-# Set to shortest possible delay is 1/100 second.
-# This allows escape sequences like cursor/arrow keys to work,
-# while eliminating the delay exiting vi insert mode.
-# Note: This doesn't work nicely with jj combination, so we need to turn it off.
-#KEYTIMEOUT=1
-
-# Use vim cli mode
-bindkey '^P' up-history
-bindkey '^N' down-history
-
-# backspace and ^h working even after
-# returning from command mode
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
-
-# ctrl-w removed word backwards
-bindkey '^w' backward-kill-word
-
-# ctrl-r starts searching history backward
-bindkey '^r' history-incremental-search-backward
-
-# Customize to your needs...
-export PATH=$PATH:/home/acid/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/acid/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/Users/acid/bin
+# SSH {{{
 
 # Fix SSH Forwarding after reconnecting to tmux session
 if [[ -S "$SSH_AUTH_SOCK" && ! -h "$SSH_AUTH_SOCK" ]]; then
@@ -127,13 +74,46 @@ if [[ -S "$SSH_AUTH_SOCK" && ! -h "$SSH_AUTH_SOCK" ]]; then
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
 
+function ssh_vi { ssh -t $1 "bash -i -o vi" }
+alias ssh=ssh_vi
+
+# }}}
+
+# Misc {{{
+
+# Turn on VIM mode
+bindkey -v
+
+# Shortcut to exit insert mode
+bindkey -M viins 'jj' vi-cmd-mode
+
+# Customize to your needs...
+export PATH=$PATH:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/home/acid/bin:/Users/acid/bin
 autoload zmv
 
 # Activate Russian characters in terminal
 export LC_ALL=en_US.utf-8
 
+# Enable pretty printing of cpp source files using 'enscript' command
+export ENSCRIPT="-2rj -M A4 --line-numbers --highlight=cpp --fancy-header=simple --color=1"
+
+# Run parallel ssh command on a list of machines
+alias xs='pdsh -R ssh -f 1024 -t 64 -w -'
+
+command_exists () {
+    type "$1" &> /dev/null ;
+}
+
+# }}}
+
+# FZF {{{
+
 # Add fzf support
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# }}}
+
+# Git {{{
 
 # fco - checkout git branch/tag
 fco() {
@@ -142,6 +122,10 @@ fco() {
   branch=$(echo "$branches" | fzf +m) &&
   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
+
+# }}}
+
+# z.sh {{{
 
 # Add z.sh support
 [ -f ~/bin/z.sh ] && source ~/bin/z.sh
@@ -157,9 +141,9 @@ z() {
 alias j=z
 alias jj=zz
 
-command_exists () {
-    type "$1" &> /dev/null ;
-}
+# }}}
+
+# Vim {{{
 
 alias vrc="vim ~/.vimrc"
 alias zrc="vim ~/.zshrc"
@@ -174,14 +158,13 @@ open_vim_session() {
 }
 alias vims=open_vim_session
 
-function ssh_vi { ssh -t $1 "bash -i -o vi" }
-alias ssh=ssh_vi
-
-export ENSCRIPT="-2rj -M A4 --line-numbers --highlight=cpp --fancy-header=simple --color=1"
-alias xs='pdsh -R ssh -f 1024 -t 64 -w -'
-
+export EDITOR=nvim
 export GIT_EDITOR=nvim
+
+# }}}
 
 if [[ -f $HOME/.zshrc.work ]]; then
     source $HOME/.zshrc.work
 fi
+
+# vim:foldmethod=marker:foldlevel=0
