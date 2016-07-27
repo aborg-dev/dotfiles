@@ -160,6 +160,7 @@ alias jj=zz
 
 alias vrc="vim ~/.vimrc"
 alias zrc="vim ~/.zshrc"
+alias tmrc="vim ~/.tmux.conf"
 
 # Use neovim intead of vim if available
 if command_exists nvim ; then
