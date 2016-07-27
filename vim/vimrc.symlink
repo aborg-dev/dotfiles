@@ -21,8 +21,14 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'Chiel92/vim-autoformat'
 Plug 'scrooloose/syntastic'
 Plug 'xuhdev/SingleCompile'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'fatih/vim-go'
+Plug 'Konfekt/FastFold'
+
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'zchee/deoplete-clang'
 
 " Notes-organizing plugins
 Plug 'vimwiki/vimwiki'
@@ -287,13 +293,6 @@ noremap <C-w>f :SyntasticToggleMode<CR>
 
 " }}}
 
-" YouCompleteMe {{{
-
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_show_diagnostics_ui = 0
-
-" }}}
-
 " Autoformat {{{
 
 noremap <F3> :Autoformat<CR>
@@ -331,6 +330,23 @@ let g:session_autoload = 'yes'
 
 " Keybindings to quickly save and load sessions
 nnoremap <Leader>os :OpenSession<cr>
+
+" }}}
+
+" FastFold {{{
+
+" Don't update folds on saves
+let g:fastfold_savehook = 0
+
+" }}}
+
+" {{{ deoplete
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#clang#libclang_path = "/usr/lib/llvm-3.6/lib/libclang.so"
+let g:deoplete#sources#clang#clang_header = '/usr/include/clang/3.6/include'
+autocmd CompleteDone * pclose!
 
 " }}}
 
