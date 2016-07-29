@@ -75,7 +75,12 @@ if [[ -S "$SSH_AUTH_SOCK" && ! -h "$SSH_AUTH_SOCK" ]]; then
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
 
-function ssh_vi { ssh -t $1 "bash -i -o vi" }
+function ssh_vi {
+    MY_BASHRC=.bashrc.acid
+    scp -q -C ~/.bashrc $1:$MY_BASHRC
+    /usr/bin/ssh -t $1 "bash --rcfile $MY_BASHRC -i -o vi"
+    /usr/bin/ssh -q -t $1 rm $MY_BASHRC
+}
 alias ssh=ssh_vi
 
 # }}}
