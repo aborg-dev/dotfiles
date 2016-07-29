@@ -7,6 +7,7 @@ alias tin="task in"
 alias ta="task add"
 alias tm="task modify"
 alias td="task done"
+alias tdel="task delete"
 alias tc="task context"
 
 alias work="task rc.color=off rc.data.location=~/.task/work"
