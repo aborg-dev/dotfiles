@@ -18,7 +18,6 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Coding plugins
 Plug 'scrooloose/nerdcommenter'
-Plug 'Chiel92/vim-autoformat'
 Plug 'scrooloose/syntastic'
 Plug 'xuhdev/SingleCompile'
 Plug 'fatih/vim-go'
@@ -28,7 +27,6 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'zchee/deoplete-clang'
 
 " Notes-organizing plugins
 Plug 'vimwiki/vimwiki'
@@ -177,6 +175,9 @@ nnoremap <space> za
 " Save state of the folds for vimwiki files
 autocmd BufWinLeave *.md* mkview
 autocmd BufWinEnter *.md* silent! loadview
+
+" Set foldmethod to expr for markdown files
+autocmd BufNewFile,BufFilePre,BufRead,BufWrite *.md set foldmethod=expr
 
 " }}}
 
@@ -344,8 +345,6 @@ let g:fastfold_savehook = 0
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#clang#libclang_path = "/usr/lib/llvm-3.6/lib/libclang.so"
-let g:deoplete#sources#clang#clang_header = '/usr/include/clang/3.6/include'
 autocmd CompleteDone * pclose!
 
 " }}}
