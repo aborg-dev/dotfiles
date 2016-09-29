@@ -1,4 +1,4 @@
-# Taskwarrior {{{
+# Taskwarrior & Timewarrior {{{
 
 alias in="task add +in"
 tn() { task next +next $@ && ~/.task/project-next.py }
@@ -10,20 +10,14 @@ alias td="task done"
 alias tdel="task delete"
 alias tc="task context"
 
-alias work="task rc.color=off rc.data.location=~/.task/work"
-wn() { work next $@ && ~/.task/project-next.py --location ~/.task/work }
-alias wl="work list"
-alias win="work in"
-alias wa="work add"
-alias wm="work modify"
-alias wd="work done"
-
 tickle () {
     deadline=$1
     shift
     in +tickle wait:$deadline $@
 }
 alias tick=tickle
+
+alias tw=timew
 
 # }}}
 
