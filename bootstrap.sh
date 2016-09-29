@@ -141,7 +141,7 @@ install_fzf () {
   info 'installing fzf'
 
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install
+  ~/.fzf/install --all
 }
 
 configure_vim () {
@@ -151,35 +151,32 @@ configure_vim () {
   mkdir -p ~/.vim/colors
   curl -s https://raw.githubusercontent.com/sjl/badwolf/master/colors/badwolf.vim > ~/.vim/colors/badwolf.vim
 
-  # Install vim-plug
-  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
   # Link vim config to neovim config
   mkdir -p $HOME/.config
-  ln -s ~/.vim $HOME/.config/nvim
-  ln -s ~/.vimrc $HOME/.config/nvim/init.vim
+  ln -s $HOME/.vim $HOME/.config/nvim
+  ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
 }
-
 
 configure_zsh () {
   info 'configuring zsh'
 
   # Install oh-my-zsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | grep -v "env zsh")"
 
   # Install pure colorscheme
-  git clone --depth 1 https://github.com/sindresorhus/pure.git ~/.pure
-  mkdir -p "~/.oh-my-zsh/function"
-  ln -s "~/.pure/pure.zsh"  "~/.oh-my-zsh/functions/prompt_pure_setup"
-  ln -s "~/.pure/pure.zsh"  "~/.oh-my-zsh/custom/themes/pure.zsh-theme"
-  ln -s "~/.pure/async.zsh" "~/.oh-my-zsh/function/async"
+  git clone --depth 1 https://github.com/sindresorhus/pure.git $HOME/.pure
+  mkdir -p $HOME/.oh-my-zsh/functions
+  mkdir -p $HOME/.oh-my-zsh/custom/themes
+  ln -s $HOME/.pure/pure.zsh  $HOME/.oh-my-zsh/functions/prompt_pure_setup
+  ln -s $HOME/.pure/pure.zsh  $HOME/.oh-my-zsh/custom/themes/pure.zsh-theme
+  ln -s $HOME/.pure/async.zsh $HOME/.oh-my-zsh/functions/async
 }
 
 setup_gitconfig
-install_dotfiles
 install_fzf
 configure_vim
 configure_zsh
+install_dotfiles
 
 echo ''
 echo '  All installed!'
