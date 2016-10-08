@@ -181,4 +181,8 @@ if [[ -f $HOME/.zshrc.work ]]; then
     source $HOME/.zshrc.work
 fi
 
+if [[ -d $HOME/.keychain ]]; then
+    source $HOME/.keychain/`hostname`-sh
+fi
+
 # vim:foldmethod=marker:foldlevel=0
