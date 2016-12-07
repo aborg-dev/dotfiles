@@ -19,6 +19,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'justinmk/vim-sneak'
 
 " Coding plugins
 Plug 'scrooloose/nerdcommenter'
@@ -128,8 +129,8 @@ endif
 " Switch between panels with <Enter> key
 nnoremap <cr> <c-w>w
 
-" Leave insert mode with jj
-inoremap jj <ESC>
+" Leave insert mode with fd
+inoremap fd <ESC>
 
 " Disable autoindenting when pasting large chunk of code
 set pastetoggle=<F2>

@@ -1,3 +1,5 @@
+alias edit="emacsclient -t"
+
 # Taskwarrior & Timewarrior {{{
 
 alias in="task add +in"
@@ -29,7 +31,7 @@ note () {
     NAME="$(find ~/notes/* -type f | fzf)"
     if [ -n "$NAME" ]
     then
-        nvim $NAME
+        edit $NAME
     fi
   else
     local id="$1"
@@ -37,12 +39,12 @@ note () {
     local file="$dir/$id.md"
 
     mkdir -p $dir
-    nvim "$file"
+    edit "$file"
   fi
 }
 
 alias n=note
-alias nd="vim -c VimwikiMakeDiaryNote"
+alias nd="nvim -c VimwikiMakeDiaryNote"
 
 # }}}
 
@@ -85,7 +87,7 @@ alias ssh=ssh_vi
 bindkey -v
 
 # Shortcut to exit insert mode
-bindkey -M viins 'jj' vi-cmd-mode
+bindkey -M viins 'fd' vi-cmd-mode
 
 # Customize to your needs...
 export PATH=$PATH:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/home/acid/bin:/Users/acid/bin
@@ -156,6 +158,12 @@ alias jj=zz
 
 # }}}
 
+# Emacs {{{
+
+alias em="emacsclient -t"
+
+# }}}
+
 # Vim {{{
 
 alias vrc="vim ~/.vimrc"
@@ -172,7 +180,7 @@ open_vim_session() {
 }
 alias vims=open_vim_session
 
-export EDITOR=nvim
+export EDITOR="emacsclient -t"
 export GIT_EDITOR=nvim
 
 # }}}
