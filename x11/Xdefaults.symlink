@@ -5,30 +5,30 @@
  urxvt*secondaryScroll:    true
  urxvt*saveLines:         65535
  urxvt*cursorBlink:       false
- urxvt*urgentOnBell:      false
+ urxvt*urgentOnBell:       true
  !urxvt*override-redirect:false
- urxvt*borderLess:       	 true
+ !urxvt*borderLess:       false
  !urxvt*internalBorder:       0
  !urxvt*externalBorder:       0
  
  ! Extensions
  urxvt*perl-lib:        /usr/lib/urxvt/perl/
- urxvt*perl-ext-common: default,matcher,searchable-scrollback,tabbed
- urxvt*urlLauncher:     /usr/bin/chromium
+ urxvt*perl-ext-common: default,matcher,searchable-scrollback
+ urxvt*urlLauncher:     /usr/bin/firefox
  urxvt*matcher.button:  1
  !  - catch ugly URLs
  urxvt.cutchars:        `()'*<>[]{|}"
  
  ! Appearance
  !  - use a bitmap font
- !urxvt*font:        -xos4-terminus-medium-*-*-*-12-*-*-*-*-*-*-*
- !urxvt*boldFont:    -xos4-terminus-bold-*-*-*-12-*-*-*-*-*-*-*
+ !urxvt*font:        -xos4-dejavusansmono-medium-*-*-*-12-*-*-*-*-*-*-*
+ !urxvt*boldFont:    -xos4-dejavusansmono-bold-*-*-*-12-*-*-*-*-*-*-*
  !  - use xft for drawing fonts
- urxvt*font:       xft:Inconsolata
+ !urxvt*font:       xft:DejavuSansMono:8
  !  - cursor
  urxvt*cursorColor: #DCDCCC
  !  - pseudo transparency
- !urxvt*shading:    10
+ !urxvt*shading:    50
  !urxvt*transparent:true
  !
  !  - color scheme
