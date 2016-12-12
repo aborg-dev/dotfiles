@@ -274,13 +274,21 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; Set org-mode tasks file and open it on start automatically
   (setq org-default-notes-file "~/notes/tasks.org")
-  (find-file "~/notes/tasks.org")
+  ;; (find-file "~/notes/tasks.org")
 
   (define-key evil-normal-state-map
     (kbd "C-c o")
     (lambda() (interactive) (find-file "~/notes/tasks.org")))
 
   (setq flycheck-flake8-maximum-line-length '100)
+
+  (defun notes ()
+    "Switch to my work dir."
+    (interactive)
+    (progn (cd "~/notes") (helm-find-files ())))
+
+  (define-key evil-normal-state-map
+    (kbd "C-c n") 'notes)
 
   ;; Set default capture template
   ;; (setq org-capture-templates
