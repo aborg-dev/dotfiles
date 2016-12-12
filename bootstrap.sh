@@ -172,6 +172,19 @@ configure_zsh () {
   ln -s $HOME/.pure/async.zsh $HOME/.oh-my-zsh/functions/async
 }
 
+remove_old_files () {
+  rm -rf ~/.fzf
+  rm -rf ~/.pure
+  rm -rf ~/.oh-my-zsh
+  rm -f ~/.config/nvim/init.vim
+  rm -f ~/.config/nvim/.vim
+  rm -f ~/.tmux.conf
+  rm -f ~/.bashrc
+  rm -f ~/.vimrc
+  rm -f ~/.ideavimrc
+}
+
+#remove_old_files
 setup_gitconfig
 install_fzf
 configure_vim
