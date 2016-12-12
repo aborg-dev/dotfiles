@@ -193,4 +193,7 @@ if [[ -d $HOME/.keychain ]]; then
     source $HOME/.keychain/`hostname`-sh
 fi
 
+# TODO: Move this to linux specific config
+xset r rate 200 20
+
 # vim:foldmethod=marker:foldlevel=0
