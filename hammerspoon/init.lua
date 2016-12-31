@@ -101,6 +101,6 @@ local function timewarrior_enable()
   timewarrior_timer:start()
 end
 
-timewarrior_enable()
+--timewarrior_enable()
 
 -- vim:shiftwidth=2
