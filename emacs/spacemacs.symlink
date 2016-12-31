@@ -263,31 +263,36 @@ before packages are loaded. If you are unsure, you should try in setting them in
      c-basic-offset n
      python-indent n
      ))
-  (set-indent 4)
+  (set-indent 2)
 
   ;; Add additional org-task state
   (setq org-todo-keywords
         '((sequence "TODO(t)" "|" "DONE(d)")))
+
+  ;; Don't follow symlinks when editing one
+  (setq vc-follow-symlinks nil)
 
   ;; Search for TODOs in all files in directory
   (setq org-agenda-files '("~/notes"))
 
   ;; Set org-mode tasks file and open it on start automatically
   (setq org-default-notes-file "~/notes/tasks.org")
-  ;; (find-file "~/notes/tasks.org")
 
-  (define-key evil-normal-state-map
+  ;; Tweak python lint checks
+  (setq flycheck-flake8-maximum-line-length '100)
+
+  ;; Open file with tasks quickly
+  (global-set-key
     (kbd "C-c o")
     (lambda() (interactive) (find-file "~/notes/tasks.org")))
 
-  (setq flycheck-flake8-maximum-line-length '100)
-
+  ;; Quick search over notes files
   (defun notes ()
-    "Switch to my work dir."
+    "Find note."
     (interactive)
-    (progn (cd "~/notes") (helm-find-files ())))
+    (progn (cd "~/notes") (helm-projectile-find-file ())))
 
-  (define-key evil-normal-state-map
+  (global-set-key
     (kbd "C-c n") 'notes)
 
   ;; Set default capture template
