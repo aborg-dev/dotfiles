@@ -86,8 +86,21 @@ local layouts = {
 -- quake terminal
 local quakeconsole = {}
 for s = 1, screen.count() do
-   quakeconsole[s] = lain.util.quake({ app = terminal })
+   quakeconsole[s] = lain.util.quake({
+       app = terminal,
+       argname = "--classname %s",
+       name = "QuakeDD",
+       height = 0.5
+   })
 end
+
+-- emacs client
+local emacsclient = lain.util.quake({
+    app = "emacs",
+    argname = "--name %s",
+    name = "EmacsNotes",
+    height = 1
+})
 -- }}}
 
 -- {{{ Tags
@@ -432,22 +445,6 @@ globalkeys = awful.util.table.join(
     awful.key({ altkey }, "l",  awful.tag.viewnext       ),
     awful.key({ modkey }, "Escape", awful.tag.history.restore),
 
-    -- Non-empty tag browsing
-    awful.key({ altkey }, "Left", function () lain.util.tag_view_nonempty(-1) end),
-    awful.key({ altkey }, "Right", function () lain.util.tag_view_nonempty(1) end),
-
-    -- Default client focus
-    awful.key({ altkey }, "k",
-        function ()
-            awful.client.focus.byidx( 1)
-            if client.focus then client.focus:raise() end
-        end),
-    awful.key({ altkey }, "j",
-        function ()
-            awful.client.focus.byidx(-1)
-            if client.focus then client.focus:raise() end
-        end),
-
     -- By direction client focus
     awful.key({ modkey }, "j",
         function()
@@ -483,11 +480,30 @@ globalkeys = awful.util.table.join(
     end),
 
     -- Layout manipulation
-    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
-    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
+    awful.key({ modkey, "Shift"   }, "j",
+        function ()
+            awful.client.swap.bydirection("down")
+        end),
+    awful.key({ modkey, "Shift"   }, "k",
+        function ()
+            awful.client.swap.bydirection("up")
+        end),
+    awful.key({ modkey, "Shift"   }, "h",
+        function ()
+            awful.client.swap.bydirection("left")
+        end),
+    awful.key({ modkey, "Shift"   }, "l",
+        function ()
+            awful.client.swap.bydirection("right")
+        end),
+
+    -- Focus another screen
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
+
+    -- Jump to urgent window
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
+
     awful.key({ modkey,           }, "Tab",
         function ()
             awful.client.focus.history.previous()
@@ -511,7 +527,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "q",      awesome.quit),
 
     -- Dropdown terminal
-    awful.key({ modkey,	          }, "z",      function () quakeconsole[mouse.screen]:toggle() end),
+    awful.key({ modkey,	"Control" }, "t",      function () quakeconsole[mouse.screen]:toggle() end),
+
+    -- Emacs client
+    awful.key({ modkey,	"Control" }, "e",      function () emacsclient:toggle() end),
 
     -- Widgets popups
     awful.key({ altkey,           }, "c",      function () lain.widgets.calendar.show(7) end),
@@ -519,14 +538,14 @@ globalkeys = awful.util.table.join(
     awful.key({ altkey,           }, "w",      function () myweather.show(7) end),
 
     -- ALSA volume control
-    awful.key({ altkey }, "Up",
+    awful.key({ "Control" }, "\\",
         function ()
-            os.execute(string.format("amixer set %s 1%%+", volumewidget.channel))
+            os.execute(string.format("amixer set %s 2%%+", volumewidget.channel))
             volumewidget.update()
         end),
-    awful.key({ altkey }, "Down",
+    awful.key({ "Control" }, "=",
         function ()
-            os.execute(string.format("amixer set %s 1%%-", volumewidget.channel))
+            os.execute(string.format("amixer set %s 2%%-", volumewidget.channel))
             volumewidget.update()
         end),
     awful.key({ altkey }, "m",
@@ -566,9 +585,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "c", function () os.execute("xsel -p -o | xsel -i -b") end),
 
     -- User programs
-    awful.key({ modkey }, "q", function () awful.util.spawn(browser) end),
-    awful.key({ modkey }, "s", function () awful.util.spawn(gui_editor) end),
-    awful.key({ modkey }, "g", function () awful.util.spawn(graphics) end),
+    awful.key({ modkey, "Control" }, "b", function () awful.util.spawn(browser) end),
+    --awful.key({ modkey }, "s", function () awful.util.spawn(gui_editor) end),
+    --awful.key({ modkey }, "g", function () awful.util.spawn(graphics) end),
 
     -- dmenu
     awful.key({ modkey }, "r", function ()
