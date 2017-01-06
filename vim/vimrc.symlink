@@ -37,6 +37,8 @@ Plug 'zchee/deoplete-jedi'
 
 " Notes-organizing plugins
 Plug 'vimwiki/vimwiki'
+Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-speeddating'
 
 " Taskwarrior plugins
 if executable('task')
