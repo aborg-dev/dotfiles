@@ -295,18 +295,32 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (global-set-key
     (kbd "C-c n") 'notes)
 
-  ;; Set default capture template
-  ;; (setq org-capture-templates
-  ;;       '(("t" "Todo" entry (file+headline "~/notes/tasks.org" "Tasks")
-  ;;          "* TODO %?\n %i\n %a")))
+  ;; Setup default directory for capturing tasks
+  (setq org-directory "~/notes")
+  (setq org-default-notes-file "~/notes/tasks.org")
 
-  "Configuration function for user code.
+  ;; Set default capture template
+  (setq org-capture-templates
+        '(("t" "Todo" entry (file+headline "~/notes/tasks.org" "Refile")
+           "* TODO %?\n%U\n")))
+
+  ;; Targets include this file and any file contributing to the agenda - up to 2 levels deep
+  (setq org-refile-targets (quote ((nil :maxlevel . 2)
+                                   (org-agenda-files :maxlevel . 2))))
+
+  ;; Allow refile to create parent tasks with confirmation
+  (setq org-refile-allow-creating-parent-nodes (quote confirm))
+
+  ;; Use full outline paths for refile targets - we file directly with IDO
+  (setq org-refile-use-outline-path t)
+
+"Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  )
+)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
