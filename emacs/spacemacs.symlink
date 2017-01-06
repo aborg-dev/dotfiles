@@ -266,6 +266,13 @@ before packages are loaded. If you are unsure, you should try in setting them in
      ))
   (set-indent 2)
 
+  ;; Always follow symlinks and edit as if opening the file itself
+  (setq vc-follow-symlinks t)
+
+  (setq browse-url-browser-function (if (executable-find "xdg-open")
+                                        'browse-url-xdg-open
+                                        'browse-url-default-browser))
+
   ;; Add additional org-task state
   (setq org-todo-keywords
         '((sequence "TODO(t)" "|" "DONE(d)")))
@@ -296,9 +303,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; Setup default directory for capturing tasks
   (setq org-directory "~/notes")
   (setq org-default-notes-file "~/notes/tasks.org")
-
-  ;; Always follow symlinks and edit as if opening the file itself
-  (setq vc-follow-symlinks t)
 
   ;; Set default capture template
   (setq org-capture-templates
