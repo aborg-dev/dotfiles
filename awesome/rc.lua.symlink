@@ -289,6 +289,25 @@ spacer = wibox.widget.textbox(" ")
 
 -- }}}
 
+-- Keyboard map indicator and changer
+kbdcfg = {}
+kbdcfg.cmd = "setxkbmap"
+kbdcfg.layout = { { "us", "" , "US" }, { "ru", "" , "RU" } }
+kbdcfg.current = 1  -- us is our default layout
+kbdcfg.widget = wibox.widget.textbox()
+kbdcfg.widget:set_text(" " .. kbdcfg.layout[kbdcfg.current][3] .. " ")
+kbdcfg.switch = function ()
+  kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
+  local t = kbdcfg.layout[kbdcfg.current]
+  kbdcfg.widget:set_text(" " .. t[3] .. " ")
+  os.execute( kbdcfg.cmd .. " " .. t[1] .. " " .. t[2] )
+end
+
+kbdcfg.widget:buttons(
+ awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch() end))
+)
+-- }}}
+
 -- {{{ Layout
 
 -- Create a wibox for each screen and add it
@@ -386,6 +405,7 @@ for s = 1, screen.count() do
     right_layout:add(memwidget)
     right_layout:add(cpuicon)
     right_layout:add(cpuwidget)
+    right_layout:add(kbdcfg.widget)
     -- right_layout:add(fsicon)
     -- right_layout:add(fswidget)
     -- right_layout:add(weathericon)
@@ -588,6 +608,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "b", function () awful.util.spawn(browser) end),
     --awful.key({ modkey }, "s", function () awful.util.spawn(gui_editor) end),
     --awful.key({ modkey }, "g", function () awful.util.spawn(graphics) end),
+
+    awful.key({ "Control" }, "space", function () kbdcfg.switch() end),
 
     -- dmenu
     awful.key({ modkey }, "r", function ()
