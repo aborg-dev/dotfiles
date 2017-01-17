@@ -38,6 +38,7 @@ values."
      ;; ----------------------------------------------------------------
      better-defaults
 
+     go
      lua
      python
      csharp
@@ -51,6 +52,7 @@ values."
      auto-completion
 
      org
+     calendar
 
      (shell :variables
             shell-default-height 30
@@ -328,7 +330,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; Add additional org-task state
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "|" "DONE(d)")))
+        '((sequence "TODO(t)" "|" "WAITING(w)" "|" "DONE(d)")))
 
   ;; Search for TODOs in all files in directory
   (setq org-agenda-files '("~/notes"))
