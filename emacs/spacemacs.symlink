@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     vimscript
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -45,10 +46,14 @@ values."
      html
      markdown
      emacs-lisp
+     (c-c++ :variables
+            c-c++-default-mode-for-headers 'c++-mode
+            c-c++-enable-clang-support t)
 
      helm
 
      syntax-checking
+     ; spell-checking
      auto-completion
 
      org
@@ -260,7 +265,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -306,12 +311,23 @@ before packages are loaded. If you are unsure, you should try in setting them in
 (defun dotspacemacs/user-config ()
   ;; Fix line numbering offsets in terminal
   (unless (display-graphic-p)
-    (setq linum-format "%d "))
+    (setq linum-format "%3d "))
 
   ;; Iterate by visual lines
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
+  ;; Set C and C++ style
+  (setq c-default-style "stroustrup")
+
+  ;; Use C++11 syntax checking
+  (add-hook 'c++-mode-hook
+            (lambda ()
+              (setq flycheck-checker 'c/c++-clang)
+              (setq flycheck-gcc-language-standard "c++11")
+              (setq flycheck-clang-language-standard "c++11")))
+
+  ;; Set global indentation
   (defun set-indent (n)
     (setq-default
      evil-shift-width n
@@ -378,6 +394,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; Use full outline paths for refile targets - we file directly with IDO
   (setq org-refile-use-outline-path t)
+
+  (setq org-gcal-client-id (getenv "GCAL_CLIENT_ID")
+        org-gcal-client-secret (getenv "GCAL_CLIENT_SECRET")
+        org-gcal-file-alist '(((getenv "GCAL_ID") .  "~/notes/calendar.org")))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
