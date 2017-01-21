@@ -65,10 +65,11 @@ editor     = os.getenv("EDITOR") or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
-browser    = "google-chrome"
-gui_editor = "emacs"
-graphics   = "gimp"
-mail       = terminal .. " -e mutt "
+browser     = "google-chrome"
+gui_editor  = "emacs"
+graphics    = "gimp"
+mail        = terminal .. " -e mutt "
+screen_lock = "slock"
 
 local layouts = {
     awful.layout.suit.floating,
@@ -537,9 +538,11 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "h",      function () awful.tag.incnmaster( 1)       end),
     awful.key({ modkey, "Control" }, "l",      function () awful.tag.incncol(-1)          end),
     awful.key({ modkey, "Control" }, "h",      function () awful.tag.incncol( 1)          end),
-    awful.key({ modkey,           }, "space",  function () awful.layout.inc(layouts,  1)  end),
-    awful.key({ modkey, "Shift"   }, "space",  function () awful.layout.inc(layouts, -1)  end),
     awful.key({ modkey, "Control" }, "n",      awful.client.restore),
+
+    -- TODO: Redefine this
+    awful.key({ modkey, "Shift" }, "space",  function () awful.layout.inc(layouts,  -1)  end),
+    -- awful.key({ modkey, "Shift"   }, "space",  function () awful.layout.inc(layouts, -1)  end),
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
@@ -609,7 +612,10 @@ globalkeys = awful.util.table.join(
     --awful.key({ modkey }, "s", function () awful.util.spawn(gui_editor) end),
     --awful.key({ modkey }, "g", function () awful.util.spawn(graphics) end),
 
-    awful.key({ "Control" }, "space", function () kbdcfg.switch() end),
+    awful.key({ modkey }, "space", function () kbdcfg.switch() end),
+
+    -- Lock the screen
+    awful.key({ modkey, "Control" }, "l", function () awful.util.spawn(screen_lock) end),
 
     -- dmenu
     awful.key({ modkey }, "r", function ()
