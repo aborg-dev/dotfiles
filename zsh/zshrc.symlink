@@ -193,6 +193,10 @@ if [[ -d $HOME/.keychain ]]; then
     source $HOME/.keychain/`hostname`-sh
 fi
 
+if [[ -f $HOME/.zshenv ]]; then
+    source $HOME/.zshenv
+fi
+
 # TODO: Move this to linux specific config
 xset r rate 200 20
 
