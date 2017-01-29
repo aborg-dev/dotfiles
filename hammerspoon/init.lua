@@ -47,21 +47,21 @@ end)
 
 local caffeine = hs.menubar.new()
 function setCaffeineDisplay(state)
-    local resutl
-    if state then
-        result = caffeine:setIcon("icons/on.pdf")
-    else
-        result = caffeine:setIcon("icons/off.pdf")
-    end
+  local resutl
+  if state then
+    result = caffeine:setIcon("icons/on.png")
+  else
+    result = caffeine:setIcon("icons/off.png")
+  end
 end
 
 function caffeineClicked()
-    setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
+  setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
 end
 
 if caffeine then
-    caffeine:setClickCallback(caffeineClicked)
-    setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
+  caffeine:setClickCallback(caffeineClicked)
+  setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
 end
 
 local function timewarrior_process_output(task, stdOut, stdErr)
