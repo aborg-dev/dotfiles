@@ -1,4 +1,4 @@
-imap jj <Esc>
+imap fd <Esc>
 
 let mapleader = ","
 map <leader>r :action Run<CR>
