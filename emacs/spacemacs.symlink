@@ -57,7 +57,7 @@ values."
      auto-completion
 
      org
-     calendar
+     ;; calendar
 
      (shell :variables
             shell-default-height 30
@@ -149,7 +149,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Monaco"
-                               :size 16
+                               :size 12
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -346,7 +346,23 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; Add additional org-task state
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "|" "WAITING(w)" "|" "DONE(d)")))
+        '((sequence "TODO(t)" "NEXT(n)" "|" "WAITING(w)" "|" "DONE(d)")))
+
+  ;; Color code tasks types
+  (setf org-todo-keyword-faces '(("NEXT" . (:foreground "yellow" :background "red" :weight bold))
+                                 ("TODO" . (:foreground "cyan" :background "steelblue" :weight bold))
+                                 ("WAITING" . (:foreground "yellow" :background "magenta2" :weight bold))
+                                 ("DONE" . (:foreground "gray50" :background "gray30"))))
+
+
+  ;; Define org tags to implement GTD contexts
+  (setq org-tag-alist '(("COMPUTER" . ?c)
+                        ("READING" . ?r)
+                        ("OFFLINE" . ?f)
+                        ("MOBILE" . ?m)
+                        ("HOME" . ?h)
+                        ("OFFICE" . ?o)
+                        ("GROCERIES" . ?g)))
 
   ;; Search for TODOs in all files in directory
   (setq org-agenda-files '("~/notes"))
@@ -362,14 +378,25 @@ before packages are loaded. If you are unsure, you should try in setting them in
     (kbd "C-c o")
     (lambda() (interactive) (find-file "~/notes/tasks.org")))
 
-  ;; Quick search over notes files
+  ;; Quick search over notes files by name
   (defun notes ()
     "Find note."
     (interactive)
     (progn (cd "~/notes") (helm-projectile-find-file ())))
 
+  ;; Define shortcut to search over notes
   (global-set-key
     (kbd "C-c n") 'notes)
+
+  ;; Define shortcut to quickly add TODO
+  (global-set-key
+   (kbd "C-c t") (lambda () (interactive) (org-capture nil "t")))
+
+  ;; Define custom agenda commands
+  (setq org-agenda-custom-commands
+        '(("w" todo "WAITING" nil)
+          ("n" todo "NEXT" nil)
+          ("d" "Agenda + Next Actions" ((agenda) (todo "NEXT")))))
 
   ;; Setup default directory for capturing tasks
   (setq org-directory "~/notes")
