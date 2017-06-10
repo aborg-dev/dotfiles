@@ -28,12 +28,16 @@ Plug 'xuhdev/SingleCompile'
 Plug 'fatih/vim-go'
 Plug 'Konfekt/FastFold'
 Plug 'rizzatti/dash.vim'
+Plug 'ervandew/supertab'
+Plug 'lervag/vimtex'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-clang'
 
 " Notes-organizing plugins
 Plug 'vimwiki/vimwiki'
@@ -111,6 +115,7 @@ set backspace=indent,eol,start
 " Shortcuts {{{
 
 let mapleader=","       " Rebind leader from backslash to comma
+let maplocalleader = ";" " Rebind local leader form backslack to semicolon
 
 " Fast search word under cursor
 nnoremap <Leader>a :Ag <C-r><C-w><cr>
@@ -258,15 +263,14 @@ let g:SingleCompile_split = 'vsplit'
 " Setup proper compile flags
 let common_run_command = './$(FILE_TITLE)$.out'
 let common_out_file = '$(FILE_TITLE)$.out'
-let common_flags = '-O2 -std=c++14 -Wall -DHOME -I/Users/acid/Yandex.Disk.localized/Code -o ' . common_out_file
-"let common_flags = '-O2 -std=c++0x -DHOME -I/Users/acid/Yandex.Disk.localized/Code -I/opt/X11/include -L/opt/X11/lib -lX11 -lm -lpthread -o ' . common_out_file
+let common_flags = '-O2 -std=c++14 -Wall -DHOME -I/Users/akashin/code -o ' . common_out_file
 
 call SingleCompile#SetCompilerTemplate(
-    \'cpp', 'clang', 'Clang', 'clang++-3.7', common_flags, common_run_command)
+    \'cpp', 'clang', 'Clang', 'clang++', common_flags, common_run_command)
 call SingleCompile#SetOutfile('cpp', 'clang', common_out_file)
 
 call SingleCompile#SetCompilerTemplate(
-    \'cpp', 'g++', 'GCC', 'g++-5', common_flags, common_run_command)
+    \'cpp', 'g++', 'GCC', 'g++-6', common_flags, common_run_command)
 call SingleCompile#SetOutfile('gcc', 'g++', common_out_file)
 
 " Use clang by default, otherwise fallback to g++
@@ -279,7 +283,7 @@ nnoremap <silent> <leader>r :SCCompileRun<CR>
 
 func! AssembleFile()
     :w
-    !/Users/acid/Yandex.Disk.localized/Code/fugo/combine_headers.py % /Users/acid/Yandex.Disk.localized/Code > %<_full.cpp
+    !/Users/akashin/code/fugo/combine_headers.py % /Users/akashin/code > %<_full.cpp
 endfunc
 
 " }}}
@@ -355,6 +359,39 @@ let g:fastfold_savehook = 0
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 autocmd CompleteDone * pclose!
+
+let g:deoplete#sources#clang#libclang_path = "/usr/local/Cellar/llvm/3.9.1/lib/libclang.dylib"
+let g:deoplete#sources#clang#clang_header = "/usr/local/Cellar/llvm/3.9.1/lib/clang/3.9.1"
+
+
+" }}}
+
+" {{{ vimtex
+
+" Enable vimtex autocompletion.
+let g:vimtex_complete_enabled = 1
+
+" Enable integration with deoplete.
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+let g:deoplete#omni#input_patterns.tex = '\\(?:'
+    \ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
+    \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
+    \ . '|hyperref\s*\[[^]]*'
+    \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+    \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
+    \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+    \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
+    \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
+    \ . '|usepackage(\s*\[[^]]*\])?\s*\{[^}]*'
+    \ . '|documentclass(\s*\[[^]]*\])?\s*\{[^}]*'
+    \ .')'
+
+" Use Skim as a default previewer.
+let g:vimtex_view_general_viewer
+      \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+let g:vimtex_view_general_options = '-r @line @pdf @tex'
 
 " }}}
 
