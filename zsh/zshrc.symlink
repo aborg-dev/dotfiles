@@ -90,7 +90,7 @@ bindkey -v
 bindkey -M viins 'fd' vi-cmd-mode
 
 # Customize to your needs...
-export PATH=$PATH:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/home/acid/.bin:/Users/acid/.bin
+export PATH=$PATH:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:$HOME/.bin:$HOME/bin:$HOME/.local/bin
 autoload zmv
 
 # Activate Russian characters in terminal
@@ -170,6 +170,7 @@ alias em="emacsclient -t"
 alias vrc="vim ~/.vimrc"
 alias zrc="vim ~/.zshrc"
 alias tmrc="vim ~/.tmux.conf"
+alias i3rc="vim ~/.config/i3/config"
 
 # Use neovim intead of vim if available
 if command_exists nvim ; then
