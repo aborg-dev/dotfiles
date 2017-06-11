@@ -114,8 +114,8 @@ set backspace=indent,eol,start
 
 " Shortcuts {{{
 
-let mapleader=","       " Rebind leader from backslash to comma
-let maplocalleader = ";" " Rebind local leader form backslack to semicolon
+let mapleader=","       " Rebind Leader from backslash to comma
+let maplocalleader = ";" " Rebind local Leader form backslack to semicolon
 
 " Fast search word under cursor
 nnoremap <Leader>a :Ag <C-r><C-w><cr>
@@ -147,10 +147,10 @@ cmap w!! %!sudo tee > /dev/null %
 
 " Access fzf commands to search across files and buffers
 nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
 
 " Shortcut to open NERDTree drawer
-map <silent> <leader>e :NERDTreeToggle<CR>
+map <silent> <Leader>e :NERDTreeToggle<CR>
 
 " Select text that you've just pasted
 noremap gV `[v`]
@@ -279,7 +279,7 @@ call SingleCompile#SetPriority('cpp', 'g++', 20)
 
 nmap <F5> :SCCompile<cr>
 nmap <F6> :call AssembleFile()<cr>
-nnoremap <silent> <leader>r :SCCompileRun<CR>
+nnoremap <silent> <Leader>r :SCCompileRun<CR>
 
 func! AssembleFile()
     :w
