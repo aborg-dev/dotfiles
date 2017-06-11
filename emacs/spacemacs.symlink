@@ -352,7 +352,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setf org-todo-keyword-faces '(("NEXT" . (:foreground "yellow" :background "red" :weight bold))
                                  ("TODO" . (:foreground "cyan" :background "steelblue" :weight bold))
                                  ("WAITING" . (:foreground "yellow" :background "magenta2" :weight bold))
-                                 ("DONE" . (:foreground "gray50" :background "gray30"))))
+                                 ("DONE" . (:foreground "gray50" :background "gray30" :strike-through t))))
 
 
   ;; Define org tags to implement GTD contexts
