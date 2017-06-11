@@ -93,6 +93,10 @@ bindkey -M viins 'fd' vi-cmd-mode
 export PATH=$PATH:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:$HOME/.bin:$HOME/bin:$HOME/.local/bin
 autoload zmv
 
+# Turn on bash completion compatibility mode
+autoload bashcompinit
+bashcompinit
+
 # Activate Russian characters in terminal
 export LC_ALL=en_US.utf-8
 
