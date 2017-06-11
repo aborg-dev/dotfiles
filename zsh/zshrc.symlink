@@ -186,8 +186,24 @@ export GIT_EDITOR=nvim
 
 # }}}
 
+# Aliases {{{
+
+alias psg="ps aux | grep"
+
+# }}}
+
+# Lower keyboard repeat rate limit.
+if [[ `uname` == 'Linux' && $DISPLAY ]]
+then
+    xset r rate 200 20
+fi
+
 if [[ -f $HOME/.zshrc.work ]]; then
     source $HOME/.zshrc.work
+fi
+
+if [[ -f $HOME/.zshrc.local ]]; then
+    source $HOME/.zshrc.local
 fi
 
 if [[ -d $HOME/.keychain ]]; then
@@ -197,8 +213,5 @@ fi
 if [[ -f $HOME/.zshenv ]]; then
     source $HOME/.zshenv
 fi
-
-# TODO: Move this to linux specific config
-#xset r rate 200 20
 
 # vim:foldmethod=marker:foldlevel=0
