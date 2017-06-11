@@ -195,6 +195,15 @@ export GIT_EDITOR=nvim
 
 alias psg="ps aux | grep"
 
+function tmx {
+    name=$1
+    if tmux list-sessions | grep -v "^${name}:$" > /dev/null; then
+        tmux attach -t "${name}"
+    else
+        tmux new-session -s "${name}"
+    fi
+}
+
 # }}}
 
 # Lower keyboard repeat rate limit.
