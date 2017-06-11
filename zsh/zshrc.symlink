@@ -194,7 +194,7 @@ alias psg="ps aux | grep"
 # }}}
 
 # Lower keyboard repeat rate limit.
-if [[ `uname` == 'Linux' && $DISPLAY ]]
+if [[ `uname` == 'Linux' && ! -z $DISPLAY ]]
 then
     xset r rate 200 20
 fi
