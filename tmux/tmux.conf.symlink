@@ -6,12 +6,20 @@ bind C-a send-prefix
 # Set a Ctrl-b shortcut for reloading your tmux config
 bind r source-file ~/.tmux.conf
 
-# Open new window with the same path
-bind c new-window -c "#{pane_current_path}"
-bind j split-window -h -c "#{pane_current_path}"
-bind k split-window -v -c "#{pane_current_path}"
+# Detect current tmux version
+run-shell "tmux setenv -g TMUX_VERSION $(tmux -V | cut -c 6-)"
 
-# quick pane cycling
+# Open new window with the same path
+if-shell -b '[ "$(echo "$TMUX_VERSION < 1.9" | bc)" = 1 ]' \
+    'bind c new-window; \
+    bind j split-window -h; \
+    bind k split-window -v;'
+if-shell -b '[ "$(echo "$TMUX_VERSION >= 1.9" | bc)" = 1 ]' \
+    'bind c new-window -c "#{pane_current_path}"; \
+    bind j split-window -h -c "#{pane_current_path}"; \
+    bind k split-window -v -c "#{pane_current_path}";'
+
+# Quick pane cycling
 unbind ^A
 bind ^A select-pane -t :.+
 
@@ -19,7 +27,7 @@ bind ^A select-pane -t :.+
 set -g set-titles on
 set -g set-titles-string '#(whoami)::#h'
 
-# don't rename windows automatically
+# Don't rename windows automatically
 set-option -g allow-rename off
 
 # Set default shell to zsh
@@ -30,8 +38,12 @@ setw -g mode-keys vi
 set -g status-keys vi
 
 # Enable visual mode/copy shortcuts from vim
-bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy 'y' copy-selection
+if-shell -b '[ "$(echo "$TMUX_VERSION < 2.5" | bc)" = 1 ]' \
+    "bind-key -t vi-copy 'v' begin-selection; \
+    bind-key -t vi-copy 'y' copy-selection"
+if-shell -b '[ "$(echo "$TMUX_VERSION >= 2.5" | bc)" = 1 ]' \
+    "bind-key -T copy-mode-vi 'v' send-keys -X begin-selection; \
+    bind-key -T copy-mode-vi 'y' send-keys -X copy-selection"
 
 # Make scroll history larger
 set -g history-limit 10000
