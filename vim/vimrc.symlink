@@ -395,4 +395,9 @@ let g:vimtex_view_general_options = '-r @line @pdf @tex'
 
 " }}}
 
+let work_vimrc = "$HOME/.vimrc.work"
+if filereadable(work_vimrc)
+    source work_vimrc
+endif
+
 " vim:foldmethod=marker:foldlevel=0
