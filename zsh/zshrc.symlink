@@ -204,6 +204,9 @@ function tmx {
     fi
 }
 
+# Handle square brackets used for specifying rake arguments correctly.
+alias rake='noglob rake'
+
 # }}}
 
 # Lower keyboard repeat rate limit.
