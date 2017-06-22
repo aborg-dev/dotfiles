@@ -197,12 +197,10 @@ alias psg="ps aux | grep"
 
 function tmx {
     name=$1
-    tmux list-sessions | grep -q "^${name}:"
-    local return_code=$?
-    if [ $return_code -ne 0 ]; then
-        tmux new-session -s "${name}"
-    else
+    if tmux list-sessions | grep -q "^${name}:"; then
         tmux attach -t "${name}"
+    else
+        tmux new-session -s "${name}"
     fi
 }
 
