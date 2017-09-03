@@ -43,6 +43,7 @@ Plug 'zchee/deoplete-clang'
 Plug 'vimwiki/vimwiki'
 Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
+Plug 'vim-scripts/utl.vim'
 
 " Taskwarrior plugins
 if executable('task')
@@ -58,6 +59,7 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 
 call plug#end()
 
@@ -164,6 +166,14 @@ nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
+
+" Open diary for today.
+let notes_path = "~/notes/"
+let diary_filename = notes_path . "diary/" . strftime('%Y-%m-%d') . ".org"
+nnoremap <silent> <Leader>d :execute 'edit' diary_filename <CR>
+
+" Open tasks.
+nnoremap <silent> <Leader>t :execute 'edit' notes_path . "tasks.org" <CR>
 
 " }}}
 
@@ -357,7 +367,7 @@ let g:fastfold_savehook = 0
 " {{{ deoplete
 
 " Use deoplete.
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
 autocmd CompleteDone * pclose!
 
 let g:deoplete#sources#clang#libclang_path = "/usr/local/Cellar/llvm/3.9.1/lib/libclang.dylib"
@@ -392,6 +402,22 @@ let g:deoplete#omni#input_patterns.tex = '\\(?:'
 let g:vimtex_view_general_viewer
       \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 let g:vimtex_view_general_options = '-r @line @pdf @tex'
+
+" }}}
+
+" {{{ LimeLight
+
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+" }}}
+
+" {{{ OrgMode
+
+let g:org_agenda_files = ["~/notes/tasks.org"]
+" Hide style markers, e.g. bold.
+let g:org_aggressive_conceal = 1
+let g:org_todo_keywords = ['TODO', '|', 'DONE']
 
 " }}}
 
