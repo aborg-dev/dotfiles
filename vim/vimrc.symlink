@@ -169,8 +169,20 @@ nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 
 " Open diary for today.
 let notes_path = "~/notes/"
-let diary_filename = notes_path . "diary/" . strftime('%Y-%m-%d') . ".org"
-nnoremap <silent> <Leader>d :execute 'edit' diary_filename <CR>
+
+function! GetTimeString(delta_days)
+    return strftime('%Y-%m-%d', localtime() + a:delta_days * 60 * 60 * 24)
+endfunction
+
+function! OpenDiary(delta_days)
+    :let diary_filename = g:notes_path . "diary/" . GetTimeString(a:delta_days) . ".org"
+    :execute 'edit' diary_filename
+endfunction
+
+"nnoremap <silent> <Leader>d :execute 'edit' diary_filename <CR>
+nnoremap <silent> <Leader>dd :call OpenDiary(0) <CR>
+nnoremap <silent> <Leader>dy :call OpenDiary(-1) <CR>
+nnoremap <silent> <Leader>dt :call OpenDiary(+1) <CR>
 
 " Open tasks.
 nnoremap <silent> <Leader>t :execute 'edit' notes_path . "tasks.org" <CR>
