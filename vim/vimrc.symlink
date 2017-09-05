@@ -31,6 +31,7 @@ Plug 'rizzatti/dash.vim'
 Plug 'ervandew/supertab'
 Plug 'lervag/vimtex'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'SirVer/ultisnips'
 
 function! DoRemote(arg)
   UpdateRemotePlugins
@@ -179,13 +180,20 @@ function! OpenDiary(delta_days)
     :execute 'edit' diary_filename
 endfunction
 
-"nnoremap <silent> <Leader>d :execute 'edit' diary_filename <CR>
 nnoremap <silent> <Leader>dd :call OpenDiary(0) <CR>
 nnoremap <silent> <Leader>dy :call OpenDiary(-1) <CR>
 nnoremap <silent> <Leader>dt :call OpenDiary(+1) <CR>
 
+function! AddTodo()
+    call inputsave()
+    let name = input('Enter TODO: ')
+    call inputrestore()
+    call append(line('$'), "** TODO " . name)
+endfun
+
 " Open tasks.
-nnoremap <silent> <Leader>t :execute 'edit' notes_path . "tasks.org" <CR>
+nnoremap <silent> <Leader>tt :execute 'edit' notes_path . "tasks.org" <CR>
+nnoremap <silent> <Leader>ta :call AddTodo() <CR>
 
 " }}}
 
@@ -209,8 +217,8 @@ set foldnestmax=10      " Open all folds on levels < 10
 nnoremap <space> za
 
 " Save state of the folds for vimwiki files
-autocmd BufWinLeave *.md* mkview
-autocmd BufWinEnter *.md* silent! loadview
+autocmd BufWinLeave *.org* mkview
+autocmd BufWinEnter *.org* silent! loadview
 
 " Set foldmethod to expr for markdown files
 autocmd BufNewFile,BufFilePre,BufRead,BufWrite *.md set foldmethod=expr
@@ -430,6 +438,16 @@ let g:org_agenda_files = ["~/notes/tasks.org"]
 " Hide style markers, e.g. bold.
 let g:org_aggressive_conceal = 1
 let g:org_todo_keywords = ['TODO', '|', 'DONE']
+
+" }}}
+
+" {{{ UltiSnips
+
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 
 " }}}
 
