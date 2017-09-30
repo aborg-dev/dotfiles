@@ -228,6 +228,15 @@ autocmd BufWinEnter *.org* silent! loadview
 " Set foldmethod to expr for markdown files
 autocmd BufNewFile,BufFilePre,BufRead,BufWrite *.md set foldmethod=expr
 
+function PopulateDiaryTemplate()
+    0r $HOME/.vim/UltiSnips/org.snippets
+    :g/snippet/d
+    0d
+    0r !echo Diary for $(date +\%Y-\%m-\%d)
+endfunction
+
+autocmd BufNewFile 2017-*.org call PopulateDiaryTemplate()
+
 " }}}
 
 " Movement {{{
