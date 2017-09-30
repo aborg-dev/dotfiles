@@ -456,7 +456,7 @@ autocmd! User GoyoLeave Limelight!
 
 let g:org_agenda_files = ["~/notes/tasks.org"]
 " Hide style markers, e.g. bold.
-let g:org_aggressive_conceal = 1
+"let g:org_aggressive_conceal = 1
 let g:org_todo_keywords = ['TODO', '|', 'DONE']
 
 " }}}
