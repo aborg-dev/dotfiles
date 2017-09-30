@@ -32,6 +32,7 @@ Plug 'ervandew/supertab'
 Plug 'lervag/vimtex'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'SirVer/ultisnips'
+Plug 'Chiel92/vim-autoformat'
 
 function! DoRemote(arg)
   UpdateRemotePlugins
@@ -39,6 +40,7 @@ endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-clang'
+Plug 'fishbullet/deoplete-ruby'
 
 " Notes-organizing plugins
 Plug 'vimwiki/vimwiki'
@@ -112,6 +114,9 @@ set splitright     " `:vs filename` will open split on the right
 
 " Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
+
+" Fix random glitches on some terminals.
+set guicursor=
 
 " }}}
 
@@ -393,6 +398,12 @@ autocmd CompleteDone * pclose!
 let g:deoplete#sources#clang#libclang_path = "/usr/local/Cellar/llvm/3.9.1/lib/libclang.dylib"
 let g:deoplete#sources#clang#clang_header = "/usr/local/Cellar/llvm/3.9.1/lib/clang/3.9.1"
 
+
+" }}}
+
+" {{{ Autoformat
+
+noremap <Leader>f :Autoformat<CR>
 
 " }}}
 
