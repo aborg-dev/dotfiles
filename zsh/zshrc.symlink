@@ -1,28 +1,5 @@
 alias edit="emacsclient -t"
 
-# Taskwarrior & Timewarrior {{{
-
-alias in="task add +in"
-tn() { task next +next $@ && ~/.task/project-next.py }
-alias tl="task list"
-alias tin="task in"
-alias ta="task add"
-alias tm="task modify"
-alias td="task done"
-alias tdel="task delete"
-alias tc="task context"
-
-tickle () {
-    deadline=$1
-    shift
-    in +tickle wait:$deadline $@
-}
-alias tick=tickle
-
-alias tw=timew
-
-# }}}
-
 # Notes {{{
 
 note () {
