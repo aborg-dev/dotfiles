@@ -47,6 +47,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 Plug 'vim-scripts/utl.vim'
+Plug 'shime/vim-livedown'
 
 " Taskwarrior plugins
 if executable('task')
@@ -353,9 +354,12 @@ noremap <C-w>f :SyntasticToggleMode<CR>
 
 " Autoformat {{{
 
-noremap <F3> :Autoformat<CR>
+noremap <Leader>f :Autoformat<CR>
 let g:formatdef_autopep8 = "'autopep8 - --aggressive --max-line-length 80 --range '.a:firstline.' '.a:lastline"
-let g:formatters_python = ['autopep8']
+let g:formatters_python = ['yapf']
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
 
 " }}}
 
@@ -401,18 +405,12 @@ let g:fastfold_savehook = 0
 " {{{ deoplete
 
 " Use deoplete.
-let g:deoplete#enable_at_startup = 0
+let g:deoplete#enable_at_startup = 1
 autocmd CompleteDone * pclose!
 
 let g:deoplete#sources#clang#libclang_path = "/usr/local/Cellar/llvm/3.9.1/lib/libclang.dylib"
 let g:deoplete#sources#clang#clang_header = "/usr/local/Cellar/llvm/3.9.1/lib/clang/3.9.1"
 
-
-" }}}
-
-" {{{ Autoformat
-
-noremap <Leader>f :Autoformat<CR>
 
 " }}}
 
@@ -425,18 +423,8 @@ let g:vimtex_complete_enabled = 1
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
-let g:deoplete#omni#input_patterns.tex = '\\(?:'
-    \ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
-    \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
-    \ . '|hyperref\s*\[[^]]*'
-    \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-    \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
-    \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-    \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
-    \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
-    \ . '|usepackage(\s*\[[^]]*\])?\s*\{[^}]*'
-    \ . '|documentclass(\s*\[[^]]*\])?\s*\{[^}]*'
-    \ .')'
+
+let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
 " Use Skim as a default previewer.
 let g:vimtex_view_general_viewer
