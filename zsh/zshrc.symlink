@@ -208,4 +208,8 @@ if [[ -f $HOME/.zshenv ]]; then
     source $HOME/.zshenv
 fi
 
+if [[ -f $HOME/Repos/termind/main.rb ]] then
+    $HOME/Repos/termind/main.rb $HOME/Repos/termind/data/quotes.txt
+fi
+
 # vim:foldmethod=marker:foldlevel=0
