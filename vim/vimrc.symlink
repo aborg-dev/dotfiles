@@ -216,18 +216,18 @@ nnoremap <Leader>c :nohlsearch<CR>
 " Folding {{{
 
 set foldenable          " Enable folding
-set foldmethod=marker   " Fold by marker
 set foldnestmax=10      " Open all folds on levels < 10
 
 " Space opens/closes folds
 nnoremap <space> za
 
-" Save state of the folds for vimwiki files
+" Save state of the folds for orgmode files
 autocmd BufWinLeave *.org* mkview
 autocmd BufWinEnter *.org* silent! loadview
 
 " Set foldmethod to expr for markdown files
 autocmd BufNewFile,BufFilePre,BufRead,BufWrite *.md set foldmethod=expr
+autocmd BufNewFile,BufFilePre,BufRead,BufWrite *.org set foldmethod=expr
 
 function PopulateDiaryTemplate()
     0r $HOME/.vim/UltiSnips/org.snippets
@@ -446,6 +446,9 @@ let g:org_agenda_files = ["~/notes/tasks.org"]
 " Hide style markers, e.g. bold.
 "let g:org_aggressive_conceal = 1
 let g:org_todo_keywords = ['TODO', '|', 'DONE']
+
+" Archive selection.
+noremap <Leader>A !cat >> ~/notes/tasks.org_archive <CR>
 
 " }}}
 
