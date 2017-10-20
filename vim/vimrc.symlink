@@ -427,8 +427,9 @@ endif
 let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
 " Use Skim as a default previewer.
-let g:vimtex_view_general_viewer
-      \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+" TODO: Make this OS dependent.
+"let g:vimtex_view_general_viewer
+      "\ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 let g:vimtex_view_general_options = '-r @line @pdf @tex'
 
 " }}}
