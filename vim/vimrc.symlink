@@ -44,7 +44,7 @@ Plug 'fishbullet/deoplete-ruby'
 
 " Notes-organizing plugins
 Plug 'vimwiki/vimwiki'
-Plug 'jceb/vim-orgmode'
+Plug 'akashin/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 Plug 'vim-scripts/utl.vim'
 Plug 'shime/vim-livedown'
@@ -443,13 +443,10 @@ autocmd! User GoyoLeave Limelight!
 
 " {{{ OrgMode
 
-let g:org_agenda_files = ["~/notes/tasks.org"]
+let g:org_agenda_files = ["~/notes/tasks.org", "~/notes/refile.org"]
 " Hide style markers, e.g. bold.
 "let g:org_aggressive_conceal = 1
 let g:org_todo_keywords = ['TODO', '|', 'DONE']
-
-" Archive selection.
-noremap <Leader>A !cat >> ~/notes/tasks.org_archive <CR>
 
 " }}}
 
