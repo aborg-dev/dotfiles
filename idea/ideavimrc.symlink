@@ -2,13 +2,21 @@ imap fd <Esc>
 
 let mapleader = ","
 map <leader>r :action Run<CR>
+map <leader>b :action RecentFiles<CR>
+map <leader>w :action SaveAll<CR>
+map <leader>s :action RenameElement<CR>
+map <leader>a :action Find<CR>
+map <leader>g :action Generate<CR>
+
+"imap <C-n> <ESC>:action Down<CR>
+"imap <C-p> <ESC>:action Up<CR>
+
+"nmap <leader>c :action CommentByLineComment<cr>
 
 "map <leader>a :action $SelectAll<CR>
 "map <leader>b :action GotoDeclaration<CR>
 "map <leader>c :action $Copy<CR>
 "map <leader>d :action EditorDuplicate<CR>
-"map <leader>e :action RecentFiles<CR>
-"map <leader>f :action Find<CR>
 "map <leader>g :action GotoLine<CR>
 "map <leader>h :action TypeHierarchy<CR>
 "map <leader>i :action ImplementMethods<CR>
@@ -17,8 +25,6 @@ map <leader>r :action Run<CR>
 "map <leader>o :action MethodHierarchy.OverrideMethodAction<CR>
 "map <leader>p :action ParameterInfo<CR>
 "map <leader>q :action GuiDesigner.QuickJavadoc<CR>
-"map <leader>r :action Replace<CR>
-"map <leader>s :action SaveAll<CR>
 "map <leader>t :action Vcs.UpdateProject<CR>
 "map <leader>u :action GotoSuperMethod<CR>
 "map <leader>v :action $Paste<CR>
