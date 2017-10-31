@@ -212,4 +212,8 @@ if [[ -f $HOME/Repos/termind/main.rb ]] then
     $HOME/Repos/termind/main.rb $HOME/Repos/termind/data/quotes.txt
 fi
 
+if [[ -s $HOME/notes/refile.org ]] then
+    echo "\n----------- Cleanup refile.org -------------"
+fi
+
 # vim:foldmethod=marker:foldlevel=0
