@@ -89,6 +89,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab       " Replace tabs with spaces
 set autoindent
+filetype plugin on
 filetype plugin indent on   " Use language-dependent indentation
 
 " }}}
@@ -199,6 +200,7 @@ endfun
 
 " Open tasks.
 nnoremap <silent> <Leader>tt :execute 'edit' notes_path . "tasks.org" <CR>
+nnoremap <silent> <Leader>ti :execute 'edit' notes_path . "inbox.org" <CR>
 nnoremap <silent> <Leader>ta :call AddTodo() <CR>
 
 " }}}
@@ -221,13 +223,9 @@ set foldnestmax=10      " Open all folds on levels < 10
 " Space opens/closes folds
 nnoremap <space> za
 
-" Save state of the folds for orgmode files
-autocmd BufWinLeave *.org* mkview
-autocmd BufWinEnter *.org* silent! loadview
-
 " Set foldmethod to expr for markdown files
-autocmd BufNewFile,BufFilePre,BufRead,BufWrite *.md set foldmethod=expr
-autocmd BufNewFile,BufFilePre,BufRead,BufWrite *.org set foldmethod=expr
+"autocmd BufNewFile,BufFilePre,BufRead,BufWrite *.md set foldmethod=expr
+"autocmd BufNewFile,BufFilePre,BufRead,BufWrite *.org set foldmethod=expr
 
 function PopulateDiaryTemplate()
     0r $HOME/.vim/UltiSnips/org.snippets
@@ -443,10 +441,41 @@ autocmd! User GoyoLeave Limelight!
 
 " {{{ OrgMode
 
+" Save state of the folds for orgmode files
+autocmd BufWinLeave *.org* mkview
+autocmd BufWinEnter *.org* silent! loadview
+
+" # Function to permanently delete views created by 'mkview'
+function! MyDeleteView()
+    let path = fnamemodify(bufname('%'),':p')
+    " vim's odd =~ escaping for /
+    let path = substitute(path, '=', '==', 'g')
+    if empty($HOME)
+    else
+        let path = substitute(path, '^'.$HOME, '\~', '')
+    endif
+    let path = substitute(path, '/', '=+', 'g') . '='
+    " view directory
+    let path = &viewdir.'/'.path
+    call delete(path)
+    echo "Deleted: ".path
+endfunction
+
+" # Command Delview (and it's abbreviation 'delview')
+command Delview call MyDeleteView()
+" Lower-case user commands: http://vim.wikia.com/wiki/Replace_a_builtin_command_using_cabbrev
+cabbrev delview <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Delview' : 'delview')<CR>
+
+" Fix fold colors.
+autocmd BufWinEnter *.org* highlight Folded ctermfg=137 guifg=#b88853
+
+" Update inbox file.
+autocmd BufWinEnter inbox.org exec MoveMobileInbox()
+
 let g:org_agenda_files = ["~/notes/tasks.org", "~/notes/refile.org"]
 " Hide style markers, e.g. bold.
 "let g:org_aggressive_conceal = 1
-let g:org_todo_keywords = ['TODO', '|', 'DONE']
+let g:org_todo_keywords = ['TODO', 'NEXT', 'DOING', '|', 'DONE', 'WAITING']
 
 " }}}
 
