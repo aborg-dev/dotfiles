@@ -137,6 +137,17 @@ install_dotfiles () {
   done
 }
 
+install_scripts () {
+  info 'installing scripts'
+
+  local overwrite_all=false backup_all=false skip_all=false
+  for src in $(find "$DOTFILES_ROOT/scripts" -maxdepth 1 -name '*.sh')
+  do
+    dst="$HOME/.bin/$(basename "${src}")"
+    link_file "$src" "$dst"
+  done
+}
+
 install_fzf () {
   info 'installing fzf'
 
@@ -190,6 +201,7 @@ install_fzf
 configure_vim
 configure_zsh
 install_dotfiles
+install_scripts
 
 echo ''
 echo '  All installed!'
