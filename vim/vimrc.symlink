@@ -64,6 +64,7 @@ Plug 'xolox/vim-session'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'akashin/vim-plugins'
 
 call plug#end()
 
