@@ -2,17 +2,22 @@ alias edit="emacsclient -t"
 
 # Notes {{{
 
+export NOTES_DIR=$HOME/notes
+export INBOX_FILE=$NOTES_DIR/inbox.org
+export MOBILE_INBOX_FILE=$NOTES_DIR/mobile_inbox.org
+export TASKS_FILE=$NOTES_DIR/tasks.org
+
 note () {
   if [ "$#" -ne 1 ]
   then
-    NAME="$(find ~/notes/* -type f | fzf)"
+    NAME="$(find ${NOTES_DIR}/* -type f | fzf)"
     if [ -n "$NAME" ]
     then
         edit $NAME
     fi
   else
     local id="$1"
-    local dir="$HOME/notes"
+    local dir="${NOTES_DIR}"
     local file="$dir/$id.md"
 
     mkdir -p $dir
@@ -22,6 +27,8 @@ note () {
 
 alias n=note
 alias nd="nvim -c VimwikiMakeDiaryNote"
+
+alias ta="add_task.sh"
 
 # }}}
 
@@ -212,8 +219,8 @@ if [[ -f $HOME/Repos/termind/main.rb ]] then
     $HOME/Repos/termind/main.rb $HOME/Repos/termind/data/quotes.txt
 fi
 
-if [[ -s $HOME/notes/refile.org ]] then
-    echo "\n----------- Cleanup refile.org -------------"
+if [[ -s $NOTES_DIR/inbox.org ]] then
+    echo "\n----------- Cleanup inbox.org -------------"
 fi
 
 # vim:foldmethod=marker:foldlevel=0
