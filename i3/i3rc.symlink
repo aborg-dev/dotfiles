@@ -39,7 +39,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Ctrl+l exec i3lock -t -f -c 000000
 
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show run   -fg "#f1f1f1" -bg "#333333" -hlfg "#ffffff" -hlbg "#336699" -o 85
+bindsym $mod+d exec rofi -show run   -fg "#f1f1f1" -bg "#333333" -hlfg "#ffffff" -hlbg "#336699" -o 85 -run-command "/usr/bin/zsh -c -i '{cmd}'"
 # start rofi to select a window
 bindsym $mod+g  exec rofi -show window    -fg "#f1f1f1" -bg "#333333" -hlfg "#ffffff" -hlbg "#336699" -o 85
 
