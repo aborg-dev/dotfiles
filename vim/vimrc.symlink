@@ -476,7 +476,7 @@ autocmd BufWinEnter inbox.org exec MoveMobileInbox()
 let g:org_agenda_files = ["~/notes/tasks.org", "~/notes/refile.org"]
 " Hide style markers, e.g. bold.
 "let g:org_aggressive_conceal = 1
-let g:org_todo_keywords = ['TODO', 'NEXT', 'DOING', '|', 'DONE', 'WAITING']
+let g:org_todo_keywords = ['TODO(t)', 'NEXT(n)', '|', 'DONE(d)', 'WAITING(w)']
 
 " }}}
 
