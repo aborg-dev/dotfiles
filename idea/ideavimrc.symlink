@@ -7,6 +7,9 @@ map <leader>w :action SaveAll<CR>
 map <leader>s :action RenameElement<CR>
 map <leader>a :action Find<CR>
 map <leader>g :action Generate<CR>
+map <leader>f :action ReformatCode<CR>
+map <leader>o :action MoveEditorToOppositeTabGroup<CR>
+
 
 "imap <C-n> <ESC>:action Down<CR>
 "imap <C-p> <ESC>:action Up<CR>
