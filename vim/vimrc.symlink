@@ -65,6 +65,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'akashin/vim-plugins'
+Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/YankRing.vim'
 
 call plug#end()
 
@@ -236,6 +238,7 @@ function PopulateDiaryTemplate()
 endfunction
 
 autocmd BufNewFile 2017-*.org call PopulateDiaryTemplate()
+autocmd BufNewFile 2018-*.org call PopulateDiaryTemplate()
 
 " }}}
 
@@ -478,6 +481,8 @@ let g:org_agenda_files = ["~/notes/tasks.org", "~/notes/refile.org"]
 "let g:org_aggressive_conceal = 1
 let g:org_todo_keywords = ['TODO(t)', 'NEXT(n)', '|', 'DONE(d)', 'WAITING(w)']
 
+"let g:org_indent = 1
+
 " }}}
 
 " {{{ UltiSnips
@@ -487,6 +492,15 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+
+" }}}
+
+" {{{ YankRing
+
+let g:yankring_history_file = '.yankring-history'
+nnoremap <Leader>yr :YRShow<CR>
+nnoremap <C-y> :YRShow<CR>
+let g:yankring_replace_n_pkey = ''
 
 " }}}
 
