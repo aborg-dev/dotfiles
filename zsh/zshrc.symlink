@@ -193,6 +193,17 @@ alias rake='noglob rake'
 
 # }}}
 
+# Pyenv {{{
+
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+
+#export WORKON_HOME=~/.ve
+#export PROJECT_HOME=~/Workspace
+#eval "$(pyenv init -)"
+
+# }}}
+
 # Lower keyboard repeat rate limit.
 if [[ `uname` == 'Linux' && -z $SSH_TTY ]]
 then
