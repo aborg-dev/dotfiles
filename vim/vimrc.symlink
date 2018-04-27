@@ -365,11 +365,19 @@ noremap <C-w>f :SyntasticToggleMode<CR>
 " Autoformat {{{
 
 noremap <Leader>f :Autoformat<CR>
-let g:formatdef_autopep8 = "'autopep8 - --aggressive --max-line-length 80 --range '.a:firstline.' '.a:lastline"
-let g:formatters_python = ['yapf']
+
+" General settings.
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
+
+" Python formatting.
+let g:formatdef_autopep8 = "'autopep8 - --aggressive --max-line-length 80 --range '.a:firstline.' '.a:lastline"
+let g:formatters_python = ['yapf']
+
+" C++ formatting.
+let g:formatdef_c_autoformat = "'clang-format -lines='.a:firstline.':'.a:lastline.' --assume-filename=\"'.expand('%:p').'\" -style=\"{BasedOnStyle: Google}\"'"
+let g:formatters_c = ['c_autoformat']
 
 " }}}
 
