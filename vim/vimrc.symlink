@@ -42,7 +42,7 @@ function! DoRemote(arg)
 endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'zchee/deoplete-jedi'
-Plug 'zchee/deoplete-clang'
+Plug 'tweekmonster/deoplete-clang2'
 Plug 'fishbullet/deoplete-ruby'
 
 " Notes-organizing plugins
@@ -407,10 +407,6 @@ let g:fastfold_savehook = 0
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 autocmd CompleteDone * pclose!
-
-let g:deoplete#sources#clang#libclang_path = "/usr/local/Cellar/llvm/3.9.1/lib/libclang.dylib"
-let g:deoplete#sources#clang#clang_header = "/usr/local/Cellar/llvm/3.9.1/lib/clang/3.9.1"
-
 
 " }}}
 
