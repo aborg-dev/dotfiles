@@ -12,6 +12,8 @@ call plug#begin('~/.vim/plugged')
 " Visual-improvement plugins
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'bling/vim-airline'
+Plug 'kien/rainbow_parentheses.vim'
+
 
 " Code navigation plugins
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -33,6 +35,7 @@ Plug 'lervag/vimtex'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'SirVer/ultisnips'
 Plug 'Chiel92/vim-autoformat'
+Plug 'jgdavey/tslime.vim'
 
 function! DoRemote(arg)
   UpdateRemotePlugins
@@ -503,6 +506,26 @@ let g:yankring_history_file = '.yankring-history'
 nnoremap <Leader>yr :YRShow<CR>
 nnoremap <C-y> :YRShow<CR>
 let g:yankring_replace_n_pkey = ''
+
+" }}}
+
+" {{{ tslime.vim
+
+" Ensure that at least one newline is present at the end of any text sent to tmux.
+" Without this, code will be sent to the REPL, but not executed until you switch
+" to the REPL pane and hit enter.
+let g:tslime_ensure_trailing_newlines = 1
+
+" Init default keybindings.
+vmap <C-c><C-c> <Plug>SendSelectionToTmux
+nmap <C-c><C-c> <Plug>NormalModeSendToTmux
+nmap <C-c>r <Plug>SetTmuxVars
+
+" }}}
+
+" {{{ rainbow_parentheses.vim
+
+au VimEnter * RainbowParenthesesToggle
 
 " }}}
 
