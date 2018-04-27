@@ -92,8 +92,8 @@ highlight DiffText cterm=none ctermfg=black ctermbg=Red gui=none guifg=bg guibg=
 
 " Spaces and Tabs {{{
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab       " Replace tabs with spaces
 set autoindent
 filetype plugin on
