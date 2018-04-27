@@ -48,6 +48,8 @@ Plug 'akashin/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 Plug 'vim-scripts/utl.vim'
 Plug 'shime/vim-livedown'
+Plug 'nathangrigg/vim-beancount'
+
 
 " Taskwarrior plugins
 if executable('task')
