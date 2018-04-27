@@ -46,7 +46,6 @@ Plug 'zchee/deoplete-clang'
 Plug 'fishbullet/deoplete-ruby'
 
 " Notes-organizing plugins
-Plug 'vimwiki/vimwiki'
 Plug 'akashin/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 Plug 'vim-scripts/utl.vim'
@@ -367,24 +366,6 @@ let g:formatters_python = ['yapf']
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
-
-" }}}
-
-" Vimwiki {{{
-
-" Specify notes path and turn on syntax highlighting
-let s:vimwiki = {}
-let s:vimwiki.path="~/notes"
-let s:vimwiki.nested_syntaxes={'python': 'python', 'bash': 'sh'}
-let s:vimwiki.syntax="markdown"
-let s:vimwiki.ext=".md"
-let g:vimwiki_list = [s:vimwiki]
-
-" Highlight headers with different colors
-let g:vimwiki_hl_headers = 1
-
-" Set folding mode
-let g:vimwiki_folding = 'expr'
 
 " }}}
 
