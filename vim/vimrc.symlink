@@ -185,18 +185,28 @@ nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 " Open diary for today.
 let notes_path = "~/notes/"
 
-function! GetTimeString(delta_days)
+function! GetDailyTimeString(delta_days)
     return strftime('%Y-%m-%d', localtime() + a:delta_days * 60 * 60 * 24)
 endfunction
 
-function! OpenDiary(delta_days)
-    :let diary_filename = g:notes_path . "diary/" . GetTimeString(a:delta_days) . ".org"
+function! GetMonthlyTimeString()
+    return strftime('%Y-%m')
+endfunction
+
+function! OpenDailyDiary(delta_days)
+    :let diary_filename = g:notes_path . "diary/" . GetDailyTimeString(a:delta_days) . ".org"
     :execute 'edit' diary_filename
 endfunction
 
-nnoremap <silent> <Leader>dd :call OpenDiary(0) <CR>
-nnoremap <silent> <Leader>dy :call OpenDiary(-1) <CR>
-nnoremap <silent> <Leader>dt :call OpenDiary(+1) <CR>
+function! OpenMonthlyDiary()
+    :let diary_filename = g:notes_path . "diary/" . GetMonthlyTimeString() . ".org"
+    :execute 'edit' diary_filename
+endfunction
+
+nnoremap <silent> <Leader>dd :call OpenDailyDiary(0) <CR>
+nnoremap <silent> <Leader>dy :call OpenDailyDiary(-1) <CR>
+nnoremap <silent> <Leader>dt :call OpenDailyDiary(+1) <CR>
+nnoremap <silent> <Leader>dm :call OpenMonthlyDiary() <CR>
 
 function! AddTodo()
     call inputsave()
