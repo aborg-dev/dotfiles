@@ -36,6 +36,15 @@ Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'SirVer/ultisnips'
 Plug 'Chiel92/vim-autoformat'
 Plug 'jgdavey/tslime.vim'
+Plug 'keith/swift.vim'
+Plug 'mitsuse/autocomplete-swift'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 function! DoRemote(arg)
   UpdateRemotePlugins
@@ -44,6 +53,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'zchee/deoplete-jedi'
 Plug 'tweekmonster/deoplete-clang2'
 Plug 'fishbullet/deoplete-ruby'
+"Plug 'landaire/deoplete-swift'
 
 " Notes-organizing plugins
 Plug 'akashin/vim-orgmode'
@@ -71,12 +81,15 @@ Plug 'junegunn/limelight.vim'
 Plug 'akashin/vim-plugins'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/YankRing.vim'
+Plug 'tpope/vim-unimpaired'
 
 call plug#end()
 
 set rtp+=~/.fzf
 
 " }}}
+
+autocmd FileType swift imap <buffer> <C-k> <Plug>(autocomplete_swift_jump_to_placeholder)
 
 " Colors {{{
 
@@ -342,6 +355,10 @@ call SingleCompile#SetOutfile('gcc', 'g++', common_out_file)
 call SingleCompile#SetPriority('cpp', 'clang', 20)
 call SingleCompile#SetPriority('cpp', 'g++-7', 10)
 
+call SingleCompile#SetCompilerTemplate('swift', 'swiftc', 'Swift', 'swiftc', '-I=/home/acid/Downloads/usr/lib/swift/clang/include -o ' . common_out_file, common_run_command)
+call SingleCompile#SetOutfile('swift', 'swiftc', common_out_file)
+call SingleCompile#ChooseCompiler('swift', 'swiftc')
+
 nmap <F5> :SCCompile<cr>
 nmap <F6> :call AssembleFile()<cr>
 nnoremap <silent> <Leader>r :SCCompileRun<CR>
@@ -525,6 +542,16 @@ nmap <C-c>r <Plug>SetTmuxVars
 " {{{ rainbow_parentheses.vim
 
 au VimEnter * RainbowParenthesesToggle
+
+" }}}
+
+" {{{ LanguageClient
+
+let g:LanguageClient_serverCommands = {
+    \ 'typescript': ['typescript-language-server', '--stdio']
+    \ }
+
+autocmd FileType typescript map <silent> <C-]> :call LanguageClient#textDocument_definition()<CR>
 
 " }}}
 
