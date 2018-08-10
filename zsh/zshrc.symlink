@@ -90,6 +90,7 @@ export ENSCRIPT="-2rj -M A4 --line-numbers --highlight=cpp --fancy-header=simple
 # Run parallel ssh command on a list of machines
 alias xs='pdsh -R ssh -f 1024 -t 64 -w -'
 
+# Alias `fd` command to unused combination
 alias fnd=fd
 
 # Store longer commands history

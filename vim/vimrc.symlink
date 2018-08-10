@@ -231,6 +231,7 @@ endfun
 " Open tasks.
 nnoremap <silent> <Leader>tt :execute 'edit' notes_path . "tasks.org" <CR>
 nnoremap <silent> <Leader>ti :execute 'edit' notes_path . "inbox.org" <CR>
+nnoremap <silent> <Leader>tf :execute 'edit' notes_path . "finance/ledger.org" <CR>
 nnoremap <silent> <Leader>ta :call AddTodo() <CR>
 
 " }}}
@@ -503,6 +504,8 @@ let g:org_agenda_files = ["~/notes/tasks.org", "~/notes/refile.org"]
 let g:org_todo_keywords = ['TODO(t)', 'NEXT(n)', '|', 'DONE(d)', 'WAITING(w)']
 
 "let g:org_indent = 1
+
+let g:org_export_emacs="/usr/local/bin/emacs"
 
 " }}}
 
