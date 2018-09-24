@@ -356,9 +356,11 @@ call SingleCompile#SetOutfile('gcc', 'g++', common_out_file)
 call SingleCompile#SetPriority('cpp', 'clang', 20)
 call SingleCompile#SetPriority('cpp', 'g++-7', 10)
 
-call SingleCompile#SetCompilerTemplate('swift', 'swiftc', 'Swift', 'swiftc', '-I=/home/acid/Downloads/usr/lib/swift/clang/include -o ' . common_out_file, common_run_command)
+let swift_flags = '-I=/home/acid/Downloads/usr/lib/swift/clang/include -o ' . common_out_file
+
+call SingleCompile#SetCompilerTemplate(
+    \'swift', 'swiftc', 'Swift', 'swiftc', swift_flags, common_run_command)
 call SingleCompile#SetOutfile('swift', 'swiftc', common_out_file)
-call SingleCompile#ChooseCompiler('swift', 'swiftc')
 
 nmap <F5> :SCCompile<cr>
 nmap <F6> :call AssembleFile()<cr>
