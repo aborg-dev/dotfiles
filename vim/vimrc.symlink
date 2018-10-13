@@ -80,6 +80,9 @@ Plug 'akashin/vim-plugins'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'tpope/vim-unimpaired'
 
+" Displays keybindings in popup.
+Plug 'liuchengxu/vim-which-key'
+
 call plug#end()
 
 set rtp+=~/.fzf
@@ -137,10 +140,30 @@ set guicursor=
 
 " }}}
 
-" Shortcuts {{{
+" {{{ vim-which-key
 
 let mapleader=","       " Rebind Leader from backslash to comma
 let maplocalleader = ";" " Rebind local Leader form backslack to semicolon
+
+nnoremap <silent> <leader> :<c-u>WhichKey ','<CR>
+vnoremap <leader> :<c-u>WhichKeyVisual ','<CR>
+
+nnoremap <silent> <localleader> :<c-u>WhichKey ';'<CR>
+vnoremap <localleader> :<c-u>WhichKeyVisual ';'<CR>
+
+" After pressing leader the guide buffer will pop up when there are no further keystrokes within
+" timeoutlen.
+set timeoutlen=500 " 500ms
+
+" Define prefix dictionary for leader key and register it
+let g:leader_key_map =  {}
+call which_key#register(',', "g:leader_key_map")
+
+" TODO: Add which key mapping for folding.
+
+" }}}
+
+" Shortcuts {{{
 
 " Fast search word under cursor
 nnoremap <Leader>a :Ag <C-r><C-w><cr>
@@ -190,6 +213,10 @@ nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 
+" }}}
+
+" Journaling {{{
+
 " Open diary for today.
 let notes_path = "~/notes/"
 
@@ -216,6 +243,14 @@ nnoremap <silent> <Leader>dy :call OpenDailyDiary(-1) <CR>
 nnoremap <silent> <Leader>dt :call OpenDailyDiary(+1) <CR>
 nnoremap <silent> <Leader>dm :call OpenMonthlyDiary() <CR>
 
+let g:leader_key_map.d = {
+      \ 'name' : '+diary',
+      \ 'd' : 'today'    ,
+      \ 'y' : 'yesterday',
+      \ 't' : 'tomorrow',
+      \ 'm' : 'month',
+      \ }
+
 function! AddTodo()
     call inputsave()
     let name = input('Enter TODO: ')
@@ -228,6 +263,15 @@ nnoremap <silent> <Leader>tt :execute 'edit' notes_path . "tasks.org" <CR>
 nnoremap <silent> <Leader>ti :execute 'edit' notes_path . "inbox.org" <CR>
 nnoremap <silent> <Leader>tf :execute 'edit' notes_path . "finance/ledger.org" <CR>
 nnoremap <silent> <Leader>ta :call AddTodo() <CR>
+
+" TODO: Should ledger be here? Maybe under some notes path.
+let g:leader_key_map.t = {
+      \ 'name' : '+tasks',
+      \ 't' : 'all'    ,
+      \ 'i' : 'inbox',
+      \ 'f' : 'ledger',
+      \ 'a' : 'add todo',
+      \ }
 
 " }}}
 
@@ -425,7 +469,6 @@ nnoremap <Leader>os :OpenSession<cr>
 autocmd FileType swift imap <buffer> <C-k> <Plug>(autocomplete_swift_jump_to_placeholder)
 
 " }}}
-
 
 " FastFold {{{
 
