@@ -491,9 +491,6 @@ let g:session_autosave_periodic = 5
 " Load default session on vim start
 let g:session_autoload = 'yes'
 
-" Keybindings to quickly save and load sessions
-nnoremap <Leader>os :OpenSession<cr>
-
 " }}}
 
 " Swift {{{
