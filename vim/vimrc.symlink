@@ -13,6 +13,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'bling/vim-airline'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'mhinz/vim-signify'
 
 " Code navigation plugins
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
