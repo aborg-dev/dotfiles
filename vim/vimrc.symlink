@@ -165,16 +165,17 @@ call which_key#register(',', "g:leader_key_map")
 
 " Shortcuts {{{
 
-" Fast search word under cursor
-nnoremap <Leader>a :Ag <C-r><C-w><cr>
-" Fast search and replace word under cursor
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 " Speedup copy and paste from global buffer
 noremap <Leader>y "+y
 vnoremap <Leader>y "+y
 noremap <Leader>p "+p
+
 " Save files faster
 nnoremap <Leader>w :w<CR>
+
+" TODO: Commenting a whole function or paragraph seems useful.
+" TODO: Easymotion is awesome. Definitely worth adding it instead of simple
+" search. Maybe vim-sneak already does this.
 
 " Fix alt key usage in OSX terminals
 if exists(':tnoremap')
@@ -195,7 +196,21 @@ cmap w!! %!sudo tee > /dev/null %
 
 " Access fzf commands to search across files and buffers
 nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <Leader>b :Buffers<CR>
+
+" Buffers {{{
+nnoremap <silent> <Leader>bd :bdelete<CR>
+nnoremap <silent> <Leader>bn :bnext<CR>
+nnoremap <silent> <Leader>bp :bprevious<CR>
+nnoremap <silent> <Leader>bb :Buffers<CR>
+
+let g:leader_key_map.b = {
+      \ 'name' : '+buffer',
+      \ 'd' : 'delete'    ,
+      \ 'n' : 'next'    ,
+      \ 'p' : 'previous'    ,
+      \ 'b' : 'fzf-buffer',
+      \ }
+" }}}
 
 " Shortcut to open NERDTree drawer
 map <silent> <Leader>e :NERDTreeToggle<CR>
@@ -280,8 +295,25 @@ let g:leader_key_map.t = {
 set incsearch " Search as characters are entered
 set hlsearch  " Highlight current matches
 
+" Search given word in current directory
+nnoremap <Leader>ss :Ag<space>
+
+" Fast search word under cursor
+nnoremap <Leader>sw :Ag <C-r><C-w><cr>
+
 " Turn off current highlighting
-nnoremap <Leader>c :nohlsearch<CR>
+nnoremap <Leader>sc :nohlsearch<CR>
+
+" Fast search and replace word under cursor
+nnoremap <Leader>sr :%s/\<<C-r><C-w>\>/
+
+let g:leader_key_map.s = {
+      \ 'name' : '+search',
+      \ 'c' : 'nohighlight'    ,
+      \ 's' : 'search text'    ,
+      \ 'w' : 'search word'    ,
+      \ 'r' : 'replace word'    ,
+      \ }
 
 " }}}
 
