@@ -20,7 +20,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'justinmk/vim-sneak'
+Plug 'easymotion/vim-easymotion'
 
 " Coding plugins
 Plug 'scrooloose/nerdcommenter'
@@ -197,20 +197,14 @@ cmap w!! %!sudo tee > /dev/null %
 " Access fzf commands to search across files and buffers
 nnoremap <silent> <C-p> :Files<CR>
 
-" Buffers {{{
-nnoremap <silent> <Leader>bd :bdelete<CR>
-nnoremap <silent> <Leader>bn :bnext<CR>
-nnoremap <silent> <Leader>bp :bprevious<CR>
-nnoremap <silent> <Leader>bb :Buffers<CR>
-
+" Buffer mappings
 let g:leader_key_map.b = {
       \ 'name' : '+buffer',
-      \ 'd' : 'delete'    ,
-      \ 'n' : 'next'    ,
-      \ 'p' : 'previous'    ,
-      \ 'b' : 'fzf-buffer',
+      \ 'd' : ['bdelete', 'delete'],
+      \ 'n' : ['bnext', 'next'],
+      \ 'p' : ['bprevious', 'previous'],
+      \ 'b' : [':Buffers', 'fzf-buffer'],
       \ }
-" }}}
 
 " Shortcut to open NERDTree drawer
 map <silent> <Leader>e :NERDTreeToggle<CR>
@@ -290,6 +284,38 @@ let g:leader_key_map.t = {
 
 " }}}
 
+" Easymotion {{{
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" `s{char}{char}{label}`
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+let g:leader_key_map.j = {
+      \ 'name' : '+jump'                                           ,
+      \ 'j' : ['<Plug>(easymotion-overwin-f)'    , 'easymotion-goto-char']       ,
+      \ 'J' : ['<Plug>(easymotion-overwin-f2)'   , 'easymotion-goto-char-2']     ,
+      \ 'l' : ['<Plug>(easymotion-overwin-line)' , 'jump-linewise']              ,
+      \ 'w' : ['<Plug>(easymotion-overwin-w)'    , 'jump-to-word-bidirectional'] ,
+      \ 'f' : ['<Plug>(easymotion-prefix)w'      , 'jump-forward-wordwise']      ,
+      \ 'b' : ['<Plug>(easymotion-prefix)b'      , 'jump-backword-wordwise']     ,
+      \ }
+
+" Search with easymotion
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+" Without these mappings, `n` & `N` works fine. (These mappings just provide
+" different highlight method and have some other features )
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
+" }}}
+"
 " Search {{{
 
 set incsearch " Search as characters are entered
