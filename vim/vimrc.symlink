@@ -89,8 +89,6 @@ set rtp+=~/.fzf
 
 " }}}
 
-autocmd FileType swift imap <buffer> <C-k> <Plug>(autocomplete_swift_jump_to_placeholder)
-
 " Colors {{{
 
 syntax on
@@ -424,6 +422,13 @@ let g:session_autoload = 'yes'
 nnoremap <Leader>os :OpenSession<cr>
 
 " }}}
+
+" Swift {{{
+
+autocmd FileType swift imap <buffer> <C-k> <Plug>(autocomplete_swift_jump_to_placeholder)
+
+" }}}
+
 
 " FastFold {{{
 
