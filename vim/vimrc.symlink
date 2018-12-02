@@ -336,11 +336,37 @@ map g# <Plug>(incsearch-nohl-g#)
 set incsearch " Search as characters are entered
 set hlsearch  " Highlight current matches
 
-" Search given word in current directory
-nnoremap <Leader>ss :Ag<space>
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
 
-" Fast search word under cursor
-nnoremap <Leader>sw :Ag <C-r><C-w><cr>
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+let $FZF_DEFAULT_OPTS = '--bind ctrl-s:select-all,ctrl-d:deselect-all'
+
+augroup fzf
+  autocmd!
+augroup END
+
+" ripgrep command to search in multiple files
+autocmd fzf VimEnter * command! -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+" Search given word in current directory
+nnoremap <Leader>ss :Rg<space>
+
+ " Fast search word under cursor
+nnoremap <Leader>sw :Rg <C-r><C-w><cr>
 
 " Turn off current highlighting
 nnoremap <Leader>sc :nohlsearch<CR>
