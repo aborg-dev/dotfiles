@@ -669,6 +669,10 @@ nnoremap <Leader>yr :YRShow<CR>
 nnoremap <C-y> :YRShow<CR>
 let g:yankring_replace_n_pkey = ''
 
+" Disable monitor to avoid invoking xclip with emply buffer on startup that
+" causes "clipboard: error: Error: target STRING not available".
+let g:yankring_clipboard_monitor = 0
+
 " }}}
 
 " {{{ tslime.vim
