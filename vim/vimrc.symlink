@@ -480,7 +480,7 @@ let g:SingleCompile_split = 'vsplit'
 " Setup proper compile flags
 let common_run_command = './$(FILE_TITLE)$.out'
 let common_out_file = '$(FILE_TITLE)$.out'
-let common_flags = '-O2 -std=c++1z -lstdc++fs -Wall -DHOME -I/Users/akashin/code -o ' . common_out_file
+let common_flags = '-O2 -std=c++1z  -Wall -DHOME -I/Users/akashin/code -o ' . common_out_file
 
 call SingleCompile#SetCompilerTemplate(
     \'cpp', 'clang', 'Clang', 'clang++', common_flags, common_run_command)
