@@ -194,7 +194,7 @@ endif
 nnoremap <cr> <c-w>w
 
 " Leave insert mode with fd
-inoremap fd <ESC>
+inoremap kj <ESC>
 
 " Disable autoindenting when pasting large chunk of code
 set pastetoggle=<F2>
