@@ -71,7 +71,7 @@ function ssh_vi {
 bindkey -v
 
 # Shortcut to exit insert mode
-bindkey -M viins 'fd' vi-cmd-mode
+bindkey -M viins 'kj' vi-cmd-mode
 
 # Customize to your needs...
 export PATH=$PATH:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:$HOME/.bin:$HOME/bin:$HOME/.local/bin
@@ -89,9 +89,6 @@ export ENSCRIPT="-2rj -M A4 --line-numbers --highlight=cpp --fancy-header=simple
 
 # Run parallel ssh command on a list of machines
 alias xs='pdsh -R ssh -f 1024 -t 64 -w -'
-
-# Alias `fd` command to unused combination
-alias fnd=fd
 
 # Store longer commands history
 HISTSIZE=10000000
