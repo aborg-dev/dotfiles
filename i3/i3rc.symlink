@@ -13,11 +13,9 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
-
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 9
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -29,48 +27,59 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Focus follows mouse: No
+focus_follows_mouse no
+
+# Set default workspace layout
+workspace_layout stacking
+
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# Lock system
-bindsym $mod+Ctrl+l exec i3lock -t -f -c 000000
-
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show run   -fg "#f1f1f1" -bg "#333333" -hlfg "#ffffff" -hlbg "#336699" -o 85 -run-command "/usr/bin/zsh -c -i '{cmd}'"
-# start rofi to select a window
-bindsym $mod+g  exec rofi -show window    -fg "#f1f1f1" -bg "#333333" -hlfg "#ffffff" -hlbg "#336699" -o 85
+bindsym $mod+d exec --no-startup-id rofi -show run -run-command "/usr/bin/zsh -c -i '{cmd}'"
 
-# Music controls
-bindsym $mod+Shift+bracketleft exec amixer -q set Master 2dB- unmute
-bindsym $mod+Shift+bracketright exec amixer -q set Master 2dB+ unmute
-bindsym $mod+Shift+p exec mpc toggle
+# Jump to window by name
+bindsym $mod+g exec rofi -show window
 
-# change focus
+## Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# Media player controls
+bindsym XF86AudioMute exec --no-startup-id "amixer -q sset Master,0 toggle"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q sset Master,0 5%+ unmute"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -q sset Master,0 5%- unmute"
+bindsym $mod+XF86AudioRaiseVolume exec  --no-startup-id "amixer -q sset Master,0 1%+ unmute"
+bindsym $mod+XF86AudioLowerVolume exec  --no-startup-id "amixer -q sset Master,0 1%- unmute"
+
+# Configure brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id /usr/bin/xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec --no-startup-id /usr/bin/xbacklight -inc 10
+
+# Lock screen
+bindsym Mod1+Control+l exec "i3lock -c 000000 -n"
+
+# Change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-#bindsym $mod+Left focus left
-#bindsym $mod+Down focus down
-#bindsym $mod+Up focus up
-#bindsym $mod+Right focus right
-
-# move focused window
+# Move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
-#bindsym $mod+Shift+Left move left
-#bindsym $mod+Shift+Down move down
-#bindsym $mod+Shift+Up move up
-#bindsym $mod+Shift+Right move right
+# Move focused window
+bindsym $mod+Control+h move workspace to output left
+bindsym $mod+Control+l move workspace to output right
 
 # split in horizontal orientation
 #bindsym $mod+h split h
@@ -87,8 +96,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-#bindsym $mod+Shift+space floating toggle
-bindsym $mod+Shift+f floating toggle
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -99,11 +107,18 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+workspace_auto_back_and_forth yes
+
+set $notes_ws "1: Notes"
+set $term_ws "2: Term"
+set $web_ws "3: Web"
+set $chrome_apps_ws "4: Apps"
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
+bindsym $mod+1 workspace $notes_ws
+bindsym $mod+2 workspace $term_ws
+bindsym $mod+3 workspace $web_ws
+bindsym $mod+4 workspace $chrome_apps_ws
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
@@ -111,27 +126,17 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
-# just to the previous workspace on double switch
-workspace_auto_back_and_forth yes
-
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+1 move container to workspace $notes_ws
+bindsym $mod+Shift+2 move container to workspace $term_ws
+bindsym $mod+Shift+3 move container to workspace $web_ws
+bindsym $mod+Shift+4 move container to workspace $chrome_apps_ws
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
-
-# configure scratchpad
-# Make the currently focused window a scratchpad
-bindsym $mod+Shift+minus move scratchpad
-
-# Show the first scratchpad window
-bindsym $mod+minus scratchpad show
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -148,10 +153,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -164,14 +169,56 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+#bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Set up wallpaper
+exec "echo Running feh >> /home/akashin/log"
+exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/da2b5dbe932db1dedf16163cfe6643eb.jpg
+
+# Disable ctrl
+exec --no-startup-id setxkbmap -layout "us,ru" -option ctrl:nocaps -option grp:alt_space_toggle
+
+# Show google certificates indicator
+exec --no-startup-id /usr/share/goobuntu-indicator/goobuntu_indicator.py
+
+# Show current network connections
+exec --no-startup-id nm-applet
+
+# Start break manager
+exec --no-startup-id workrave
+
+# Start music daemon
+exec --no-startup-id mopidy
+bindsym $mod+Shift+p exec "mpc toggle"
+
+# Start a borderless chrome window when starting the computer
+#for_window [class="^Google-chrome$"] border none
+exec google-chrome --restore-last-session && sleep 2
+for_window [class="^Google-chrome$"] move to workspace $web_ws
+
+# Run vim with notes
+assign [instance="^vim$"] $notes_ws
+exec terminator -e "nvim -S /home/akashin/vim_sessions/notes.vim"
+
+# Enable transparent windows
+exec --no-startup-id xcompmgr -c -f -n
+
+# Start i3bar to display a workspace bar
 bar {
-        status_command i3status
-        tray_output primary
-        mode hide
-}
+    status_command    SCRIPT_DIR=~/.dotfiles/i3/blocklets i3blocks
+    position          bottom
+    mode              hide #dock
+    workspace_buttons yes
 
-exec --no-startup-id nitrogen --restore
+    font pango: Ubuntu Mono 12
+
+    colors {
+        background #333333
+        statusline #ffd700
+
+        focused_workspace  #ffffff #285577
+        active_workspace   #ffffff #333333
+        inactive_workspace #888888 #222222
+        urgent_workspace   #ffffff #900000
+    }
+}
