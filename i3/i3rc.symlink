@@ -109,16 +109,15 @@ bindsym $mod+a focus parent
 
 workspace_auto_back_and_forth yes
 
-set $notes_ws "1: Notes"
-set $term_ws "2: Term"
-set $web_ws "3: Web"
-set $chrome_apps_ws "4: Apps"
+set $term_ws "1: Term"
+set $web_ws "2: Web"
+set $apps_ws "3: Apps"
 
 # switch to workspace
-bindsym $mod+1 workspace $notes_ws
-bindsym $mod+2 workspace $term_ws
-bindsym $mod+3 workspace $web_ws
-bindsym $mod+4 workspace $chrome_apps_ws
+bindsym $mod+1 workspace $term_ws
+bindsym $mod+2 workspace $web_ws
+bindsym $mod+3 workspace $apps_ws
+bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
@@ -127,10 +126,10 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $notes_ws
-bindsym $mod+Shift+2 move container to workspace $term_ws
-bindsym $mod+Shift+3 move container to workspace $web_ws
-bindsym $mod+Shift+4 move container to workspace $chrome_apps_ws
+bindsym $mod+Shift+1 move container to workspace $term_ws
+bindsym $mod+Shift+2 move container to workspace $web_ws
+bindsym $mod+Shift+3 move container to workspace $apps_ws
+bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
@@ -191,14 +190,13 @@ exec --no-startup-id workrave
 exec --no-startup-id mopidy
 bindsym $mod+Shift+p exec "mpc toggle"
 
-# Start a borderless chrome window when starting the computer
-#for_window [class="^Google-chrome$"] border none
+# Start a chrome window when starting the computer
 exec google-chrome --restore-last-session && sleep 2
 for_window [class="^Google-chrome$"] move to workspace $web_ws
 
-# Run vim with notes
-assign [instance="^vim$"] $notes_ws
-exec terminator -e "nvim -S /home/akashin/vim_sessions/notes.vim"
+# Run vim with notes and place it in scratchpad
+for_window [title="notes_scratch"] move scratchpad
+exec terminator -T notes_scratch -e "nvim -S /home/akashin/vim_sessions/notes.vim"
 
 # Enable transparent windows
 exec --no-startup-id xcompmgr -c -f -n
