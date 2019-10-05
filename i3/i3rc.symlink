@@ -172,7 +172,7 @@ mode "resize" {
 
 # Set up wallpaper
 exec "echo Running feh >> /home/akashin/log"
-exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/da2b5dbe932db1dedf16163cfe6643eb.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/golden.jpg
 
 # Disable ctrl
 exec --no-startup-id setxkbmap -layout "us,ru" -option ctrl:nocaps -option grp:alt_space_toggle
