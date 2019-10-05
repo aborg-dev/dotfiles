@@ -206,6 +206,13 @@ alias rake='noglob rake'
 
 # }}}
 
+# Environment {{
+
+# Disable DPI scaling so that font size in Alacritty on laptop and desktop is the same.
+export WINIT_HIDPI_FACTOR=1
+
+# }}
+
 # Lower keyboard repeat rate limit.
 if [[ `uname` == 'Linux' && -z $SSH_TTY ]]
 then
