@@ -241,12 +241,21 @@ function! GetDailyTimeString(delta_days)
     return strftime('%Y-%m-%d', localtime() + a:delta_days * 60 * 60 * 24)
 endfunction
 
+function! GetWeeklyTimeString()
+    return strftime('%Y-%W')
+endfunction
+
 function! GetMonthlyTimeString()
     return strftime('%Y-%m')
 endfunction
 
 function! OpenDailyDiary(delta_days)
     :let diary_filename = g:notes_path . "diary/" . GetDailyTimeString(a:delta_days) . ".org"
+    :execute 'edit' diary_filename
+endfunction
+
+function! OpenWeeklyDiary()
+    :let diary_filename = g:notes_path . "diary/" . GetWeeklyTimeString() . ".org"
     :execute 'edit' diary_filename
 endfunction
 
@@ -258,6 +267,7 @@ endfunction
 nnoremap <silent> <Leader>dd :call OpenDailyDiary(0) <CR>
 nnoremap <silent> <Leader>dy :call OpenDailyDiary(-1) <CR>
 nnoremap <silent> <Leader>dt :call OpenDailyDiary(+1) <CR>
+nnoremap <silent> <Leader>dw :call OpenWeeklyDiary() <CR>
 nnoremap <silent> <Leader>dm :call OpenMonthlyDiary() <CR>
 
 let g:leader_key_map.d = {
@@ -265,6 +275,7 @@ let g:leader_key_map.d = {
       \ 'd' : 'today'    ,
       \ 'y' : 'yesterday',
       \ 't' : 'tomorrow',
+      \ 'w' : 'week',
       \ 'm' : 'month',
       \ }
 
