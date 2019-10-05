@@ -196,10 +196,10 @@ for_window [class="^Google-chrome$"] move to workspace $web_ws
 
 # Run vim with notes and place it in scratchpad
 for_window [title="notes_scratch"] move scratchpad
-exec terminator -T notes_scratch -e "nvim -S /home/akashin/vim_sessions/notes.vim"
+exec i3-sensible-term --title notes_scratch -e "nvim -S /home/akashin/vim_sessions/notes.vim"
 
 # Enable transparent windows
-exec --no-startup-id xcompmgr -c -f -n
+exec --no-startup-id xcompmgr -c -n
 
 # Start i3bar to display a workspace bar
 bar {
