@@ -171,7 +171,6 @@ mode "resize" {
 #bindsym $mod+r mode "resize"
 
 # Set up wallpaper
-exec "echo Running feh >> /home/akashin/log"
 exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/golden.jpg
 
 # Disable ctrl
