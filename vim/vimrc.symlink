@@ -28,7 +28,6 @@ Plug 'haya14busa/incsearch.vim'
 
 " Coding plugins
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic'
 Plug 'xuhdev/SingleCompile'
 Plug 'Konfekt/FastFold'
 Plug 'ervandew/supertab'
@@ -181,8 +180,6 @@ noremap <Leader>p "+p
 nnoremap <Leader>w :w<CR>
 
 " TODO: Commenting a whole function or paragraph seems useful.
-" TODO: Easymotion is awesome. Definitely worth adding it instead of simple
-" search. Maybe vim-sneak already does this.
 
 " Fix alt key usage in OSX terminals
 if exists(':tnoremap')
@@ -221,6 +218,10 @@ noremap gV `[v`]
 
 " Delete comment character when joining commented lines
 set formatoptions+=j
+
+" }}}
+
+" vim-tmux-navigator {{{
 
 " Disable tmux navigator mappings by default
 let g:tmux_navigator_no_mappings = 1
@@ -405,20 +406,6 @@ set foldnestmax=10      " Open all folds on levels < 10
 " Space opens/closes folds
 nnoremap <space> za
 
-" Set foldmethod to expr for markdown files
-"autocmd BufNewFile,BufFilePre,BufRead,BufWrite *.md set foldmethod=expr
-"autocmd BufNewFile,BufFilePre,BufRead,BufWrite *.org set foldmethod=expr
-
-function PopulateDiaryTemplate()
-    0r $HOME/.vim/UltiSnips/org.snippets
-    :g/snippet/d
-    0d
-    0r !echo Diary for $(date +\%Y-\%m-\%d)
-endfunction
-
-autocmd BufNewFile 2017-*.org call PopulateDiaryTemplate()
-autocmd BufNewFile 2018-*.org call PopulateDiaryTemplate()
-
 " }}}
 
 " Movement {{{
@@ -521,25 +508,6 @@ func! AssembleFile()
     :w
     !/Users/akashin/code/fugo/combine_headers.py % /Users/akashin/code > %<_full.cpp
 endfunc
-
-" }}}
-
-" Syntastic {{{
-
-" Basic syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Set passive mode by default
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-noremap <C-w>e :SyntasticCheck<CR>
-noremap <C-w>f :SyntasticToggleMode<CR>
 
 " }}}
 
