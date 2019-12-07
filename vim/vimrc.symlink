@@ -11,7 +11,7 @@ call plug#begin('~/.vim/plugged')
 
 " Visual-improvement plugins
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'bling/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'mhinz/vim-signify'
 Plug 'Yggdroot/indentLine'
@@ -129,7 +129,7 @@ set wcm=<Tab>
 
 set colorcolumn=100              " Display 100-characters border
 set laststatus=2                 " Always display the status line
-let g:airline_powerline_fonts=1  " Generate airline fonts
+set noshowmode                   " Don't show the current mode as it's already in statusline.
 
 " Highlight spaces and tabs in the end of line
 set list listchars=tab:>-,trail:.,precedes:<,extends:>
@@ -145,6 +145,14 @@ set guicursor=
 
 let g:indentLine_char = '│'
 let g:indentLine_fileTypeExclude = [ 'startify' ]
+
+" }}}
+
+" {{{ lightline
+
+let g:lightline = {
+      \ 'colorscheme': 'powerline',
+      \ }
 
 " }}}
 
