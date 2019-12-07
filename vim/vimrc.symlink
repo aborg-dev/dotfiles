@@ -219,6 +219,9 @@ map <silent> <Leader>e :NERDTreeToggle<CR>
 " Select text that you've just pasted
 noremap gV `[v`]
 
+" Delete comment character when joining commented lines
+set formatoptions+=j
+
 " Disable tmux navigator mappings by default
 let g:tmux_navigator_no_mappings = 1
 
