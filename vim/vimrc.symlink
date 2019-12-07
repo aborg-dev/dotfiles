@@ -16,7 +16,6 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'mhinz/vim-signify'
 Plug 'Yggdroot/indentLine'
 Plug 'mhinz/vim-startify'
-Plug 'morhetz/gruvbox'
 
 " Code navigation plugins
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -32,7 +31,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'xuhdev/SingleCompile'
 Plug 'Konfekt/FastFold'
-Plug 'rizzatti/dash.vim'
 Plug 'ervandew/supertab'
 Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
@@ -42,13 +40,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-
-" Swift plugins
-Plug 'keith/swift.vim'
-Plug 'mitsuse/autocomplete-swift'
-
-" Golang plugins
-Plug 'fatih/vim-go'
 
 " Typescript plugins
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
