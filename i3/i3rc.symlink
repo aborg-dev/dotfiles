@@ -57,6 +57,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q sset Master,0 5%+ u
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -q sset Master,0 5%- unmute"
 bindsym $mod+XF86AudioRaiseVolume exec  --no-startup-id "amixer -q sset Master,0 1%+ unmute"
 bindsym $mod+XF86AudioLowerVolume exec  --no-startup-id "amixer -q sset Master,0 1%- unmute"
+bindsym XF86AudioPlay exec --no-startup-id "mpc toggle"
+bindsym XF86AudioPause exec --no-startup-id "mpc toggle"
+bindsym XF86AudioNext exec "mpc next"
+bindsym XF86AudioPrev exec "mpc prev"
 
 # Configure brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id /usr/bin/xbacklight -dec 10
