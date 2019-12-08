@@ -244,8 +244,8 @@ function! GetDailyTimeString(delta_days)
     return strftime('%Y-%m-%d', localtime() + a:delta_days * 60 * 60 * 24)
 endfunction
 
-function! GetWeeklyTimeString()
-    return strftime('%Y-%W')
+function! GetWeeklyTimeString(delta_weeks)
+    return strftime('%Y-%W', localtime() + a:delta_weeks * 7 * 60 * 60 * 24)
 endfunction
 
 function! GetMonthlyTimeString()
@@ -257,8 +257,8 @@ function! OpenDailyDiary(delta_days)
     :execute 'edit' diary_filename
 endfunction
 
-function! OpenWeeklyDiary()
-    :let diary_filename = g:notes_path . "diary/" . GetWeeklyTimeString() . ".org"
+function! OpenWeeklyDiary(delta_weeks)
+    :let diary_filename = g:notes_path . "diary/" . GetWeeklyTimeString(a:delta_weeks) . ".org"
     :execute 'edit' diary_filename
 endfunction
 
@@ -267,18 +267,16 @@ function! OpenMonthlyDiary()
     :execute 'edit' diary_filename
 endfunction
 
-nnoremap <silent> <Leader>dd :call OpenDailyDiary(0) <CR>
-nnoremap <silent> <Leader>dy :call OpenDailyDiary(-1) <CR>
-nnoremap <silent> <Leader>dt :call OpenDailyDiary(+1) <CR>
-nnoremap <silent> <Leader>dw :call OpenWeeklyDiary() <CR>
+nnoremap <silent> <Leader>dw :call OpenWeeklyDiary(0) <CR>
+nnoremap <silent> <Leader>dpw :call OpenWeeklyDiary(-1) <CR>
+nnoremap <silent> <Leader>dnw :call OpenWeeklyDiary(+1) <CR>
 nnoremap <silent> <Leader>dm :call OpenMonthlyDiary() <CR>
 
 let g:leader_key_map.d = {
       \ 'name' : '+diary',
-      \ 'd' : 'today'    ,
-      \ 'y' : 'yesterday',
-      \ 't' : 'tomorrow',
       \ 'w' : 'week',
+      \ 'pw' : 'previous week',
+      \ 'nw' : 'next week',
       \ 'm' : 'month',
       \ }
 
