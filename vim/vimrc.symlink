@@ -57,7 +57,7 @@ Plug 'zchee/deoplete-jedi'
 Plug 'tweekmonster/deoplete-clang2'
 
 " Notes-organizing plugins
-Plug 'akashin/vim-orgmode'
+Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 Plug 'vim-scripts/utl.vim'
 Plug 'shime/vim-livedown'
