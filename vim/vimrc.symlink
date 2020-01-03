@@ -284,7 +284,7 @@ function! AddTodo()
     call inputsave()
     let name = input('Enter TODO: ')
     call inputrestore()
-    call append(line('$'), "** TODO " . name)
+    call append(line('$'), "- [ ] " . name)
 endfun
 
 " Open tasks.
