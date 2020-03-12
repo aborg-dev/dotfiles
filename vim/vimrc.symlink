@@ -54,7 +54,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'zchee/deoplete-jedi'
 
 " C++ plugins
-Plug 'tweekmonster/deoplete-clang2'
+"Plug 'tweekmonster/deoplete-clang2'
+Plug 'ycm-core/YouCompleteMe'
 
 " Notes-organizing plugins
 Plug 'jceb/vim-orgmode'
@@ -687,6 +688,12 @@ autocmd FileType typescript map <silent> <F4> :call LanguageClient_contextMenu()
 
 
 " }}}
+
+"{{{ YCM
+
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
+"}}}
 
 let work_vimrc = $HOME."/.vimrc.work"
 if filereadable(work_vimrc)
