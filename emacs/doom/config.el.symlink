@@ -45,6 +45,13 @@
       (global-set-key (kbd "C-k") 'evil-window-up)
       (global-set-key (kbd "C-j") 'evil-window-down))
 
+(defun monthly-diary-file ()
+  (interactive)
+  (let ((daily-name (format-time-string "%Y-%W")))
+    (find-file (expand-file-name (concat "~/notes/diary/" daily-name ".org")))))
+
+(define-key doom-leader-notes-map "j" 'monthly-diary-file)
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
