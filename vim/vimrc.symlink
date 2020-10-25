@@ -153,6 +153,8 @@ let g:lightline = {
 let mapleader=","       " Rebind Leader from backslash to comma
 let maplocalleader = ";" " Rebind local Leader form backslack to semicolon
 
+map <Space> <Leader>
+
 nnoremap <silent> <leader> :<c-u>WhichKey ','<CR>
 vnoremap <leader> :<c-u>WhichKeyVisual ','<CR>
 
@@ -201,7 +203,8 @@ set pastetoggle=<F2>
 cmap w!! %!sudo tee > /dev/null %
 
 " Access fzf commands to search across files and buffers
-nnoremap <silent> <C-p> :Files<CR>
+"nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <Leader><Space> :Files<CR>
 
 " Buffer mappings
 let g:leader_key_map.b = {
@@ -404,7 +407,7 @@ set foldenable          " Enable folding
 set foldnestmax=10      " Open all folds on levels < 10
 
 " Space opens/closes folds
-nnoremap <space> za
+nnoremap <tab> za
 
 " }}}
 
@@ -692,6 +695,7 @@ autocmd FileType typescript map <silent> <F4> :call LanguageClient_contextMenu()
 "{{{ YCM
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+nnoremap <leader>gl :YcmCompleter GoTo<CR>
 
 "}}}
 
