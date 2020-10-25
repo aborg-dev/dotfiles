@@ -45,12 +45,23 @@
       (global-set-key (kbd "C-k") 'evil-window-up)
       (global-set-key (kbd "C-j") 'evil-window-down))
 
-(defun monthly-diary-file ()
-  (interactive)
-  (let ((daily-name (format-time-string "%Y-%W")))
-    (find-file (expand-file-name (concat "~/notes/diary/" daily-name ".org")))))
+;; (defun monthly-diary-file ()
+;;   (interactive)
+;;   (let ((daily-name (format-time-string "%Y-%W")))
+;;     (find-file (expand-file-name (concat "~/notes/diary/" daily-name ".org")))))
 
-(define-key doom-leader-notes-map "j" 'monthly-diary-file)
+;; (define-key doom-leader-notes-map "j" 'monthly-diary-file)
+
+(setq org-journal-dir "~/notes/diary/")
+;; I keep weekly journals.
+(setq org-journal-file-type 'weekly)
+(setq org-journal-file-format "%Y-%W.org")
+
+(setq org-journal-date-format "%A")
+;; Don't add any prefix when adding inline journal notes.
+(setq org-journal-time-prefix "")
+;; Add items from journal files to the global agenda.
+(setq org-journal-enable-agenda-integration t)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
