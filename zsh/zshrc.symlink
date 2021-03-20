@@ -1,35 +1,7 @@
 alias edit="emacsclient -t"
 
 # Notes {{{
-
-export NOTES_DIR=$HOME/notes
-export INBOX_FILE=$NOTES_DIR/inbox.org
-export MOBILE_INBOX_FILE=$NOTES_DIR/mobile_inbox.org
-export TASKS_FILE=$NOTES_DIR/tasks.org
-
-note () {
-  if [ "$#" -ne 1 ]
-  then
-    NAME="$(find ${NOTES_DIR}/* -type f | fzf)"
-    if [ -n "$NAME" ]
-    then
-        edit $NAME
-    fi
-  else
-    local id="$1"
-    local dir="${NOTES_DIR}"
-    local file="$dir/$id.md"
-
-    mkdir -p $dir
-    edit "$file"
-  fi
-}
-
-alias n=note
-alias nd="nvim -c VimwikiMakeDiaryNote"
-
-alias ta="add_task.sh"
-
+# This is now fully handled in emacs org-mode, so no need for shell aliases.
 # }}}
 
 # oh-my-zsh {{{
