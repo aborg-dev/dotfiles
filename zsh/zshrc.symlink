@@ -1,9 +1,25 @@
 # -*- mode: Shell-script; -*-
 
-alias edit="emacsclient -t"
+# Environment {{{
 
-# Notes {{{
-# This is now fully handled in emacs org-mode, so no need for shell aliases.
+# Disable DPI scaling so that font size in Alacritty on laptop and desktop is the same.
+export WINIT_HIDPI_FACTOR=1
+
+# This is where go modules will be downloaded.
+export GOPATH=$HOME/go
+
+# Folder for custom binaries.
+export BIN=$HOME/.bin
+
+# }}}
+
+# Configs {{{
+
+alias vrc="vim ~/.vimrc"
+alias zrc="vim ~/.zshrc"
+alias tmrc="vim ~/.tmux.conf"
+alias i3rc="vim ~/.config/i3/config"
+
 # }}}
 
 # oh-my-zsh {{{
@@ -49,20 +65,16 @@ bindkey -M viins 'kj' vi-cmd-mode
 
 # Customize to your needs...
 export PATH=$PATH:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:$HOME/.bin:$HOME/bin:$HOME/.local/bin
-autoload zmv
 
 # Turn on bash completion compatibility mode
 autoload bashcompinit
 bashcompinit
 
-# Activate Russian characters in terminal
+# Activate UTF-8 characters in the terminal
 export LC_ALL=en_US.utf-8
 
 # Enable pretty printing of cpp source files using 'enscript' command
 export ENSCRIPT="-2rj -M A4 --line-numbers --highlight=cpp --fancy-header=simple --color=1"
-
-# Run parallel ssh command on a list of machines
-alias xs='pdsh -R ssh -f 1024 -t 64 -w -'
 
 # Store longer commands history
 HISTSIZE=10000000
@@ -81,7 +93,11 @@ command_exists () {
     type "$1" &> /dev/null ;
 }
 
-export GOPATH=$HOME/go
+# Lower keyboard repeat rate limit.
+if [[ `uname` == 'Linux' && -z $SSH_TTY ]]
+then
+    xset r rate 200 20
+fi
 
 # }}}
 
@@ -92,23 +108,10 @@ export GOPATH=$HOME/go
 
 # }}}
 
-# Git {{{
-
-# fco - checkout git branch/tag
-fco() {
-  local branches branch
-  branches=$(git branch) &&
-  branch=$(echo "$branches" | fzf +m) &&
-  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
-}
-
-# }}}
-
 # z.sh {{{
 
 # Add z.sh support
-# TODO: Replace .bin with variable
-[ -f ~/.bin/z.sh ] && source ~/.bin/z.sh
+[ -f $BIN/z.sh ] && source $BIN/z.sh
 
 # Integrate z with fzf
 unalias z 2> /dev/null
@@ -119,35 +122,18 @@ z() {
 
 # Use more convinient shortcut
 alias j=z
-alias jj=zz
-
-# }}}
-
-# Emacs {{{
-
-alias em="emacsclient -t"
 
 # }}}
 
 # Vim {{{
-
-alias vrc="vim ~/.vimrc"
-alias zrc="vim ~/.zshrc"
-alias tmrc="vim ~/.tmux.conf"
-alias i3rc="vim ~/.config/i3/config"
 
 # Use neovim intead of vim if available
 if command_exists nvim ; then
     alias vim=nvim
 fi
 
-open_vim_session() {
-    vim -S ~/.vim/sessions/${1}.vim
-}
-alias vims=open_vim_session
-
-export EDITOR=nvim
-export GIT_EDITOR=nvim
+export EDITOR=vim
+export GIT_EDITOR=vim
 
 # }}}
 
@@ -169,29 +155,7 @@ alias rake='noglob rake'
 
 # }}}
 
-# Pyenv {{{
-
-#export PYENV_ROOT="$HOME/.pyenv"
-#export PATH="$PYENV_ROOT/bin:$PATH"
-
-#export WORKON_HOME=~/.ve
-#export PROJECT_HOME=~/Workspace
-#eval "$(pyenv init -)"
-
-# }}}
-
-# Environment {{{
-
-# Disable DPI scaling so that font size in Alacritty on laptop and desktop is the same.
-export WINIT_HIDPI_FACTOR=1
-
-# }}}
-
-# Lower keyboard repeat rate limit.
-if [[ `uname` == 'Linux' && -z $SSH_TTY ]]
-then
-    xset r rate 200 20
-fi
+# Sub-configs {{{
 
 if [[ -f $HOME/.zshrc.work ]]; then
     source $HOME/.zshrc.work
@@ -209,24 +173,6 @@ if [[ -f $HOME/.zshenv ]]; then
     source $HOME/.zshenv
 fi
 
-if [[ -f $HOME/Repos/termind/main.rb ]] then
-    $HOME/Repos/termind/main.rb $HOME/Repos/termind/data/quotes.txt
-fi
-
-if [[ -s $NOTES_DIR/inbox.org ]] then
-    echo "\n----------- Cleanup inbox.org -------------"
-fi
+# }}}
 
 # vim:foldmethod=marker:foldlevel=0
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/akashin/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/akashin/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/akashin/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/akashin/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
-if [[ -d $HOME/.pyenv ]] then
-  export PATH="/home/acid/.pyenv/bin:$PATH"
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-fi
