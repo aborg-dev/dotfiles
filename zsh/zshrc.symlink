@@ -1,3 +1,5 @@
+# -*- mode: Shell-script; -*-
+
 alias edit="emacsclient -t"
 
 # Notes {{{
