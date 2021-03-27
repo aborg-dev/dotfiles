@@ -1,12 +1,12 @@
-;;; init.el -*- mode: Lisp; lexical-binding: t; -*-
+;;; init.el -*- mode: Emacs-Lisp; lexical-binding: t; -*-
 
 ;; This file controls what Doom modules are enabled and what order they load in.
 ;; Remember to run 'doom sync' after modifying it!
 
 ;; NOTE Press 'SPC h d h' to access Doom's documentation. There you'll find
 ;;      information about all of Doom's modules and what flags they support.
-
-;; NOTE Press 'SPC h d m' to access Doom's module documentation.
+;; NOTE Press 'K' to access Doom's module documentation.
+;; NOTE Press 'SPC h d m' to browse all Dooms modules.
 
 (doom! :input
        ;;chinese
