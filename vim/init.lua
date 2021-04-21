@@ -1,5 +1,10 @@
 require('plugins')
 
+-- General improvements.
+-- TODO: Shortcut to jump another split with Ctrl-l.
+-- TODO: Shortcut to open vim config.
+-- TODO: Replace shouldn't replace yank buffer.
+
 -- Editing settings.
 local indent = 2
 vim.o.tabstop = indent
@@ -12,13 +17,11 @@ vim.wo.number = true        -- Show line numbers.
 vim.cmd('colorscheme gruvbox')
 vim.o.termguicolors = true
 
--- TODO: Shortcut to jump another split with Ctrl-l.
--- TODO: Shortcut to open vim config.
--- TODO: Replace shouldn't replace yank buffer.
-
 -- Keybindings.
 vim.g.mapleader = " "
 vim.g.localmapleader = ","
+-- Exit insert mode without going all the way to escape key!
+vim.api.nvim_set_keymap('i', 'kj', '<Esc>', { noremap = true})
 
 local wk = require('whichkey_setup')
 
