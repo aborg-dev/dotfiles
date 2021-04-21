@@ -1,1 +1,2 @@
 -- Add some telescope settings.
+-- TODO: Shortcut to choose telescope results with Ctrl-j, Ctrl-k
