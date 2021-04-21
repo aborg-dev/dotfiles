@@ -1,2 +1,13 @@
--- Add some telescope settings.
--- TODO: Shortcut to choose telescope results with Ctrl-j, Ctrl-k
+local actions = require('telescope.actions')
+
+require('telescope').setup{
+  -- This is global remapping across all pickers.
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+      },
+    },
+  }
+}
