@@ -2,9 +2,9 @@ require('plugins')
 
 -- Editing settings.
 local indent = 2
-vim.bo.tabstop = indent
-vim.bo.shiftwidth = indent
-vim.bo.expandtab = true     -- Use spaces instead of tabs.
+vim.o.tabstop = indent
+vim.o.shiftwidth = indent
+vim.o.expandtab = true      -- Use spaces instead of tabs.
 vim.wo.number = true        -- Show line numbers.
 
 -- Visual settings.
@@ -14,6 +14,7 @@ vim.o.termguicolors = true
 
 -- TODO: Shortcut to jump another split with Ctrl-l.
 -- TODO: Shortcut to open vim config.
+-- TODO: Replace shouldn't replace yank buffer.
 
 -- Keybindings.
 vim.g.mapleader = " "
