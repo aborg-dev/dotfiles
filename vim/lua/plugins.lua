@@ -22,4 +22,7 @@ return require('packer').startup(function()
 	  requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
 	  config = 'require("plugin_settings.telescope")',
   }
+
+  -- Vim git client.
+  use 'tpope/vim-fugitive'
 end)
