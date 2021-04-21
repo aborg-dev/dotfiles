@@ -164,8 +164,10 @@ configure_vim () {
 
   # Link vim config to neovim config
   mkdir -p $HOME/.config
-  ln -s $HOME/.vim $HOME/.config/nvim
-  ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
+  ln -s $PWD/vim/init.lua $HOME/.config/nvim/init.lua
+  ln -s $PWD/vim/lua $HOME/.config/nvim/lua
+  # ln -s $HOME/.vim $HOME/.config/nvim
+  # ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
 }
 
 configure_zsh () {
