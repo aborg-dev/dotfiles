@@ -22,9 +22,12 @@ vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true 
 -- replacement the same yanked text multiple times. By using a named register 
 -- we avoid this problem.
 -- We use a special '+' register here that also corresponds to OS default clipboard,
--- so the text yanked this way can be pasted in other applicatins.
-vim.api.nvim_set_keymap('n', '<leader>y', '"+y', {})
-vim.api.nvim_set_keymap('n', '<leader>p', '"+p', {})
+-- so the text yanked this way can be pasted in other applications.
+local modes = {'v', 'n'}
+for i = 1, #modes do
+  vim.api.nvim_set_keymap(modes[i], ',y', '"+y', { noremap = true })
+  vim.api.nvim_set_keymap(modes[i], ',p', '"+p', { noremap = true })
+end
 
 -- Most of the plugins I use expose their shortcuts in a structured hierarchical
 -- manner using which-key plugin. The configuration is incrementally extended in
