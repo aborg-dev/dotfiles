@@ -25,9 +25,12 @@ vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true 
 -- so the text yanked this way can be pasted in other applications.
 local modes = {'v', 'n'}
 for i = 1, #modes do
-  vim.api.nvim_set_keymap(modes[i], ',y', '"+y', { noremap = true })
-  vim.api.nvim_set_keymap(modes[i], ',p', '"+p', { noremap = true })
+  vim.api.nvim_set_keymap(modes[i], ',y', '"+y', { noremap = true, silent = true })
+  vim.api.nvim_set_keymap(modes[i], ',p', '"+p', { noremap = true, silent = true })
 end
+
+-- Faster file saving.
+vim.api.nvim_set_keymap('n', ',w', ':w<CR>', { noremap = true, silent = true })
 
 -- Most of the plugins I use expose their shortcuts in a structured hierarchical
 -- manner using which-key plugin. The configuration is incrementally extended in
