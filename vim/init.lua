@@ -34,25 +34,10 @@ vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true 
 
 local wk = require('whichkey_setup')
 
-local keymap = {
-  -- 'show_all_buffers = true' is needed to also show hidden buffers.
-  [","] = {':lua require("telescope.builtin").buffers({show_all_buffers = true})<CR>', 'buffers'},
-  -- TODO: Why wouldn't it work after some delay???
-  [" "] = {':lua require("telescope.builtin").find_files({previewer = false})<CR>', 'find_files'},
-  -- [" "] = {':lua require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ winblend = 10 }))<CR>', 'find_files'},
-}
-
-keymap.s = {
-  name = '+search',
-  s = {':lua require("telescope.builtin").live_grep()<CR>', 'live_grep'},
-  c = {':lua require("telescope.builtin").command_history()<CR>', 'command history'},
-}
+local keymap = {}
 
 keymap.h = {
   name = '+help',
-  b = {':lua require("telescope.builtin").keymaps()<CR>', 'key bindings'},
-  o = {':lua require("telescope.builtin").vim_options()<CR>', 'vim options'},
-  t = {':lua require("telescope.builtin").help_tags()<CR>', 'help tags'},
   -- TODO: Introduce recursive reloading?
   r = {':luafile %<CR>', 'reload config'},
 }
