@@ -25,4 +25,18 @@ return require('packer').startup(function()
 
   -- Vim git client.
   use 'tpope/vim-fugitive'
+
+  -- Lisp-y configuration.
+  use { 
+    'Olical/aniseed',
+    config = function () vim.g['aniseed#env'] = true end
+    -- config = function () vim.g['aniseed#env'] = { compile = false } end
+  }
+  use 'bakpakin/fennel.vim'
+
+  -- Comment lines with 'gcc' and 'gc{motion}.
+  use {
+    "terrortylor/nvim-comment",
+    config = function() require('nvim_comment').setup() end
+  }
 end)
