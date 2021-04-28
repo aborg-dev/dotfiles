@@ -29,8 +29,7 @@ return require('packer').startup(function()
   -- Lisp-y configuration.
   use { 
     'Olical/aniseed',
-    -- config = function () vim.g['aniseed#env'] = true end
-    config = function () vim.g['aniseed#env'] = { compile = false } end
+    config = function () vim.g['aniseed#env'] = true end
   }
 
   -- Comment lines with 'gcc' and 'gc{motion}.
