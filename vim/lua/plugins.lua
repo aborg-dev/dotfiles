@@ -39,4 +39,7 @@ return require('packer').startup(function()
     "terrortylor/nvim-comment",
     config = function() require('nvim_comment').setup() end
   }
+
+  -- Add shortcuts to jump between vim and tmux splits.
+  use 'christoomey/vim-tmux-navigator'
 end)
