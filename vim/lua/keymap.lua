@@ -4,7 +4,7 @@
 
 -- These keys serve as a prefix in many commands.
 vim.g.mapleader = " "
-vim.g.localmapleader = ","
+vim.g.maplocalleader = ","
 
 -- Exit insert mode without going all the way to escape key!
 vim.api.nvim_set_keymap('i', 'kj', '<Esc>', { noremap = true })

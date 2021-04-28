@@ -32,6 +32,8 @@ return require('packer').startup(function()
     config = function () vim.g['aniseed#env'] = { output = '/lua/fnl' } end
   }
 
+  use 'Olical/conjure'
+
   -- Comment lines with 'gcc' and 'gc{motion}.
   use {
     "terrortylor/nvim-comment",
