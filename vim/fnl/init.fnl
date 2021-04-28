@@ -1,4 +1,12 @@
-(module nvim-config
-  {autoload {a aniseed.core}})
+(module init
+  {autoload {nvim aniseed.nvim}})
 
-(a.println "Aniseed can be fast and pretty!")
+; Set default indentation.
+(let [indent 2]
+  (set nvim.o.tabstop indent)
+  (set nvim.o.shiftwidth indent))
+
+; Use spaces instead of tabs.
+(set nvim.g.explandtab true)
+; Show line numbers.
+(set nvim.wo.number true)
