@@ -32,7 +32,6 @@ return require('packer').startup(function()
     -- config = function () vim.g['aniseed#env'] = true end
     config = function () vim.g['aniseed#env'] = { compile = false } end
   }
-  use 'bakpakin/fennel.vim'
 
   -- Comment lines with 'gcc' and 'gc{motion}.
   use {
