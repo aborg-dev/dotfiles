@@ -7,6 +7,6 @@
   (set nvim.o.shiftwidth indent))
 
 ; Use spaces instead of tabs.
-(set nvim.g.explandtab true)
+(set nvim.g.expandtab true)
 ; Show line numbers.
 (set nvim.wo.number true)
