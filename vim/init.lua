@@ -1,5 +1,6 @@
 require('plugins')
 require('keymap')
+require('fnl.init')
 
 -- Editing settings.
 local indent = 2

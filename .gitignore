@@ -1,3 +1,4 @@
 taskwarrior/taskrc.symlink
 git/gitconfig.symlink
 *.swp
+vim/lua/fnl
