@@ -166,6 +166,7 @@ configure_vim () {
   mkdir -p $HOME/.config
   ln -s $PWD/vim/init.lua $HOME/.config/nvim/init.lua
   ln -s $PWD/vim/lua $HOME/.config/nvim/lua
+  ln -s $PWD/vim/fnl $HOME/.config/nvim/fnl
   # ln -s $HOME/.vim $HOME/.config/nvim
   # ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
 }
