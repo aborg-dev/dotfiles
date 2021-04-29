@@ -10,11 +10,10 @@ return require('packer').startup(function()
   use 'dstein64/vim-startuptime'
 
   -- Tool to set up keybindings and visually see them.
-  use {
-	  'AckslD/nvim-whichkey-setup.lua',
-	  requires = {'liuchengxu/vim-which-key'},
-	  config = 'require("plugin_settings.which_key")',
-  }
+	use {
+		"folke/which-key.nvim",
+		config = 'require("plugin_settings.which_key")'
+	}
 
   -- Tool for fuzzy search over lists.
   use {

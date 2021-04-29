@@ -35,7 +35,7 @@ vim.api.nvim_set_keymap('n', ',w', ':w<CR>', { noremap = true, silent = true })
 -- Most of the plugins I use expose their shortcuts in a structured hierarchical
 -- manner using which-key plugin. The configuration is incrementally extended in
 -- the plugin-specific files. This file contains plugin-independent shortcuts.
-local wk = require('whichkey_setup')
+local wk = require('which-key')
 
 local keymap = {}
 
@@ -52,4 +52,4 @@ keymap.b = {
   p = {':bp<CR>', 'previous'},
 }
 
-wk.register_keymap('leader', keymap)
+wk.register(keymap, { prefix = "<leader>" })
