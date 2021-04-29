@@ -1,10 +1,19 @@
 (module init
   {autoload {nvim aniseed.nvim}})
 
+; TODO: Move to utils.
+(defn set-options [modes name value]
+  (each [_ mode (ipairs modes)]
+    (let [mode_options (. vim mode)]
+      (tset mode_options name value))))
+
 ; Set default indentation.
+; Setting the global 'o' option does not override the settings on the
+; first opened buffer, so we also need to set 'bo'.
+; See: https://github.com/nanotee/nvim-lua-guide#caveats-3
 (let [indent 2]
-  (set nvim.o.tabstop indent)
-  (set nvim.o.shiftwidth indent))
+  (set-options ["o" "bo"] "tabstop" 2)
+  (set-options ["o" "bo"] "shiftwidth" 2))
 
 ; Use spaces instead of tabs.
 (set nvim.g.expandtab true)
