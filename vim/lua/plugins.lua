@@ -41,4 +41,10 @@ return require('packer').startup(function()
 
   -- Add shortcuts to jump between vim and tmux splits.
   use 'christoomey/vim-tmux-navigator'
+
+	-- Quickly jump within the buffer with s{a}{b} and S{a}{b}.
+	use { 
+		'justinmk/vim-sneak',
+		config = function() vim.g['sneak#label'] = 1 end
+	}
 end)
