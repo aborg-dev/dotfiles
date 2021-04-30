@@ -47,4 +47,10 @@ return require('packer').startup(function()
 		'justinmk/vim-sneak',
 		config = function() vim.g['sneak#label'] = 1 end
 	}
+
+	-- Auto-completion plugin.
+	use {
+		'hrsh7th/nvim-compe',
+		config = function() require('plugin_settings.nvim_compe') end
+	}
 end)
