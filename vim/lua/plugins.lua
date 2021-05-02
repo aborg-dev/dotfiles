@@ -1,6 +1,9 @@
+-- Only required if you have packer configured as `opt`.
+vim.cmd [[packadd packer.nvim]]
+
 return require('packer').startup(function()
   -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+  use { 'wbthomason/packer.nvim', opt = true }
 
   -- Visual plugins.
   use 'morhetz/gruvbox'
@@ -10,16 +13,16 @@ return require('packer').startup(function()
   use 'tweekmonster/startuptime.vim'
 
   -- Tool to set up keybindings and visually see them.
-	use {
-		"folke/which-key.nvim",
-		config = 'require("plugin_settings.which_key")'
-	}
+  use {
+    "folke/which-key.nvim",
+    config = function() require("plugin_settings.which_key") end
+  }
 
   -- Tool for fuzzy search over lists.
   use {
-	  'nvim-telescope/telescope.nvim',
-	  requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
-	  config = 'require("plugin_settings.telescope")',
+    'nvim-telescope/telescope.nvim',
+    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+    config = function() require("plugin_settings.telescope") end
   }
 
   -- Vim git client.
@@ -31,7 +34,10 @@ return require('packer').startup(function()
     config = function () vim.g['aniseed#env'] = { output = '/lua/fnl' } end
   }
 
-  use 'Olical/conjure'
+  use {
+    'Olical/conjure',
+    ft = {'fennel'}
+  }
 
   -- Comment lines with 'gcc' and 'gc{motion}.
   use {
@@ -42,15 +48,16 @@ return require('packer').startup(function()
   -- Add shortcuts to jump between vim and tmux splits.
   use 'christoomey/vim-tmux-navigator'
 
-	-- Quickly jump within the buffer with s{a}{b} and S{a}{b}.
-	use { 
-		'justinmk/vim-sneak',
-		config = function() vim.g['sneak#label'] = 1 end
-	}
+  -- Quickly jump within the buffer with s{a}{b} and S{a}{b}.
+  use {
+    'justinmk/vim-sneak',
+    config = function() vim.g['sneak#label'] = 1 end
+  }
 
-	-- Auto-completion plugin.
-	use {
-		'hrsh7th/nvim-compe',
-		config = function() require('plugin_settings.nvim_compe') end
-	}
+  -- Auto-completion plugin.
+  use {
+    'hrsh7th/nvim-compe',
+    ft = {'lua', 'python', 'fennel', 'cpp'},
+    config = function() require('plugin_settings.nvim_compe') end
+  }
 end)
