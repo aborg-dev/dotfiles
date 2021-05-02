@@ -31,6 +31,7 @@ return require('packer').startup(function()
   -- Lisp-y configuration.
   use { 
     'Olical/aniseed',
+		branch = 'develop',
     config = function () vim.g['aniseed#env'] = { output = '/lua/fnl' } end
   }
 
