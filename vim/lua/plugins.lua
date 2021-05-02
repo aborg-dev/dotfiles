@@ -7,7 +7,7 @@ return require('packer').startup(function()
 
   -- Tool for profiling vim startup time.
   -- Use :StartupTime to run it.
-  use 'dstein64/vim-startuptime'
+  use 'tweekmonster/startuptime.vim'
 
   -- Tool to set up keybindings and visually see them.
 	use {
