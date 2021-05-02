@@ -15,11 +15,11 @@ vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
 
--- Bindings to copy and paste to a named register. 
+-- Bindings to copy and paste to a named register.
 -- When you yank without any modifier, text is placed into default register.
 -- When you delete some text, it is also automatically placed into the default
 -- register. This creates an unfortunate situation, when you can't paste with
--- replacement the same yanked text multiple times. By using a named register 
+-- replacement the same yanked text multiple times. By using a named register
 -- we avoid this problem.
 -- We use a special '+' register here that also corresponds to OS default clipboard,
 -- so the text yanked this way can be pasted in other applications.

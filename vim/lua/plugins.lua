@@ -61,4 +61,10 @@ return require('packer').startup(function()
     ft = {'lua', 'python', 'fennel', 'cpp'},
     config = function() require('plugin_settings.nvim_compe') end
   }
+
+	use 'neovim/nvim-lspconfig'
+	use {
+		'kabouzeid/nvim-lspinstall',
+		config = function() require('plugin_settings.lsp') end
+	}
 end)
