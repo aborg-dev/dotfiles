@@ -13,6 +13,9 @@ return require('packer').startup(function(use)
   use 'tweekmonster/startuptime.vim'
 
   -- Tool to set up keybindings and visually see them.
+	-- Most of the plugins I use expose their shortcuts in a structured hierarchical
+	-- manner using this plugin. The configuration is incrementally extended in
+	-- the plugin-specific files.
   use {
     "folke/which-key.nvim",
     config = function() require("plugin_settings.which_key") end
