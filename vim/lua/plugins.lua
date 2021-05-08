@@ -65,6 +65,7 @@ return require('packer').startup(function(use)
     config = function() require('plugin_settings.nvim_compe') end
   }
 
+	-- Settings for commonly used LSP servers for different languages.
 	use 'neovim/nvim-lspconfig'
 	use {
 		'kabouzeid/nvim-lspinstall',
