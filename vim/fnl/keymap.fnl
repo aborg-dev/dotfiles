@@ -1,5 +1,5 @@
 ; This file contains global mappings that don't belong to any plugin.
-(module keymap
+(module fnl.keymap
   {autoload {nvim aniseed.nvim}
    autoload {wk which-key}})
 

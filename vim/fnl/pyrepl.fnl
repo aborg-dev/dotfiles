@@ -1,5 +1,5 @@
 ; Enable REPL-like evaluation for Python files.
-(module pyrepl
+(module fnl.pyrepl
   {autoload {nvim aniseed.nvim}})
 
 (defn init []
@@ -17,7 +17,3 @@
     "python"
     "lua require('fnl.pyrepl').init()")
   (nvim.ex.augroup :END))
-
-;; TODO: Raise a question in aniseed about automatically exporting the module
-;; public vars to lua.
-{:init init}
