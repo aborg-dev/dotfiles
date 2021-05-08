@@ -35,6 +35,7 @@
 ;; Help menu.
 (wk.register 
   {:h {:name "+help"
+       :s [":luafile %<CR> | :PackerSync<CR>" "sync plugins"]
        ;;; TODO: Introduce recursive reloading?
        :r [":luafile %<CR>" "reload config"]}}
   {:prefix "<leader>"})
