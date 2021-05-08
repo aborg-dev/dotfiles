@@ -32,7 +32,7 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
 
   -- Lisp-y configuration.
-  use { 
+  use {
     'Olical/aniseed',
 		branch = 'develop',
     config = function () vim.g['aniseed#env'] = { output = '/lua/fnl' } end
