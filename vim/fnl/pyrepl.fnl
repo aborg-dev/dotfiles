@@ -14,5 +14,5 @@
   (nvim.ex.autocmd
     :FileType
     "python"
-    "lua require('fnl.pyrepl').init()")
+    "lua require('pyrepl').init()")
   (nvim.ex.augroup :END))
