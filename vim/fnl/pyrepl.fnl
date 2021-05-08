@@ -1,9 +1,8 @@
 ; Enable REPL-like evaluation for Python files.
-(module fnl.pyrepl
+(module pyrepl
   {autoload {nvim aniseed.nvim}})
 
 (defn init []
-   (print "pyrepl.init")
    ;; Evaluates current file.
    ;; TODO: Derive Python version from the file shebang.
    (nvim.set_keymap :n :<localleader>ef ":!python3 %<CR>" {:noremap true :silent true}))

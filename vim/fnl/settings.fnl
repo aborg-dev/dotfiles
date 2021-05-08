@@ -1,4 +1,4 @@
-(module fnl.init
+(module settings
   {autoload {nvim aniseed.nvim}})
 
 ; TODO: Move to utils.

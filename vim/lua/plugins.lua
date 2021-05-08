@@ -35,7 +35,7 @@ return require('packer').startup(function(use)
   use {
     'Olical/aniseed',
 		branch = 'develop',
-    config = function () vim.g['aniseed#env'] = { output = '/lua/fnl' } end
+    config = function () vim.g['aniseed#env'] = { output = '/lua/.compiled-lua' } end
   }
 
   use {
