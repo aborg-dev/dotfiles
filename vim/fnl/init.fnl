@@ -15,6 +15,11 @@
   (set-options ["o" "bo"] "tabstop" 2)
   (set-options ["o" "bo"] "shiftwidth" 2))
 
+; Open vertical splits on the right.
+(set-options ["o"] "splitright" true)
+; Open horizontal splits below.
+(set-options ["o"] "splitbelow" true)
+
 ; Use spaces instead of tabs.
 (set nvim.g.expandtab true)
 ; Show line numbers.
