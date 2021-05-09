@@ -1,6 +1,10 @@
 -- Only required if you have packer configured as `opt`.
 vim.cmd [[packadd packer.nvim]]
 
+-- This must be executed before loading aniseed, so using `config` is
+-- not an option.
+vim.g['aniseed#env'] = { output = vim.fn.stdpath('config') .. '/lua/.compiled-lua' }
+
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use { 'wbthomason/packer.nvim', opt = true }
@@ -35,7 +39,6 @@ return require('packer').startup(function(use)
   use {
     'Olical/aniseed',
 		branch = 'develop',
-    config = function () vim.g['aniseed#env'] = { output = '/lua/.compiled-lua' } end
   }
 
   use {
