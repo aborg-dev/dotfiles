@@ -75,6 +75,8 @@ return require('packer').startup(function(use)
 	use 'neovim/nvim-lspconfig'
 	use {
 		'kabouzeid/nvim-lspinstall',
-		config = function() require('plugin_settings.lsp') end
+		config = function() require('plugin_settings.lsp') end,
+		-- TODO: Find a way to load it on command.
+		opt = true
 	}
 end)
