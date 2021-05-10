@@ -3,7 +3,10 @@ vim.cmd [[packadd packer.nvim]]
 
 -- This must be executed before loading aniseed, so using `config` is
 -- not an option.
-vim.g['aniseed#env'] = { output = vim.fn.stdpath('config') .. '/lua/.compiled-lua' }
+vim.g['aniseed#env'] = {
+	output = vim.fn.stdpath('config') .. '/lua/.compiled-lua',
+	module = 'startup'
+}
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
