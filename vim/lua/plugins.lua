@@ -1,13 +1,6 @@
--- This must be executed before loading aniseed, so using `config` is
--- not an option.
-vim.g['aniseed#env'] = {
-	output = vim.fn.stdpath('config') .. '/lua/.compiled-lua',
-	module = 'startup'
-}
-
 return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+  -- Packer can manage itself.
+  use { 'wbthomason/packer.nvim', opt = true }
 
   -- Visual plugins.
   use 'morhetz/gruvbox'
@@ -29,17 +22,14 @@ return require('packer').startup(function(use)
   use {
     'nvim-telescope/telescope.nvim',
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
-    config = function() require("plugin_settings.telescope") end
+    config = function() require("plugins.telescope") end
   }
 
   -- Vim git client.
   use 'tpope/vim-fugitive'
 
   -- Lisp-y configuration.
-  use {
-    'Olical/aniseed',
-		branch = 'develop',
-  }
+  use { 'Olical/aniseed', branch = 'develop', opt = true }
 
   use {
     'Olical/conjure',
