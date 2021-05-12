@@ -1,6 +1,3 @@
--- Only required if you have packer configured as `opt`.
-vim.cmd [[packadd packer.nvim]]
-
 -- This must be executed before loading aniseed, so using `config` is
 -- not an option.
 vim.g['aniseed#env'] = {
@@ -10,7 +7,7 @@ vim.g['aniseed#env'] = {
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
-  use { 'wbthomason/packer.nvim', opt = true }
+  use 'wbthomason/packer.nvim'
 
   -- Visual plugins.
   use 'morhetz/gruvbox'
