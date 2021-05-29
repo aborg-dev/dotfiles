@@ -29,7 +29,7 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
 
   -- Lisp-y configuration.
-  use { 'Olical/aniseed', branch = 'develop', opt = true }
+  use { 'Olical/aniseed', opt = true }
 
   use {
     'Olical/conjure',
