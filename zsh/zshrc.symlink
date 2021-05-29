@@ -134,7 +134,6 @@ if command_exists nvim ; then
 fi
 
 export EDITOR=vim
-export GIT_EDITOR=vim
 
 # }}}
 
