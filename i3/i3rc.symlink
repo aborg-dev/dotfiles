@@ -197,10 +197,6 @@ bindsym $mod+Shift+p exec "mpc toggle"
 exec google-chrome --restore-last-session && sleep 2
 for_window [class="^Google-chrome$"] move to workspace $web_ws
 
-# Run vim with notes and place it in scratchpad
-for_window [title="^notes_scratch$"] move scratchpad
-exec i3-sensible-terminal --title notes_scratch -e vim -S /home/akashin/vim_sessions/notes.vim
-
 # Enable transparent windows
 exec --no-startup-id xcompmgr -c -n
 
