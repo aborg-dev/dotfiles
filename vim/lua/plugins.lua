@@ -66,4 +66,10 @@ return require('packer').startup(function(use)
 		-- TODO: Find a way to load it on command.
 		opt = true
 	}
+
+	use {
+		'rust-lang/rust.vim',
+    ft = {'rust'},
+		config = function() require("plugins.rust") end
+	}
 end)
