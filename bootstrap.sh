@@ -158,10 +158,6 @@ install_fzf () {
 configure_vim () {
   info 'configuring vim'
 
-  # Download vim coloscheme
-  mkdir -p ~/.vim/colors
-  curl -s https://raw.githubusercontent.com/sjl/badwolf/master/colors/badwolf.vim > ~/.vim/colors/badwolf.vim
-
   # Link vim config to neovim config
   mkdir -p $HOME/.config
   ln -s $PWD/vim/init.lua $HOME/.config/nvim/init.lua
@@ -199,8 +195,8 @@ remove_old_files () {
 }
 
 #remove_old_files
-setup_gitconfig
-install_fzf
+#setup_gitconfig
+#install_fzf
 configure_vim
 configure_zsh
 install_dotfiles
