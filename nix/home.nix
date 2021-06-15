@@ -9,6 +9,22 @@
   home.username = "akashin";
   home.homeDirectory = "/home/akashin";
 
+  # Packages to install.
+  home.packages = [
+    pkgs.tmux
+    pkgs.fzf
+  ];
+
+  programs.git = {
+    enable = true;
+    userEmail = "kashin.andrej@gmail.com";
+    userName = "Andrei Kashin";
+  };
+
+  programs.zsh = {
+    enable = true;
+  };
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
