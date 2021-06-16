@@ -72,4 +72,8 @@ return require('packer').startup(function(use)
     ft = {'rust'},
 		config = function() require("plugins.rust") end
 	}
+
+  use {
+    'LnL7/vim-nix'
+  }
 end)
