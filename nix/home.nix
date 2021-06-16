@@ -13,6 +13,8 @@
   home.packages = [
     pkgs.tmux
     pkgs.fzf
+    pkgs.ripgrep
+    pkgs.fd
   ];
 
   programs.git = {
@@ -24,6 +26,12 @@
   programs.zsh = {
     enable = true;
   };
+
+  programs.emacs = {
+    enable = true;
+  };
+
+  home.file.".zshrc".source = ../zsh/zshrc.symlink;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
