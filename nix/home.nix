@@ -10,11 +10,13 @@
   home.homeDirectory = "/home/akashin";
 
   # Packages to install.
-  home.packages = [
-    pkgs.tmux
-    pkgs.fzf
-    pkgs.ripgrep
-    pkgs.fd
+  home.packages = with pkgs; [
+    tmux
+    fzf
+    ripgrep
+    fd
+    # Font that I'm using in my terminal.
+    hack-font
   ];
 
   programs.git = {
@@ -27,11 +29,53 @@
     enable = true;
   };
 
+  programs.fish = {
+    enable = true;
+    loginShellInit = ''
+      # Run Firefox under Wayland.
+      set -x MOZ_ENABLE_WAYLAND 1
+    '';
+    interactiveShellInit = ''
+      # Enable Vim keybindings.
+      fish_vi_key_bindings
+      # More convenient shortcut to exit insert mode.
+      bind -M insert kj 'set fish_bind_mode default; commandline -f repaint'
+    '';
+
+    shellAbbrs = {
+      gst = "git status";
+      gc = "git commit";
+      gd = "git diff";
+      vim = "nvim";
+      hms = "home-manager switch";
+    };
+  };
+
   programs.emacs = {
     enable = true;
   };
 
   home.file.".zshrc".source = ../zsh/zshrc.symlink;
+
+  home.file.".config/alacritty/alacritty.yml".source = ../alacritty/alacritty.yml.symlink;
+
+  # TODO: Can I do this simpler?
+  # I wasn't able to put the whole directory because it becomes read-only and I this
+  # prevents compiling of Fennel modules in the same directory.
+  home.file.".config/nvim/init.lua".source = ../vim/init.lua;
+  home.file.".config/nvim/lua/plugins.lua".source = ../vim/lua/plugins.lua;
+  home.file.".config/nvim/lua/plugin_settings".source = ../vim/lua/plugin_settings;
+  home.file.".config/nvim/fnl".source = ../vim/fnl;
+
+  # Emacs configs.
+  home.file.".doom.d/packages.el".source = ../emacs/doom/packages.el.symlink;
+  home.file.".doom.d/config.el".source = ../emacs/doom/config.el.symlink;
+  home.file.".doom.d/init.el".source = ../emacs/doom/init.el.symlink;
+
+  fonts.fontconfig.enable = true;
+
+  # Why do I need this?
+  targets.genericLinux.enable = true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
