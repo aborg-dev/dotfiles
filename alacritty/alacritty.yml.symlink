@@ -144,7 +144,7 @@ colors:
     # hard contrast background - '#1d2021'
     # original background      - '#282828'
     # soft contrast background - '#32302f'
-    background:        &gruvbox_dark_bg '#1d2021'
+    background:        &gruvbox_dark_bg '#282828'
     foreground:        '#fbf1c7'
     bright_foreground: '#f9f5d7'
     dim_foreground:    '#f2e5bc'
@@ -285,8 +285,8 @@ live_config_reload: true
 #
 # You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
 # Entries in `shell.args` are passed unmodified as arguments to the shell.
-#shell:
-#  program: /bin/bash
+shell:
+  program: /home/akashin/.nix-profile/bin/fish
 #  args:
 #    - --login
 
