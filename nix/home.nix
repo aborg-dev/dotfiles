@@ -42,12 +42,17 @@
       bind -M insert kj 'set fish_bind_mode default; commandline -f repaint'
     '';
 
+    shellAliases = {
+      vim = "nvim";
+    };
+
+    # These will be substituted right in the command before execution.
     shellAbbrs = {
       gst = "git status";
       gc = "git commit";
       gd = "git diff";
       ga = "git add";
-      vim = "nvim";
+      gl = "git pull";
       hms = "home-manager switch";
     };
   };
