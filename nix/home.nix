@@ -46,6 +46,7 @@
       gst = "git status";
       gc = "git commit";
       gd = "git diff";
+      ga = "git add";
       vim = "nvim";
       hms = "home-manager switch";
     };
