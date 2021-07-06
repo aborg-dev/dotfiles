@@ -81,6 +81,9 @@
   home.file.".doom.d/config.el".source = ../emacs/doom/config.el.symlink;
   home.file.".doom.d/init.el".source = ../emacs/doom/init.el.symlink;
 
+  # Tmux config.
+  home.file.".tmux.conf".source = ../tmux/tmux.conf.symlink;
+
   fonts.fontconfig.enable = true;
 
   # Why do I need this?
