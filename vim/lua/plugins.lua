@@ -68,6 +68,12 @@ return require('packer').startup(function(use)
 	}
 
 	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate',
+		config = function() require('plugins.tree_sitter') end
+	}
+
+	use {
 		'rust-lang/rust.vim',
     ft = {'rust'},
 		config = function() require("plugins.rust") end
