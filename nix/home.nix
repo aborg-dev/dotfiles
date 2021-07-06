@@ -40,6 +40,9 @@
       fish_vi_key_bindings
       # More convenient shortcut to exit insert mode.
       bind -M insert kj 'set fish_bind_mode default; commandline -f repaint'
+      # Ctrl+P and Ctrl+N to go to previous/next history command.
+      bind -M insert \cp up-or-search
+      bind -M insert \cn down-or-search
     '';
 
     shellAliases = {
