@@ -27,7 +27,23 @@ CONFIGS = {
 				},
 			},
 		},
-	}
+	},
+  rust = {
+    settings = {
+      ["rust-analyzer"] = {
+        assist = {
+          importGranularity = "module",
+          importPrefix = "by_self",
+        },
+        cargo = {
+          loadOutDirsFromCheck = true
+        },
+        procMacro = {
+          enable = true
+        },
+      }
+    }
+  }
 }
 
 local servers = require'lspinstall'.installed_servers()

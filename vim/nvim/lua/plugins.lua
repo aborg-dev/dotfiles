@@ -54,7 +54,7 @@ return require('packer').startup(function(use)
   -- Auto-completion plugin.
   use {
     'hrsh7th/nvim-compe',
-    ft = {'lua', 'python', 'fennel', 'cpp'},
+    ft = {'lua', 'python', 'fennel', 'cpp', 'rust'},
     config = function() require('plugin_settings.nvim_compe') end
   }
 
@@ -64,7 +64,7 @@ return require('packer').startup(function(use)
     'kabouzeid/nvim-lspinstall',
     config = function() require('plugin_settings.lsp') end,
     -- TODO: Find a way to load it on command.
-    opt = true
+    -- opt = true
   }
 
   use {
