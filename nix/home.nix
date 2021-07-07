@@ -71,10 +71,15 @@
   # TODO: Can I do this simpler?
   # I wasn't able to put the whole directory because it becomes read-only and I this
   # prevents compiling of Fennel modules in the same directory.
-  xdg.configFile."nvim/init.lua".source = ../vim/init.lua;
-  xdg.configFile."nvim/lua/plugins.lua".source = ../vim/lua/plugins.lua;
-  xdg.configFile."nvim/lua/plugin_settings".source = ../vim/lua/plugin_settings;
-  xdg.configFile."nvim/fnl".source = ../vim/fnl;
+#   xdg.configFile."nvim/init.lua".source = ../vim/init.lua;
+#   xdg.configFile."nvim/lua/plugins.lua".source = ../vim/lua/plugins.lua;
+#   xdg.configFile."nvim/lua/plugin_settings".source = ../vim/lua/plugin_settings;
+#   xdg.configFile."nvim/fnl".source = ../vim/fnl;
+ 
+  xdg.configFile."nvim" = {
+    source = ../vim/nvim;
+    recursive = true;
+  };
 
   # Emacs configs.
   home.file.".doom.d/packages.el".source = ../emacs/doom/packages.el.symlink;
