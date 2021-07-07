@@ -15,7 +15,7 @@ return require('packer').startup(function(use)
 	-- the plugin-specific files.
   use {
     "folke/which-key.nvim",
-    config = function() require("plugin_settings.which_key") end
+    config = function() require("plugins.which_key") end
   }
 
   -- Tool for fuzzy search over lists.
