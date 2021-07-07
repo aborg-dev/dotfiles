@@ -66,15 +66,15 @@
 
   home.file.".zshrc".source = ../zsh/zshrc.symlink;
 
-  home.file.".config/alacritty/alacritty.yml".source = ../alacritty/alacritty.yml.symlink;
+  xdg.configFile."alacritty/alacritty.yml".source = ../alacritty/alacritty.yml.symlink;
 
   # TODO: Can I do this simpler?
   # I wasn't able to put the whole directory because it becomes read-only and I this
   # prevents compiling of Fennel modules in the same directory.
-  home.file.".config/nvim/init.lua".source = ../vim/init.lua;
-  home.file.".config/nvim/lua/plugins.lua".source = ../vim/lua/plugins.lua;
-  home.file.".config/nvim/lua/plugin_settings".source = ../vim/lua/plugin_settings;
-  home.file.".config/nvim/fnl".source = ../vim/fnl;
+  xdg.configFile."nvim/init.lua".source = ../vim/init.lua;
+  xdg.configFile."nvim/lua/plugins.lua".source = ../vim/lua/plugins.lua;
+  xdg.configFile."nvim/lua/plugin_settings".source = ../vim/lua/plugin_settings;
+  xdg.configFile."nvim/fnl".source = ../vim/fnl;
 
   # Emacs configs.
   home.file.".doom.d/packages.el".source = ../emacs/doom/packages.el.symlink;
