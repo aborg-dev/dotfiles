@@ -10,9 +10,9 @@ return require('packer').startup(function(use)
   use 'tweekmonster/startuptime.vim'
 
   -- Tool to set up keybindings and visually see them.
-	-- Most of the plugins I use expose their shortcuts in a structured hierarchical
-	-- manner using this plugin. The configuration is incrementally extended in
-	-- the plugin-specific files.
+  -- Most of the plugins I use expose their shortcuts in a structured hierarchical
+  -- manner using this plugin. The configuration is incrementally extended in
+  -- the plugin-specific files.
   use {
     "folke/which-key.nvim",
     config = function() require("plugins.which_key") end
@@ -58,26 +58,26 @@ return require('packer').startup(function(use)
     config = function() require('plugin_settings.nvim_compe') end
   }
 
-	-- Settings for commonly used LSP servers for different languages.
-	use 'neovim/nvim-lspconfig'
-	use {
-		'kabouzeid/nvim-lspinstall',
-		config = function() require('plugin_settings.lsp') end,
-		-- TODO: Find a way to load it on command.
-		opt = true
-	}
+  -- Settings for commonly used LSP servers for different languages.
+  use 'neovim/nvim-lspconfig'
+  use {
+    'kabouzeid/nvim-lspinstall',
+    config = function() require('plugin_settings.lsp') end,
+    -- TODO: Find a way to load it on command.
+    opt = true
+  }
 
-	use {
-		'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate',
-		config = function() require('plugins.tree_sitter') end
-	}
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function() require('plugins.tree_sitter') end
+  }
 
-	use {
-		'rust-lang/rust.vim',
+  use {
+    'rust-lang/rust.vim',
     ft = {'rust'},
-		config = function() require("plugins.rust") end
-	}
+    config = function() require("plugins.rust") end
+  }
 
   use {
     'LnL7/vim-nix'
