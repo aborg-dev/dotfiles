@@ -66,6 +66,8 @@ return require('packer').startup(function(use)
     -- TODO: Find a way to load it on command.
     -- opt = true
   }
+  -- Used for inline type annotation in Rust.
+  use 'nvim-lua/lsp_extensions.nvim'
 
   use {
     'nvim-treesitter/nvim-treesitter',
