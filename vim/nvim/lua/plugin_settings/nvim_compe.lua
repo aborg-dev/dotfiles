@@ -27,19 +27,6 @@ require('compe').setup {
  -- as found in :help lsp
 vim.api.nvim_set_keymap('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true })
--- nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
--- nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
--- nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
--- nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
--- nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
--- nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
--- nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
--- nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
--- " rust-analyzer does not yet support goto declaration
--- " re-mapped `gd` to definition
--- nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
--- "nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
--- 
--- " Quick-fix
--- nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
+vim.api.nvim_set_keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true })

@@ -9,5 +9,7 @@
   ;; Project commands.
   {:p {:name "+project"
        :r [":RustRun<CR>" "run main"]
-       :t [":RustTest!<CR>" "run all tests"]}}
+       :t [":RustTest!<CR>" "run all tests"]}
+   :c {:name "+code"
+       :f [":RustFmt<CR>" "format code in a buffer"]}}
   {:prefix "<leader>"})
