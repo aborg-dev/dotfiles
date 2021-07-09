@@ -24,3 +24,5 @@
 (set nvim.g.expandtab true)
 ; Show line numbers.
 (set nvim.wo.number true)
+; Show visual indicator at given width.
+(set nvim.wo.colorcolumn "100")
