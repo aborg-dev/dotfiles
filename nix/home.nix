@@ -56,6 +56,7 @@
       gd = "git diff";
       ga = "git add";
       gl = "git pull";
+      gco = "git checkout";
       hms = "home-manager switch";
     };
   };
