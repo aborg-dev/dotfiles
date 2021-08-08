@@ -1,11 +1,20 @@
 ; Enable REPL-like evaluation for Python files.
 (module pyrepl
-  {autoload {nvim aniseed.nvim}})
+  {autoload {nvim aniseed.nvim}
+   autoload {wk which-key}})
 
 (defn init []
    ;; Evaluates current file.
    ;; TODO: Derive Python version from the file shebang.
-   (nvim.set_keymap :n :<localleader>ef ":!python3 %<CR>" {:noremap true :silent true}))
+   (nvim.set_keymap :n :<localleader>ef ":!python3 %<CR>" {:noremap true :silent true})
+   (wk.register
+     ;; Project commands.
+     {:p {:name "+project"
+          :r [":!poetry run python main.py<CR>" "run main"]
+          :t [":!poetry run pytest<CR>" "run all tests"]}
+      :c {:name "+code"
+          :f [":!poetry run black %<CR>:e<CR>" "format code in a buffer"]}}
+     {:prefix "<leader>"}))
 
 (do
   (nvim.ex.augroup :pyrepl)
