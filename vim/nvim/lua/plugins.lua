@@ -84,4 +84,14 @@ return require('packer').startup(function(use)
   use {
     'LnL7/vim-nix'
   }
+
+	-- Engine for parsing snippets.
+	use {
+		'SirVer/ultisnips'
+	}
+
+	-- Actual snippets for multiple programming languages.
+	use {
+		'honza/vim-snippets'
+	}
 end)

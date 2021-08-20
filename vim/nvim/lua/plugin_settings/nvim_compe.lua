@@ -20,6 +20,7 @@ require('compe').setup {
     path = true;
     buffer = true;
     nvim_lsp = true;
+    ultisnips = true;
   };
 }
 
