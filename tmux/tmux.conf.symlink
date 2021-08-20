@@ -72,3 +72,9 @@ bind -n C-k if-shell "$not_tmux" "send-keys C-k" "select-pane -U"
 bind -n C-l if-shell "$not_tmux" "send-keys C-l" "select-pane -R"
 bind -n 'C-\' if-shell "$not_tmux" "send-keys C-\\" "select-pane -l"
 
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'  # Package manager.
+set -g @plugin 'tmux-plugins/tmux-resurrect'  # Persistent sessions.
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
