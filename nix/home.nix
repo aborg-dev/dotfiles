@@ -70,6 +70,10 @@
 
   xdg.configFile."alacritty/alacritty.yml".source = ../alacritty/alacritty.yml.symlink;
   xdg.configFile."sway/config".source = ../sway/config;
+  xdg.configFile."waybar" = {
+    source = ../waybar;
+    recursive = true;
+  };
 
   xdg.configFile."nvim" = {
     source = ../vim/nvim;
