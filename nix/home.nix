@@ -69,6 +69,7 @@
   home.file.".zshrc".source = ../zsh/zshrc.symlink;
 
   xdg.configFile."alacritty/alacritty.yml".source = ../alacritty/alacritty.yml.symlink;
+  xdg.configFile."sway/config".source = ../sway/config;
 
   xdg.configFile."nvim" = {
     source = ../vim/nvim;
