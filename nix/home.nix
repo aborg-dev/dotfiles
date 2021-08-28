@@ -70,13 +70,15 @@
     recursive = true;
   };
 
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-    withPython3 = true;
-  };
+  # TODO(akashin): Enable when I figure out how to avoid config override and when I find
+  # a way to use a nightly version.
+  # programs.neovim = {
+  #   enable = true;
+  #   viAlias = true;
+  #   vimAlias = true;
+  #   vimdiffAlias = true;
+  #   withPython3 = true;
+  # };
 
   xdg.configFile."nvim" = {
     source = ../vim/nvim;
