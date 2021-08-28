@@ -46,7 +46,6 @@
     '';
 
     shellAliases = {
-      vim = "nvim";
       tmx = "tmux new-session -At";
     };
 
@@ -62,10 +61,6 @@
     };
   };
 
-  programs.emacs = {
-    enable = true;
-  };
-
   home.file.".zshrc".source = ../zsh/zshrc.symlink;
 
   xdg.configFile."alacritty/alacritty.yml".source = ../alacritty/alacritty.yml.symlink;
@@ -75,12 +70,28 @@
     recursive = true;
   };
 
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+    withPython3 = true;
+  };
+
   xdg.configFile."nvim" = {
     source = ../vim/nvim;
     recursive = true;
     # Aniseed caching breaks when used with symlinks, so we manually remove compiled
     # Fennel code on any change to vim configuration.
     onChange = "rm -r ~/.config/nvim/lua/.compiled-lua";
+  };
+
+  # Many programs rely on these variables. E.g. `git commit`.
+  home.sessionVariables.EDITOR = "vim -e";
+  home.sessionVariables.VISUAL = "vim";
+
+  programs.emacs = {
+    enable = true;
   };
 
   # Emacs configs.
