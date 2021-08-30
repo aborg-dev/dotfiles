@@ -26,3 +26,15 @@
 (set nvim.wo.number true)
 ; Show visual indicator at given width.
 (set nvim.wo.colorcolumn "100")
+
+; Remember the folds in files.
+(do
+  (nvim.ex.augroup :remember_folds)
+  ;; Deletes any old autocommands. Equivalent to ":au!".
+  (nvim.ex.autocmd_)
+  ;; We use "*.*" here to only match files with extensions as otherwise
+  ;; the pattern also matches temporary buffers like Telescope windows
+  ;; that don't work well with "mkview".
+  (nvim.ex.autocmd :BufWinLeave "*.*" "mkview")
+  (nvim.ex.autocmd :BufWinEnter "*.*" "silent! loadview")
+  (nvim.ex.augroup :END))
