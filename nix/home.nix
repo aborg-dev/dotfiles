@@ -47,6 +47,7 @@
 
     shellAliases = {
       tmx = "tmux new-session -At";
+      vim = "nvim";
     };
 
     # These will be substituted right in the command before execution.
