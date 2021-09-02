@@ -60,6 +60,30 @@
       gco = "git checkout";
       hms = "home-manager switch";
     };
+
+    # TODO: Learn how to update versions automatically.
+    plugins = [
+      # Automatically starts ssh-agent within the fish shell.
+      {
+        name = "fish-ssh-agent";
+        src = pkgs.fetchFromGitHub {
+          owner = "danhper";
+          repo = "fish-ssh-agent";
+          rev = "fd70a2afdd03caf9bf609746bf6b993b9e83be57";
+          sha256 = "1fvl23y9lylj4nz6k7yfja6v9jlsg8jffs2m5mq0ql4ja5vi5pkv";
+        };
+      }
+      # Sources Nix environment variables on shell startup.
+      {
+        name = "nix-env.fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "lilyball";
+          repo = "nix-env.fish";
+          rev = "00c6cc762427efe08ac0bd0d1b1d12048d3ca727";
+          sha256 = "1hrl22dd0aaszdanhvddvqz3aq40jp9zi2zn0v1hjnf7fx4bgpma";
+        };
+      }
+    ];
   };
 
   home.file.".zshrc".source = ../zsh/zshrc.symlink;
