@@ -94,4 +94,10 @@ return require('packer').startup(function(use)
 	use {
 		'honza/vim-snippets'
 	}
+	
+	-- Orgmode in vim, finally!
+	use {
+		'nvim-orgmode/orgmode',
+		config = function() require('orgmode').setup{} end
+	}
 end)
