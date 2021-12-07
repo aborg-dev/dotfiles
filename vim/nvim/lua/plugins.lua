@@ -61,11 +61,10 @@ return require('packer').startup(function(use)
   -- Settings for commonly used LSP servers for different languages.
   use 'neovim/nvim-lspconfig'
   use {
-    'kabouzeid/nvim-lspinstall',
+    'williamboman/nvim-lsp-installer',
     config = function() require('plugin_settings.lsp') end,
-    -- TODO: Find a way to load it on command.
-    -- opt = true
   }
+	use_rocks {'luaformatter', server = 'https://luarocks.org/dev'}
   -- Used for inline type annotation in Rust.
   use 'nvim-lua/lsp_extensions.nvim'
 
@@ -94,7 +93,7 @@ return require('packer').startup(function(use)
 	use {
 		'honza/vim-snippets'
 	}
-	
+
 	-- Orgmode in vim, finally!
 	use {
 		'nvim-orgmode/orgmode',
