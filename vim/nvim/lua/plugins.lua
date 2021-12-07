@@ -64,7 +64,6 @@ return require('packer').startup(function(use)
     'williamboman/nvim-lsp-installer',
     config = function() require('plugin_settings.lsp') end,
   }
-	use_rocks {'luaformatter', server = 'https://luarocks.org/dev'}
   -- Used for inline type annotation in Rust.
   use 'nvim-lua/lsp_extensions.nvim'
 
