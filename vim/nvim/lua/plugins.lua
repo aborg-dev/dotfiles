@@ -1,13 +1,13 @@
-return require('packer').startup(function(use)
+return require("packer").startup(function(use)
   -- Packer can manage itself.
-  use { 'wbthomason/packer.nvim', opt = true }
+  use { "wbthomason/packer.nvim", opt = true }
 
   -- Visual plugins.
-  use 'morhetz/gruvbox'
+  use "morhetz/gruvbox"
 
   -- Tool for profiling vim startup time.
   -- Use :StartupTime to run it.
-  use 'tweekmonster/startuptime.vim'
+  use "tweekmonster/startuptime.vim"
 
   -- Tool to set up keybindings and visually see them.
   -- Most of the plugins I use expose their shortcuts in a structured hierarchical
@@ -15,87 +15,105 @@ return require('packer').startup(function(use)
   -- the plugin-specific files.
   use {
     "folke/which-key.nvim",
-    config = function() require("plugins.which_key") end
+    config = function()
+      require "plugins.which_key"
+    end,
   }
 
   -- Tool for fuzzy search over lists.
   use {
-    'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
-    config = function() require("plugins.telescope") end
+    "nvim-telescope/telescope.nvim",
+    requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+    config = function()
+      require "plugins.telescope"
+    end,
   }
 
   -- Vim git client.
-  use 'tpope/vim-fugitive'
+  use "tpope/vim-fugitive"
 
   -- Lisp-y configuration.
-  use { 'Olical/aniseed', opt = true }
+  use { "Olical/aniseed", opt = true }
 
   use {
-    'Olical/conjure',
-    ft = {'fennel'}
+    "Olical/conjure",
+    ft = { "fennel" },
   }
 
   -- Comment lines with 'gcc' and 'gc{motion}.
   use {
     "terrortylor/nvim-comment",
-    config = function() require('nvim_comment').setup() end
+    config = function()
+      require("nvim_comment").setup()
+    end,
   }
 
   -- Add shortcuts to jump between vim and tmux splits.
-  use 'christoomey/vim-tmux-navigator'
+  use "christoomey/vim-tmux-navigator"
 
   -- Quickly jump within the buffer with s{a}{b} and S{a}{b}.
   use {
-    'justinmk/vim-sneak',
-    config = function() vim.g['sneak#label'] = 1 end
+    "justinmk/vim-sneak",
+    config = function()
+      vim.g["sneak#label"] = 1
+    end,
   }
 
   -- Auto-completion plugin.
   use {
-    'hrsh7th/nvim-compe',
-    ft = {'lua', 'python', 'fennel', 'cpp', 'rust'},
-    config = function() require('plugin_settings.nvim_compe') end
+    "hrsh7th/nvim-compe",
+    ft = { "lua", "python", "fennel", "cpp", "rust" },
+    config = function()
+      require "plugin_settings.nvim_compe"
+    end,
   }
 
   -- Settings for commonly used LSP servers for different languages.
-  use 'neovim/nvim-lspconfig'
+  use "neovim/nvim-lspconfig"
   use {
-    'williamboman/nvim-lsp-installer',
-    config = function() require('plugin_settings.lsp') end,
+    "williamboman/nvim-lsp-installer",
+    config = function()
+      require "plugin_settings.lsp"
+    end,
   }
   -- Used for inline type annotation in Rust.
-  use 'nvim-lua/lsp_extensions.nvim'
+  use "nvim-lua/lsp_extensions.nvim"
 
   use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-    config = function() require('plugins.tree_sitter') end
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    config = function()
+      require "plugins.tree_sitter"
+    end,
   }
 
   use {
-    'rust-lang/rust.vim',
-    ft = {'rust'},
-    config = function() require("plugins.rust") end
+    "rust-lang/rust.vim",
+    ft = { "rust" },
+    config = function()
+      require "plugins.rust"
+    end,
   }
 
   use {
-    'LnL7/vim-nix'
+    "LnL7/vim-nix",
   }
 
-	-- Engine for parsing snippets.
-	use {
-		'SirVer/ultisnips'
-	}
+  -- Engine for parsing snippets.
+  use {
+    "SirVer/ultisnips",
+  }
 
-	-- Actual snippets for multiple programming languages.
-	use {
-		'honza/vim-snippets'
-	}
+  -- Actual snippets for multiple programming languages.
+  use {
+    "honza/vim-snippets",
+  }
 
-	-- Orgmode in vim, finally!
-	use {
-		'nvim-orgmode/orgmode',
-		config = function() require('orgmode').setup{} end
-	}
+  -- Orgmode in vim, finally!
+  use {
+    "nvim-orgmode/orgmode",
+    config = function()
+      require("orgmode").setup {}
+    end,
+  }
 end)

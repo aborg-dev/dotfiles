@@ -4,9 +4,9 @@ local fn = vim.fn
 local fmt = string.format
 
 -- Work out where our plugins will be stored.
-local pack_path = fn.stdpath("data") .. "/site/pack"
+local pack_path = fn.stdpath "data" .. "/site/pack"
 
-function ensure (user, repo)
+local function ensure(user, repo)
   -- Ensures a given github.com/USER/REPO is cloned in the pack/packer/start directory.
   local install_path = fmt("%s/packer/opt/%s", pack_path, repo, repo)
   local installed = false
@@ -20,14 +20,14 @@ end
 
 -- Packer is our plugin manager.
 if ensure("wbthomason", "packer.nvim") then
-  require('plugins')
-  execute('PackerInstall')
+  require "plugins"
+  execute "PackerInstall"
 end
 
 -- This must be executed before loading aniseed to use the correct configuration.
-vim.g['aniseed#env'] = {
-  output = vim.fn.stdpath('config') .. '/lua/.compiled-lua',
-  module = 'startup'
+vim.g["aniseed#env"] = {
+  output = vim.fn.stdpath "config" .. "/lua/.compiled-lua",
+  module = "startup",
 }
 
 -- Aniseed compiles our Fennel code to Lua and loads it automatically.
@@ -35,5 +35,5 @@ ensure("Olical", "aniseed")
 
 -- Visual settings.
 -- TODO: Move to another file.
-vim.cmd('colorscheme gruvbox')
+vim.cmd "colorscheme gruvbox"
 vim.o.termguicolors = true
