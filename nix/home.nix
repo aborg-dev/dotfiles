@@ -113,6 +113,15 @@
     onChange = "rm -r ~/.config/nvim/lua/.compiled-lua";
   };
 
+  xdg.configFile."stylua/stylua.toml".text = ''
+    column_width = 100
+    line_endings = "Unix"
+    indent_type = "Spaces"
+    indent_width = 2
+    quote_style = "AutoPreferDouble"
+    no_call_parentheses = true
+  '';
+
   # Many programs rely on these variables. E.g. `git commit`.
   home.sessionVariables.EDITOR = "vim -e";
   home.sessionVariables.VISUAL = "vim";
