@@ -113,14 +113,7 @@ return require("packer").startup(function(use)
   use {
     "nvim-orgmode/orgmode",
     config = function()
-      require("orgmode").setup {}
-			-- TODO: Move to a dedicated settings file.
-			vim.api.nvim_command [[
-			augroup auFileTypes
-			autocmd!
-			autocmd FileType org setlocal textwidth=100
-			augroup end
-			]]
+			require "plugins.orgmode_config"
     end,
   }
 end)
