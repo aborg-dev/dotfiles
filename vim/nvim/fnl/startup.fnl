@@ -3,4 +3,5 @@
   {require {plugins plugins}
    require {settings settings}
    require {keymap keymap}
-   require {pyrepl pyrepl}})
+   require {pyrepl pyrepl}
+   require {diary diary}})
