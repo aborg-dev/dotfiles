@@ -116,4 +116,11 @@ return require("packer").startup(function(use)
 			require "plugins.orgmode_config"
     end,
   }
+
+	-- Nicer bullet symbols for org headings.
+	use {"akinsho/org-bullets.nvim", config = function()
+		require("org-bullets").setup {
+			symbols = { "◉", "○", "✸", "✿" }
+		}
+	end}
 end)
