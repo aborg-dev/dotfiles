@@ -3,9 +3,12 @@
    autoload {wk which-key}
    autoload {orgmode orgmode}})
 
-(orgmode.setup {})
+(orgmode.setup {
+  ;; Don't indent lines in nested headings. This makes them easier to copy and
+  ;; paste. In Emacs, they were indented only visually, but the text was still
+  ;; starting from column 0.
+  :org_indent_mode "noindent"})
 
-(print "orgmode_config loaded")
 (do
   (nvim.ex.augroup :auFileTypes)
   ;; Deletes any old autocommands. Equivalent to ":au!".
