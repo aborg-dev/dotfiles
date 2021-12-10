@@ -6,15 +6,12 @@
 
 
 (tset (tree_sitter_parsers.get_parser_configs)
-      :org
-      {
-       :install_info {
-                      :url "https://github.com/milisims/tree-sitter-org"
-                      :revision "main"
-                      :files ["src/parser.c" "src/scanner.cc"]
-                      }
-       :filetype "org"
-       })
+  :org {
+   :install_info {
+    :url "https://github.com/milisims/tree-sitter-org"
+    :revision "main"
+    :files ["src/parser.c" "src/scanner.cc"]}
+   :filetype "org"})
 
 (tree_sitter_configs.setup {
   ;; One of "all", "maintained" (parsers with maintainers), or a list of languages.
@@ -26,8 +23,7 @@
     :enable true
     ;; List of language that will be disabled.
     :disable []
-    :additional_vim_regex_highlighting ["org"]
-    }})
+    :additional_vim_regex_highlighting ["org"]}})
 
 
 (set nvim.o.foldmethod "expr")
