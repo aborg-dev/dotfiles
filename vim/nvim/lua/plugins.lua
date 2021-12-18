@@ -113,14 +113,25 @@ return require("packer").startup(function(use)
   use {
     "nvim-orgmode/orgmode",
     config = function()
-			require "plugins.orgmode_config"
+      require "plugins.orgmode_config"
     end,
   }
 
-	-- Nicer bullet symbols for org headings.
-	use {"akinsho/org-bullets.nvim", config = function()
-		require("org-bullets").setup {
-			symbols = { "◉", "○", "✸", "✿" }
-		}
-	end}
+  -- Nicer bullet symbols for org headings.
+  use {
+    "akinsho/org-bullets.nvim",
+    config = function()
+      require("org-bullets").setup {
+        symbols = { "◉", "○", "✸", "✿" },
+      }
+    end,
+  }
+
+  use {
+    "petobens/poet-v",
+    config = function()
+      vim.g.poetv_executables = { "poetry" }
+      vim.g.poetv_auto_activate = 1
+    end,
+  }
 end)
