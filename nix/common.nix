@@ -4,17 +4,13 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = "akashin";
-  home.homeDirectory = "/home/akashin";
-
   # Packages to install.
   home.packages = with pkgs; [
     tmux
     fzf
     ripgrep
     fd
+    bat
     # Font that I'm using in my terminal.
     hack-font
   ];
@@ -43,6 +39,8 @@
       # Ctrl+P and Ctrl+N to go to previous/next history command.
       bind -M insert \cp up-or-search
       bind -M insert \cn down-or-search
+      # Add paths to custom-built binaries.
+      fish_add_path ~/.local/bin ~/.yarn/bin
     '';
 
     shellAliases = {

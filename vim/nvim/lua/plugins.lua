@@ -135,11 +135,18 @@ return require("packer").startup(function(use)
     end,
   }
 
+  -- TODO: Install only if poetry is available.
   use {
     "petobens/poet-v",
     config = function()
       vim.g.poetv_executables = { "poetry" }
       vim.g.poetv_auto_activate = 1
     end,
+  }
+
+  use {
+    "sampsyo/bril",
+    ft = { "bril" },
+    rtp = "bril-vim",
   }
 end)
