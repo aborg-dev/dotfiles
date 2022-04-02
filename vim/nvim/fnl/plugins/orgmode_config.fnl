@@ -3,6 +3,8 @@
    autoload {wk which-key}
    autoload {orgmode orgmode}})
 
+(orgmode.setup_ts_grammar)
+
 (orgmode.setup {
   ;; Don't indent lines in nested headings. This makes them easier to copy and
   ;; paste. In Emacs, they were indented only visually, but the text was still
