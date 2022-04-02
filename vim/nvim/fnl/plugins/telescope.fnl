@@ -11,12 +11,27 @@
       :i {
         :<C-j> actions.move_selection_next
         :<C-k> actions.move_selection_previous
-      }}}})
+      }}}
+  :pickers {
+    :find_files {
+      :theme "ivy"
+      :previewer false
+      :layout_config {
+        :height 0.4
+      }}
+    :buffers {
+      :theme "ivy"
+      :previewer false
+      ;; 'show_all_buffers = true' is needed to also show hidden buffers.
+      :show_all_buffers true
+      :layout_config {
+        :height 0.4
+      }}
+    }})
 
 (wk.register 
-  {" " [":lua require('telescope.builtin').find_files({previewer = false})<CR>" "find_files"]
-   ;; 'show_all_buffers = true' is needed to also show hidden buffers.
-   "," [":lua require('telescope.builtin').buffers({show_all_buffers = true})<CR>" "buffers"]}
+  {" " [":lua require('telescope.builtin').find_files()<CR>" "find_files"]
+   "," [":lua require('telescope.builtin').buffers()<CR>" "buffers"]}
   {:prefix "<leader>"})
 
 (wk.register 
