@@ -23,6 +23,15 @@ set $menu rofi -show drun
 
 set $menu_files locate -e -i -d mlocate.db /home/akashin/Cloud/ydisk | awk '{print "../" substr($0, 27)}' | rofi -threads 0 -dmenu -i -p "locate" | awk '{print "/home/akashin/Cloud/ydisk/" substr($0, 2)}' | xargs -r -0 xdg-open
 
+# Quick switching betweek windows.
+exec_always i3-focus-last server
+bindsym $mod+Tab exec i3-focus-last
+bindsym $mod+m exec i3-focus-last menu
+
+# Clipboard manager and quick picker through rofi.
+exec wl-paste -t text --watch clipman store
+bindsym $mod+Shift+p exec clipman pick -t rofi
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
