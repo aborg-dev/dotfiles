@@ -29,13 +29,13 @@ return require("packer").startup(function(use)
     end,
   }
 
-	use {
-		'nvim-telescope/telescope-fzf-native.nvim',
-		run = 'make',
+  use {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    run = "make",
     config = function()
-      require("telescope").load_extension("fzf")
+      require("telescope").load_extension "fzf"
     end,
-	}
+  }
 
   -- Vim git client.
   use "tpope/vim-fugitive"
@@ -148,5 +148,12 @@ return require("packer").startup(function(use)
     "sampsyo/bril",
     ft = { "bril" },
     rtp = "bril-vim",
+  }
+
+  use {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup()
+    end,
   }
 end)
