@@ -36,6 +36,12 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true })
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>cf",
+  "<cmd>lua vim.lsp.buf.formatting()<CR>",
+  { noremap = true }
+)
 
 -- Use LSP as the handler for formatexpr.
 --    See `:help formatexpr` for more information.
