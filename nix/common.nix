@@ -4,6 +4,15 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # Many programs rely on these variables. E.g. `git commit`.
+  home = {
+    sessionVariables = {
+      EDITOR = "vim -e";
+      VISUAL = "vim";
+      MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    };
+  };
+
   # Packages to install.
   home.packages = with pkgs; [
     tmux
@@ -112,10 +121,6 @@
     quote_style = "AutoPreferDouble"
     no_call_parentheses = true
   '';
-
-  # Many programs rely on these variables. E.g. `git commit`.
-  home.sessionVariables.EDITOR = "vim -e";
-  home.sessionVariables.VISUAL = "vim";
 
   # Tmux config.
   home.file.".tmux.conf".source = ../tmux/tmux.conf.symlink;
