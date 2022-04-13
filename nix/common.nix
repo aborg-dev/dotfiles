@@ -108,7 +108,7 @@
     recursive = true;
     # Aniseed caching breaks when used with symlinks, so we manually remove compiled
     # Fennel code on any change to vim configuration.
-    onChange = "rm -r ~/.config/nvim/lua/.compiled-lua";
+    onChange = "rm -rf ~/.config/nvim/lua/.compiled-lua";
   };
 
   xdg.configFile."stylua/stylua.toml".text = ''
