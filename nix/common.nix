@@ -86,13 +86,6 @@
 
   home.file.".zshrc".source = ../zsh/zshrc.symlink;
 
-  xdg.configFile."alacritty/alacritty.yml".source = ../alacritty/alacritty.yml.symlink;
-  xdg.configFile."sway/config".source = ../sway/config;
-  xdg.configFile."waybar" = {
-    source = ../waybar;
-    recursive = true;
-  };
-
   # TODO(akashin): Enable when I figure out how to avoid config override and when I find
   # a way to use a nightly version.
   # programs.neovim = {
@@ -123,15 +116,6 @@
   # Many programs rely on these variables. E.g. `git commit`.
   home.sessionVariables.EDITOR = "vim -e";
   home.sessionVariables.VISUAL = "vim";
-
-  programs.emacs = {
-    enable = true;
-  };
-
-  # Emacs configs.
-  home.file.".doom.d/packages.el".source = ../emacs/doom/packages.el.symlink;
-  home.file.".doom.d/config.el".source = ../emacs/doom/config.el.symlink;
-  home.file.".doom.d/init.el".source = ../emacs/doom/init.el.symlink;
 
   # Tmux config.
   home.file.".tmux.conf".source = ../tmux/tmux.conf.symlink;
