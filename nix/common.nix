@@ -95,15 +95,27 @@
 
   home.file.".zshrc".source = ../zsh/zshrc.symlink;
 
-  # TODO(akashin): Enable when I figure out how to avoid config override and when I find
-  # a way to use a nightly version.
-  # programs.neovim = {
-  #   enable = true;
-  #   viAlias = true;
-  #   vimAlias = true;
-  #   vimdiffAlias = true;
-  #   withPython3 = true;
-  # };
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
+
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+    withPython3 = true;
+    package = pkgs.neovim-nightly;
+    # Home-manager settings for Neovim always generate "init.vim", but my configuration is in
+    # pure lua, so just load it in the generated file.
+    extraConfig = builtins.concatStringsSep "\n" [
+      ''
+      luafile ${builtins.toString ../vim/nvim/main_init.lua}
+      ''
+    ];
+  };
 
   xdg.configFile."nvim" = {
     source = ../vim/nvim;
