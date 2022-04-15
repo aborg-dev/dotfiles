@@ -94,28 +94,25 @@
   };
 
   home.file.".zshrc".source = ../zsh/zshrc.symlink;
+  
+  # programs.neovim = {
+  #   enable = true;
+  #   viAlias = true;
+  #   vimAlias = true;
+  #   vimdiffAlias = true;
+  #   withPython3 = true;
+  #   # Home-manager settings for Neovim always generate "init.vim", but my configuration is in
+  #   # pure lua, so just load it in the generated file.
+  #   extraConfig = builtins.concatStringsSep "\n" [
+  #     ''
+  #     luafile ${builtins.toString ../vim/nvim/main_init.lua}
+  #     ''
+  #   ];
+  # };
 
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
-  ];
-
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-    withPython3 = true;
-    package = pkgs.neovim-nightly;
-    # Home-manager settings for Neovim always generate "init.vim", but my configuration is in
-    # pure lua, so just load it in the generated file.
-    extraConfig = builtins.concatStringsSep "\n" [
-      ''
-      luafile ${builtins.toString ../vim/nvim/main_init.lua}
-      ''
-    ];
-  };
+  xdg.configFile."nvim/init.vim".text = ''
+    luafile ${builtins.toString ../vim/nvim/main_init.lua}
+    '';
 
   xdg.configFile."nvim" = {
     source = ../vim/nvim;
