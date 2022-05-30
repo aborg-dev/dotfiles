@@ -30,10 +30,13 @@ vim.g["aniseed#env"] = {
   module = "startup",
 }
 
--- Aniseed compiles our Fennel code to Lua and loads it automatically.
-ensure("Olical", "aniseed")
-
 -- Visual settings.
 -- TODO: Move to another file.
 vim.cmd "colorscheme gruvbox"
 vim.o.termguicolors = true
+
+-- Use lua-based file detection. In the future we would be able to remove it.
+vim.g["do_filetype_lua"] = 1
+
+-- Aniseed compiles our Fennel code to Lua and loads it automatically.
+ensure("Olical", "aniseed")
