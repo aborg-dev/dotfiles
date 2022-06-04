@@ -7,8 +7,8 @@
   # Many programs rely on these variables. E.g. `git commit`.
   home = {
     sessionVariables = {
-      EDITOR = "vim -e";
-      VISUAL = "vim";
+      EDITOR = "nvim";
+      VISUAL = "nvim";
       MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     };
   };
