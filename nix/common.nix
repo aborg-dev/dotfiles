@@ -20,6 +20,7 @@
     ripgrep
     fd
     bat
+    ranger
     # Font that I'm using in my terminal.
     hack-font
   ];
