@@ -4,7 +4,6 @@ return require("packer").startup(function(use)
 
   -- Visual plugins.
   use "morhetz/gruvbox"
-
   -- Tool for profiling vim startup time.
   -- Use :StartupTime to run it.
   use "tweekmonster/startuptime.vim"
@@ -156,6 +155,22 @@ return require("packer").startup(function(use)
     "lewis6991/gitsigns.nvim",
     config = function()
       require("gitsigns").setup()
+    end,
+  }
+
+  use {
+    "jpalardy/vim-slime",
+    config = function()
+      vim.g.slime_target = "tmux"
+      -- Use the opposite split by default.
+      vim.g.slime_default_config = {
+        ["socket_name"] = vim.fn.get(vim.fn.split(vim.env.TMUX, ","), 0),
+        ["target_pane"] = "{last}",
+      }
+      vim.g.slime_dont_ask_default = 1
+      -- Fix code pasting to IPython.
+      vim.g.slime_python_ipython = 1
+      vim.g.slime_cell_delimiter = "#%%"
     end,
   }
 end)
