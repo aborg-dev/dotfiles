@@ -69,7 +69,7 @@ return require("packer").startup(function(use)
   -- Auto-completion plugin.
   use {
     "hrsh7th/nvim-compe",
-    ft = { "lua", "python", "fennel", "cpp", "rust" },
+    ft = { "lua", "python", "fennel", "cpp", "rust", "go" },
     config = function()
       require "plugin_settings.nvim_compe"
     end,
