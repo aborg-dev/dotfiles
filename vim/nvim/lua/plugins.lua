@@ -69,7 +69,7 @@ return require("packer").startup(function(use)
   -- Auto-completion plugin.
   use {
     "hrsh7th/nvim-compe",
-    ft = { "lua", "python", "fennel", "cpp", "rust", "go" },
+    ft = { "lua", "python", "fennel", "cpp", "rust", "go", "markdown" },
     config = function()
       require "plugin_settings.nvim_compe"
     end,
@@ -132,8 +132,8 @@ return require("packer").startup(function(use)
     config = function()
       require("org-bullets").setup {
         symbols = {
-					headlines = {"◉", "○", "✸", "✿"},
-				},
+          headlines = { "◉", "○", "✸", "✿" },
+        },
       }
     end,
   }
@@ -173,6 +173,13 @@ return require("packer").startup(function(use)
       -- Fix code pasting to IPython.
       vim.g.slime_python_ipython = 1
       vim.g.slime_cell_delimiter = "#%%"
+    end,
+  }
+
+  use {
+    "mickael-menu/zk-nvim",
+    config = function()
+      require "plugins.zk_config"
     end,
   }
 end)

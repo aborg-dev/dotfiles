@@ -23,6 +23,7 @@
     ranger
     # Font that I'm using in my terminal.
     hack-font
+    zk
   ];
 
   programs.git = {
