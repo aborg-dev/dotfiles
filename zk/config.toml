@@ -71,7 +71,9 @@ template = "default.md"
 [group.diary]
 #paths = ["<DIR1>", "<DIR2>"]
 [group.diary.note]
-filename = "{{data now %Y}}/{{date now %W}}"
+filename = "{{date now '%Y'}}/{{date now '%W'}}"
+# filename = "2022/{{date now '%W'}}"
+template = "diary.md"
 #[group."<NAME>".extra]
 #key = "value"
 
@@ -92,7 +94,7 @@ link-format = "wiki"
 # Enable support for #hashtags.
 hashtags = false
 # Enable support for :colon:separated:tags:.
-colon-tags = false
+colon-tags = true
 # Enable support for Bear's #multi-word tags#
 # Hashtags must be enabled for multi-word tags to work.
 multiword-tags = false

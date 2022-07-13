@@ -21,5 +21,6 @@
   {:n {:name "+notes"
        :f [":ZkNotes<CR>" "find note"]
        :t [":ZkTags<CR>" "find note by tag"]
-       :c [":ZkNew { title = vim.fn.input('Title: ') }<CR>" "create note"]}}
+       :c [":ZkNew { title = vim.fn.input('Title: ') }<CR>" "create note"]
+       :d [":ZkNew { dir = 'diary', date = 'now' }<CR>" "open weekly diary"]}}
   {:prefix "<leader>"})
