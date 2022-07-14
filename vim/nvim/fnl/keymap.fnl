@@ -32,6 +32,9 @@
 (nvim.set_keymap :t :<C-k> :<C-\><C-n><C-w>k {:noremap true :silent true})
 (nvim.set_keymap :t :<C-l> :<C-\><C-n><C-w>l {:noremap true :silent true})
 
+;; Toggle fold with tab.
+(nvim.set_keymap :n :<Tab> :za {:noremap true :silent true})
+
 ;; Help menu.
 (wk.register 
   {:h {:name "+help"
