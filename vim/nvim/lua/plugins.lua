@@ -182,4 +182,8 @@ return require("packer").startup(function(use)
       require "plugins.zk_config"
     end,
   }
+
+  use {
+    "dkarter/bullets.vim",
+  }
 end)
