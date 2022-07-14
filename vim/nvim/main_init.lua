@@ -39,7 +39,7 @@ vim.o.termguicolors = true
 vim.g["do_filetype_lua"] = 1
 
 -- Enabling folding in Markdown files.
-vim.g["markdown_folding"] = 1
+vim.g.markdown_folding = 1
 
 -- Aniseed compiles our Fennel code to Lua and loads it automatically.
 ensure("Olical", "aniseed")

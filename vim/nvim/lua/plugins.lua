@@ -185,5 +185,9 @@ return require("packer").startup(function(use)
 
   use {
     "dkarter/bullets.vim",
+		config = function()
+			vim.g.bullets_set_mappings = 0
+      require "plugins.bullets_config"
+		end,
   }
 end)
