@@ -3,12 +3,17 @@
     autoload {wk which-key}
     autoload {zk zk}})
 
+;; Copied from lsp.lua as I haven't found a way to reuse it.
+(defn- on_attach [client bufnr]
+  (vim.api.nvim_exec_autocmds "User" { :pattern "LspAttached" }))
+
 (zk.setup {
   :picker "telescope"
   :lsp {
     :config {
       :cmd ["zk" "lsp"]
       :name "zk"
+      :on_attach on_attach
     }
     ;; Automatically attach buffers in a zk notebook that match the given filetypes.
     :auto_attach {

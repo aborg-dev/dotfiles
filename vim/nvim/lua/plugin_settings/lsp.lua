@@ -2,6 +2,19 @@ local lsp_installer = require "nvim-lsp-installer"
 local lsp_config = require "lspconfig"
 local util = require "lspconfig/util"
 
+local lsp_defaults = {
+  -- Callback function that will be executed when a language server is attached to a buffer.
+  on_attach = function(_, _)
+    vim.api.nvim_exec_autocmds("User", { pattern = "LspAttached" })
+  end,
+}
+-- And update default LSP config.
+lsp_config.util.default_config = vim.tbl_deep_extend(
+  "force",
+  lsp_config.util.default_config,
+  lsp_defaults
+)
+
 lsp_installer.setup {
   automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
   ui = {
@@ -78,8 +91,52 @@ lsp_config.efm.setup {
 
 lsp_config.gopls.setup {
   cmd = { "gopls", "serve" },
-	root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gopls = { analyses = { unusedparams = true }, staticcheck = true },
   },
 }
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "LspAttached",
+  desc = "LSP actions",
+  callback = function()
+    local bufmap = function(mode, lhs, rhs)
+      local opts = { buffer = true }
+      vim.keymap.set(mode, lhs, rhs, opts)
+    end
+
+    -- Displays hover information about the symbol under the cursor.
+    bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>")
+
+    -- Jump to the definition.
+    bufmap("n", "<C-]>", "<cmd>lua vim.lsp.buf.definition()<cr>")
+
+    -- Lists all the implementations for the symbol under the cursor.
+    bufmap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
+
+    -- Jumps to the definition of the type symbol.
+    bufmap("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>")
+
+    -- Displays a function's signature information
+    bufmap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
+
+    -- Renames all references to the symbol under the cursor
+    bufmap("n", "gr", "<cmd>lua vim.lsp.buf.rename()<cr>")
+
+    -- Selects a code action available at the current cursor position
+    bufmap("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+    bufmap("x", "ga", "<cmd>lua vim.lsp.buf.range_code_action()<cr>")
+
+    -- Show diagnostics in a floating window
+    bufmap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>")
+
+    -- Move to the previous diagnostic
+    bufmap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
+
+    -- Move to the next diagnostic
+    bufmap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
+
+    bufmap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<cr>")
+  end,
+})

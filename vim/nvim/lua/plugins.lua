@@ -68,12 +68,19 @@ return require("packer").startup(function(use)
 
   -- Auto-completion plugin.
   use {
-    "hrsh7th/nvim-compe",
+    "hrsh7th/nvim-cmp",
     ft = { "lua", "python", "fennel", "cpp", "rust", "go", "markdown" },
     config = function()
-      require "plugin_settings.nvim_compe"
+      require "plugin_settings.nvim_cmp"
     end,
   }
+
+  use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
+  use { "hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp" }
+  use { "hrsh7th/cmp-buffer", after = "cmp-nvim-lua" }
+  use { "hrsh7th/cmp-path", after = "cmp-buffer" }
+  use { "hrsh7th/cmp-calc", after = "cmp-path" }
+  use { "hrsh7th/cmp-cmdline", after = "cmp-calc" }
 
   -- Settings for commonly used LSP servers for different languages.
   use "neovim/nvim-lspconfig"
@@ -185,9 +192,9 @@ return require("packer").startup(function(use)
 
   use {
     "dkarter/bullets.vim",
-		config = function()
-			vim.g.bullets_set_mappings = 0
+    config = function()
+      vim.g.bullets_set_mappings = 0
       require "plugins.bullets_config"
-		end,
+    end,
   }
 end)
