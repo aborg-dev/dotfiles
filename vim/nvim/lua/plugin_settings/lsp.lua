@@ -97,6 +97,17 @@ lsp_config.gopls.setup {
   },
 }
 
+lsp_config.beancount.setup {
+  init_options = {
+    journal_file = "/home/akashin/Repos/finance/data/ledger.bean",
+  },
+}
+
+vim.api.nvim_create_autocmd(
+    { "BufRead", "BufNewFile" },
+    { pattern = { "*.bean" }, command = "setlocal foldmethod=marker" }
+)
+
 vim.api.nvim_create_autocmd("User", {
   pattern = "LspAttached",
   desc = "LSP actions",

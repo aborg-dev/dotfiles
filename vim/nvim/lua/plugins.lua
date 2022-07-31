@@ -69,7 +69,7 @@ return require("packer").startup(function(use)
   -- Auto-completion plugin.
   use {
     "hrsh7th/nvim-cmp",
-    ft = { "lua", "python", "fennel", "cpp", "rust", "go", "markdown" },
+    ft = { "lua", "python", "fennel", "cpp", "rust", "go", "markdown", "beancount" },
     config = function()
       require "plugin_settings.nvim_cmp"
     end,
@@ -197,4 +197,6 @@ return require("packer").startup(function(use)
       require "plugins.bullets_config"
     end,
   }
+
+  use { "nathangrigg/vim-beancount" }
 end)
