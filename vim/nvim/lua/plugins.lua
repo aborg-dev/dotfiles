@@ -104,7 +104,7 @@ return require("packer").startup(function(use)
   use { "nvim-treesitter/playground" }
 
   use {
-    "rust-lang/rust.vim",
+    "simrat39/rust-tools.nvim",
     ft = { "rust" },
     config = function()
       require "plugins.rust"

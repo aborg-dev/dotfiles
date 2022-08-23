@@ -56,23 +56,6 @@ lsp_config.sumneko_lua.setup {
   },
 }
 
-lsp_config["rust_analyzer"].setup {
-  settings = {
-    ["rust-analyzer"] = {
-      assist = {
-        importGranularity = "module",
-        importPrefix = "by_self",
-      },
-      cargo = {
-        loadOutDirsFromCheck = true,
-      },
-      procMacro = {
-        enable = true,
-      },
-    },
-  },
-}
-
 lsp_config.efm.setup {
   init_options = { documentFormatting = true },
   filetypes = { "lua" },
@@ -150,6 +133,6 @@ vim.api.nvim_create_autocmd("User", {
     -- Move to the next diagnostic
     bufmap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
 
-    bufmap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<cr>")
+    bufmap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.format{async=true}<cr>")
   end,
 })

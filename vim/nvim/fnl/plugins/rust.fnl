@@ -1,7 +1,30 @@
 ; Enable Rust code commands.
 (module rust
   {autoload {nvim aniseed.nvim}
-   autoload {wk which-key}})
+   autoload {wk which-key}
+   autoload {rt rust-tools}})
+
+(rt.setup {
+  :tools {
+    :autoSetHints true
+  }
+  :server {
+		:settings {
+			:rust-analyzer {
+				:assist {
+					:importGranularity "module"
+					:importPrefix "by_self"
+				}
+				:cargo {
+					:loadOutDirsFromCheck true
+				}
+				:procMacro {
+					:enable true
+				}
+			}
+		}
+  }
+})
 
 (nvim.set_keymap :n :<localleader>ef ":RustRun<CR>" {:noremap true :silent true})
 
