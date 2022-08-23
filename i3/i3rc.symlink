@@ -219,3 +219,7 @@ bar {
         urgent_workspace   #ffffff #900000
     }
 }
+
+for_window [title="Stepping Stones"] floating enable
+for_window [title="Stepping Stones"] move right 400
+no_focus [title="Stepping Stones"]
