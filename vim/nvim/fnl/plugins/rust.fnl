@@ -24,6 +24,13 @@
 			}
 		}
   }
+  :dap {
+    :adapter {
+      :type "executable"
+      :command "lldb-vscode"
+      :name "rt_lldb"
+    }
+  }
 })
 
 (nvim.set_keymap :n :<localleader>ef ":RustRun<CR>" {:noremap true :silent true})

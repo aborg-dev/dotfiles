@@ -111,6 +111,16 @@ return require("packer").startup(function(use)
     end,
   }
 
+  -- Debug adaptor protocol.
+  use "mfussenegger/nvim-dap"
+  use {
+    "rcarriga/nvim-dap-ui",
+    requires = { "mfussenegger/nvim-dap" },
+    config = function()
+			require "plugins.dap_config"
+    end,
+  }
+
   use {
     "LnL7/vim-nix",
   }
