@@ -38,8 +38,8 @@
 (wk.register
   ;; Project commands.
   {:p {:name "+project"
-       :r [":Cargo run<CR>" "run main"]
-       :t [":Cargo test<CR>" "run all tests"]}
+       :r [":RustRunnables<CR>" "run main"]
+       :t [":20split term://cargo test<CR>" "run all tests"]}
    :c {:name "+code"
        :f [":RustFmt<CR>" "format code in a buffer"]}}
   {:prefix "<leader>"})
