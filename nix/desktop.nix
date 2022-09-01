@@ -8,6 +8,10 @@
     source = ../waybar;
     recursive = true;
   };
+  xdg.configFile."rofi" = {
+    source = ../rofi;
+    recursive = true;
+  };
 
   programs.emacs = {
     enable = true;
