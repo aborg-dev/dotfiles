@@ -12,13 +12,4 @@
     source = ../rofi;
     recursive = true;
   };
-
-  programs.emacs = {
-    enable = true;
-  };
-
-  # Emacs configs.
-  home.file.".doom.d/packages.el".source = ../emacs/doom/packages.el.symlink;
-  home.file.".doom.d/config.el".source = ../emacs/doom/config.el.symlink;
-  home.file.".doom.d/init.el".source = ../emacs/doom/init.el.symlink;
 }

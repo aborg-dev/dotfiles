@@ -32,10 +32,6 @@
     userName = "Andrei Kashin";
   };
 
-  programs.zsh = {
-    enable = true;
-  };
-
   programs.fish = {
     enable = true;
     loginShellInit = ''

@@ -4,7 +4,7 @@
   imports = [ ./common.nix ./desktop.nix ];
 
   home = {
-    username = "acid";
-    homeDirectory = "/home/acid";
+    username = "akashin";
+    homeDirectory = "/home/akashin";
   };
 }
