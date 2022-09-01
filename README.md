@@ -1,19 +1,11 @@
-Repository storing my dotfiles (system configurations)
+Repository storing my dotfiles (system configurations).
 
-I primary use OSX and Ubuntu Linux
+I primary use Arch Linux.
 
 Installation
 ============
 
-If you clone repo for the first time, you should run bootstrap.sh
-
-This will symlink all configs to your home directory and configure your git profile.
-
-If you have old configs in your home folder, you will be given an option to backup or overwrite them.
+If you clone repo for the first time, you should set up Nix
+[home-manager](https://github.com/nix-community/home-manager).
 
 Later you should push/pull changes to your dotfiles using usual git workflow.
-
-```bash
-    cd dotfiles
-    ./bootstrap.sh
-```
