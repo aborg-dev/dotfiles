@@ -12,13 +12,6 @@
         :<C-j> actions.move_selection_next
         :<C-k> actions.move_selection_previous
       }}}
-  :extensions {
-    :fzf {
-      :fuzzy true
-      :override_generic_sorter true
-      :override_file_sorter true
-    }
-  }
   :pickers {
     :find_files {
       :theme "ivy"
