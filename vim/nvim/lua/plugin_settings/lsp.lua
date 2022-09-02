@@ -133,6 +133,6 @@ vim.api.nvim_create_autocmd("User", {
     -- Move to the next diagnostic
     bufmap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
 
-    bufmap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.format{async=true}<cr>")
+    bufmap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<cr>")
   end,
 })
