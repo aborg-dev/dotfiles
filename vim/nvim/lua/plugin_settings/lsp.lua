@@ -64,7 +64,7 @@ lsp_config.efm.setup {
     languages = {
       lua = {
         {
-          formatCommand = "~/Apps/stylua --config-path=$HOME/.config/stylua/stylua.toml -",
+          formatCommand = "stylua --config-path=$HOME/.config/stylua/stylua.toml -",
           formatStdin = true,
         },
       },
