@@ -109,11 +109,11 @@
   # };
 
   xdg.configFile."nvim/init.vim".text = ''
-    luafile ${builtins.toString ../vim/nvim/main_init.lua}
+    luafile ${builtins.toString ../nvim/main_init.lua}
     '';
 
   xdg.configFile."nvim" = {
-    source = ../vim/nvim;
+    source = ../nvim;
     recursive = true;
     # Aniseed caching breaks when used with symlinks, so we manually remove compiled
     # Fennel code on any change to vim configuration.
