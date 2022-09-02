@@ -201,4 +201,15 @@ return require("packer").startup(function(use)
   }
 
   use { "nathangrigg/vim-beancount" }
+
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = "v2.*",
+    config = function()
+      require("toggleterm").setup {
+        open_mapping = [[<c-\>]],
+        terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
+      }
+    end,
+  }
 end)
