@@ -39,7 +39,5 @@
   ;; Project commands.
   {:p {:name "+project"
        :r [":RustRunnables<CR>" "run main"]
-       :t [":20split term://cargo test<CR>" "run all tests"]}
-   :c {:name "+code"
-       :f [":RustFmt<CR>" "format code in a buffer"]}}
+       :t [":20split term://cargo test<CR>" "run all tests"]}}
   {:prefix "<leader>"})
