@@ -12,4 +12,9 @@
     source = ../rofi;
     recursive = true;
   };
+
+  xdg.configFile."zk" = {
+    source = ../zk;
+    recursive = true;
+  };
 }
