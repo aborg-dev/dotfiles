@@ -195,12 +195,9 @@ return require("packer").startup(function(use)
 
   use {
     "akinsho/toggleterm.nvim",
-    tag = "v2.*",
+    tag = "*",
     config = function()
-      require("toggleterm").setup {
-        open_mapping = [[<c-\>]],
-        terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
-      }
+			require "plugins.toggleterm_config"
     end,
   }
 end)
