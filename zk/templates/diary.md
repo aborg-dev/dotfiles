@@ -1,5 +1,5 @@
 # {{date now "%Y"}}, week {{date now "%W"}}, {{date now "%B %d"}}
-:diary:weekly:
+Tags: #diary, #weekly:
 
 ## Goals for the week
 
