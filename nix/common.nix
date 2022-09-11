@@ -64,6 +64,7 @@
       gl = "git pull";
       gco = "git checkout";
       hms = "home-manager switch";
+      crr = "cargo run --release";
     };
 
     # TODO: Learn how to update versions automatically.
