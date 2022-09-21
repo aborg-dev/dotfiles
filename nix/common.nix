@@ -127,7 +127,7 @@
   '';
 
   # Tmux config.
-  home.file.".tmux.conf".source = ../tmux/tmux.conf.symlink;
+  home.file.".tmux.conf".source = ../tmux/tmux.conf;
 
   fonts.fontconfig.enable = true;
 
