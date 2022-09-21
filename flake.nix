@@ -16,17 +16,17 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       homeConfigurations."akashin@glados" = home-manager.lib.homeManagerConfiguration {
-        # inherit configuration system homeDirectory username pkgs;
         inherit pkgs;
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
         modules = [
           ./nix/glados.nix
         ];
+      };
 
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+      homeConfigurations."akashin@tuxedo" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./nix/tuxedo.nix
+        ];
       };
     };
 }
