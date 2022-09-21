@@ -15,7 +15,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      homeConfigurations.glados = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."akashin@glados" = home-manager.lib.homeManagerConfiguration {
         # inherit configuration system homeDirectory username pkgs;
         inherit pkgs;
 
