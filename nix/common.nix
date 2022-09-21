@@ -94,24 +94,20 @@
 
   home.file.".zshrc".source = ../zsh/zshrc.symlink;
   
-  # programs.neovim = {
-  #   enable = true;
-  #   viAlias = true;
-  #   vimAlias = true;
-  #   vimdiffAlias = true;
-  #   withPython3 = true;
-  #   # Home-manager settings for Neovim always generate "init.vim", but my configuration is in
-  #   # pure lua, so just load it in the generated file.
-  #   extraConfig = builtins.concatStringsSep "\n" [
-  #     ''
-  #     luafile ${builtins.toString ../vim/nvim/main_init.lua}
-  #     ''
-  #   ];
-  # };
-
-  xdg.configFile."nvim/init.vim".text = ''
-    luafile ${builtins.toString ../nvim/main_init.lua}
-    '';
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+    withPython3 = true;
+    # Home-manager settings for Neovim always generate "init.vim", but my configuration is in
+    # pure lua, so just load it in the generated file.
+    extraConfig = builtins.concatStringsSep "\n" [
+      ''
+      luafile ${builtins.toString ../nvim/main_init.lua}
+      ''
+    ];
+  };
 
   xdg.configFile."nvim" = {
     source = ../nvim;
