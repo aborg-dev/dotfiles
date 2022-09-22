@@ -100,13 +100,6 @@
     vimAlias = true;
     vimdiffAlias = true;
     withPython3 = true;
-    # Home-manager settings for Neovim always generate "init.vim", but my configuration is in
-    # pure lua, so just load it in the generated file.
-    extraConfig = builtins.concatStringsSep "\n" [
-      ''
-      luafile ${builtins.toString ../nvim/main_init.lua}
-      ''
-    ];
   };
 
   xdg.configFile."nvim" = {
