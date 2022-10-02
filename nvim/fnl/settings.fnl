@@ -12,8 +12,8 @@
 ; first opened buffer, so we also need to set 'bo'.
 ; See: https://github.com/nanotee/nvim-lua-guide#caveats-3
 (let [indent 2]
-  (set-options ["o" "bo"] "tabstop" 2)
-  (set-options ["o" "bo"] "shiftwidth" 2))
+  (set-options ["o" "bo"] "tabstop" indent)
+  (set-options ["o" "bo"] "shiftwidth" indent))
 
 ; Open vertical splits on the right.
 (set-options ["o"] "splitright" true)
