@@ -232,6 +232,8 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bar {
     position bottom
     swaybar_command waybar
+		mode hide
+		modifier Mod4
 }
 
 #
