@@ -78,6 +78,7 @@
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    color: white;
 }
 
 #battery.warning {
@@ -100,6 +101,7 @@
 
 #clock {
     font-weight: bold;
+    color: white;
 }
 
 #cpu {
@@ -139,6 +141,7 @@
 
 #network {
     /* No styles */
+    color: white;
 }
 
 #network.disconnected {
@@ -151,10 +154,6 @@
 
 #pulseaudio.muted {
     /* No styles */
-}
-
-#custom-spotify {
-    color: rgb(102, 220, 105);
 }
 
 #temperature {
@@ -179,7 +178,7 @@
     padding-bottom: 2px;
     padding-left: 10px;
     padding-right: 10px;
-    color: #888888;
+    color: white;
 }
 
 #workspaces button.focused {
