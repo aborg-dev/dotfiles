@@ -88,6 +88,8 @@ lsp_config.beancount.setup {
 
 lsp_config.pyright.setup {}
 
+lsp_config.clangd.setup {}
+
 vim.api.nvim_create_autocmd(
     { "BufRead", "BufNewFile" },
     { pattern = { "*.bean" }, command = "setlocal foldmethod=marker" }
