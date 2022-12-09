@@ -26,6 +26,8 @@
 (set nvim.wo.number true)
 ; Show visual indicator at given width.
 (set nvim.wo.colorcolumn "100")
+; Text will be formatted to this width.
+(set-options ["o" "bo"] "textwidth" 100)
 
 ; Remember the folds in files.
 (do
