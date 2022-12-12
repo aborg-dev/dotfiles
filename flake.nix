@@ -10,22 +10,28 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
+  outputs = { nixpkgs, home-manager, ... }: {
+      defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
+      defaultPackage.aarch64-darwin = home-manager.defaultPackage.aarch64-darwin;
+
       homeConfigurations."akashin@glados" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
           ./nix/glados.nix
         ];
       };
 
       homeConfigurations."akashin@tuxedo" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
           ./nix/tuxedo.nix
+        ];
+      };
+
+      homeConfigurations."akashin" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        modules = [
+          ./nix/osx.nix
         ];
       };
     };

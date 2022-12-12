@@ -47,7 +47,9 @@
       bind -M insert \cp up-or-search
       bind -M insert \cn down-or-search
       # Add paths to custom-built binaries.
-      fish_add_path ~/.local/bin ~/.yarn/bin
+      fish_add_path ~/.local/bin ~/.yarn/bin ~/.cargo/bin
+      fish_add_path /opt/homebrew/bin
+      theme_gruvbox dark
     '';
 
     shellAliases = {
@@ -125,7 +127,7 @@
   fonts.fontconfig.enable = true;
 
   # Why do I need this?
-  targets.genericLinux.enable = true;
+  # targets.genericLinux.enable = true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
