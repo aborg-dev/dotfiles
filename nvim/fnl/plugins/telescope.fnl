@@ -46,5 +46,9 @@
   ;; Search menu.
   {:s {:name "+search"
        :s [":lua require('telescope.builtin').live_grep()<CR>" "live_grep"]
-       :c [":lua require('telescope.builtin').command_history()<CR>" "command history"]}}
+       :w [":lua require('telescope.builtin').grep_string()<CR>" "grep_string"]
+       :c [":lua require('telescope.builtin').command_history()<CR>" "command history"]
+       :r [":lua require('telescope.builtin').lsp_references()<CR>" "symbol references"]
+       :f [":lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<CR>" "workspace symbols"]
+       :d [":lua require('telescope.builtin').lsp_document_symbols()<CR>" "document symbols"]}}
   {:prefix "<leader>"})
