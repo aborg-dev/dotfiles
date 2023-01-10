@@ -94,6 +94,16 @@
           sha256 = "1hrl22dd0aaszdanhvddvqz3aq40jp9zi2zn0v1hjnf7fx4bgpma";
         };
       }
+      # The colorscheme that I use.
+      {
+        name = "gruvbox";
+        src = pkgs.fetchFromGitHub {
+          owner = "jomik";
+          repo = "fish-gruvbox";
+          rev = "d8c0463518fb95bed8818a1e7fe5da20cffe6fbd";
+          sha256 = "0hkps4ddz99r7m52lwyzidbalrwvi7h2afpawh9yv6a226pjmck7";
+        };
+      }
     ];
   };
 
