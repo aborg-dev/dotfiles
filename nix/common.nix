@@ -127,6 +127,10 @@
   # Tmux config.
   home.file.".tmux.conf".source = ../tmux/tmux.conf;
 
+  programs.zoxide = {
+    enable = true;
+  };
+
   fonts.fontconfig.enable = true;
 
   # Why do I need this?
