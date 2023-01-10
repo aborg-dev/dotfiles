@@ -143,8 +143,8 @@
 
   fonts.fontconfig.enable = true;
 
-  # Why do I need this?
-  # targets.genericLinux.enable = true;
+  # Enables linux-specific env variables, e.g. XDG paths.
+  targets.genericLinux.enable = pkgs.stdenv.isLinux;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
