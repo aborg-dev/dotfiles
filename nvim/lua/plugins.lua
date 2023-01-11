@@ -223,7 +223,7 @@ return require("packer").startup(function(use)
       "kyazdani42/nvim-web-devicons",
     },
     config = function()
-      require("octo").setup()
+      require "plugins.octo_config"
     end,
   }
 end)
