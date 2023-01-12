@@ -8,7 +8,7 @@
 (wk.register
   ;; Github commands.
   {:g {:name "+github"
-       :i [":Octo issues list<CR>" "issues"]
+       :i [":Octo issue list<CR>" "issues"]
        :p [":Octo pr list<CR>" "pull requests"]
-       :a [":Octo actions" "find action"]}}
+       :a [":Octo actions<CR>" "find action"]}}
   {:prefix "<leader>"})
