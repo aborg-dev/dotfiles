@@ -115,6 +115,14 @@
     vimAlias = true;
     vimdiffAlias = true;
     withPython3 = true;
+
+    extraPackages = with pkgs; [
+      tree-sitter
+    ];
+
+    plugins = with pkgs.vimPlugins; [
+      (nvim-treesitter.withPlugins ( plugins: pkgs.tree-sitter.allGrammars ))
+    ];
   };
 
   xdg.configFile."nvim" = {

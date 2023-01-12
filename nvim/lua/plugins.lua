@@ -86,16 +86,6 @@ return require("packer").startup(function(use)
   use "nvim-lua/lsp_extensions.nvim"
 
   use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-    config = function()
-      require "plugins.tree_sitter"
-    end,
-  }
-
-  use { "nvim-treesitter/playground" }
-
-  use {
     "simrat39/rust-tools.nvim",
     ft = { "rust" },
     config = function()
