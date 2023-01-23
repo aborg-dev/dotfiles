@@ -67,6 +67,7 @@
       gd = "git diff";
       ga = "git add";
       gl = "git pull";
+      gs = "git switch";
       gco = "git checkout";
       hms = "home-manager switch";
       crr = "cargo run --release";
