@@ -1,4 +1,4 @@
-# {{date -d now +"%Y"}}, week {{date -d now +"%W"}}, {{date -d now +"%B %d"}}
+# {{format-date now '%Y'}}, week {{format-date now '%W'}}, {{format-date now '%B %d'}}
 Tags: #diary, #weekly
 
 ## Goals for the week

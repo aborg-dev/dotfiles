@@ -71,15 +71,14 @@ template = "default.md"
 [group.diary]
 #paths = ["<DIR1>", "<DIR2>"]
 [group.diary.note]
-filename = "{{date now '%Y'}}/{{date now '%W'}}"
-# filename = "2022/{{date now '%W'}}"
+filename = "{{format-date now '%Y'}}/{{format-date now '%W'}}"
 template = "diary.md"
 #[group."<NAME>".extra]
 #key = "value"
 
 [group.roam]
 [group.roam.note]
-filename = "{{date now 'timestamp'}}-{{slug title}}"
+filename = "{{format-date now 'timestamp'}}-{{slug title}}"
 template = "default.md"
 
 # MARKDOWN SETTINGS

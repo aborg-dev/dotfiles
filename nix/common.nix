@@ -146,6 +146,11 @@
   # Tmux config.
   home.file.".tmux.conf".source = ../tmux/tmux.conf;
 
+  xdg.configFile."zk" = {
+    source = ../zk;
+    recursive = true;
+  };
+
   programs.zoxide = {
     enable = true;
   };
