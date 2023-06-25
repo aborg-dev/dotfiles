@@ -86,6 +86,9 @@ lsp_config.pyright.setup {}
 
 lsp_config.clangd.setup {}
 
+-- lsp_config.gdscript.setup{capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())}
+lsp_config.gdscript.setup{}
+
 vim.api.nvim_create_autocmd(
   { "BufRead", "BufNewFile" },
   { pattern = { "*.bean" }, command = "setlocal foldmethod=marker" }

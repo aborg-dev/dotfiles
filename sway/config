@@ -85,7 +85,7 @@ bindsym $mod+Escape exec swaylock -f -F -c 000000
 
     # Start your launcher
     bindsym $mod+d exec $menu
-		
+
 		# Find files
     bindsym alt+d exec $menu_files
 
@@ -109,22 +109,14 @@ bindsym $mod+Escape exec swaylock -f -F -c 000000
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
-
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
+		# Swap containers.
+		bindsym $mod+n exec swaymsg swap container with mark center
+		bindsym $mod+c exec swaymsg -- mark --toggle center
 #
 # Workspaces:
 #
@@ -154,8 +146,8 @@ bindsym $mod+Escape exec swaylock -f -F -c 000000
     # We just use 1-10 as the default.
 
 		# Move focused window
-		bindsym $mod+Control+h move workspace to output left
-		bindsym $mod+Control+l move workspace to output right
+		# bindsym $mod+Control+h move workspace to output left
+		# bindsym $mod+Control+l move workspace to output right
 # Layout stuff:
 #
     # You can "split" the current object of your focus with
@@ -191,7 +183,7 @@ bindsym $mod+Escape exec swaylock -f -F -c 000000
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show, resize set 960 780, move position center
+    bindsym $mod+minus scratchpad show, resize set 2000 1500, move position center
 #
 # Resizing containers:
 #
@@ -250,9 +242,19 @@ input * {
 font pango:Hack 11
 
 #
+# Cursor settings:
+#
+seat seat0 xcursor_theme default 48
+
+#
 # Visual config:
 #
 # Removes the title bar of each window.
 default_border pixel 1
+
+# First created window will have gaps on both sides.
+# smart_gaps inverse_outer
+# gaps horizontal 400
+# gaps vertical 50
 
 include /etc/sway/config.d/*

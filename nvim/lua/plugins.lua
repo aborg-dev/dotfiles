@@ -61,7 +61,7 @@ return require("packer").startup(function(use)
   -- Auto-completion plugin.
   use {
     "hrsh7th/nvim-cmp",
-    ft = { "lua", "python", "fennel", "cpp", "rust", "go", "markdown", "beancount" },
+    ft = { "lua", "python", "fennel", "cpp", "rust", "go", "markdown", "beancount", "gdscript" },
     config = function()
       require "plugin_settings.nvim_cmp"
     end,
@@ -215,6 +215,21 @@ return require("packer").startup(function(use)
     },
     config = function()
       require "plugins.octo_config"
+    end,
+  }
+
+  use {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup {}
+    end,
+  }
+
+  use {
+    "habamax/vim-godot",
+    config = function()
+      vim.g.godot_executable = "/usr/bin/godot4"
+      require "plugins.godot_config"
     end,
   }
 end)
