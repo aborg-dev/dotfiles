@@ -28,7 +28,7 @@ mason.setup {
 }
 
 mason_lspconfig.setup {
-	ensure_installed = { "lua_ls" }
+  ensure_installed = { "lua_ls" }
 }
 
 -- Customize the options passed to the server.
@@ -57,25 +57,16 @@ lsp_config.lua_ls.setup {
       telemetry = {
         enable = false,
       },
+      format = {
+        enable = true,
+        defaultConfig = {
+          indent_style = "space",
+          indent_size = "2",
+        }
+      },
     },
   },
 }
-
--- lsp_config.efm.setup {
---   init_options = { documentFormatting = true },
---   filetypes = { "lua" },
---   settings = {
---     rootMarkers = { ".git/" },
---     languages = {
---       lua = {
---         {
---           formatCommand = "stylua --config-path=$HOME/.config/stylua/stylua.toml -",
---           formatStdin = true,
---         },
---       },
---     },
---   },
--- }
 
 lsp_config.gopls.setup {
   cmd = { "gopls", "serve" },
@@ -96,8 +87,8 @@ lsp_config.pyright.setup {}
 lsp_config.clangd.setup {}
 
 vim.api.nvim_create_autocmd(
-    { "BufRead", "BufNewFile" },
-    { pattern = { "*.bean" }, command = "setlocal foldmethod=marker" }
+  { "BufRead", "BufNewFile" },
+  { pattern = { "*.bean" }, command = "setlocal foldmethod=marker" }
 )
 
 vim.api.nvim_create_autocmd("User", {
@@ -140,11 +131,11 @@ vim.api.nvim_create_autocmd("User", {
     -- Move to the next diagnostic
     bufmap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
 
-    bufmap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<cr>")
+    bufmap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.format()<cr>")
   end,
 })
 
--- LSP Diagnostics Options Setup 
+-- LSP Diagnostics Options Setup
 local sign = function(opts)
   vim.fn.sign_define(opts.name, {
     texthl = opts.name,
@@ -153,23 +144,23 @@ local sign = function(opts)
   })
 end
 
-sign({name = 'DiagnosticSignError', text = ''})
-sign({name = 'DiagnosticSignWarn', text = ''})
-sign({name = 'DiagnosticSignHint', text = ''})
-sign({name = 'DiagnosticSignInfo', text = ''})
+sign({ name = 'DiagnosticSignError', text = '' })
+sign({ name = 'DiagnosticSignWarn', text = '' })
+sign({ name = 'DiagnosticSignHint', text = '' })
+sign({ name = 'DiagnosticSignInfo', text = '' })
 
 vim.diagnostic.config({
-    virtual_text = false,
-    signs = true,
-    update_in_insert = true,
-    underline = true,
-    severity_sort = false,
-    float = {
-        border = 'rounded',
-        source = 'always',
-        header = '',
-        prefix = '',
-    },
+  virtual_text = false,
+  signs = true,
+  update_in_insert = true,
+  underline = true,
+  severity_sort = false,
+  float = {
+    border = 'rounded',
+    source = 'always',
+    header = '',
+    prefix = '',
+  },
 })
 
 vim.cmd([[
