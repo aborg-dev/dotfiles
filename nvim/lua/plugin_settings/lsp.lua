@@ -1,4 +1,5 @@
-local lsp_installer = require "nvim-lsp-installer"
+local mason = require "mason"
+local mason_lspconfig = require "mason-lspconfig"
 local lsp_config = require "lspconfig"
 local util = require "lspconfig/util"
 
@@ -15,7 +16,7 @@ lsp_config.util.default_config = vim.tbl_deep_extend(
   lsp_defaults
 )
 
-lsp_installer.setup {
+mason.setup {
   automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
   ui = {
     icons = {
@@ -24,6 +25,10 @@ lsp_installer.setup {
       server_uninstalled = "✗",
     },
   },
+}
+
+mason_lspconfig.setup {
+	ensure_installed = { "lua_ls" }
 }
 
 -- Customize the options passed to the server.
@@ -56,21 +61,21 @@ lsp_config.lua_ls.setup {
   },
 }
 
-lsp_config.efm.setup {
-  init_options = { documentFormatting = true },
-  filetypes = { "lua" },
-  settings = {
-    rootMarkers = { ".git/" },
-    languages = {
-      lua = {
-        {
-          formatCommand = "stylua --config-path=$HOME/.config/stylua/stylua.toml -",
-          formatStdin = true,
-        },
-      },
-    },
-  },
-}
+-- lsp_config.efm.setup {
+--   init_options = { documentFormatting = true },
+--   filetypes = { "lua" },
+--   settings = {
+--     rootMarkers = { ".git/" },
+--     languages = {
+--       lua = {
+--         {
+--           formatCommand = "stylua --config-path=$HOME/.config/stylua/stylua.toml -",
+--           formatStdin = true,
+--         },
+--       },
+--     },
+--   },
+-- }
 
 lsp_config.gopls.setup {
   cmd = { "gopls", "serve" },

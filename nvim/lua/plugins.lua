@@ -22,7 +22,7 @@ return require("packer").startup(function(use)
   -- Tool for fuzzy search over lists.
   use {
     "nvim-telescope/telescope.nvim",
-    requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+    requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" }, { "kyazdani42/nvim-web-devicons" }},
     config = function()
       require "plugins.telescope"
     end,
@@ -74,14 +74,27 @@ return require("packer").startup(function(use)
   use { "hrsh7th/cmp-calc", after = "cmp-path" }
   use { "hrsh7th/cmp-cmdline", after = "cmp-calc" }
 
+	use {
+		"jose-elias-alvarez/null-ls.nvim",
+		config = function()
+			require("null-ls").setup({
+    sources = {
+        require("null-ls").builtins.formatting.stylua,
+    },
+}
+			)
+		end,
+	}
+
   -- Settings for commonly used LSP servers for different languages.
   use "neovim/nvim-lspconfig"
-  use {
-    "williamboman/nvim-lsp-installer",
-    config = function()
-      require "plugin_settings.lsp"
-    end,
-  }
+	use "williamboman/mason.nvim"
+	use {
+		"williamboman/mason-lspconfig.nvim",
+		config = function()
+			require "plugin_settings.lsp"
+		end,
+	}
   -- Used for inline type annotation in Rust.
   use "nvim-lua/lsp_extensions.nvim"
 
