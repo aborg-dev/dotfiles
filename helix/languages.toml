@@ -1,0 +1,9 @@
+[[language]]
+name = "rust"
+auto-format = true
+
+[[language]]
+name = "markdown"
+
+[[language]]
+name = "lua"

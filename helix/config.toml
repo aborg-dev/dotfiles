@@ -1,0 +1,22 @@
+theme = "gruvbox"
+
+[editor]
+rulers = [100]
+
+# Show a bar cursor in insert mode, a block cursor in normal mode, and
+# underline cursor in select mode.
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.insert]
+k = { j = "normal_mode" } # Maps `jk` to exit insert mode
+
+[keys.normal]
+A-x = "extend_to_line_bounds"
+X = ["extend_line_up", "extend_to_line_bounds"]
+
+[keys.select]
+A-x = "extend_to_line_bounds"
+X = ["extend_line_up", "extend_to_line_bounds"]

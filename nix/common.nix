@@ -151,6 +151,11 @@
     recursive = true;
   };
 
+  xdg.configFile."helix" = {
+    source = ../helix;
+    recursive = true;
+  };
+
   programs.zoxide = {
     enable = true;
   };
