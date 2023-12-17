@@ -21,8 +21,9 @@
     fd
     bat
     ranger
-    # Font that I'm using in my terminal.
+    # Fonts that I'm using in my terminal.
     hack-font
+    jetbrains-mono
     zk
   ];
 
