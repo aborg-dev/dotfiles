@@ -239,7 +239,7 @@ input * {
 #
 # Font settings:
 #
-font pango:Hack 11
+font pango:JetBrainsMono 11
 
 #
 # Cursor settings:

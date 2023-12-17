@@ -1,4 +1,4 @@
 configuration {
-  font: "hack 12";
+  font: "jetbrainsmono 12";
 }
 @theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
