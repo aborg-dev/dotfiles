@@ -1,9 +1,8 @@
-(module zk_config
-   {autoload {wk which-key}
-    autoload {zk zk}})
+(local wk (require :which-key))
+(local zk (require :zk))
 
 ;; Copied from lsp.lua as I haven't found a way to reuse it.
-(defn- on_attach [client bufnr]
+(fn on_attach [client bufnr]
   (vim.api.nvim_exec_autocmds "User" { :pattern "LspAttached" }))
 
 (zk.setup {

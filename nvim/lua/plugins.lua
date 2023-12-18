@@ -95,7 +95,7 @@ return require("lazy").setup({
   -- Actual snippets for multiple programming languages.
 	"honza/vim-snippets",
 
-	-- "nvim-treesitter/nvim-treesitter",
+	"nvim-treesitter/nvim-treesitter",
 
   -- Orgmode in vim, finally!
   {
@@ -149,7 +149,7 @@ return require("lazy").setup({
   {
     "mickael-menu/zk-nvim",
     config = function()
-      -- require "plugins.zk_config"
+      require "plugins.zk_config"
     end,
   },
 
