@@ -1,7 +1,6 @@
 ; Enable Rust code commands.
-(module rust
-  {autoload {wk which-key}
-   autoload {rt rust-tools}})
+(local rt (require :rust-tools))
+(local wk (require :which-key))
 
 (rt.setup {
   :tools {
@@ -32,7 +31,7 @@
   }
 })
 
-(nvim.set_keymap :n :<localleader>ef ":RustRun<CR>" {:noremap true :silent true})
+(vim.api.nvim_set_keymap :n :<localleader>ef ":RustRun<CR>" {:noremap true :silent true})
 
 (wk.register
   ;; Project commands.
