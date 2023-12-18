@@ -1,7 +1,6 @@
 (module tree_sitter
   {autoload {tree_sitter_configs nvim-treesitter.configs}
    autoload {tree_sitter_parsers nvim-treesitter.parsers}
-   autoload {nvim aniseed.nvim}
    autoload {nvim_treesitter nvim-treesitter}})
 
 (tree_sitter_configs.setup {

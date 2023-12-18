@@ -1,6 +1,5 @@
 (module diary
-  {autoload {nvim aniseed.nvim}
-   autoload {wk which-key}
+  {autoload {wk which-key}
    autoload {octo octo}})
 
 (octo.setup {})

@@ -1,7 +1,6 @@
 ; Enable Godot code commands.
 (module godot_config
-  {autoload {nvim aniseed.nvim}
-   autoload {wk which-key}})
+  {autoload {wk which-key}})
 
 (wk.register
   ;; Project commands.

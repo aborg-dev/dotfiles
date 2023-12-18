@@ -1,6 +1,5 @@
 (module zk_config
-   {autoload {nvim aniseed.nvim}
-    autoload {wk which-key}
+   {autoload {wk which-key}
     autoload {zk zk}})
 
 ;; Copied from lsp.lua as I haven't found a way to reuse it.

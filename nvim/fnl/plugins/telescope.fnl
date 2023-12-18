@@ -1,8 +1,6 @@
-(module keymap
-  {autoload {nvim aniseed.nvim}
-   autoload {wk which-key}
-   autoload {telescope telescope}
-   autoload {actions telescope.actions}})
+(local wk (require :which-key))
+(local actions (require :telescope.actions))
+(local telescope (require :telescope))
 
 (telescope.setup {
   ;; This is global remapping across all pickers.

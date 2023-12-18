@@ -1,8 +1,4 @@
 ; Enable REPL-like evaluation for Python files.
-(module pyrepl
-  {autoload {nvim aniseed.nvim}
-   autoload {wk which-key}})
-
 (defn init []
    ;; Evaluates current file.
    ;; TODO: Derive Python version from the file shebang.

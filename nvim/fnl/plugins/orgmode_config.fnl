@@ -1,6 +1,5 @@
 (module orgmode_config
-  {autoload {nvim aniseed.nvim}
-   autoload {wk which-key}
+  {autoload {wk which-key}
    autoload {orgmode orgmode}})
 
 (orgmode.setup_ts_grammar)

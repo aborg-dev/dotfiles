@@ -1,6 +1,5 @@
 (module toggleterm_config
-   {autoload {nvim aniseed.nvim}
-    autoload {tt toggleterm}})
+   {autoload {tt toggleterm}})
 
 (tt.setup {
   :open_mapping :<C-t>

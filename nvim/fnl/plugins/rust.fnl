@@ -1,7 +1,6 @@
 ; Enable Rust code commands.
 (module rust
-  {autoload {nvim aniseed.nvim}
-   autoload {wk which-key}
+  {autoload {wk which-key}
    autoload {rt rust-tools}})
 
 (rt.setup {

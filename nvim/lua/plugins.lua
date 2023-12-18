@@ -29,12 +29,8 @@ return require("lazy").setup({
   "tpope/vim-fugitive",
 
   -- Lisp-y configuration.
-	{ "Olical/aniseed", lazy = true },
-
-  {
-    "Olical/conjure",
-    ft = { "fennel" },
-  },
+	{ "Olical/nfnl", ft = "fennel" },
+  { "Olical/conjure", ft = "fennel" },
 
   -- Comment lines with 'gcc' and 'gc{motion}.
   {
@@ -97,7 +93,7 @@ return require("lazy").setup({
     "rcarriga/nvim-dap-ui",
     dependencies = { "mfussenegger/nvim-dap" },
     config = function()
-      require "plugins.dap_config"
+      -- require "plugins.dap_config"
     end,
   },
 
@@ -115,7 +111,7 @@ return require("lazy").setup({
   {
     "nvim-orgmode/orgmode",
     config = function()
-      require "plugins.orgmode_config"
+      -- require "plugins.orgmode_config"
     end,
   },
 
@@ -163,7 +159,7 @@ return require("lazy").setup({
   {
     "mickael-menu/zk-nvim",
     config = function()
-      require "plugins.zk_config"
+      -- require "plugins.zk_config"
     end,
   },
 
@@ -171,7 +167,7 @@ return require("lazy").setup({
     "dkarter/bullets.vim",
     config = function()
       vim.g.bullets_set_mappings = 0
-      require "plugins.bullets_config"
+      -- require "plugins.bullets_config"
     end,
   },
 
@@ -181,7 +177,7 @@ return require("lazy").setup({
     "akinsho/toggleterm.nvim",
 		version = "*",
     config = function()
-      require "plugins.toggleterm_config"
+      -- require "plugins.toggleterm_config"
     end,
   },
 
@@ -207,7 +203,7 @@ return require("lazy").setup({
       "kyazdani42/nvim-web-devicons",
     },
     config = function()
-      require "plugins.octo_config"
+      -- require "plugins.octo_config"
     end,
   },
 
@@ -221,8 +217,8 @@ return require("lazy").setup({
   {
     "habamax/vim-godot",
     config = function()
-      vim.g.godot_executable = "/usr/bin/godot4"
-      require "plugins.godot_config"
+      -- vim.g.godot_executable = "/usr/bin/godot4"
+      -- require "plugins.godot_config"
     end,
   },
 })

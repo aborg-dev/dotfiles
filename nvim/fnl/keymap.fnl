@@ -1,14 +1,12 @@
 ; This file contains global mappings that don't belong to any plugin.
-(module keymap
-  {autoload {nvim aniseed.nvim}
-   autoload {wk which-key}})
+(local wk (require :which-key))
 
 ;; These keys serve as a prefix in many commands.
-(set nvim.g.mapleader " ")
-(set nvim.g.maplocalleader ",")
+(set vim.g.mapleader " ")
+(set vim.g.maplocalleader ",")
 
 ;; Exit insert mode without going all the way to escape key!
-(nvim.set_keymap :i :kj :<esc> {:noremap true :silent true})
+(vim.api.nvim_set_keymap :i :kj :<esc> {:noremap true :silent true})
 
 ;; Bindings to copy and paste to a named register.
 ;; When you yank without any modifier, text is placed into default register.
@@ -20,20 +18,20 @@
 ;; so the text yanked this way can be pasted in other applications.
 (each [_ mode (ipairs [:v :n])]
   (do
-    (nvim.set_keymap mode :<localleader>y "\"+y" {:noremap true :silent true})
-    (nvim.set_keymap mode :<localleader>p "\"+p" {:noremap true :silent true})))
+    (vim.api.nvim_set_keymap mode :<localleader>y "\"+y" {:noremap true :silent true})
+    (vim.api.nvim_set_keymap mode :<localleader>p "\"+p" {:noremap true :silent true})))
 
 ;; Faster file saving.
-(nvim.set_keymap :n :<localleader>w ":w<CR>" {:noremap true :silent true})
+(vim.api.nvim_set_keymap :n :<localleader>w ":w<CR>" {:noremap true :silent true})
 
 ;; Jumping out of terminal window to other vim splits.
-(nvim.set_keymap :t :<C-h> :<C-\><C-n><C-w>h {:noremap true :silent true})
-(nvim.set_keymap :t :<C-j> :<C-\><C-n><C-w>j {:noremap true :silent true})
-(nvim.set_keymap :t :<C-k> :<C-\><C-n><C-w>k {:noremap true :silent true})
-(nvim.set_keymap :t :<C-l> :<C-\><C-n><C-w>l {:noremap true :silent true})
+(vim.api.nvim_set_keymap :t :<C-h> :<C-\><C-n><C-w>h {:noremap true :silent true})
+(vim.api.nvim_set_keymap :t :<C-j> :<C-\><C-n><C-w>j {:noremap true :silent true})
+(vim.api.nvim_set_keymap :t :<C-k> :<C-\><C-n><C-w>k {:noremap true :silent true})
+(vim.api.nvim_set_keymap :t :<C-l> :<C-\><C-n><C-w>l {:noremap true :silent true})
 
 ;; Toggle fold with tab.
-(nvim.set_keymap :n :<Tab> :za {:noremap true :silent true})
+(vim.api.nvim_set_keymap :n :<Tab> :za {:noremap true :silent true})
 
 ;; Help menu.
 (wk.register 

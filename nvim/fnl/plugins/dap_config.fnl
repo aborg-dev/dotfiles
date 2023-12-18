@@ -1,6 +1,5 @@
 (module dap_config
-  {autoload {nvim aniseed.nvim}
-   autoload {wk which-key}
+  {autoload {wk which-key}
    autoload {dapui dapui}
    autoload {dap dap}})
 
