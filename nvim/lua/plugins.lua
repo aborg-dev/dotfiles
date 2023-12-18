@@ -87,16 +87,6 @@ return require("lazy").setup({
     end,
   },
 
-  -- Debug adaptor protocol.
-  "mfussenegger/nvim-dap",
-  {
-    "rcarriga/nvim-dap-ui",
-    dependencies = { "mfussenegger/nvim-dap" },
-    config = function()
-      -- require "plugins.dap_config"
-    end,
-  },
-
 	"LnL7/vim-nix",
 
   -- Engine for parsing snippets.
