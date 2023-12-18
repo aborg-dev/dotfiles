@@ -1,5 +1,4 @@
-(module toggleterm_config
-   {autoload {tt toggleterm}})
+(local tt (require :toggleterm))
 
 (tt.setup {
   :open_mapping :<C-t>
