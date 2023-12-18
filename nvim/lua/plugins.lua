@@ -26,7 +26,12 @@ return require("lazy").setup({
   },
 
   -- Vim git client.
-  "tpope/vim-fugitive",
+  {
+    "tpope/vim-fugitive",
+    config = function()
+      require "plugins.fugitive"
+    end,
+  },
 
   -- Lisp-y configuration.
   { "Olical/nfnl", ft = "fennel" },
