@@ -101,7 +101,7 @@ return require("lazy").setup({
   {
     "nvim-orgmode/orgmode",
     config = function()
-      -- require "plugins.orgmode_config"
+      require "plugins.orgmode_config"
     end,
   },
 
