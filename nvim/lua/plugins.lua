@@ -196,18 +196,6 @@ return require("lazy").setup({
   "tpope/vim-unimpaired",
 
   {
-    "pwntester/octo.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-      "kyazdani42/nvim-web-devicons",
-    },
-    config = function()
-      -- require "plugins.octo_config"
-    end,
-  },
-
-  {
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup {}
