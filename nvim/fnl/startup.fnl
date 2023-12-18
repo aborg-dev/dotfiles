@@ -2,4 +2,4 @@
 (require :plugins)
 (require :settings)
 (require :keymap)
-; (require :pyrepl)
+(require :pyrepl)
