@@ -105,7 +105,7 @@ return require("lazy").setup({
   -- Actual snippets for multiple programming languages.
 	"honza/vim-snippets",
 
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	-- "nvim-treesitter/nvim-treesitter",
 
   -- Orgmode in vim, finally!
   {

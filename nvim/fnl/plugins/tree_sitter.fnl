@@ -1,11 +1,9 @@
-(module tree_sitter
-  {autoload {tree_sitter_configs nvim-treesitter.configs}
-   autoload {tree_sitter_parsers nvim-treesitter.parsers}
-   autoload {nvim_treesitter nvim-treesitter}})
+(local tree_sitter_configs (require :nvim-treesitter.configs))
+(require :nvim-treesitter.parsers)
 
 (tree_sitter_configs.setup {
   ;; One of "all", "maintained" (parsers with maintainers), or a list of languages.
-  :ensure_installed ["toml" "rust" "org"]
+  :ensure_installed ["toml" "rust" "org" "fennel"]
   ;; List of parsers to ignore installing.
   :ignore_install []
   ;; Extensions to set up.
