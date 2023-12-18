@@ -60,12 +60,12 @@ return require("lazy").setup({
     end,
   },
 
-  { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
-  { "hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp" },
-  { "hrsh7th/cmp-buffer", after = "cmp-nvim-lua" },
-  { "hrsh7th/cmp-path", after = "cmp-buffer" },
-  { "hrsh7th/cmp-calc", after = "cmp-path" },
-  { "hrsh7th/cmp-cmdline", after = "cmp-calc" },
+  { "hrsh7th/cmp-nvim-lsp", dependencies = "nvim-cmp" },
+  { "hrsh7th/cmp-nvim-lua", dependencies = "cmp-nvim-lsp" },
+  { "hrsh7th/cmp-buffer", dependencies = "cmp-nvim-lua" },
+  { "hrsh7th/cmp-path", dependencies = "cmp-buffer" },
+  { "hrsh7th/cmp-calc", dependencies = "cmp-path" },
+  { "hrsh7th/cmp-cmdline", dependencies = "cmp-calc" },
 
   -- Settings for commonly used LSP servers for different languages.
   "neovim/nvim-lspconfig",
