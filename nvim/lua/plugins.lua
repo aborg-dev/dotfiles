@@ -213,12 +213,4 @@ return require("lazy").setup({
       require("nvim-autopairs").setup {}
     end,
   },
-
-  {
-    "habamax/vim-godot",
-    config = function()
-      -- vim.g.godot_executable = "/usr/bin/godot4"
-      -- require "plugins.godot_config"
-    end,
-  },
 })
