@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  treesitterWithGrammars = (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars));
+in
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -129,21 +132,21 @@
     vimdiffAlias = true;
     withPython3 = true;
 
-    extraPackages = with pkgs; [
-      tree-sitter
-    ];
-
-    plugins = with pkgs.vimPlugins; [
-      (nvim-treesitter.withPlugins ( plugins: pkgs.tree-sitter.allGrammars ))
+    plugins = [
+      treesitterWithGrammars
     ];
   };
 
   xdg.configFile."nvim" = {
     source = ../nvim;
     recursive = true;
-    # Aniseed caching breaks when used with symlinks, so we manually remove compiled
-    # Fennel code on any change to vim configuration.
-    onChange = "rm -rf ~/.config/nvim/lua/.compiled-lua";
+  };
+
+  # Treesitter is configured as a locally developed module in lazy.nvim
+  # we hardcode a symlink here so that we can refer to it in our lazy config
+  home.file."./.local/share/nvim/nix/nvim-treesitter/" = {
+    recursive = true;
+    source = treesitterWithGrammars;
   };
 
   xdg.configFile."stylua/stylua.toml".text = ''

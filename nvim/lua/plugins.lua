@@ -29,7 +29,7 @@ return require("lazy").setup({
   "tpope/vim-fugitive",
 
   -- Lisp-y configuration.
-	{ "Olical/nfnl", ft = "fennel" },
+  { "Olical/nfnl", ft = "fennel" },
   { "Olical/conjure", ft = "fennel" },
 
   -- Comment lines with 'gcc' and 'gc{motion}.
@@ -87,21 +87,28 @@ return require("lazy").setup({
     end,
   },
 
-	"LnL7/vim-nix",
+  "LnL7/vim-nix",
 
   -- Engine for parsing snippets.
-	"SirVer/ultisnips",
+  "SirVer/ultisnips",
 
   -- Actual snippets for multiple programming languages.
-	"honza/vim-snippets",
+  "honza/vim-snippets",
 
-	"nvim-treesitter/nvim-treesitter",
+  {
+    "nvim-treesitter/nvim-treesitter",
+    dev = true,
+    event = { "BufReadPost", "BufNewFile" },
+    config = function()
+      require "plugins.tree_sitter"
+    end,
+  },
 
   -- Orgmode in vim, finally!
   {
     "nvim-orgmode/orgmode",
     config = function()
-      require "plugins.orgmode_config"
+      -- require "plugins.orgmode_config"
     end,
   },
 
@@ -165,7 +172,7 @@ return require("lazy").setup({
 
   {
     "akinsho/toggleterm.nvim",
-		version = "*",
+    version = "*",
     config = function()
       require "plugins.toggleterm_config"
     end,
@@ -191,4 +198,9 @@ return require("lazy").setup({
       require("nvim-autopairs").setup {}
     end,
   },
+}, {
+  dev = {
+    path = "~/.local/share/nvim/nix",
+    fallback = false,
+  }
 })

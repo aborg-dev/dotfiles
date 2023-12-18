@@ -1,16 +1,13 @@
-(local tree_sitter_configs (require :nvim-treesitter.configs))
-(require :nvim-treesitter.parsers)
+(local ts (require :nvim-treesitter.configs))
 
-(tree_sitter_configs.setup {
+(ts.setup {
   ;; One of "all", "maintained" (parsers with maintainers), or a list of languages.
-  :ensure_installed ["toml" "rust" "org" "fennel"]
+  :ensure_installed ["toml" "rust" "org" "fennel" "lua"]
   ;; List of parsers to ignore installing.
   :ignore_install []
   ;; Extensions to set up.
   :highlight {
     :enable true
-    ;; List of language that will be disabled.
-    :disable []
     :additional_vim_regex_highlighting ["org"]}})
 
 ; TODO: Find a way to enable this only to the languages I need.
