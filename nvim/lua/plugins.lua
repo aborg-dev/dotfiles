@@ -1,133 +1,126 @@
-return require("packer").startup(function(use)
-  -- Packer can manage itself.
-  use { "wbthomason/packer.nvim", opt = true }
-
+return require("lazy").setup({
   -- Visual plugins.
-  use "morhetz/gruvbox"
+  "morhetz/gruvbox",
   -- Tool for profiling vim startup time.
   -- Use :StartupTime to run it.
-  use "tweekmonster/startuptime.vim"
+  "tweekmonster/startuptime.vim",
 
   -- Tool to set up keybindings and visually see them.
   -- Most of the plugins I use expose their shortcuts in a structured hierarchical
   -- manner using this plugin. The configuration is incrementally extended in
   -- the plugin-specific files.
-  use {
+  {
     "folke/which-key.nvim",
     config = function()
       require "plugins.which_key"
     end,
-  }
+  },
 
   -- Tool for fuzzy search over lists.
-  use {
+  {
     "nvim-telescope/telescope.nvim",
-    requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" }, { "kyazdani42/nvim-web-devicons" } },
+    dependencies = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" }, { "kyazdani42/nvim-web-devicons" } },
     config = function()
       require "plugins.telescope"
     end,
-  }
+  },
 
   -- Vim git client.
-  use "tpope/vim-fugitive"
+  "tpope/vim-fugitive",
 
   -- Lisp-y configuration.
-  use { "Olical/aniseed", opt = true }
+	{ "Olical/aniseed", lazy = true },
 
-  use {
+  {
     "Olical/conjure",
     ft = { "fennel" },
-  }
+  },
 
   -- Comment lines with 'gcc' and 'gc{motion}.
-  use {
+  {
     "terrortylor/nvim-comment",
     config = function()
       require("nvim_comment").setup()
     end,
-  }
+  },
 
   -- Add shortcuts to jump between vim and tmux splits.
-  use "christoomey/vim-tmux-navigator"
+  "christoomey/vim-tmux-navigator",
 
   -- Quickly jump within the buffer with s{a}{b} and S{a}{b}.
-  use {
+  {
     "justinmk/vim-sneak",
     config = function()
       vim.g["sneak#label"] = 1
     end,
-  }
+  },
 
   -- Auto-completion plugin.
-  use {
+  {
     "hrsh7th/nvim-cmp",
     ft = { "lua", "python", "fennel", "cpp", "rust", "go", "markdown", "beancount", "gdscript" },
     config = function()
       require "plugin_settings.nvim_cmp"
     end,
-  }
+  },
 
-  use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
-  use { "hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp" }
-  use { "hrsh7th/cmp-buffer", after = "cmp-nvim-lua" }
-  use { "hrsh7th/cmp-path", after = "cmp-buffer" }
-  use { "hrsh7th/cmp-calc", after = "cmp-path" }
-  use { "hrsh7th/cmp-cmdline", after = "cmp-calc" }
+  { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
+  { "hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp" },
+  { "hrsh7th/cmp-buffer", after = "cmp-nvim-lua" },
+  { "hrsh7th/cmp-path", after = "cmp-buffer" },
+  { "hrsh7th/cmp-calc", after = "cmp-path" },
+  { "hrsh7th/cmp-cmdline", after = "cmp-calc" },
 
   -- Settings for commonly used LSP servers for different languages.
-  use "neovim/nvim-lspconfig"
-  use "williamboman/mason.nvim"
-  use {
+  "neovim/nvim-lspconfig",
+  "williamboman/mason.nvim",
+  {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require "plugin_settings.lsp"
     end,
-  }
+  },
   -- Used for inline type annotation in Rust.
-  use "nvim-lua/lsp_extensions.nvim"
+  "nvim-lua/lsp_extensions.nvim",
 
-  use {
+  {
     "simrat39/rust-tools.nvim",
     ft = { "rust" },
     config = function()
       require "plugins.rust"
     end,
-  }
+  },
 
   -- Debug adaptor protocol.
-  use "mfussenegger/nvim-dap"
-  use {
+  "mfussenegger/nvim-dap",
+  {
     "rcarriga/nvim-dap-ui",
-    requires = { "mfussenegger/nvim-dap" },
+    dependencies = { "mfussenegger/nvim-dap" },
     config = function()
       require "plugins.dap_config"
     end,
-  }
+  },
 
-  use {
-    "LnL7/vim-nix",
-  }
+	"LnL7/vim-nix",
 
   -- Engine for parsing snippets.
-  use {
-    "SirVer/ultisnips",
-  }
+	"SirVer/ultisnips",
 
   -- Actual snippets for multiple programming languages.
-  use {
-    "honza/vim-snippets",
-  }
+	"honza/vim-snippets",
+
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
   -- Orgmode in vim, finally!
-  use {
+  {
     "nvim-orgmode/orgmode",
     config = function()
       require "plugins.orgmode_config"
     end,
-  }
+  },
 
   -- Nicer bullet symbols for org headings.
-  use {
+  {
     "akinsho/org-bullets.nvim",
     config = function()
       require("org-bullets").setup {
@@ -136,22 +129,22 @@ return require("packer").startup(function(use)
         },
       }
     end,
-  }
+  },
 
-  use {
+  {
     "sampsyo/bril",
     ft = { "bril" },
     rtp = "bril-vim",
-  }
+  },
 
-  use {
+  {
     "lewis6991/gitsigns.nvim",
     config = function()
       require("gitsigns").setup()
     end,
-  }
+  },
 
-  use {
+  {
     "jpalardy/vim-slime",
     config = function()
       vim.g.slime_target = "tmux"
@@ -165,36 +158,36 @@ return require("packer").startup(function(use)
       vim.g.slime_python_ipython = 1
       vim.g.slime_cell_delimiter = "#%%"
     end,
-  }
+  },
 
-  use {
+  {
     "mickael-menu/zk-nvim",
     config = function()
       require "plugins.zk_config"
     end,
-  }
+  },
 
-  use {
+  {
     "dkarter/bullets.vim",
     config = function()
       vim.g.bullets_set_mappings = 0
       require "plugins.bullets_config"
     end,
-  }
+  },
 
-  use { "nathangrigg/vim-beancount" }
+  "nathangrigg/vim-beancount",
 
-  use {
+  {
     "akinsho/toggleterm.nvim",
-    tag = "*",
+		version = "*",
     config = function()
       require "plugins.toggleterm_config"
     end,
-  }
+  },
 
-  use {
+  {
     "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
+    dependencies = "kyazdani42/nvim-web-devicons",
     config = function()
       require("trouble").setup {
         -- your configuration comes here
@@ -202,13 +195,13 @@ return require("packer").startup(function(use)
         -- refer to the configuration section below
       }
     end,
-  }
+  },
 
-  use "tpope/vim-unimpaired"
+  "tpope/vim-unimpaired",
 
-  use {
+  {
     "pwntester/octo.nvim",
-    requires = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
       "kyazdani42/nvim-web-devicons",
@@ -216,20 +209,20 @@ return require("packer").startup(function(use)
     config = function()
       require "plugins.octo_config"
     end,
-  }
+  },
 
-  use {
+  {
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup {}
     end,
-  }
+  },
 
-  use {
+  {
     "habamax/vim-godot",
     config = function()
       vim.g.godot_executable = "/usr/bin/godot4"
       require "plugins.godot_config"
     end,
-  }
-end)
+  },
+})

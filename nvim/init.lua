@@ -1,38 +1,19 @@
--- Make some modules easier to access.
-local execute = vim.api.nvim_command
-local fn = vim.fn
-local fmt = string.format
-
--- Work out where our plugins will be stored.
-local pack_path = fn.stdpath "data" .. "/site/pack"
-
-local function ensure(user, repo)
-  -- Ensures a given github.com/USER/REPO is cloned in the pack/packer/start directory.
-  local install_path = fmt("%s/packer/opt/%s", pack_path, repo, repo)
-  local installed = false
-  if fn.empty(fn.glob(install_path)) > 0 then
-    execute(fmt("!git clone https://github.com/%s/%s %s", user, repo, install_path))
-    installed = true
-  end
-  execute(fmt("packadd %s", repo))
-  return installed
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
-
--- Packer is our plugin manager.
-if ensure("wbthomason", "packer.nvim") then
-  require "plugins"
-  execute "PackerInstall"
-end
-
--- This must be executed before loading aniseed to use the correct configuration.
-vim.g["aniseed#env"] = {
-  output = vim.fn.stdpath "config" .. "/lua/.compiled-lua",
-  module = "startup",
-}
+vim.opt.rtp:prepend(lazypath)
 
 -- Visual settings.
 -- TODO: Move to another file.
-vim.cmd "colorscheme gruvbox"
+-- vim.cmd "colorscheme gruvbox"
 vim.o.termguicolors = true
 
 -- Use lua-based file detection. In the future we would be able to remove it.
@@ -41,5 +22,14 @@ vim.g["do_filetype_lua"] = 1
 -- Enabling folding in Markdown files.
 vim.g.markdown_folding = 1
 
+-- This must be executed before loading aniseed to use the correct configuration.
+vim.g["aniseed#env"] = {
+  output = vim.fn.stdpath "config" .. "/lua/.compiled-lua",
+  module = "startup",
+}
 -- Aniseed compiles our Fennel code to Lua and loads it automatically.
-ensure("Olical", "aniseed")
+-- vim.api.nvim_command(":Lazy load aniseed")
+-- vim.api.nvim_command("packadd aniseed")
+-- vim.opt.rtp:prepend(vim.fn.stdpath "config" .. "/lua/.compiled-lua")
+
+require("plugins")
