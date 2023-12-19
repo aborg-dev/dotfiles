@@ -1,6 +1,15 @@
 return require("lazy").setup({
   -- Visual plugins.
-  "morhetz/gruvbox",
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = function()
+      require("gruvbox").setup({})
+			vim.o.termguicolors = true
+      vim.cmd("colorscheme gruvbox")
+    end,
+  },
+
   -- Tool for profiling vim startup time.
   -- Use :StartupTime to run it.
   "tweekmonster/startuptime.vim",
