@@ -3,3 +3,4 @@ git/gitconfig.symlink
 *.swp
 vim/lua/.compiled-lua
 nix/home.nix
+.luarc.json
