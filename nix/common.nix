@@ -25,8 +25,7 @@ in
     bat
     ranger
     # Fonts that I'm using in my terminal.
-    hack-font
-    jetbrains-mono
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     zk
   ];
 
