@@ -22,6 +22,3 @@ vim.g["do_filetype_lua"] = 1
 
 -- Enabling folding in Markdown files.
 vim.g.markdown_folding = 1
-
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
