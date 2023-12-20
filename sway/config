@@ -257,4 +257,10 @@ default_border pixel 1
 # gaps horizontal 400
 # gaps vertical 50
 
+for_window [title="^Bevy$"] {
+  floating enable
+  move position 80ppt 20ppt
+}
+no_focus [title="^Bevy$"]
+
 include /etc/sway/config.d/*
