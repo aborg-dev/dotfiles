@@ -12,7 +12,7 @@ in
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
-      MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+      MANPAGER = "bat -l man -p";
     };
   };
 
