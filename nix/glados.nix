@@ -8,5 +8,5 @@
     homeDirectory = "/home/akashin";
   };
 
-  xdg.configFile."alacritty/font.yml".source = ../alacritty/1440p_font.yml;
+  xdg.configFile."alacritty/font.toml".source = ../alacritty/1440p_font.toml;
 }

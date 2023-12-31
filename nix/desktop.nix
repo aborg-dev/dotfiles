@@ -2,7 +2,7 @@
 { ... }:
 
 {
-  xdg.configFile."alacritty/alacritty.yml".source = ../alacritty/alacritty.yml;
+  xdg.configFile."alacritty/alacritty.toml".source = ../alacritty/alacritty.toml;
   xdg.configFile."sway/config".source = ../sway/config;
   xdg.configFile."waybar" = {
     source = ../waybar;

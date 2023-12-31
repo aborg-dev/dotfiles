@@ -1,0 +1,270 @@
+import = ["/home/akashin/.config/alacritty/font.toml"]
+live_config_reload = true
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "#928374"
+blue = "#83a598"
+cyan = "#8ec07c"
+green = "#b8bb26"
+magenta = "#d3869b"
+red = "#fb4934"
+white = "#ebdbb2"
+yellow = "#fabd2f"
+
+[colors.dim]
+black = "#32302f"
+blue = "#076678"
+cyan = "#427b58"
+green = "#79740e"
+magenta = "#8f3f71"
+red = "#9d0006"
+white = "#928374"
+yellow = "#b57614"
+
+[colors.normal]
+black = "#282828"
+blue = "#83a598"
+cyan = "#689d6a"
+green = "#98971a"
+magenta = "#b16286"
+red = "#cc241d"
+white = "#a89984"
+yellow = "#d79921"
+
+[colors.primary]
+background = "#282828"
+bright_foreground = "#f9f5d7"
+dim_foreground = "#f2e5bc"
+foreground = "#fbf1c7"
+
+[colors.selection]
+background = "CellForeground"
+text = "CellBackground"
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+# Key bindings
+#
+# Key bindings are specified as a list of objects. Each binding will specify
+# a key and modifiers required to trigger it, terminal modes where the binding
+# is applicable, and what should be done when the key binding fires. It can
+# either send a byte sequnce to the running application (`chars`), execute
+# a predefined action (`action`) or fork and execute a specified command plus
+# arguments (`command`).
+#
+# Example:
+#   `- { key: V, mods: Command, action: Paste }`
+#
+# Available fields:
+#   - key
+#   - mods (optional)
+#   - chars | action | command (exactly one required)
+#   - mode (optional)
+#
+# Values for `key`:
+#   - `A` -> `Z`
+#   - `F1` -> `F12`
+#   - `Key1` -> `Key0`
+#
+#   A full list with available key codes can be found here:
+#   https://docs.rs/glutin/*/glutin/enum.VirtualKeyCode.html#variants
+#
+#   Instead of using the name of the keys, the `key` field also supports using
+#   the scancode of the desired key. Scancodes have to be specified as a
+#   decimal number.
+#   This command will allow you to display the hex scancodes for certain keys:
+#     `showkey --scancodes`
+#
+# Values for `mods`:
+#   - Command
+#   - Control
+#   - Shift
+#   - Alt
+#
+#   Multiple `mods` can be combined using `|` like this: `mods: Control|Shift`.
+#   Whitespace and capitalization is relevant and must match the example.
+#
+# Values for `chars`:
+#   The `chars` field writes the specified string to the terminal. This makes
+#   it possible to pass escape sequences.
+#   To find escape codes for bindings like `PageUp` ("\x1b[5~"), you can run
+#   the command `showkey -a` outside of tmux.
+#   Note that applications use terminfo to map escape sequences back to
+#   keys. It is therefore required to update the terminfo when
+#   changing an escape sequence.
+#
+# Values for `action`:
+#   - Paste
+#   - PasteSelection
+#   - Copy
+#   - IncreaseFontSize
+#   - DecreaseFontSize
+#   - ResetFontSize
+#   - ScrollPageUp
+#   - ScrollPageDown
+#   - ScrollToTop
+#   - ScrollToBottom
+#   - ClearHistory
+#   - Hide
+#   - Quit
+#   - ClearLogNotice
+#
+# Values for `command`:
+#   The `command` field must be a map containing a `program` string and
+#   an `args` array of command line parameter strings.
+#
+#   Example:
+#       `command: { program: "alacritty", args: ["-e", "vttest"] }`
+#
+# Values for `mode`:
+#   - ~AppCursor
+#   - AppCursor
+#   - ~AppKeypad
+#   - AppKeypad
+[keyboard]
+bindings = [
+	{ action = "Paste", key = "V", mods = "Command" },
+	{ action = "Copy", key = "C", mods = "Command" },
+	{ action = "Paste", key = "Paste" },
+	{ action = "Copy", key = "Copy" },
+	{ action = "Quit", key = "Q", mods = "Command" },
+	{ action = "Quit", key = "W", mods = "Command" },
+	{ action = "PasteSelection", key = "Insert", mods = "Shift" },
+	{ action = "ResetFontSize", key = "Key0", mods = "Control" },
+	{ action = "IncreaseFontSize", key = "Equals", mods = "Control" },
+	{ action = "DecreaseFontSize", key = "Minus", mods = "Control" },
+	{ action = "ClearLogNotice", key = "L", mods = "Control" },
+	{ chars = "\f", key = "L", mods = "Control" },
+	{ chars = "\u001BOH", key = "Home", mode = "AppCursor" },
+	{ chars = "\u001B[H", key = "Home", mode = "~AppCursor" },
+	{ chars = "\u001BOF", key = "End", mode = "AppCursor" },
+	{ chars = "\u001B[F", key = "End", mode = "~AppCursor" },
+	{ chars = "\u001B[5;2~", key = "PageUp", mods = "Shift" },
+	{ chars = "\u001B[5;5~", key = "PageUp", mods = "Control" },
+	{ chars = "\u001B[5~", key = "PageUp" },
+	{ chars = "\u001B[6;2~", key = "PageDown", mods = "Shift" },
+	{ chars = "\u001B[6;5~", key = "PageDown", mods = "Control" },
+	{ chars = "\u001B[6~", key = "PageDown" },
+	{ chars = "\u001B[Z", key = "Tab", mods = "Shift" },
+	{ chars = "\u007F", key = "Back" },
+	{ chars = "\u001B\u007F", key = "Back", mods = "Alt" },
+	{ chars = "\u001B[2~", key = "Insert" },
+	{ chars = "\u001B[3~", key = "Delete" },
+	{ chars = "\u001B[1;2D", key = "Left", mods = "Shift" },
+	{ chars = "\u001B[1;5D", key = "Left", mods = "Control" },
+	{ chars = "\u001B[1;3D", key = "Left", mods = "Alt" },
+	{ chars = "\u001B[D", key = "Left", mode = "~AppCursor" },
+	{ chars = "\u001BOD", key = "Left", mode = "AppCursor" },
+	{ chars = "\u001B[1;2C", key = "Right", mods = "Shift" },
+	{ chars = "\u001B[1;5C", key = "Right", mods = "Control" },
+	{ chars = "\u001B[1;3C", key = "Right", mods = "Alt" },
+	{ chars = "\u001B[C", key = "Right", mode = "~AppCursor" },
+	{ chars = "\u001BOC", key = "Right", mode = "AppCursor" },
+	{ chars = "\u001B[1;2A", key = "Up", mods = "Shift" },
+	{ chars = "\u001B[1;5A", key = "Up", mods = "Control" },
+	{ chars = "\u001B[1;3A", key = "Up", mods = "Alt" },
+	{ chars = "\u001B[A", key = "Up", mode = "~AppCursor" },
+	{ chars = "\u001BOA", key = "Up", mode = "AppCursor" },
+	{ chars = "\u001B[1;2B", key = "Down", mods = "Shift" },
+	{ chars = "\u001B[1;5B", key = "Down", mods = "Control" },
+	{ chars = "\u001B[1;3B", key = "Down", mods = "Alt" },
+	{ chars = "\u001B[B", key = "Down", mode = "~AppCursor" },
+	{ chars = "\u001BOB", key = "Down", mode = "AppCursor" },
+	{ chars = "\u001BOP", key = "F1" },
+	{ chars = "\u001BOQ", key = "F2" },
+	{ chars = "\u001BOR", key = "F3" },
+	{ chars = "\u001BOS", key = "F4" },
+	{ chars = "\u001B[15~", key = "F5" },
+	{ chars = "\u001B[17~", key = "F6" },
+	{ chars = "\u001B[18~", key = "F7" },
+	{ chars = "\u001B[19~", key = "F8" },
+	{ chars = "\u001B[20~", key = "F9" },
+	{ chars = "\u001B[21~", key = "F10" },
+	{ chars = "\u001B[23~", key = "F11" },
+	{ chars = "\u001B[24~", key = "F12" },
+	{ chars = "\u001B[1;2P", key = "F1", mods = "Shift" },
+	{ chars = "\u001B[1;2Q", key = "F2", mods = "Shift" },
+	{ chars = "\u001B[1;2R", key = "F3", mods = "Shift" },
+	{ chars = "\u001B[1;2S", key = "F4", mods = "Shift" },
+	{ chars = "\u001B[15;2~", key = "F5", mods = "Shift" },
+	{ chars = "\u001B[17;2~", key = "F6", mods = "Shift" },
+	{ chars = "\u001B[18;2~", key = "F7", mods = "Shift" },
+	{ chars = "\u001B[19;2~", key = "F8", mods = "Shift" },
+	{ chars = "\u001B[20;2~", key = "F9", mods = "Shift" },
+	{ chars = "\u001B[21;2~", key = "F10", mods = "Shift" },
+	{ chars = "\u001B[23;2~", key = "F11", mods = "Shift" },
+	{ chars = "\u001B[24;2~", key = "F12", mods = "Shift" },
+	{ chars = "\u001B[1;5P", key = "F1", mods = "Control" },
+	{ chars = "\u001B[1;5Q", key = "F2", mods = "Control" },
+	{ chars = "\u001B[1;5R", key = "F3", mods = "Control" },
+	{ chars = "\u001B[1;5S", key = "F4", mods = "Control" },
+	{ chars = "\u001B[15;5~", key = "F5", mods = "Control" },
+	{ chars = "\u001B[17;5~", key = "F6", mods = "Control" },
+	{ chars = "\u001B[18;5~", key = "F7", mods = "Control" },
+	{ chars = "\u001B[19;5~", key = "F8", mods = "Control" },
+	{ chars = "\u001B[20;5~", key = "F9", mods = "Control" },
+	{ chars = "\u001B[21;5~", key = "F10", mods = "Control" },
+	{ chars = "\u001B[23;5~", key = "F11", mods = "Control" },
+	{ chars = "\u001B[24;5~", key = "F12", mods = "Control" },
+	{ chars = "\u001B[1;6P", key = "F1", mods = "Alt" },
+	{ chars = "\u001B[1;6Q", key = "F2", mods = "Alt" },
+	{ chars = "\u001B[1;6R", key = "F3", mods = "Alt" },
+	{ chars = "\u001B[1;6S", key = "F4", mods = "Alt" },
+	{ chars = "\u001B[15;6~", key = "F5", mods = "Alt" },
+	{ chars = "\u001B[17;6~", key = "F6", mods = "Alt" },
+	{ chars = "\u001B[18;6~", key = "F7", mods = "Alt" },
+	{ chars = "\u001B[19;6~", key = "F8", mods = "Alt" },
+	{ chars = "\u001B[20;6~", key = "F9", mods = "Alt" },
+	{ chars = "\u001B[21;6~", key = "F10", mods = "Alt" },
+	{ chars = "\u001B[23;6~", key = "F11", mods = "Alt" },
+	{ chars = "\u001B[24;6~", key = "F12", mods = "Alt" },
+	{ chars = "\u001B[1;3P", key = "F1", mods = "Super" },
+	{ chars = "\u001B[1;3Q", key = "F2", mods = "Super" },
+	{ chars = "\u001B[1;3R", key = "F3", mods = "Super" },
+	{ chars = "\u001B[1;3S", key = "F4", mods = "Super" },
+	{ chars = "\u001B[15;3~", key = "F5", mods = "Super" },
+	{ chars = "\u001B[17;3~", key = "F6", mods = "Super" },
+	{ chars = "\u001B[18;3~", key = "F7", mods = "Super" },
+	{ chars = "\u001B[19;3~", key = "F8", mods = "Super" },
+	{ chars = "\u001B[20;3~", key = "F9", mods = "Super" },
+	{ chars = "\u001B[21;3~", key = "F10", mods = "Super" },
+	{ chars = "\u001B[23;3~", key = "F11", mods = "Super" },
+	{ chars = "\u001B[24;3~", key = "F12", mods = "Super" },
+]
+
+[mouse]
+hide_when_typing = false
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[shell]
+program = "fish"
+
+[window]
+decorations = "full"
+dynamic_padding = false
+opacity = 1.0
+startup_mode = "Windowed"
+
+[window.dimensions]
+columns = 80
+lines = 24
+
+[window.padding]
+x = 2
+y = 2
