@@ -60,9 +60,10 @@ in
     '';
 
     shellAliases = {
-      tmx = "tmux new-session -At";
-      vim = "nvim";
-      hx = "helix";
+      t = "tmux new-session -At";
+      v = "nvim";
+      l = "exa -l";
+      b = "bat";
     };
 
     # These will be substituted right in the command before execution.
