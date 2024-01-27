@@ -5,7 +5,7 @@ return require("lazy").setup({
     priority = 1000,
     config = function()
       require("gruvbox").setup({})
-			vim.o.termguicolors = true
+      vim.o.termguicolors = true
       vim.cmd("colorscheme gruvbox")
     end,
   },
@@ -43,7 +43,7 @@ return require("lazy").setup({
   },
 
   -- Lisp-y configuration.
-  { "Olical/nfnl", ft = "fennel" },
+  { "Olical/nfnl",    ft = "fennel" },
   { "Olical/conjure", ft = "fennel" },
 
   -- Comment lines with 'gcc' and 'gc{motion}.
@@ -76,10 +76,10 @@ return require("lazy").setup({
 
   { "hrsh7th/cmp-nvim-lsp", dependencies = "nvim-cmp" },
   { "hrsh7th/cmp-nvim-lua", dependencies = "cmp-nvim-lsp" },
-  { "hrsh7th/cmp-buffer", dependencies = "cmp-nvim-lua" },
-  { "hrsh7th/cmp-path", dependencies = "cmp-buffer" },
-  { "hrsh7th/cmp-calc", dependencies = "cmp-path" },
-  { "hrsh7th/cmp-cmdline", dependencies = "cmp-calc" },
+  { "hrsh7th/cmp-buffer",   dependencies = "cmp-nvim-lua" },
+  { "hrsh7th/cmp-path",     dependencies = "cmp-buffer" },
+  { "hrsh7th/cmp-calc",     dependencies = "cmp-path" },
+  { "hrsh7th/cmp-cmdline",  dependencies = "cmp-calc" },
 
   -- Settings for commonly used LSP servers for different languages.
   "neovim/nvim-lspconfig",
