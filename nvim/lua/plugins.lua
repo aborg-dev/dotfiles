@@ -183,8 +183,10 @@ return require("lazy").setup({
 
   {
     "dkarter/bullets.vim",
-    config = function()
+		init = function()
       vim.g.bullets_set_mappings = 0
+		end,
+    config = function()
       require "plugins.bullets_config"
     end,
   },
