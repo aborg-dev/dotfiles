@@ -19,6 +19,9 @@
 				:procMacro {
 					:enable true
 				}
+				:checkOnSave {
+					:enable false
+				}
 			}
 		}
   }
