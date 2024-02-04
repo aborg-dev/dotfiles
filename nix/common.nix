@@ -64,6 +64,7 @@ in
       v = "nvim";
       l = "exa -l";
       b = "bat";
+      g = "git";
     };
 
     # These will be substituted right in the command before execution.
