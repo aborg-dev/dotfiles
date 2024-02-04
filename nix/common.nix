@@ -139,7 +139,7 @@ in
   };
 
   xdg.configFile."nvim" = {
-    source = ../nvim;
+    source = config.lib.file.mkOutOfStoreSymlink ~/Repos/dotfiles/nvim;
     recursive = true;
   };
 
