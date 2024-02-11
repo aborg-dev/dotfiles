@@ -19,7 +19,6 @@ in
   # Packages to install.
   home.packages = with pkgs; [
     tmux
-    fzf
     ripgrep
     fd
     bat
@@ -28,7 +27,18 @@ in
     jetbrains-mono
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     zk
+    atuin
   ];
+
+  programs.atuin = {
+    enable = true;
+    settings = {
+      dialect = "uk";
+      inline_height = 20;
+      show_preview = true;
+      show_help = false;
+    };
+  };
 
   programs.git = {
     enable = true;
