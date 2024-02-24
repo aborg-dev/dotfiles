@@ -22,6 +22,9 @@
 				:checkOnSave {
 					:enable false
 				}
+				:rust {
+				  :analyzerTargetDir true
+				}
 			}
 		}
   }
