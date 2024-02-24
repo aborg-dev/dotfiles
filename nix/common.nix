@@ -45,6 +45,12 @@ in
     aliases = {
       lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
     };
+    extraConfig = {
+      # Always push the local branch to a remote branch with the same name.
+      push = { default = "current"; };
+      # Use a more convenient 3-way diff algorithm.
+      merge = { conflictStyle = "zdiff3"; };
+    };
   };
 
   programs.fish = {
