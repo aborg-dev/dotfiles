@@ -34,8 +34,6 @@ in
     enable = true;
     settings = {
       dialect = "uk";
-      inline_height = 20;
-      show_preview = true;
       show_help = false;
     };
   };
