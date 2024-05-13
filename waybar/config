@@ -39,7 +39,7 @@
         "spacing": 10
     },
     "clock": {
-        "timezone": "Europe/London",
+        "timezone": "",
         "format": "{:%d/%m/%y  %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     },
