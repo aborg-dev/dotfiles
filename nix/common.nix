@@ -22,6 +22,7 @@ in
     ripgrep
     fd
     bat
+    eza
     ranger
     # Fonts that I'm using in my terminal.
     jetbrains-mono
