@@ -22,7 +22,8 @@
 
 (wk.register
   {:n {:name "+notes"
-       :f [":ZkNotes<CR>" "find note"]
+       :f [":ZkNotes { tags = { 'NOT weekly' } }<CR>" "find note"]
+       :r [":ZkNotes { tags = { 'weekly' }, sort = { 'created' } }<CR>" "find note"]
        :t [":ZkTags<CR>" "find note by tag"]
        :c [":ZkNew { dir = 'roam', title = vim.fn.input('Title: ') }<CR>" "create note"]
        :d [":ZkNew { dir = 'diary', date = 'now' }<CR>" "open weekly diary"]}}
