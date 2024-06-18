@@ -17,3 +17,6 @@ vim.g["do_filetype_lua"] = 1
 
 -- Enabling folding in Markdown files.
 vim.g.markdown_folding = 1
+
+-- Disable Python style overrides (e.g. tabwidth=4).
+vim.g.python_recommended_style = 0
