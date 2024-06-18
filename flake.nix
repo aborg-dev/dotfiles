@@ -21,6 +21,13 @@
         ];
       };
 
+      homeConfigurations."akashin@spire" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        modules = [
+          ./nix/spire.nix
+        ];
+      };
+
       homeConfigurations."akashin@tuxedo" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [

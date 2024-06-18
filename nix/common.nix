@@ -71,7 +71,9 @@ in
       # Add paths to custom-built binaries.
       fish_add_path ~/.local/bin ~/.yarn/bin ~/.cargo/bin
       fish_add_path /opt/homebrew/bin
+      fish_add_path /usr/local/texlive/2024/bin/x86_64-linux
       theme_gruvbox dark
+      pyenv init - | source
     '';
 
     shellAliases = {
@@ -155,7 +157,7 @@ in
   };
 
   xdg.configFile."nvim" = {
-    source = config.lib.file.mkOutOfStoreSymlink ~/Repos/dotfiles/nvim;
+    source = ../nvim;
     recursive = true;
   };
 
