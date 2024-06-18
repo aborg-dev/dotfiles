@@ -18,7 +18,8 @@
 (set-options ["o"] "splitbelow" true)
 
 ; Use spaces instead of tabs.
-(set vim.g.expandtab true)
+(set-options ["g" "o"] "expandtab" true)
+
 ; Show line numbers.
 (set vim.wo.number true)
 ; Show visual indicator at given width.

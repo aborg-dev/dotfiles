@@ -13,7 +13,7 @@ do
 end
 set_options({"o"}, "splitright", true)
 set_options({"o"}, "splitbelow", true)
-vim.g.expandtab = true
+set_options({"g", "o"}, "expandtab", true)
 vim.wo.number = true
 vim.wo.colorcolumn = "100"
 return set_options({"o", "bo"}, "textwidth", 100)
