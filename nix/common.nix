@@ -157,7 +157,7 @@ in
   };
 
   xdg.configFile."nvim" = {
-    source = ../nvim;
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/dotfiles/nvim";
     recursive = true;
   };
 
