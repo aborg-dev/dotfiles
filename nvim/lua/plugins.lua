@@ -223,6 +223,15 @@ return require("lazy").setup({
   },
 
   {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require "plugins.harpoon"
+    end,
+  },
+
+  {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
