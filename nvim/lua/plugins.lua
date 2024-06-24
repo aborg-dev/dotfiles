@@ -10,6 +10,9 @@ return require("lazy").setup({
           NoiceCmdlineIcon = { link = '@character.special' },
           NoicePopup = { link = 'Normal' },
           NoiceCmdlinePopupTitle = { link = 'String' },
+          ["@markup.heading.1.markdown"] = { link = "markdownH1" },
+          ["@markup.heading.2.markdown"] = { link = "markdownH3" },
+          ["@markup.heading.3.markdown"] = { link = "markdownH5" },
         }
       })
       vim.o.termguicolors = true
