@@ -183,7 +183,7 @@ bindsym $mod+Escape exec swaylock -f -F -c 000000
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show, resize set 2000 1500, move position center
+    bindsym $mod+minus scratchpad show
 #
 # Resizing containers:
 #
