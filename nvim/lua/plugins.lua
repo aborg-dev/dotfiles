@@ -10,14 +10,22 @@ return require("lazy").setup({
           NoiceCmdlineIcon = { link = '@character.special' },
           NoicePopup = { link = 'Normal' },
           NoiceCmdlinePopupTitle = { link = 'String' },
-          ["@markup.heading.1.markdown"] = { link = "markdownH1" },
-          ["@markup.heading.2.markdown"] = { link = "markdownH3" },
-          ["@markup.heading.3.markdown"] = { link = "markdownH5" },
         }
       })
       vim.o.termguicolors = true
       vim.cmd("colorscheme gruvbox")
     end,
+  },
+
+  -- Makes headlines look pretty in markdown.
+  {
+    "lukas-reineke/headlines.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    opts = {
+      markdown = {
+        fat_headlines = false,
+      },
+    },
   },
 
   -- Tool for profiling vim startup time.
