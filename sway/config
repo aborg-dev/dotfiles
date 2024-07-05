@@ -18,8 +18,7 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-# set $menu wofi --show=drun --lines=8 --prompt=""
-set $menu rofi -show drun
+set $menu rofi -modes "drun,run" -show drun
 
 set $menu_files locate -e -i -d mlocate.db /home/akashin/Cloud/ydisk | awk '{print "../" substr($0, 27)}' | rofi -threads 0 -dmenu -i -p "locate" | awk '{print "/home/akashin/Cloud/ydisk/" substr($0, 2)}' | xargs -r -0 xdg-open
 
