@@ -10,6 +10,8 @@
     :enable true
     :additional_vim_regex_highlighting ["org"]}})
 
-; TODO: Find a way to enable this only to the languages I need.
-; (set nvim.o.foldmethod "expr")
-; (set nvim.o.foldexpr "nvim_treesitter#foldexpr()")
+(set vim.o.foldmethod "expr")
+(set vim.o.foldexpr "v:lua.vim.treesitter.foldexpr()")
+(set vim.o.foldenable false)
+(set vim.o.foldnestmax 3)
+(set vim.o.foldlevelstart 1)
