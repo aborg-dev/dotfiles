@@ -1,19 +1,19 @@
 return require("lazy").setup({
   -- Visual plugins.
   {
-    "ellisonleao/gruvbox.nvim",
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
     config = function()
-      require("gruvbox").setup({
-        overrides = {
-          NoiceCmdlinePopupBorder = { link = 'Normal' },
-          NoiceCmdlineIcon = { link = '@character.special' },
-          NoicePopup = { link = 'Normal' },
-          NoiceCmdlinePopupTitle = { link = 'String' },
-        }
+      require("catppuccin").setup({
+        flavour = "auto",
+        background = {
+          light = "latte",
+          dark = "frappe",
+        },
       })
       vim.o.termguicolors = true
-      vim.cmd("colorscheme gruvbox")
+      vim.cmd.colorscheme "catppuccin"
     end,
   },
 

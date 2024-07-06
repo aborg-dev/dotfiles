@@ -72,7 +72,7 @@ in
       fish_add_path ~/.local/bin ~/.yarn/bin ~/.cargo/bin
       fish_add_path /opt/homebrew/bin
       fish_add_path /usr/local/texlive/2024/bin/x86_64-linux
-      theme_gruvbox dark
+      fish_config theme choose "frappe"
       pyenv init - | source
     '';
 
@@ -117,16 +117,6 @@ in
           repo = "nix-env.fish";
           rev = "00c6cc762427efe08ac0bd0d1b1d12048d3ca727";
           sha256 = "1hrl22dd0aaszdanhvddvqz3aq40jp9zi2zn0v1hjnf7fx4bgpma";
-        };
-      }
-      # The colorscheme that I use.
-      {
-        name = "gruvbox";
-        src = pkgs.fetchFromGitHub {
-          owner = "jomik";
-          repo = "fish-gruvbox";
-          rev = "d8c0463518fb95bed8818a1e7fe5da20cffe6fbd";
-          sha256 = "0hkps4ddz99r7m52lwyzidbalrwvi7h2afpawh9yv6a226pjmck7";
         };
       }
       # Navigation to frequently used directories.
