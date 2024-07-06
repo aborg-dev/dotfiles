@@ -17,17 +17,6 @@ return require("lazy").setup({
     end,
   },
 
-  -- Makes headlines look pretty in markdown.
-  {
-    "lukas-reineke/headlines.nvim",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    opts = {
-      markdown = {
-        fat_headlines = false,
-      },
-    },
-  },
-
   -- Tool for profiling vim startup time.
   -- Use :StartupTime to run it.
   "tweekmonster/startuptime.vim",
