@@ -16,12 +16,13 @@ in
     };
   };
 
+  catppuccin.flavor = "frappe";
+
   # Packages to install.
   home.packages = with pkgs; [
     tmux
     ripgrep
     fd
-    bat
     eza
     ranger
     # Fonts that I'm using in my terminal.
@@ -37,6 +38,11 @@ in
       dialect = "uk";
       show_help = false;
     };
+  };
+
+  programs.bat = {
+    enable = true;
+    catppuccin.enable = true;
   };
 
   programs.git = {
@@ -56,6 +62,7 @@ in
 
   programs.fish = {
     enable = true;
+    catppuccin.enable = true;
     loginShellInit = ''
       # Run Firefox under Wayland.
       set -x MOZ_ENABLE_WAYLAND 1
@@ -72,7 +79,6 @@ in
       fish_add_path ~/.local/bin ~/.yarn/bin ~/.cargo/bin
       fish_add_path /opt/homebrew/bin
       fish_add_path /usr/local/texlive/2024/bin/x86_64-linux
-      fish_config theme choose "frappe"
       pyenv init - | source
     '';
 

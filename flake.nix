@@ -8,9 +8,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Catppuccin theme has a nix module that allows to enable it for a range of programs.
+    catppuccin.url = "github:catppuccin/nix";
   };
 
-  outputs = { nixpkgs, home-manager, ... }: {
+  outputs = { nixpkgs, home-manager, catppuccin, ... }: {
       defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
       defaultPackage.aarch64-darwin = home-manager.defaultPackage.aarch64-darwin;
 
@@ -18,6 +20,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
           ./nix/glados.nix
+          catppuccin.homeManagerModules.catppuccin
         ];
       };
 
@@ -25,6 +28,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
           ./nix/spire.nix
+          catppuccin.homeManagerModules.catppuccin
         ];
       };
 
@@ -32,6 +36,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
           ./nix/tuxedo.nix
+          catppuccin.homeManagerModules.catppuccin
         ];
       };
 
