@@ -49,6 +49,13 @@ return require("lazy").setup({
     end,
   },
 
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup()
+    end,
+  },
+
   -- Lisp-y configuration.
   { "Olical/nfnl",    ft = "fennel" },
   { "Olical/conjure", ft = "fennel" },
@@ -123,6 +130,13 @@ return require("lazy").setup({
     end,
   },
 
+  {
+    "mickael-menu/zk-nvim",
+    config = function()
+      require "plugins.zk_config"
+    end,
+  },
+
   -- Orgmode in vim, finally!
   {
     "nvim-orgmode/orgmode",
@@ -144,9 +158,12 @@ return require("lazy").setup({
   },
 
   {
-    "lewis6991/gitsigns.nvim",
+    "dkarter/bullets.vim",
+    init = function()
+      vim.g.bullets_set_mappings = 0
+    end,
     config = function()
-      require("gitsigns").setup()
+      require "plugins.bullets_config"
     end,
   },
 
@@ -163,23 +180,6 @@ return require("lazy").setup({
       -- Fix code pasting to IPython.
       vim.g.slime_python_ipython = 1
       vim.g.slime_cell_delimiter = "#%%"
-    end,
-  },
-
-  {
-    "mickael-menu/zk-nvim",
-    config = function()
-      require "plugins.zk_config"
-    end,
-  },
-
-  {
-    "dkarter/bullets.vim",
-    init = function()
-      vim.g.bullets_set_mappings = 0
-    end,
-    config = function()
-      require "plugins.bullets_config"
     end,
   },
 
