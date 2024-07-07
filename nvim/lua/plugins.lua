@@ -144,12 +144,6 @@ return require("lazy").setup({
   },
 
   {
-    "sampsyo/bril",
-    ft = { "bril" },
-    rtp = "bril-vim",
-  },
-
-  {
     "lewis6991/gitsigns.nvim",
     config = function()
       require("gitsigns").setup()
