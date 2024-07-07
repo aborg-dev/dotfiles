@@ -1,5 +1,4 @@
 {
-  "bril": { "branch": "main", "commit": "cb314e4233c0ed8ba2c7eab2f8f738539b993130" },
   "bullets.vim": { "branch": "master", "commit": "448ad2a159c5f2540f6c9738f3bb9e6f15a41734" },
   "catppuccin": { "branch": "main", "commit": "1d76b57bb22069a6477030edd68b52f3b07a9e48" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
@@ -34,7 +33,6 @@
   "toggleterm.nvim": { "branch": "main", "commit": "066cccf48a43553a80a210eb3be89a15d789d6e6" },
   "trouble.nvim": { "branch": "main", "commit": "4453fea6bb597830fbd58d2c484612f37b97bd8c" },
   "ultisnips": { "branch": "master", "commit": "49dc8cb2086db19d385791c8e1635723b0fd95c7" },
-  "vim-beancount": { "branch": "master", "commit": "25bcbc773554b5798d253a1a5fa5de158792f95e" },
   "vim-fugitive": { "branch": "master", "commit": "8c8cdf4405cb8bdb70dd9812a33bb52363a87dbc" },
   "vim-slime": { "branch": "main", "commit": "ca59df2570e1a12f9ddfa90b6118df4d87453fcd" },
   "vim-sneak": { "branch": "master", "commit": "c13d0497139b8796ff9c44ddb9bc0dc9770ad2dd" },

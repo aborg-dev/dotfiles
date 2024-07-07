@@ -2,7 +2,7 @@
 
 (ts.setup {
   ;; One of "all", "maintained" (parsers with maintainers), or a list of languages.
-  :ensure_installed ["toml" "rust" "org" "fennel" "lua" "terraform" "markdown" "markdown_inline" "nix"]
+  :ensure_installed ["toml" "rust" "org" "fennel" "lua" "terraform" "markdown" "markdown_inline" "nix" "beancount"]
   ;; List of parsers to ignore installing.
   :ignore_install []
   ;; Extensions to set up.

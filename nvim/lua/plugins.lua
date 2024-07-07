@@ -183,8 +183,6 @@ return require("lazy").setup({
     end,
   },
 
-  "nathangrigg/vim-beancount",
-
   {
     "akinsho/toggleterm.nvim",
     version = "*",
