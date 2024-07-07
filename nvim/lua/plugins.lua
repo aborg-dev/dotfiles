@@ -108,8 +108,6 @@ return require("lazy").setup({
     end,
   },
 
-  "LnL7/vim-nix",
-
   -- Engine for parsing snippets.
   "SirVer/ultisnips",
 
