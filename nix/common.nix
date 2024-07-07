@@ -45,6 +45,11 @@ in
     catppuccin.enable = true;
   };
 
+  programs.btop = {
+    enable = true;
+    catppuccin.enable = true;
+  };
+
   programs.git = {
     enable = true;
     userEmail = "kashin.andrej@gmail.com";
