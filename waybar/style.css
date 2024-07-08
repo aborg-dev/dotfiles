@@ -50,8 +50,8 @@
 #waybar {
     background: #323232;
     color: white;
-    font-family: Cantarell, Noto Sans, sans-serif;
-    font-size: 14px;
+    font-family: JetBrainsMonoNerdFont, Noto Sans, sans-serif;
+    font-size: 19px;
 }
 
 /* Each module */
