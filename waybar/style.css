@@ -48,10 +48,10 @@
 
 /* The whole bar */
 #waybar {
-    background: #323232;
-    color: white;
+    background: #303446;
+    color: #c6d0f5;
     font-family: JetBrainsMonoNerdFont, Noto Sans, sans-serif;
-    font-size: 19px;
+    font-size: 20px;
 }
 
 /* Each module */
