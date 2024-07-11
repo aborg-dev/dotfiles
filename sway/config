@@ -7,9 +7,9 @@
 # Colorscheme setup.
 include themes/catppuccin-frappe
 # target                 title     bg    text   indicator  border
-client.focused           $lavender $flamingo $crust  $rosewater $lavender
-client.focused_inactive  $overlay0 $rosewater $crust  $rosewater $overlay0
-client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.focused           $overlay0 $overlay2 $crust  $rosewater $crust
+client.focused_inactive  $overlay0 $overlay1 $crust  $rosewater $crust
+client.unfocused         $overlay0 $surface0 $text  $rosewater $overlay0
 client.urgent            $peach    $pink $peach $crust  $peach
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
