@@ -21,6 +21,14 @@ cmp.setup {
     { name = "path" },
     { name = "nvim_lsp" },
     { name = "ultisnips", keyword_length = 2 },
-    { name = "buffer", keyword_length = 3 },
+    { name = "buffer",    keyword_length = 3 },
+    { name = "copilot",   group_index = 2 },
   },
+  -- formatting = {
+  --   format = lspkind.cmp_format({
+  --     mode = "symbol",
+  --     max_width = 50,
+  --     symbol_map = { Copilot = "" }
+  --   })
+  -- }
 }
