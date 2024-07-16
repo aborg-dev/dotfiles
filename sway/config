@@ -255,10 +255,8 @@ input * {
   xkb_options "grp:win_space_toggle,ctrl:nocaps"
 }
 
-#
-# Font settings:
-#
-font pango:JetBrainsMonoNerdFont 17
+# Indirection to allow using different font size on different machines.
+include font
 
 #
 # Cursor settings:
