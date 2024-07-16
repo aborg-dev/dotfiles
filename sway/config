@@ -10,7 +10,7 @@ include themes/catppuccin-frappe
 client.focused           $overlay0 $overlay2 $crust  $rosewater $crust
 client.focused_inactive  $overlay0 $overlay1 $crust  $rosewater $crust
 client.unfocused         $overlay0 $surface0 $text  $rosewater $overlay0
-client.urgent            $peach    $pink $peach $crust  $peach
+client.urgent            $overlay0 $lavender $crust $rosewater  $crust
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
