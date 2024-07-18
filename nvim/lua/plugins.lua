@@ -13,7 +13,7 @@ return require("lazy").setup({
         },
       })
       vim.o.termguicolors = true
-      vim.cmd.colorscheme "catppuccin"
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
 
@@ -28,16 +28,20 @@ return require("lazy").setup({
   {
     "folke/which-key.nvim",
     config = function()
-      require "plugins.which_key"
+      require("plugins.which_key")
     end,
   },
 
   -- Tool for fuzzy search over lists.
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" }, { "kyazdani42/nvim-web-devicons" } },
+    dependencies = {
+      { "nvim-lua/popup.nvim" },
+      { "nvim-lua/plenary.nvim" },
+      { "kyazdani42/nvim-web-devicons" },
+    },
     config = function()
-      require "plugins.telescope"
+      require("plugins.telescope")
     end,
   },
 
@@ -45,7 +49,7 @@ return require("lazy").setup({
   {
     "tpope/vim-fugitive",
     config = function()
-      require "plugins.fugitive"
+      require("plugins.fugitive")
     end,
   },
 
@@ -57,7 +61,7 @@ return require("lazy").setup({
   },
 
   -- Lisp-y configuration.
-  { "Olical/nfnl",    ft = "fennel" },
+  { "Olical/nfnl", ft = "fennel" },
   { "Olical/conjure", ft = "fennel" },
 
   -- Comment lines with 'gcc' and 'gc{motion}.
@@ -91,16 +95,16 @@ return require("lazy").setup({
     "hrsh7th/nvim-cmp",
     ft = { "lua", "python", "fennel", "cpp", "rust", "go", "markdown", "beancount", "gdscript" },
     config = function()
-      require "plugin_settings.nvim_cmp"
+      require("plugin_settings.nvim_cmp")
     end,
   },
 
   { "hrsh7th/cmp-nvim-lsp", dependencies = "nvim-cmp" },
   { "hrsh7th/cmp-nvim-lua", dependencies = "cmp-nvim-lsp" },
-  { "hrsh7th/cmp-buffer",   dependencies = "cmp-nvim-lua" },
-  { "hrsh7th/cmp-path",     dependencies = "cmp-buffer" },
-  { "hrsh7th/cmp-calc",     dependencies = "cmp-path" },
-  { "hrsh7th/cmp-cmdline",  dependencies = "cmp-calc" },
+  { "hrsh7th/cmp-buffer", dependencies = "cmp-nvim-lua" },
+  { "hrsh7th/cmp-path", dependencies = "cmp-buffer" },
+  { "hrsh7th/cmp-calc", dependencies = "cmp-path" },
+  { "hrsh7th/cmp-cmdline", dependencies = "cmp-calc" },
 
   -- Settings for commonly used LSP servers for different languages.
   "neovim/nvim-lspconfig",
@@ -108,14 +112,14 @@ return require("lazy").setup({
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
-      require "plugin_settings.lsp"
+      require("plugin_settings.lsp")
     end,
   },
   -- Used for inline type annotation in Rust.
   "nvim-lua/lsp_extensions.nvim",
 
   {
-    'stevearc/conform.nvim',
+    "stevearc/conform.nvim",
     ft = { "lua", "python", "rust", "fennel", "nix" },
     opts = {},
     config = function()
@@ -128,7 +132,12 @@ return require("lazy").setup({
           nix = { "nixfmt" },
         },
       })
-      vim.keymap.set("n", "<leader>cf", "<cmd>lua require('conform').format()<cr>", { buffer = true })
+      vim.keymap.set(
+        "n",
+        "<leader>cf",
+        "<cmd>lua require('conform').format()<cr>",
+        { buffer = true }
+      )
     end,
   },
 
@@ -136,7 +145,7 @@ return require("lazy").setup({
     "simrat39/rust-tools.nvim",
     ft = { "rust" },
     config = function()
-      require "plugins.rust"
+      require("plugins.rust")
     end,
   },
 
@@ -151,14 +160,14 @@ return require("lazy").setup({
     dev = true,
     event = { "BufReadPost", "BufNewFile" },
     config = function()
-      require "plugins.tree_sitter"
+      require("plugins.tree_sitter")
     end,
   },
 
   {
     "mickael-menu/zk-nvim",
     config = function()
-      require "plugins.zk_config"
+      require("plugins.zk_config")
     end,
   },
 
@@ -168,7 +177,7 @@ return require("lazy").setup({
       vim.g.bullets_set_mappings = 0
     end,
     config = function()
-      require "plugins.bullets_config"
+      require("plugins.bullets_config")
     end,
   },
 
@@ -192,7 +201,7 @@ return require("lazy").setup({
     "akinsho/toggleterm.nvim",
     version = "*",
     config = function()
-      require "plugins.toggleterm_config"
+      require("plugins.toggleterm_config")
     end,
   },
 
@@ -200,11 +209,11 @@ return require("lazy").setup({
     "folke/trouble.nvim",
     dependencies = "kyazdani42/nvim-web-devicons",
     config = function()
-      require("trouble").setup {
+      require("trouble").setup({
         -- your configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
-      }
+      })
     end,
   },
 
@@ -213,7 +222,7 @@ return require("lazy").setup({
   {
     "windwp/nvim-autopairs",
     config = function()
-      require("nvim-autopairs").setup {}
+      require("nvim-autopairs").setup({})
     end,
   },
 
@@ -243,11 +252,11 @@ return require("lazy").setup({
         },
         -- you can enable a preset for easier configuration
         presets = {
-          bottom_search = true,         -- use a classic bottom cmdline for search
-          command_palette = true,       -- position the cmdline and popupmenu together
+          bottom_search = true, -- use a classic bottom cmdline for search
+          command_palette = true, -- position the cmdline and popupmenu together
           long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = false,       -- add a border to hover docs and signature help
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false, -- add a border to hover docs and signature help
         },
       })
     end,
@@ -274,5 +283,5 @@ return require("lazy").setup({
   dev = {
     path = "~/.local/share/nvim/nix",
     fallback = false,
-  }
+  },
 })
