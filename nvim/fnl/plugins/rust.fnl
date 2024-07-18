@@ -39,11 +39,17 @@
 
 (vim.api.nvim_set_keymap :n :<localleader>ef ":RustRun<CR>" {:noremap true :silent true})
 
+(fn group [keys desc]
+  {1 keys :group desc})
+
+(fn bind [keys cmd desc]
+  {1 keys 2 cmd :desc desc})
+
 ;; Project commands.
 (wk.add [
-   { 1 "<leader>p" :group "+project"}
-   { 1 "<leader>pr" 2 ":20split term://cargo run<CR>" :desc "run main" }
-   { 1 "<leader>pt" 2 ":20split term://cargo test<CR>" :desc "run all tests" }
-   { 1 "<leader>pc" 2 ":RustOpenCargo<CR>"  :desc "open cargo" }
-   { 1 "<leader>pd" 2 ":RustOpenExternalDocs<CR>" :desc "open symbol docs" }
+   (group "<leader>p"  "+project")
+   (bind  "<leader>pr" ":20split term://cargo run<CR>" "run main")
+   (bind  "<leader>pt" ":20split term://cargo test<CR>" "run all tests")
+   (bind  "<leader>pc" ":RustOpenCargo<CR>" "open cargo")
+   (bind  "<leader>pd" ":RustOpenExternalDocs<CR>" "open symbol docs")
 ])
