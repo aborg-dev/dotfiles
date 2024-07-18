@@ -18,33 +18,28 @@
 ;; so the text yanked this way can be pasted in other applications.
 (each [_ mode (ipairs [:v :n])]
   (do
-    (vim.api.nvim_set_keymap mode :<localleader>y "\"+y" {:noremap true :silent true})
-    (vim.api.nvim_set_keymap mode :<localleader>p "\"+p" {:noremap true :silent true})))
+    (vim.api.nvim_set_keymap mode :<localleader>y "\"+y"
+                             {:noremap true :silent true})
+    (vim.api.nvim_set_keymap mode :<localleader>p "\"+p"
+                             {:noremap true :silent true})))
 
 ;; Faster file saving.
-(vim.api.nvim_set_keymap :n :<localleader>w ":w<CR>" {:noremap true :silent true})
+(vim.api.nvim_set_keymap :n :<localleader>w ":w<CR>"
+                         {:noremap true :silent true})
 
 ;; Jumping out of terminal window to other vim splits.
-(vim.api.nvim_set_keymap :t :<C-h> :<C-\><C-n><C-w>h {:noremap true :silent true})
-(vim.api.nvim_set_keymap :t :<C-j> :<C-\><C-n><C-w>j {:noremap true :silent true})
-(vim.api.nvim_set_keymap :t :<C-k> :<C-\><C-n><C-w>k {:noremap true :silent true})
-(vim.api.nvim_set_keymap :t :<C-l> :<C-\><C-n><C-w>l {:noremap true :silent true})
+(vim.api.nvim_set_keymap :t :<C-h> "<C-\\><C-n><C-w>h"
+                         {:noremap true :silent true})
+
+(vim.api.nvim_set_keymap :t :<C-j> "<C-\\><C-n><C-w>j"
+                         {:noremap true :silent true})
+
+(vim.api.nvim_set_keymap :t :<C-k> "<C-\\><C-n><C-w>k"
+                         {:noremap true :silent true})
+
+(vim.api.nvim_set_keymap :t :<C-l> "<C-\\><C-n><C-w>l"
+                         {:noremap true :silent true})
 
 ;; Toggle fold with tab.
 (vim.api.nvim_set_keymap :n :<Tab> :za {:noremap true :silent true})
 
-;; Help menu.
-(wk.register 
-  {:h {:name "+help"
-       :s [":luafile %<CR> | :PackerSync<CR>" "sync plugins"]
-       ;;; TODO: Introduce recursive reloading?
-       :r [":luafile %<CR>" "reload config"]}}
-  {:prefix "<leader>"})
-
-;; Shortcuts to manipulate buffers.
-(wk.register 
-  {:b {:name "+buffers"
-       :d [":bd<CR>" "delete"]
-       :n [":bn<CR>" "next"]
-       :p [":bp<CR>" "previous"]}}
-  {:prefix "<leader>"})
