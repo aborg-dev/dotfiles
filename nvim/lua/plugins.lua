@@ -144,26 +144,6 @@ return require("lazy").setup({
     end,
   },
 
-  -- Orgmode in vim, finally!
-  {
-    "nvim-orgmode/orgmode",
-    config = function()
-      require "plugins.orgmode_config"
-    end,
-  },
-
-  -- Nicer bullet symbols for org headings.
-  {
-    "akinsho/org-bullets.nvim",
-    config = function()
-      require("org-bullets").setup {
-        symbols = {
-          headlines = { "◉", "○", "✸", "✿" },
-        },
-      }
-    end,
-  },
-
   {
     "dkarter/bullets.vim",
     init = function()
@@ -216,15 +196,6 @@ return require("lazy").setup({
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup {}
-    end,
-  },
-
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require "plugins.harpoon"
     end,
   },
 

@@ -39,11 +39,11 @@
 
 (vim.api.nvim_set_keymap :n :<localleader>ef ":RustRun<CR>" {:noremap true :silent true})
 
-(wk.register
-  ;; Project commands.
-  {:p {:name "+project"
-       :r [":20split term://cargo run<CR>" "run main"]
-       :t [":20split term://cargo test<CR>" "run all tests"]
-       :c [":RustOpenCargo<CR>" "open cargo"]
-       :d [":RustOpenExternalDocs<CR>" "open symbol docs"]}}
-  {:prefix "<leader>"})
+;; Project commands.
+(wk.add [
+   { 1 "<leader>p" :group "+project"}
+   { 1 "<leader>pr" 2 ":20split term://cargo run<CR>" :desc "run main" }
+   { 1 "<leader>pt" 2 ":20split term://cargo test<CR>" :desc "run all tests" }
+   { 1 "<leader>pc" 2 ":RustOpenCargo<CR>"  :desc "open cargo" }
+   { 1 "<leader>pd" 2 ":RustOpenExternalDocs<CR>" :desc "open symbol docs" }
+])
