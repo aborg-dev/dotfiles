@@ -30,6 +30,9 @@ in
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     zk
     atuin
+    stylua
+    nixfmt-classic
+    fnlfmt
   ];
 
   programs.atuin = {
@@ -175,7 +178,7 @@ in
     indent_type = "Spaces"
     indent_width = 2
     quote_style = "AutoPreferDouble"
-    no_call_parentheses = true
+    no_call_parentheses = false
   '';
 
   # Tmux config.

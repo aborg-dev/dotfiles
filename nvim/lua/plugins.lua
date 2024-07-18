@@ -115,6 +115,24 @@ return require("lazy").setup({
   "nvim-lua/lsp_extensions.nvim",
 
   {
+    'stevearc/conform.nvim',
+    ft = { "lua", "python", "rust", "fennel", "nix" },
+    opts = {},
+    config = function()
+      require("conform").setup({
+        formatters_by_ft = {
+          lua = { "stylua" },
+          python = { "isort", "black" },
+          rust = { "rustfmt" },
+          fennel = { "fnlfmt" },
+          nix = { "nixfmt" },
+        },
+      })
+      vim.keymap.set("n", "<leader>cf", "<cmd>lua require('conform').format()<cr>", { buffer = true })
+    end,
+  },
+
+  {
     "simrat39/rust-tools.nvim",
     ft = { "rust" },
     config = function()

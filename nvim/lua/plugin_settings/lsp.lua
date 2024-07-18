@@ -57,13 +57,6 @@ lsp_config.lua_ls.setup {
       telemetry = {
         enable = false,
       },
-      format = {
-        enable = true,
-        defaultConfig = {
-          indent_style = "space",
-          indent_size = "2",
-        }
-      },
     },
   },
 }
@@ -142,8 +135,6 @@ vim.api.nvim_create_autocmd("User", {
 
     -- Move to the next diagnostic
     bufmap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
-
-    bufmap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.format()<cr>")
   end,
 })
 
