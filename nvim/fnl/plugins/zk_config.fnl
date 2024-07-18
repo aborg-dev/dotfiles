@@ -11,10 +11,10 @@
                  ;; Automatically attach buffers in a zk notebook that match the given filetypes.
                  :auto_attach {:enabled true :filetypes [:markdown]}}})
 
-(wk.add (h.bind :<leader> :+notes
+(wk.add (h.bind :<leader>n :+notes
                 {:f [":ZkNotes { tags = { 'NOT weekly' } }<CR>" "find note"]
                  :r [":ZkNotes { tags = { 'weekly' }, sort = { 'created' } }<CR>"
-                     "find note"]
+                     "find weekly note"]
                  :t [":ZkTags<CR>" "find note by tag"]
                  :c [":ZkNew { dir = 'roam', title = vim.fn.input('Title: ') }<CR>"
                      "create note"]
