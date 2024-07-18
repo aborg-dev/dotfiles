@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 
 let
-  treesitterWithGrammars = (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars));
-in
-{
+  treesitterWithGrammars = (pkgs.vimPlugins.nvim-treesitter.withPlugins
+    (plugins: pkgs.tree-sitter.allGrammars));
+in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -58,7 +58,8 @@ in
     userEmail = "kashin.andrej@gmail.com";
     userName = "Andrei Kashin";
     aliases = {
-      lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+      lg =
+        "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
     };
     extraConfig = {
       # Always push the local branch to a remote branch with the same name.
@@ -147,7 +148,7 @@ in
   };
 
   home.file.".zshrc".source = ../zsh/zshrc.symlink;
-  
+
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -155,13 +156,12 @@ in
     vimdiffAlias = true;
     withPython3 = true;
 
-    plugins = [
-      treesitterWithGrammars
-    ];
+    plugins = [ treesitterWithGrammars ];
   };
 
   xdg.configFile."nvim" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/dotfiles/nvim";
+    source = config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/repos/dotfiles/nvim";
     recursive = true;
   };
 
@@ -194,9 +194,7 @@ in
     recursive = true;
   };
 
-  programs.zoxide = {
-    enable = true;
-  };
+  programs.zoxide = { enable = true; };
 
   fonts.fontconfig.enable = true;
 
