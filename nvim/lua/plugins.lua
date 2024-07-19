@@ -225,6 +225,7 @@ return require("lazy").setup({
     end,
   },
 
+  -- Add quotes around words.
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -236,6 +237,7 @@ return require("lazy").setup({
     end,
   },
 
+  -- Interactive, regex-based search and replace.
   {
     "nvim-pack/nvim-spectre",
     dependencies = {
