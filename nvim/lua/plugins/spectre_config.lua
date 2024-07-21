@@ -3,4 +3,10 @@ local wk = require("which-key")
 local spectre = require("spectre")
 local h = require("helpers")
 spectre.setup({})
-return wk.add(h.bind("<leader>r", "+replace", {r = {"<cmd>lua require('spectre').toggle()<CR>", "toggle"}, w = {"<cmd>lua require('spectre').open_visual({select_word=true})<CR>", "word"}, v = {"<cmd>lua require('spectre').open_visual()<CR>", "visual"}, p = {"<cmd>lua require('spectre').open_file_search({select_word=true})<CR>", "path"}}))
+local function replace_word()
+  return spectre.open_visual({select_word = true})
+end
+local function replace_in_file()
+  return spectre.open_file_search({select_word = true})
+end
+return wk.add(h.bind("<leader>r", "+replace", {r = {spectre.toggle, "Replace"}, w = {replace_word, "Replace word"}, p = {replace_in_file, "Replace in file"}}))

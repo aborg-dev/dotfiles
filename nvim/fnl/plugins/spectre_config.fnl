@@ -4,17 +4,12 @@
 
 (spectre.setup {})
 
+(fn replace_word [] (spectre.open_visual {:select_word true}))
+(fn replace_in_file [] (spectre.open_file_search {:select_word true}))
+
 ;; Search menu.
 (wk.add (h.bind :<leader>r :+replace
-                {;; Toggle search.
-                 :r ["<cmd>lua require('spectre').toggle()<CR>" :toggle]
-                 ;; Search a word.
-                 :w ["<cmd>lua require('spectre').open_visual({select_word=true})<CR>"
-                     :word]
-                 ;; Search visual selection.
-                 ;; TODO: Needs to be done in visual mode.
-                 :v ["<cmd>lua require('spectre').open_visual()<CR>" :visual]
-                 ;; Search on current file.
-                 :p ["<cmd>lua require('spectre').open_file_search({select_word=true})<CR>"
-                     :path]}))
+                {:r [spectre.toggle :Replace]
+                 :w [replace_word "Replace word"]
+                 :p [replace_in_file "Replace in file"]}))
 
