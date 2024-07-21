@@ -12,7 +12,8 @@
                  :auto_attach {:enabled true :filetypes [:markdown]}}})
 
 (wk.add (h.bind :<leader>n :+notes
-                {:f [":ZkNotes { tags = { 'NOT weekly' } }<CR>" "find note"]
+                {:f [":ZkNotes { tags = { 'NOT weekly' }, sort = { 'modified' } }<CR>"
+                     "find note"]
                  :r [":ZkNotes { tags = { 'weekly' }, sort = { 'created' } }<CR>"
                      "find weekly note"]
                  :t [":ZkTags<CR>" "find note by tag"]
