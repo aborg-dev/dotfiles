@@ -243,6 +243,9 @@ return require("lazy").setup({
     dependencies = {
       { "nvim-lua/plenary.nvim" },
     },
+    config = function()
+      require("plugins.spectre_config")
+    end,
   },
 
   {
