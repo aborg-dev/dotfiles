@@ -1,7 +1,7 @@
-local mason = require "mason"
-local mason_lspconfig = require "mason-lspconfig"
-local lsp_config = require "lspconfig"
-local util = require "lspconfig/util"
+local mason = require("mason")
+local mason_lspconfig = require("mason-lspconfig")
+local lsp_config = require("lspconfig")
+local util = require("lspconfig/util")
 
 local lsp_defaults = {
   -- Callback function that will be executed when a language server is attached to a buffer.
@@ -10,13 +10,10 @@ local lsp_defaults = {
   end,
 }
 -- And update default LSP config.
-lsp_config.util.default_config = vim.tbl_deep_extend(
-  "force",
-  lsp_config.util.default_config,
-  lsp_defaults
-)
+lsp_config.util.default_config =
+  vim.tbl_deep_extend("force", lsp_config.util.default_config, lsp_defaults)
 
-mason.setup {
+mason.setup({
   automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
   ui = {
     icons = {
@@ -25,18 +22,18 @@ mason.setup {
       server_uninstalled = "✗",
     },
   },
-}
+})
 
-mason_lspconfig.setup {
-  ensure_installed = { "lua_ls" }
-}
+mason_lspconfig.setup({
+  ensure_installed = { "lua_ls" },
+})
 
 -- Customize the options passed to the server.
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-lsp_config.lua_ls.setup {
+lsp_config.lua_ls.setup({
   settings = {
     Lua = {
       runtime = {
@@ -59,45 +56,47 @@ lsp_config.lua_ls.setup {
       },
     },
   },
-}
+})
 
-lsp_config.gopls.setup {
+lsp_config.gopls.setup({
   cmd = { "gopls", "serve" },
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gopls = { analyses = { unusedparams = true }, staticcheck = true },
   },
-}
+})
 
-lsp_config.beancount.setup {
+lsp_config.beancount.setup({
   init_options = {
     journal_file = "/home/akashin/Repos/finance/data/ledger.bean",
   },
-}
+})
 
 vim.api.nvim_create_autocmd(
   { "BufRead", "BufNewFile" },
   { pattern = { "*.bean" }, command = "setlocal foldmethod=marker" }
 )
 
-lsp_config.pyright.setup {}
+lsp_config.pyright.setup({})
 
-lsp_config.clangd.setup {}
+lsp_config.clangd.setup({})
 
-lsp_config.fennel_language_server.setup {
-	settings = {
-		fennel = {
-			workspace = {
-				-- If you are using hotpot.nvim or aniseed,
-				-- make the server aware of neovim runtime files.
-				library = vim.api.nvim_list_runtime_paths(),
-			},
-			diagnostics = {
-				globals = {'vim'},
-			},
-		},
-	},
-}
+lsp_config.fennel_language_server.setup({
+  settings = {
+    fennel = {
+      workspace = {
+        -- If you are using hotpot.nvim or aniseed,
+        -- make the server aware of neovim runtime files.
+        library = vim.api.nvim_list_runtime_paths(),
+      },
+      diagnostics = {
+        globals = { "vim" },
+      },
+    },
+  },
+})
+
+lsp_config.tsserver.setup({})
 
 vim.api.nvim_create_autocmd("User", {
   pattern = "LspAttached",
@@ -143,14 +142,14 @@ local sign = function(opts)
   vim.fn.sign_define(opts.name, {
     texthl = opts.name,
     text = opts.text,
-    numhl = ''
+    numhl = "",
   })
 end
 
-sign({ name = 'DiagnosticSignError', text = '' })
-sign({ name = 'DiagnosticSignWarn', text = '' })
-sign({ name = 'DiagnosticSignHint', text = '' })
-sign({ name = 'DiagnosticSignInfo', text = '' })
+sign({ name = "DiagnosticSignError", text = "" })
+sign({ name = "DiagnosticSignWarn", text = "" })
+sign({ name = "DiagnosticSignHint", text = "" })
+sign({ name = "DiagnosticSignInfo", text = "" })
 
 vim.diagnostic.config({
   virtual_text = false,
@@ -159,10 +158,10 @@ vim.diagnostic.config({
   underline = true,
   severity_sort = false,
   float = {
-    border = 'rounded',
-    source = 'always',
-    header = '',
-    prefix = '',
+    border = "rounded",
+    source = "always",
+    header = "",
+    prefix = "",
   },
 })
 

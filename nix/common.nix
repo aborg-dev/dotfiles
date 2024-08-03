@@ -33,6 +33,8 @@ in {
     stylua
     nixfmt-classic
     fnlfmt
+    nodePackages.typescript
+    nodePackages.typescript-language-server
   ];
 
   programs.atuin = {
