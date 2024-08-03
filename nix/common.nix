@@ -68,6 +68,8 @@ in {
       push = { default = "current"; };
       # Use a more convenient 3-way diff algorithm.
       merge = { conflictStyle = "zdiff3"; };
+      # Always pull with rebase.
+      pull = { rebase = "true"; };
     };
   };
 
