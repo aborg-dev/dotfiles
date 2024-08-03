@@ -18,3 +18,5 @@ machines (e.g. "nix/spire.nix").
 Finally, add the machine to the list of `outputs` in flake.nix.
 
 The environment can now be installed and updated with `home-manager switch`.
+
+For now, you also need to manually install [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm).
