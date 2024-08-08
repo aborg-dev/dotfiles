@@ -99,8 +99,19 @@ in {
       # Set the path of default zk notebook.
       set -gx ZK_NOTEBOOK_DIR ~/notes
 
-      # Enable pyenv hooks in current shell.
-      pyenv init - | source
+      # Start pyenv lazily to speed-up shell startup.
+      function pyenv
+          set command $argv[1]
+          set -e argv[1]
+
+          switch "$command"
+              case rehash shell
+                  source (pyenv "sh-$command" $argv | psub)
+
+              case \*
+                  command pyenv "$command" $argv
+          end
+      end
     '';
 
     shellAliases = {
