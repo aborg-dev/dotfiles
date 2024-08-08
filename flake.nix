@@ -34,10 +34,11 @@
         modules = [ ./nix/tuxedo.nix catppuccin.homeManagerModules.catppuccin ];
       };
 
-    homeConfigurations."akashin" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-      modules = [ ./nix/osx.nix ];
-    };
+    homeConfigurations."aborg@hermes" =
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        modules = [ ./nix/osx.nix catppuccin.homeManagerModules.catppuccin ];
+      };
 
     homeConfigurations."akashin@odroid" =
       home-manager.lib.homeManagerConfiguration {
