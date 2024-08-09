@@ -224,6 +224,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2
 # Shortcuts for volume control.
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mod+Shift+o exec toggle_default_sink.sh
 
 #
 # Status Bar:
