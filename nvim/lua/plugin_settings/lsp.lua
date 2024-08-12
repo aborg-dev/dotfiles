@@ -68,7 +68,7 @@ lsp_config.gopls.setup({
 
 lsp_config.beancount.setup({
   init_options = {
-    journal_file = "/home/akashin/Repos/finance/data/ledger.bean",
+    journal_file = "~/repos/finance/data/ledger.bean",
   },
 })
 

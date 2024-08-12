@@ -1,4 +1,4 @@
-# akashin's dotfiles
+# aborg's dotfiles
 
 This repository stores my system configuration that I use across multiple machines.
 The setup relies Nix home-manager to install and configure the development environment.
