@@ -40,7 +40,7 @@
         modules = [ ./nix/osx.nix catppuccin.homeManagerModules.catppuccin ];
       };
 
-    homeConfigurations."akashin@odroid" =
+    homeConfigurations."aborg@odroid" =
       home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [ ./nix/odroid.nix catppuccin.homeManagerModules.catppuccin ];
