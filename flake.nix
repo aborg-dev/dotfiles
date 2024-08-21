@@ -16,7 +16,7 @@
     defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
     defaultPackage.aarch64-darwin = home-manager.defaultPackage.aarch64-darwin;
 
-    homeConfigurations."akashin@glados" =
+    homeConfigurations."aborg@glados" =
       home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [ ./nix/glados.nix catppuccin.homeManagerModules.catppuccin ];
