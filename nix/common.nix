@@ -20,7 +20,6 @@ in {
 
   # Packages to install.
   home.packages = with pkgs; [
-    tmux
     ripgrep
     fd
     eza
@@ -204,9 +203,6 @@ in {
     no_call_parentheses = false
   '';
 
-  # Tmux config.
-  home.file.".tmux.conf".source = ../tmux/tmux.conf;
-
   xdg.configFile."zk" = {
     source = ../zk;
     recursive = true;
@@ -215,6 +211,58 @@ in {
   xdg.configFile."helix" = {
     source = ../helix;
     recursive = true;
+  };
+
+  programs.tmux = {
+    enable = true;
+    prefix = "C-a";
+    keyMode = "vi";
+    historyLimit = 100000;
+    # Resize window on monitor switch.
+    aggressiveResize = true;
+    plugins = with pkgs; [
+      tmuxPlugins.vim-tmux-navigator
+      {
+        plugin = tmuxPlugins.catppuccin;
+        extraConfig = ''
+          set -g @catppuccin_flavour 'frappe'
+          set -g @catppuccin_window_left_separator ""
+          set -g @catppuccin_window_right_separator " "
+          set -g @catppuccin_window_middle_separator " █"
+          set -g @catppuccin_window_number_position "right"
+
+          set -g @catppuccin_window_default_fill "number"
+          set -g @catppuccin_window_default_text "#W"
+
+          set -g @catppuccin_window_current_fill "number"
+          set -g @catppuccin_window_current_text "#W"
+
+          set -g @catppuccin_status_modules_right "directory session date_time"
+          set -g @catppuccin_status_left_separator  " "
+          set -g @catppuccin_status_right_separator ""
+          set -g @catppuccin_status_fill "icon"
+          set -g @catppuccin_status_connect_separator "no"
+
+          set -g @catppuccin_directory_text "#{pane_current_path}"
+        '';
+      }
+    ];
+    extraConfig = ''
+      # Upgrade terminal colors.
+      set -ag terminal-overrides ",$TERM:RGB"
+
+      # Open new window with the same path
+      bind c new-window -c "#{pane_current_path}"
+      bind j split-window -h -c "#{pane_current_path}"
+      bind k split-window -v -c "#{pane_current_path}"
+
+      # Renumber windows when a window is closed
+      set -g renumber-windows on
+
+      # Enable visual mode/copy shortcuts from vim
+      bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
+      bind-key -T copy-mode-vi 'y' send-keys -X copy-selection
+    '';
   };
 
   programs.zoxide = { enable = true; };
