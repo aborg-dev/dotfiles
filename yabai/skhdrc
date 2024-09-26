@@ -77,38 +77,39 @@
 # ############################################################### #
 
 # focus window
-cmd - h : yabai -m window --focus west
-cmd - j : yabai -m window --focus south
-cmd - k : yabai -m window --focus north
-cmd - l : yabai -m window --focus east
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
 
 # swap managed window
 # shift + alt - h : yabai -m window --swap north
 
 # move managed window
-shift + cmd - h : yabai -m window --warp west
-shift + cmd - j : yabai -m window --warp south
-shift + cmd - k : yabai -m window --warp north
-shift + cmd - l : yabai -m window --warp east
+shift + alt - h : yabai -m window --warp west
+shift + alt - j : yabai -m window --warp south
+shift + alt - k : yabai -m window --warp north
+shift + alt - l : yabai -m window --warp east
 
 # balance size of windows
 # shift + alt - 0 : yabai -m space --balance
 
 # make floating window fill screen
-# shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
+shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
 
 # make floating window fill left-half of screen
-# shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
+shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
 
-# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-shift + cmd - n : yabai -m space --create && \
-                  index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
-                  yabai -m window --space "${index}" && \
-                  yabai -m space --focus "${index}"
+# move window
+shift + alt - 1 : yabai -m window --space 1
+shift + alt - 2 : yabai -m window --space 2
+shift + alt - 3 : yabai -m window --space 3
 
 # fast focus desktop
 # cmd + alt - x : yabai -m space --focus recent
-cmd - n : yabai -m space --focus "${index}"
+alt - 1 : yabai -m space --focus 1
+alt - 2 : yabai -m space --focus 2
+alt - 3 : yabai -m space --focus 3
 
 # send window to desktop and follow focus
 # shift + cmd - z : yabai -m window --space next; yabai -m space --focus next
@@ -138,14 +139,31 @@ cmd - n : yabai -m space --focus "${index}"
 # ctrl + alt - h : yabai -m window --insert west
 
 # toggle window zoom
-# alt - d : yabai -m window --toggle zoom-parent
-# alt - f : yabai -m window --toggle zoom-fullscreen
+alt - d : yabai -m window --toggle zoom-parent
+alt - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window split type
 # alt - e : yabai -m window --toggle split
 
 # float / unfloat window and center on screen
-# alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
-
+alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+ 
 # toggle sticky(+float), picture-in-picture
-# alt - p : yabai -m window --toggle sticky --toggle pip
+alt - p : yabai -m window --toggle sticky --toggle pip
+
+# Restart yabai.
+ctrl + alt - r : yabai --restart-service
+
+# Open a terminal.
+cmd - return : open -na WezTerm
+
+## Stacks (shift + ctrl - ...)
+# Add the active window to the window or stack to the {direction}: shift + ctrl - {j, k, l, h}
+shift + ctrl - j    : yabai -m window  west --stack $(yabai -m query --windows --window | jq -r '.id')
+shift + ctrl - k    : yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id')
+shift + ctrl - l    : yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id')
+shift + ctrl - h    : yabai -m window  east --stack $(yabai -m query --windows --window | jq -r '.id')
+
+# Stack Navigation: shift + ctrl - {n, p}
+shift + ctrl - n : yabai -m window --focus stack.next
+shift + ctrl - p : yabai -m window --focus stack.prev
