@@ -45,5 +45,10 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [ ./nix/odroid.nix catppuccin.homeManagerModules.catppuccin ];
       };
+
+    homeConfigurations."aborg" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+      modules = [ ./nix/osx.nix catppuccin.homeManagerModules.catppuccin ];
+    };
   };
 }
