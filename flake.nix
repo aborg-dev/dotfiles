@@ -28,6 +28,13 @@
         modules = [ ./nix/spire.nix catppuccin.homeManagerModules.catppuccin ];
       };
 
+    homeConfigurations."polygon@spire" =
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        modules =
+          [ ./nix/polygon.nix catppuccin.homeManagerModules.catppuccin ];
+      };
+
     homeConfigurations."aborg@tuxedo" =
       home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
