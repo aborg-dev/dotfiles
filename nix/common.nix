@@ -36,6 +36,11 @@ in {
     nodePackages.typescript-language-server
   ];
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   programs.atuin = {
     enable = true;
     settings = {
