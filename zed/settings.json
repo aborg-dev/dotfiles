@@ -1,0 +1,43 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "assistant": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    },
+    "version": "2"
+  },
+  "ssh_connections": [
+    {
+      "host": "spire",
+      "username": "polygon",
+      "projects": [
+        {
+          "paths": ["~/repos/work"]
+        }
+      ]
+    }
+  ],
+  "theme": "Catppuccin Frappé",
+  // "buffer_font_family": "JetBrainsMonoNerdFont",
+  "vim_mode": true,
+  "ui_font_size": 26,
+  "buffer_font_size": 26,
+  // Make sure to source ".profile" in bash to switch to Nix-managed fish shell.
+  "terminal": {
+    "shell": {
+      "with_arguments": {
+        "program": "/usr/bin/bash",
+        "args": ["--login"]
+      }
+    }
+    // "font_family": "JetBrainsMonoNerdFont",
+  }
+}
