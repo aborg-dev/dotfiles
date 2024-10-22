@@ -26,7 +26,7 @@
     }
   ],
   "theme": "Catppuccin Frappé",
-  // "buffer_font_family": "JetBrainsMonoNerdFont",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
   "vim_mode": true,
   "ui_font_size": 26,
   "buffer_font_size": 26,
@@ -37,7 +37,7 @@
         "program": "/usr/bin/bash",
         "args": ["--login"]
       }
-    }
-    // "font_family": "JetBrainsMonoNerdFont",
+    },
+    "font_family": "JetBrainsMono Nerd Font"
   }
 }
