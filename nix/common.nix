@@ -90,7 +90,7 @@ in {
     '';
     interactiveShellInit = ''
       # Disable the greeting message.
-      # set --erase fish_greeting
+      set -g fish_greeting
 
       # Enable Vim keybindings.
       fish_vi_key_bindings
