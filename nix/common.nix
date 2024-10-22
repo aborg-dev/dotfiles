@@ -34,6 +34,8 @@ in {
     fnlfmt
     nodePackages.typescript
     nodePackages.typescript-language-server
+    # Nix language server.
+    nixd
   ];
 
   programs.direnv = {
