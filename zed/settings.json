@@ -20,7 +20,19 @@
       "username": "polygon",
       "projects": [
         {
-          "paths": ["~/repos/work"]
+          "paths": [
+            "/home/polygon/repos/work"
+          ]
+        },
+        {
+          "paths": [
+            "/home/polygon/repos/qemu"
+          ]
+        },
+        {
+          "paths": [
+            "/home/polygon/repos/benchmarks/isa_benchmarks"
+          ]
         }
       ]
     }
