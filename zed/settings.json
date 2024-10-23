@@ -38,6 +38,20 @@
         "args": ["--login"]
       }
     },
-    "font_family": "JetBrainsMono Nerd Font"
+    "working_directory": "current_project_directory",
+    "font_family": "JetBrainsMono Nerd Font",
+    "button": false
+  },
+  "cursor_blink": false,
+  "scrollbar": {
+    "show": "never"
+  },
+  "vertical_scroll_margin": 0,
+  "tab_bar": {
+    "show": false
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": false
   }
 }
