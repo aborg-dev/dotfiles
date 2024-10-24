@@ -1,8 +1,9 @@
+[general]
+live_config_reload = true
 import = [
   "~/.config/alacritty/font.toml",
   "~/.config/alacritty/themes/catppuccin-frappe.toml"
 ]
-live_config_reload = true
 
 [colors]
 draw_bold_text_with_bright_colors = true
@@ -218,9 +219,6 @@ multiplier = 3
 save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
-[shell]
-program = "fish"
-
 [window]
 decorations = "full"
 dynamic_padding = false
@@ -234,3 +232,7 @@ lines = 24
 [window.padding]
 x = 2
 y = 2
+
+[terminal.shell]
+program = "fish"
+
