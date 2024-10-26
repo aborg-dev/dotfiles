@@ -5,9 +5,6 @@
 (set vim.g.mapleader " ")
 (set vim.g.maplocalleader ",")
 
-;; Exit insert mode without going all the way to escape key!
-(vim.api.nvim_set_keymap :i :kj :<esc> {:noremap true :silent true})
-
 ;; Bindings to copy and paste to a named register.
 ;; When you yank without any modifier, text is placed into default register.
 ;; When you delete some text, it is also automatically placed into the default
@@ -25,6 +22,10 @@
 
 ;; Faster file saving.
 (vim.api.nvim_set_keymap :n :<localleader>w ":w<CR>"
+                         {:noremap true :silent true})
+
+;; Faster file exit.
+(vim.api.nvim_set_keymap :n :<localleader>q ":q<CR>"
                          {:noremap true :silent true})
 
 ;; Jumping out of terminal window to other vim splits.

@@ -97,17 +97,17 @@ in {
       # Enable Vim keybindings.
       fish_vi_key_bindings
 
-      # More convenient shortcut to exit insert mode.
-      bind -M insert kj 'set fish_bind_mode default; commandline -f repaint'
-
-      # Ctrl+P and Ctrl+N to go to previous/next history command.
-      bind -M insert \cp up-or-search
-      bind -M insert \cn down-or-search
-
       # Add paths to custom-built binaries.
       fish_add_path ~/.local/bin ~/.yarn/bin ~/.cargo/bin
       fish_add_path /opt/homebrew/bin
       fish_add_path /usr/local/texlive/2024/bin/x86_64-linux
+
+      set -gx ATUIN_NOBIND "true"
+      atuin init fish | source
+
+      # bind to ctrl-r in normal and insert mode, add any other bindings you want here too
+      bind \cr _atuin_search
+      bind -M insert \cr _atuin_search
 
       # Set the path of default zk notebook.
       set -gx ZK_NOTEBOOK_DIR ~/notes

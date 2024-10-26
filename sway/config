@@ -90,7 +90,7 @@ bindsym $mod+Escape exec swaylock -f -F -c 000000
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+space exec $menu
 
 		# Find files
     bindsym alt+d exec $menu_files
@@ -170,12 +170,6 @@ bindsym $mod+Escape exec swaylock -f -F -c 000000
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
 
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
-
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
-
     # Move focus to the parent container
     bindsym $mod+a focus parent
 #
@@ -251,7 +245,7 @@ bar {
 #
 input * {
   xkb_layout "us,ru"
-  xkb_options "grp:win_space_toggle,ctrl:nocaps"
+  xkb_options "grp:alt_shift_toggle,ctrl:nocaps"
 }
 
 # Indirection to allow using different font size on different machines.

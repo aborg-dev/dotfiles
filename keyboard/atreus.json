@@ -54,9 +54,11 @@
       {"code": 55, "label": {"base": ".", "shifted": ">"}},
       {"code": 56, "label": {"base": "/", "shifted": "?"}},
       {
-        "code": 65535,
-        "label": {"base": {"full": "Transparent", "1u": " "}},
-        "categories": ["blanks"]
+        "code": 17495,
+        "label": {"hint": "MoveTo", "base": "#3"},
+        "target": 3,
+        "rangeStart": 17492,
+        "categories": ["layer", "movetolayer"]
       },
       {"code": 43, "label": {"base": "Tab"}},
       {
@@ -108,11 +110,9 @@
         "categories": ["layer", "dualuse"]
       },
       {
-        "code": 17495,
-        "label": {"hint": "MoveTo", "base": "#3"},
-        "target": 3,
-        "rangeStart": 17492,
-        "categories": ["layer", "movetolayer"]
+        "code": 65535,
+        "label": {"base": {"full": "Transparent", "1u": " "}},
+        "categories": ["blanks"]
       },
       {"code": 45, "label": {"base": "-", "shifted": "_"}},
       {"code": 52, "label": {"base": "'", "shifted": "\""}},
@@ -181,18 +181,8 @@
         "categories": ["with-modifiers", "shift"],
         "baseCode": 37
       },
-      {
-        "code": 2086,
-        "label": {"hint": null, "base": "("},
-        "categories": ["with-modifiers", "shift"],
-        "baseCode": 38
-      },
-      {
-        "code": 2087,
-        "label": {"hint": null, "base": ")"},
-        "categories": ["with-modifiers", "shift"],
-        "baseCode": 39
-      },
+      {"code": 45, "label": {"base": "-", "shifted": "_"}},
+      {"code": 46, "label": {"base": "=", "shifted": "+"}},
       {"code": 30, "label": {"base": "1", "shifted": "!"}},
       {"code": 31, "label": {"base": "2", "shifted": "@"}},
       {"code": 32, "label": {"base": "3", "shifted": "#"}},
@@ -213,7 +203,18 @@
       {"code": 37, "label": {"base": "8", "shifted": "*"}},
       {"code": 38, "label": {"base": "9", "shifted": "("}},
       {"code": 39, "label": {"base": "0", "shifted": ")"}},
-      {"code": 53, "label": {"base": "`", "shifted": "~"}},
+      {
+        "code": 2086,
+        "label": {"hint": null, "base": "("},
+        "categories": ["with-modifiers", "shift"],
+        "baseCode": 38
+      },
+      {
+        "code": 2087,
+        "label": {"hint": null, "base": ")"},
+        "categories": ["with-modifiers", "shift"],
+        "baseCode": 39
+      },
       {
         "code": 2095,
         "label": {"hint": null, "base": "{"},
@@ -239,13 +240,18 @@
         "categories": ["blanks"]
       },
       {
-        "code": 65535,
-        "label": {"base": {"full": "Transparent", "1u": " "}},
-        "categories": ["blanks"]
+        "code": 2086,
+        "label": {"hint": null, "base": "("},
+        "categories": ["with-modifiers", "shift"],
+        "baseCode": 38
       },
-      {"code": 87, "label": {"base": "+"}, "location": "numpad"},
-      {"code": 86, "label": {"base": "-"}, "location": "numpad"},
-      {"code": 46, "label": {"base": "=", "shifted": "+"}},
+      {
+        "code": 2095,
+        "label": {"hint": null, "base": "{"},
+        "categories": ["with-modifiers", "shift"],
+        "baseCode": 47
+      },
+      {"code": 47, "label": {"base": "[", "shifted": "{"}},
       {
         "code": 65535,
         "label": {"base": {"full": "Transparent", "1u": " "}},
@@ -719,9 +725,11 @@
         "categories": ["blanks"]
       },
       {
-        "code": 65535,
-        "label": {"base": {"full": "Transparent", "1u": " "}},
-        "categories": ["blanks"]
+        "code": 17492,
+        "label": {"hint": "MoveTo", "base": "#0"},
+        "target": 0,
+        "rangeStart": 17492,
+        "categories": ["layer", "movetolayer"]
       },
       {
         "code": 65535,
@@ -762,11 +770,12 @@
         "categories": ["mousekeys"]
       },
       {
-        "code": 17492,
-        "label": {"hint": "MoveTo", "base": "#0"},
-        "target": 0,
-        "rangeStart": 17492,
-        "categories": ["layer", "movetolayer"]
+        "code": 20548,
+        "label": {
+          "hint": {"full": "Mouse Button", "1u": "M.Btn"},
+          "base": "Middle"
+        },
+        "categories": ["mousekeys"]
       },
       {
         "code": 65535,
@@ -1210,16 +1219,17 @@
         "categories": ["modifier"]
       },
       {
-        "code": 4103,
-        "label": {"hint": {"full": "Super+", "1u": "Su+"}, "base": "d"},
-        "categories": ["with-modifiers", "gui"],
-        "baseCode": 7
-      },
-      {
         "code": 4140,
         "label": {"hint": {"full": "Super+", "1u": "Su+"}, "base": "Space"},
         "categories": ["with-modifiers", "gui"],
         "baseCode": 44
+      },
+      {
+        "code": 2274,
+        "label": {"hint": {"full": "Shift+", "1u": "S+"}, "base": "Alt"},
+        "location": "left",
+        "categories": ["with-modifiers", "shift"],
+        "baseCode": 226
       },
       {
         "code": 65535,
