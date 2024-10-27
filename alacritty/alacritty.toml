@@ -104,6 +104,7 @@ bindings = [
 	{ action = "PasteSelection", key = "Insert", mods = "Shift" },
 	{ action = "ResetFontSize", key = "Key0", mods = "Control" },
 	{ action = "IncreaseFontSize", key = "Equals", mods = "Control" },
+	{ action = "IncreaseFontSize", key = "Plus", mods = "Control|Shift" },
 	{ action = "DecreaseFontSize", key = "Minus", mods = "Control" },
 	{ action = "ClearLogNotice", key = "L", mods = "Control" },
 	{ chars = "\f", key = "L", mods = "Control" },
