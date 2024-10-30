@@ -2,6 +2,7 @@
 local wk = require("which-key")
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
+vim.api.nvim_set_keymap("i", "kj", "<esc>", {noremap = true, silent = true})
 for _, mode in ipairs({"v", "n"}) do
   vim.api.nvim_set_keymap(mode, "<localleader>y", "\"+y", {noremap = true, silent = true})
   vim.api.nvim_set_keymap(mode, "<localleader>p", "\"+p", {noremap = true, silent = true})

@@ -109,6 +109,13 @@ in {
       bind \cr _atuin_search
       bind -M insert \cr _atuin_search
 
+      # More convenient shortcut to exit insert mode.
+      bind -M insert kj 'set fish_bind_mode default; commandline -f repaint'
+
+      # Ctrl+K and Ctrl+J to go to previous/next history command.
+      bind -M insert \ck up-or-search
+      bind -M insert \cj down-or-search
+
       # Set the path of default zk notebook.
       set -gx ZK_NOTEBOOK_DIR ~/notes
 

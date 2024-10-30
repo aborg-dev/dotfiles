@@ -5,6 +5,9 @@
 (set vim.g.mapleader " ")
 (set vim.g.maplocalleader ",")
 
+;; Exit insert mode without going all the way to escape key!
+(vim.api.nvim_set_keymap :i :kj :<esc> {:noremap true :silent true})
+
 ;; Bindings to copy and paste to a named register.
 ;; When you yank without any modifier, text is placed into default register.
 ;; When you delete some text, it is also automatically placed into the default

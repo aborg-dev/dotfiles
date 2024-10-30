@@ -245,7 +245,7 @@ bar {
 #
 input * {
   xkb_layout "us,ru"
-  xkb_options "grp:alt_shift_toggle,ctrl:nocaps"
+  xkb_options "grp:rctrl_toggle,ctrl:nocaps"
 }
 
 # Indirection to allow using different font size on different machines.
