@@ -112,9 +112,10 @@ in {
       # More convenient shortcut to exit insert mode.
       bind -M insert kj 'set fish_bind_mode default; commandline -f repaint'
 
-      # Ctrl+K and Ctrl+J to go to previous/next history command.
-      bind -M insert \ck up-or-search
-      bind -M insert \cj down-or-search
+      # Ctrl+P and Ctrl+N to go to previous/next history command.
+      # Ideally, I would use J and K here, but this conflicts with Tmux-navigator.
+      bind -M insert \cp up-or-search
+      bind -M insert \cn down-or-search
 
       # Set the path of default zk notebook.
       set -gx ZK_NOTEBOOK_DIR ~/notes
@@ -282,6 +283,10 @@ in {
       bind c new-window -c "#{pane_current_path}"
       bind j split-window -h -c "#{pane_current_path}"
       bind k split-window -v -c "#{pane_current_path}"
+
+      # Start windows and panes at 1, not 0
+      set -g base-index 1
+      setw -g pane-base-index 1
 
       # Renumber windows when a window is closed
       set -g renumber-windows on
