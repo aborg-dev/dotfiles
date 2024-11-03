@@ -141,6 +141,7 @@ in {
       l = "exa -l";
       b = "bat";
       g = "git";
+      j = "jj";
     };
 
     # These will be substituted right in the command before execution.
@@ -278,6 +279,9 @@ in {
     extraConfig = ''
       # Upgrade terminal colors.
       set -ag terminal-overrides ",$TERM:RGB"
+
+      # Disable delay between sending an Escape key.
+      set -sg escape-time 0
 
       # Open new window with the same path
       bind c new-window -c "#{pane_current_path}"
