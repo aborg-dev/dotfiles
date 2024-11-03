@@ -37,7 +37,7 @@ bindsym $mod+m exec i3-focus-last menu
 
 # Clipboard manager and quick picker through rofi.
 exec wl-paste -t text --watch clipman store
-bindsym $mod+Shift+p exec clipman pick -t rofi
+bindsym $mod+p exec clipman pick -t rofi
 
 ### Output configuration
 #
@@ -92,9 +92,6 @@ bindsym $mod+Escape exec swaylock -f -F -c 000000
     # Start your launcher
     bindsym $mod+space exec $menu
 
-		# Find files
-    bindsym alt+d exec $menu_files
-
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
@@ -120,9 +117,6 @@ bindsym $mod+Escape exec swaylock -f -F -c 000000
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
-		# Swap containers.
-		bindsym $mod+n exec swaymsg swap container with mark center
-		bindsym $mod+c exec swaymsg -- mark --toggle center
 #
 # Workspaces:
 #
@@ -163,15 +157,12 @@ bindsym $mod+Escape exec swaylock -f -F -c 000000
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
+    bindsym $mod+u layout stacking
+    bindsym $mod+i layout tabbed
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
-
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
+    bindsym $mod+o fullscreen
 #
 # Scratchpad:
 #
@@ -184,30 +175,6 @@ bindsym $mod+Escape exec swaylock -f -F -c 000000
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+semicolon scratchpad show
-#
-# Resizing containers:
-#
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
 
 # Shortcuts for brightness control.
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 2
