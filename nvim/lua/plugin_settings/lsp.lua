@@ -111,7 +111,7 @@ vim.api.nvim_create_autocmd("User", {
     bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>")
 
     -- Jump to the definition.
-    bufmap("n", "<C-]>", "<cmd>lua vim.lsp.buf.definition()<cr>")
+    bufmap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
 
     -- Lists all the implementations for the symbol under the cursor.
     bufmap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
