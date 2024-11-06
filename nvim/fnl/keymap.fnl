@@ -44,6 +44,3 @@
 (vim.api.nvim_set_keymap :t :<C-l> "<C-\\><C-n><C-w>l"
                          {:noremap true :silent true})
 
-;; Toggle fold with tab.
-(vim.api.nvim_set_keymap :n :<Tab> :za {:noremap true :silent true})
-

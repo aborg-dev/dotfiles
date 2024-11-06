@@ -107,6 +107,7 @@ bindings = [
 	{ action = "IncreaseFontSize", key = "Plus", mods = "Control|Shift" },
 	{ action = "DecreaseFontSize", key = "Minus", mods = "Control" },
 	{ action = "ClearLogNotice", key = "L", mods = "Control" },
+  { chars = "\u0017", key = "Back", mods = "Control" },
 	{ chars = "\f", key = "L", mods = "Control" },
 	{ chars = "\u001BOH", key = "Home", mode = "AppCursor" },
 	{ chars = "\u001B[H", key = "Home", mode = "~AppCursor" },
