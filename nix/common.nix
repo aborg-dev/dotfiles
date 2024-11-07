@@ -155,6 +155,10 @@ in {
       gco = "git checkout";
       hms = "home-manager switch";
       crr = "cargo run --release";
+      jc = "jj commit";
+      jd = "jj diff";
+      jf = "jj git fetch";
+      jp = "jj bookmark set master -r @- && jj git push";
     };
 
     # TODO: Learn how to update versions automatically.
