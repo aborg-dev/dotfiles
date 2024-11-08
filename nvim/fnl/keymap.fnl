@@ -13,17 +13,10 @@
                 {;; Faster file saving.
                  :w [":w<CR>" :Save]
                  ;; Copy/paste to OS clipboard.
-                 :y ["\"+y" :Copy :n]
-                 :p ["\"+p" :Paste :n]
-                 ;; Navigate search list.
-                 :cn [":cnext<CR>" :NextSearch]
-                 :cp [":cprev<CR>" :PrevSearch]
+                 :y ["\"+y" :Copy :nv]
+                 :p ["\"+p" :Paste :nv]
                  ;; Faster file exit.
                  :q [":q<CR>" :Exit]}))
-
-;; TODO: Figure out how to merge this with binding above.
-(wk.add (h.bind :<localleader> :LocalLeader
-                {:y ["\"+y" :Copy :v] :p ["\"+p" :Paste :v]}))
 
 ;; Jumping out of terminal window to other vim splits.
 (vim.api.nvim_set_keymap :t :<C-h> "<C-\\><C-n><C-w>h"

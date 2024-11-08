@@ -186,6 +186,23 @@ return require("lazy").setup({
   },
 
   {
+    "tummetott/unimpaired.nvim",
+    event = "VeryLazy",
+    opts = {
+      keymaps = {
+        cnext = {
+          mapping = "4c",
+          dot_repeat = true,
+        },
+        cprevious = {
+          mapping = "5c",
+          dot_repeat = true,
+        },
+      },
+    },
+  },
+
+  {
     "jpalardy/vim-slime",
     config = function()
       vim.g.slime_target = "tmux"
