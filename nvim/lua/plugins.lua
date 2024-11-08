@@ -189,6 +189,7 @@ return require("lazy").setup({
     "tummetott/unimpaired.nvim",
     event = "VeryLazy",
     opts = {
+      default_keymaps = false,
       keymaps = {
         cnext = {
           mapping = "4c",
@@ -196,6 +197,14 @@ return require("lazy").setup({
         },
         cprevious = {
           mapping = "5c",
+          dot_repeat = true,
+        },
+        bnext = {
+          mapping = "4b",
+          dot_repeat = true,
+        },
+        bprevious = {
+          mapping = "5b",
           dot_repeat = true,
         },
       },
