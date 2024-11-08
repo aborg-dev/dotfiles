@@ -255,8 +255,6 @@ return require("lazy").setup({
     -- end,
   },
 
-  "tpope/vim-unimpaired",
-
   {
     "windwp/nvim-autopairs",
     config = function()
