@@ -17,15 +17,15 @@
 (defalias
   cj (tap-hold 150 j rctl)
   cf (tap-hold 150 f lctl)
-  sspc (tap-hold 150 spc lsft)
-  aret (tap-hold 150 ret ralt)
+  sspc (tap-hold 200 spc lsft)
+  aret (tap-hold 200 ret ralt)
 )
 
 (deflayer base
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  pause ins del
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc       
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \          
-  caps a    s    d    @cf  g    h    @cj  k    l    ;    '    ret             
+  bspc a    s    d    @cf  g    h    @cj  k    l    ;    '    ret             
   lsft z    x    c    v    b    n    m    ,    .    /    rsft up              
   lctl lalt fn lmet       @sspc         @aret rctl       left down rght       
 )
