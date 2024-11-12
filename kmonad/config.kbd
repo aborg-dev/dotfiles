@@ -15,8 +15,8 @@
 )
 
 (defalias
-  cj (tap-hold 150 j rctl)
-  cf (tap-hold 150 f lctl)
+  cj (tap-hold 200 j rctl)
+  cf (tap-hold 200 f lctl)
   sspc (tap-hold 200 spc lsft)
   aret (tap-hold 200 ret ralt)
 )
