@@ -116,6 +116,7 @@ in {
       # Ideally, I would use J and K here, but this conflicts with Tmux-navigator.
       bind -M insert \cp up-or-search
       bind -M insert \cn down-or-search
+      bind -M insert \cf complete
 
       # Set the path of default zk notebook.
       set -gx ZK_NOTEBOOK_DIR ~/notes
@@ -287,19 +288,29 @@ in {
       # Disable delay between sending an Escape key.
       set -sg escape-time 0
 
-      # Open new window with the same path
+      # Open new window with the same path.
       bind c new-window -c "#{pane_current_path}"
       bind j split-window -h -c "#{pane_current_path}"
       bind k split-window -v -c "#{pane_current_path}"
 
-      # Start windows and panes at 1, not 0
+      # Avoid conflict with window navigation.
+      bind e detach
+
+      # Fast window navigation on the split-keyboard.
+      bind a select-window -t:1
+      bind s select-window -t:2
+      bind d select-window -t:3
+      bind f select-window -t:4
+      bind g select-window -t:5
+
+      # Start windows and panes at 1, not 0.
       set -g base-index 1
       setw -g pane-base-index 1
 
-      # Renumber windows when a window is closed
+      # Renumber windows when a window is closed.
       set -g renumber-windows on
 
-      # Enable visual mode/copy shortcuts from vim
+      # Enable visual mode/copy shortcuts from vim.
       bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
       bind-key -T copy-mode-vi 'y' send-keys -X copy-selection
     '';
