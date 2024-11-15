@@ -31,3 +31,6 @@
 (vim.api.nvim_set_keymap :t :<C-l> "<C-\\><C-n><C-w>l"
                          {:noremap true :silent true})
 
+(vim.api.nvim_set_keymap :n :<C-w>j ":vsplit<CR>" {:noremap true :silent true})
+(vim.api.nvim_set_keymap :n :<C-w>k ":split<CR>" {:noremap true :silent true})
+
