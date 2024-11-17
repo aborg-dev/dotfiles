@@ -188,31 +188,7 @@ return require("lazy").setup({
   {
     "tummetott/unimpaired.nvim",
     event = "VeryLazy",
-    opts = {
-      default_keymaps = false,
-      keymaps = {
-        cnext = {
-          mapping = "4c",
-          description = "Jump to [count] next entry in qflist",
-          dot_repeat = true,
-        },
-        cprevious = {
-          mapping = "5c",
-          description = "Jump to [count] previous entry in qflist",
-          dot_repeat = true,
-        },
-        bnext = {
-          mapping = "4b",
-          description = "Jump to [count] next buffer",
-          dot_repeat = true,
-        },
-        bprevious = {
-          mapping = "5b",
-          description = "Jump to [count] previous buffer",
-          dot_repeat = true,
-        },
-      },
-    },
+    opts = {},
   },
 
   {
