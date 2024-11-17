@@ -1,15 +1,12 @@
 {
 		// Global config.
-		// Enable hiding of waybar in sway.
     "bar_id": "bar-0",
     "ipc": true,
-    // "layer": "top", // Waybar at top layer
-    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "position": "top", // Waybar position (top|bottom|left|right)
     "height": 40, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
-    "modules-center": ["sway/window"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": [],
     "modules-right": ["network", "battery", "clock", "tray"],
     // Modules configuration
     "sway/workspaces": {
@@ -39,8 +36,8 @@
         "spacing": 10
     },
     "clock": {
-        "timezone": "",
-        "format": "{:%d/%m/%y  %H:%M}",
+        // "timezone": "",
+        "format": "󰃭 {:%d/%m/%y   %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     },
     "cpu": {
@@ -49,14 +46,6 @@
     },
     "memory": {
         "format": "{}% "
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -81,16 +70,15 @@
         "bat": "BAT0"
     },
     "network": {
-        "interface": "wlan0", // (Optional) To force the use of this interface
         "format-wifi": " {essid} ({signalStrength}%)",
-        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
-        "format-linked": " {ifname} (No IP) ",
+        "format-ethernet": "",
+        "format-linked": "(No IP) ",
         "format-disconnected": "⚠ Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
+        "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
@@ -105,18 +93,6 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
-    },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        // "on-click": "pavucontrol"
     }
 }
