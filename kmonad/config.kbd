@@ -8,9 +8,9 @@
 (defsrc
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  pause ins del
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc       
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \          
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret             
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft up              
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]          
+  caps a    s    d    f    g    h    j    k    l    ;    '    \ ret             
+  lsft 102d z    x    c    v    b    n    m    ,    .    /    rsft up              
   lctl fn lmet lalt           spc            ralt rctl left down rght       
 )
 
@@ -24,8 +24,8 @@
 (deflayer base
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  pause ins del
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc       
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \          
-  bspc a    s    d    @cf  g    h    @cj  k    l    ;    '    ret             
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft up              
-  lctl lalt fn lmet       @sspc         @aret rctl       left down rght       
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]          
+  bspc a    s    d    @cf  g    h    @cj  k    l    ;    '    ret ret             
+  lsft \ z    x    c    v    b    n    m    ,    .    /    rsft up              
+  esc  lalt fn lmet       @sspc         @aret rctl       left down rght       
 )
