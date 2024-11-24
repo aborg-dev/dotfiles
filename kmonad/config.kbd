@@ -19,15 +19,15 @@
   cf (tap-hold 200 f lctl)
   ml (tap-hold 200 l rmet)
   ms (tap-hold 200 s lmet)
-  sspc (tap-hold 200 spc lsft)
-  aret (tap-hold 200 ret ralt)
+  sd (tap-hold 200 d rsft)
+  sk (tap-hold 200 k lsft)
 )
 
 (deflayer base
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  pause ins del
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc       
   tab  q    w    e    r    t    y    u    i    o    p    [    ]          
-  bspc a    @ms  d    @cf  g    h    @cj  k    @ml  ;    '    \ ret             
+  bspc a    @ms  @sd  @cf  g    h    @cj  @sk  @ml  ;    '    \ ret             
   lsft \ z    x    c    v    b    n    m    ,    .    /    rsft up              
-  esc  fn lmet ret       @sspc         @aret rctl       left down rght       
+  esc  fn lmet ret       spc         ralt rctl       left down rght       
 )
