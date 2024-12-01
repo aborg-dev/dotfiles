@@ -98,7 +98,18 @@ return require("lazy").setup({
   -- Auto-completion plugin.
   {
     "hrsh7th/nvim-cmp",
-    ft = { "lua", "python", "fennel", "cpp", "rust", "go", "markdown", "beancount", "javascript" },
+    ft = {
+      "lua",
+      "python",
+      "fennel",
+      "cpp",
+      "rust",
+      "go",
+      "markdown",
+      "beancount",
+      "javascript",
+      "zig",
+    },
     config = function()
       require("plugin_settings.nvim_cmp")
     end,
@@ -125,7 +136,7 @@ return require("lazy").setup({
 
   {
     "stevearc/conform.nvim",
-    ft = { "lua", "python", "rust", "fennel", "nix" },
+    ft = { "lua", "python", "rust", "fennel", "nix", "zig" },
     opts = {},
     config = function()
       require("conform").setup({

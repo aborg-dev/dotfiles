@@ -98,6 +98,8 @@ lsp_config.fennel_language_server.setup({
 
 lsp_config.tsserver.setup({})
 
+lsp_config.zls.setup({})
+
 vim.api.nvim_create_autocmd("User", {
   pattern = "LspAttached",
   desc = "LSP actions",
