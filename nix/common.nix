@@ -209,13 +209,13 @@ in {
     plugins = [ treesitterWithGrammars ];
   };
 
-  xdg.configFile."nvim" = {
+  xdg.configFile."nvim_notes" = {
     source = config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/repos/dotfiles/nvim";
     recursive = true;
   };
 
-  xdg.configFile."lazyvim" = {
+  xdg.configFile."nvim" = {
     source = config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/repos/dotfiles/lazyvim";
     recursive = true;
