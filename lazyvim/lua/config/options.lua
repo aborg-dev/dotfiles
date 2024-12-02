@@ -3,3 +3,4 @@
 -- Add any additional options here
 
 vim.g.maplocalleader = ","
+vim.opt.relativenumber = false -- Disable relative line numbers.
