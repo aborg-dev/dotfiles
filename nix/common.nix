@@ -215,6 +215,12 @@ in {
     recursive = true;
   };
 
+  xdg.configFile."lazyvim" = {
+    source = config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/repos/dotfiles/lazyvim";
+    recursive = true;
+  };
+
   xdg.configFile."zed" = {
     source = config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/repos/dotfiles/zed";
