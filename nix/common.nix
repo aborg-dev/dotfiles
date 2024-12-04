@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 
-let
-  treesitterWithGrammars = (pkgs.vimPlugins.nvim-treesitter.withPlugins
-    (plugins: pkgs.tree-sitter.allGrammars));
-in {
+{
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -205,8 +202,6 @@ in {
     vimAlias = true;
     vimdiffAlias = true;
     withPython3 = true;
-
-    plugins = [ treesitterWithGrammars ];
   };
 
   xdg.configFile."nvim_notes" = {
@@ -225,13 +220,6 @@ in {
     source = config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/repos/dotfiles/zed";
     recursive = true;
-  };
-
-  # Treesitter is configured as a locally developed module in lazy.nvim
-  # we hardcode a symlink here so that we can refer to it in our lazy config
-  home.file."./.local/share/nvim/nix/nvim-treesitter/" = {
-    recursive = true;
-    source = treesitterWithGrammars;
   };
 
   xdg.configFile."stylua/stylua.toml".text = ''
