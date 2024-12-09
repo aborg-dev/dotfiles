@@ -2,7 +2,7 @@ return {
   "folke/flash.nvim",
   keys = {
     {
-      "L",
+      "<localleader>f",
       mode = { "n", "x", "o" },
       function()
         require("flash").jump({
