@@ -290,6 +290,9 @@
       # Avoid conflict with window navigation.
       bind e detach
 
+      # Move the status bar to the top.
+      set -g status-position top
+
       # Fast window navigation on the split-keyboard.
       bind a select-window -t:1
       bind s select-window -t:2
