@@ -258,9 +258,9 @@
           set -g @catppuccin_window_default_text "#W"
           set -g @catppuccin_window_current_fill "number"
           set -g @catppuccin_window_current_text "#W"
+          set -g @catppuccin_status_justify "absolute-centre"
 
-          set -g @catppuccin_status_modules_right "directory session"
-          set -g @catppuccin_directory_text "#{pane_current_path}"
+          set -g @catppuccin_status_modules_right "session"
         '';
       }
     ];
