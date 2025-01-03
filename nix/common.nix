@@ -131,6 +131,12 @@
                   command pyenv "$command" $argv
           end
       end
+
+      # Zed editor
+      if test "$TERM_PROGRAM" = "zed"
+          set -x EDITOR zeditor --wait
+          set -x VISUAL zeditor --wait
+      end
     '';
 
     shellAliases = {
@@ -140,6 +146,7 @@
       b = "bat";
       g = "git";
       j = "jj";
+      e = "zeditor";
     };
 
     # These will be substituted right in the command before execution.

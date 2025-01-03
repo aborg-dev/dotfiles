@@ -9,39 +9,16 @@
 {
   "assistant": {
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-4o"
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-latest"
     },
     "version": "2"
   },
-  "ssh_connections": [
-    {
-      "host": "spire",
-      "username": "polygon",
-      "projects": [
-        {
-          "paths": [
-            "/home/polygon/repos/work"
-          ]
-        },
-        {
-          "paths": [
-            "/home/polygon/repos/qemu"
-          ]
-        },
-        {
-          "paths": [
-            "/home/polygon/repos/benchmarks/isa_benchmarks"
-          ]
-        }
-      ]
-    }
-  ],
   "theme": "Catppuccin Frappé",
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "vim_mode": true,
-  "ui_font_size": 26,
-  "buffer_font_size": 26,
+  "ui_font_size": 18,
+  "buffer_font_size": 18,
   // Make sure to source ".profile" in bash to switch to Nix-managed fish shell.
   "terminal": {
     "shell": {
@@ -50,20 +27,21 @@
         "args": ["--login"]
       }
     },
+    "env": {
+      "TERM_PROGRAM": "zed"
+    },
     "working_directory": "current_project_directory",
     "font_family": "JetBrainsMono Nerd Font",
-    "button": false
-  },
-  "cursor_blink": false,
-  "scrollbar": {
-    "show": "never"
-  },
-  "vertical_scroll_margin": 0,
-  "tab_bar": {
-    "show": false
+    "button": false,
+    "toolbar": {
+      "breadcrumbs": false
+    }
   },
   "toolbar": {
-    "breadcrumbs": true,
     "quick_actions": false
+  },
+  "tab_bar": {
+    "show": false,
+    "show_nav_history_buttons": false
   }
 }
