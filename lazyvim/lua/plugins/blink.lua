@@ -4,5 +4,15 @@ return {
     enabled = function()
       return not vim.tbl_contains({ "markdown" }, vim.bo.filetype) and vim.bo.buftype ~= "prompt"
     end,
+    sources = {
+      default = { "codecompanion" },
+      providers = {
+        codecompanion = {
+          name = "CodeCompanion",
+          module = "codecompanion.providers.completion.blink",
+          enabled = true,
+        },
+      },
+    },
   },
 }
