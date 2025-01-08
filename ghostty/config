@@ -1,0 +1,6 @@
+theme = catppuccin-frappe
+font-family = JetBrainsMono Nerd Font
+command = fish
+shell-integration-features = no-cursor
+window-inherit-working-directory = true
+window-decoration = false
