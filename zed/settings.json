@@ -17,8 +17,8 @@
   "theme": "Catppuccin Frappé",
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "vim_mode": true,
-  "ui_font_size": 18,
-  "buffer_font_size": 18,
+  "ui_font_size": 24,
+  "buffer_font_size": 24,
   // Make sure to source ".profile" in bash to switch to Nix-managed fish shell.
   "terminal": {
     "shell": {
