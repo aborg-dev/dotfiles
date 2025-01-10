@@ -1,7 +1,7 @@
 #action: string | [...string]
 
 #mapping: {
-	context: string
+	context: string | *""
 	bindings: [string]: #action
 }
 
