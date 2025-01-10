@@ -1,48 +1,41 @@
-// Zed keymap
-//
-// For information on binding keys, see the Zed
-// documentation: https://zed.dev/docs/key-bindings
-//
-// To see the default key bindings run `zed: open default keymap`
-// from the command palette.
 [
   {
     "bindings": {
-      "ctrl-t": "workspace::ToggleBottomDock"
-    }
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-shift-tab": "pane::ActivatePrevItem",
+      "ctrl-t": "workspace::ToggleBottomDock",
+      "ctrl-tab": "pane::ActivateNextItem"
+    },
+    "context": "(Dock || Terminal || Editor && VimControl && !VimWaiting && !menu)"
   },
   {
-    "context": "Editor && vim_mode == insert",
-    "bindings": {
-      "k j": ["workspace::SendKeystrokes", "escape"]
-    }
-  },
-  {
-    "context": "Editor && VimControl && !VimWaiting && !menu",
     "bindings": {
       "space ,": "tab_switcher::Toggle",
-      "space e": "workspace::ToggleLeftDock",
-      "space /": "workspace::NewSearch",
-      "n": "search::SelectNextMatch",
-      "shift-n": "search::SelectPrevMatch",
-      ", q": "pane::CloseActiveItem"
-    }
-  },
-  {
-    "context": "ProjectPanel",
-    "bindings": {
       "space e": "workspace::ToggleLeftDock"
-    }
+    },
+    "context": "(Dock || Terminal || Editor && VimControl && !VimWaiting && !menu)"
   },
   {
-    "context": "Dock || Terminal || Editor",
     "bindings": {
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
-      "ctrl-tab": "pane::ActivateNextItem",
-      "ctrl-shift-tab": "pane::ActivatePrevItem"
-    }
+      "k j": ["workspace::SendKeystrokes", "escape"]
+    },
+    "context": "Editor && vim_mode == insert"
+  },
+  {
+    "bindings": {
+      ", q": "pane::CloseActiveItem",
+      "n": "search::SelectNextMatch",
+      "shift-n": "search::SelectPrevMatch"
+    },
+    "context": "Editor && VimControl && !VimWaiting && !menu"
+  },
+  {
+    "bindings": {
+      "space /": "workspace::NewSearch"
+    },
+    "context": "Editor && VimControl && !VimWaiting && !menu"
   }
 ]
