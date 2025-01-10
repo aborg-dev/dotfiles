@@ -1,26 +1,25 @@
+local lib = {
+  // Succinct way to define bindings within a context.
+  bind_with_context(context):: function(bindings) { context: context, bindings: bindings },
+};
+
 {
   // Available contexts for key bindings with their condition expressions.
   ctx: {
     // Core navigation and window management available across all interfaces and vim normal mode.
-    hub: '(Dock || Terminal || Editor && VimControl && !VimWaiting && !menu)',
-
+    hub:: lib.bind_with_context('(Dock || Terminal || Editor && VimControl && !VimWaiting && !menu)'),
     // Vim insert mode in text editor.
-    vim_insert: 'Editor && vim_mode == insert',
-
+    vim_insert:: lib.bind_with_context('Editor && vim_mode == insert'),
     // Vim normal mode, excluding special states like waiting for input or menus.
-    vim_normal: 'Editor && VimControl && !VimWaiting && !menu',
+    vim_normal:: lib.bind_with_context('Editor && VimControl && !VimWaiting && !menu'),
   },
 
-  // Helper for grouped key bindings with common prefix.
-  hydra(prefix, bindings):: {
-    [prefix + ' ' + key]: value
-    for key in std.objectFields(bindings)
-    for value in [bindings[key]]
+  map: {
+    // Helper for grouped key bindings with common prefix.
+    hydra(prefix, bindings):: {
+      [prefix + ' ' + key]: value
+      for key in std.objectFields(bindings)
+      for value in [bindings[key]]
+    },
   },
-
-  // Succinct way to define bindings within a context.
-  bind_with_context(ctx):: function(bindings) { context: ctx, bindings: bindings },
-  hub:: self.bind_with_context($.ctx.hub),
-  vim_insert:: self.bind_with_context($.ctx.vim_insert),
-  vim_normal:: self.bind_with_context($.ctx.vim_normal),
 }

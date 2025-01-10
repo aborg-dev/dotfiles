@@ -1,9 +1,12 @@
-local k = import 'keymap.lib.jsonnet';
+local lib = import 'keymap.lib.jsonnet';
+local ctx = lib.ctx;
+local map = lib.map;
+
 local leader = 'space';
 local local_leader = ',';
 
 [
-  k.hub({
+  ctx.hub({
     'ctrl-t': 'workspace::ToggleBottomDock',
     'ctrl-h': ['workspace::ActivatePaneInDirection', 'Left'],
     'ctrl-l': ['workspace::ActivatePaneInDirection', 'Right'],
@@ -13,22 +16,22 @@ local local_leader = ',';
     'ctrl-shift-tab': 'pane::ActivatePrevItem',
   }),
 
-  k.hub(k.hydra(leader, {
-    e: 'workspace::ToggleLeftDock',
+  ctx.hub(map.hydra(leader, {
+    e: 'workpace::ToggleLeftDock',
     ',': 'tab_switcher::Toggle',
   })),
 
-  k.vim_insert({
+  ctx.vim_insert({
     'k j': ['workspace::SendKeystrokes', 'escape'],
   }),
 
-  k.vim_normal({
+  ctx.vim_normal({
     n: 'search::SelectNextMatch',
     'shift-n': 'search::SelectPrevMatch',
     [local_leader + ' q']: 'pane::CloseActiveItem',
   }),
 
-  k.vim_normal(k.hydra(leader, {
+  ctx.vim_normal(map.hydra(leader, {
     '/': 'workspace::NewSearch',
   })),
 ]
