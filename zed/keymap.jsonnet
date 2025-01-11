@@ -6,8 +6,17 @@ local leader = 'space';
 local local_leader = ',';
 
 [
+  {
+    context: 'Workspace',
+    bindings: {
+      'shift-ctrl-r': ['task::Spawn', { task_name: 'Update keymap' }],
+    },
+  },
+
   ctx.hub({
     'ctrl-t': 'workspace::ToggleBottomDock',
+    'ctrl-e': 'workspace::ToggleLeftDock',
+    'ctrl-y': 'workspace::ToggleRightDock',
     'ctrl-h': ['workspace::ActivatePaneInDirection', 'Left'],
     'ctrl-l': ['workspace::ActivatePaneInDirection', 'Right'],
     'ctrl-k': ['workspace::ActivatePaneInDirection', 'Up'],
@@ -15,11 +24,6 @@ local local_leader = ',';
     'ctrl-tab': 'pane::ActivateNextItem',
     'ctrl-shift-tab': 'pane::ActivatePrevItem',
   }),
-
-  ctx.hub(map.hydra(leader, {
-    e: 'workpace::ToggleLeftDock',
-    ',': 'tab_switcher::Toggle',
-  })),
 
   ctx.vim_insert({
     'k j': ['workspace::SendKeystrokes', 'escape'],
@@ -33,5 +37,6 @@ local local_leader = ',';
 
   ctx.vim_normal(map.hydra(leader, {
     '/': 'workspace::NewSearch',
+    ',': 'tab_switcher::Toggle',
   })),
 ]

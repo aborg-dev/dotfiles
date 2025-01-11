@@ -1,41 +1,63 @@
 [
-  {
-    "bindings": {
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-shift-tab": "pane::ActivatePrevItem",
-      "ctrl-t": "workspace::ToggleBottomDock",
-      "ctrl-tab": "pane::ActivateNextItem"
-    },
-    "context": "(Dock || Terminal || Editor && VimControl && !VimWaiting && !menu)"
-  },
-  {
-    "bindings": {
-      "space ,": "tab_switcher::Toggle",
-      "space e": "workspace::ToggleLeftDock"
-    },
-    "context": "(Dock || Terminal || Editor && VimControl && !VimWaiting && !menu)"
-  },
-  {
-    "bindings": {
-      "k j": ["workspace::SendKeystrokes", "escape"]
-    },
-    "context": "Editor && vim_mode == insert"
-  },
-  {
-    "bindings": {
-      ", q": "pane::CloseActiveItem",
-      "n": "search::SelectNextMatch",
-      "shift-n": "search::SelectPrevMatch"
-    },
-    "context": "Editor && VimControl && !VimWaiting && !menu"
-  },
-  {
-    "bindings": {
-      "space /": "workspace::NewSearch"
-    },
-    "context": "Editor && VimControl && !VimWaiting && !menu"
-  }
+   {
+      "bindings": {
+         "ctrl-e": "workspace::ToggleLeftDock",
+         "ctrl-h": [
+            "workspace::ActivatePaneInDirection",
+            "Left"
+         ],
+         "ctrl-j": [
+            "workspace::ActivatePaneInDirection",
+            "Down"
+         ],
+         "ctrl-k": [
+            "workspace::ActivatePaneInDirection",
+            "Up"
+         ],
+         "ctrl-l": [
+            "workspace::ActivatePaneInDirection",
+            "Right"
+         ],
+         "ctrl-shift-tab": "pane::ActivatePrevItem",
+         "ctrl-t": "workspace::ToggleBottomDock",
+         "ctrl-tab": "pane::ActivateNextItem",
+         "ctrl-y": "workspace::ToggleRightDock"
+      },
+      "context": "(Dock || Terminal || Editor && VimControl && !VimWaiting && !menu)"
+   },
+   {
+      "bindings": {
+         "shift-ctrl-r": [
+            "task::Spawn",
+            {
+               "task_name": "Update keymap"
+            }
+         ]
+      },
+      "context": "Workspace"
+   },
+   {
+      "bindings": {
+         "k j": [
+            "workspace::SendKeystrokes",
+            "escape"
+         ]
+      },
+      "context": "Editor && vim_mode == insert"
+   },
+   {
+      "bindings": {
+         ", q": "pane::CloseActiveItem",
+         "n": "search::SelectNextMatch",
+         "shift-n": "search::SelectPrevMatch"
+      },
+      "context": "Editor && VimControl && !VimWaiting && !menu"
+   },
+   {
+      "bindings": {
+         "space ,": "tab_switcher::Toggle",
+         "space /": "workspace::NewSearch"
+      },
+      "context": "Editor && VimControl && !VimWaiting && !menu"
+   }
 ]
