@@ -12,6 +12,12 @@
   },
   {
     "bindings": {
+      "escape": "pane::CloseActiveItem"
+    },
+    "context": "ProjectSearchBar"
+  },
+  {
+    "bindings": {
       "ctrl-e": "workspace::ToggleLeftDock",
       "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
       "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],

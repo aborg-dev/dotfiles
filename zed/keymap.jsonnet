@@ -13,6 +13,13 @@ local local_leader = ',';
     },
   },
 
+  {
+    context: 'ProjectSearchBar',
+    bindings: {
+      escape: 'pane::CloseActiveItem',
+    },
+  },
+
   ctx.hub({
     'ctrl-t': 'workspace::ToggleBottomDock',
     'ctrl-e': 'workspace::ToggleLeftDock',
