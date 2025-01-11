@@ -7,7 +7,7 @@ local lib = {
   // Available contexts for key bindings with their condition expressions.
   ctx: {
     // Core navigation and window management available across all interfaces and vim normal mode.
-    hub:: lib.bind_with_context('Dock || VimControl'),
+    hub:: lib.bind_with_context('Dock || Terminal || VimControl'),
     // Vim insert mode in text editor.
     vim_insert:: lib.bind_with_context('Editor && vim_mode == insert'),
     // Vim normal mode, excluding special states like waiting for input or menus.
