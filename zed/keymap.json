@@ -22,7 +22,7 @@
       "ctrl-tab": "pane::ActivateNextItem",
       "ctrl-y": "workspace::ToggleRightDock"
     },
-    "context": "(Dock || Terminal || Editor && VimControl && !VimWaiting && !menu)"
+    "context": "Dock || VimControl"
   },
   {
     "bindings": {
