@@ -1,7 +1,7 @@
 [
   {
     "label": "Update keymap",
-    "command": "jsonnet zed/keymap.jsonnet -o zed/keymap.json",
+    "command": "jsonnet zed/keymap.jsonnet -o zed/keymap.json && prettier --write zed/keymap.json",
     // Whether to use a new terminal tab or reuse the existing one to spawn the process, defaults to `false`.
     "use_new_terminal": false,
     // Whether to allow multiple instances of the same task to be run, or rather wait for the existing ones to finish, defaults to `false`.
