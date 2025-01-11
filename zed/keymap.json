@@ -56,6 +56,115 @@
   },
   {
     "bindings": {
+      "g #": [
+        "vim::MoveToPrev",
+        {
+          "partialWord": true
+        }
+      ],
+      "g $": [
+        "vim::EndOfLine",
+        {
+          "displayLines": true
+        }
+      ],
+      "g *": [
+        "vim::MoveToNext",
+        {
+          "partialWord": true
+        }
+      ],
+      "g ,": "vim::ChangeListNewer",
+      "g .": "editor::ToggleCodeActions",
+      "g 0": [
+        "vim::StartOfLine",
+        {
+          "displayLines": true
+        }
+      ],
+      "g ;": "vim::ChangeListOlder",
+      "g <": [
+        "editor::SelectPrevious",
+        {
+          "replace_newest": true
+        }
+      ],
+      "g >": [
+        "editor::SelectNext",
+        {
+          "replace_newest": true
+        }
+      ],
+      "g [": "editor::GoToPrevDiagnostic",
+      "g ]": "editor::GoToDiagnostic",
+      "g ^": [
+        "vim::FirstNonWhitespace",
+        {
+          "displayLines": true
+        }
+      ],
+      "g a": "editor::SelectAllMatches",
+      "g d": "editor::GoToDefinition",
+      "g down": [
+        "vim::Down",
+        {
+          "displayLines": true
+        }
+      ],
+      "g end": [
+        "vim::EndOfLine",
+        {
+          "displayLines": true
+        }
+      ],
+      "g f": "editor::OpenFile",
+      "g g": "vim::StartOfDocument",
+      "g h": "editor::Hover",
+      "g home": [
+        "vim::StartOfLine",
+        {
+          "displayLines": true
+        }
+      ],
+      "g i": "vim::InsertAtPrevious",
+      "g j": [
+        "vim::Down",
+        {
+          "displayLines": true
+        }
+      ],
+      "g k": [
+        "vim::Up",
+        {
+          "displayLines": true
+        }
+      ],
+      "g l": "vim::SelectNext",
+      "g n": "vim::SelectNextMatch",
+      "g s": "outline::Toggle",
+      "g shift-a": "editor::FindAllReferences",
+      "g shift-d": "editor::GoToDeclaration",
+      "g shift-i": "editor::GoToImplementation",
+      "g shift-l": "vim::SelectPrevious",
+      "g shift-n": "vim::SelectPreviousMatch",
+      "g shift-s": "project_symbols::Toggle",
+      "g shift-t": "pane::ActivatePrevItem",
+      "g space": "editor::OpenExcerpts",
+      "g t": "pane::ActivateNextItem",
+      "g up": [
+        "vim::Up",
+        {
+          "displayLines": true
+        }
+      ],
+      "g v": "vim::RestoreVisualSelection",
+      "g x": "editor::OpenUrl",
+      "g y": "editor::GoToTypeDefinition"
+    },
+    "context": "VimControl && !menu"
+  },
+  {
+    "bindings": {
       "shift-ctrl-r": [
         "task::Spawn",
         {

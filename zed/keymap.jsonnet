@@ -7,6 +7,7 @@ local local_leader = ',';
 
 std.flattenArrays([
   (import 'window.lib.jsonnet')(prefix='space w'),
+  (import 'actions.lib.jsonnet')(prefix='g'),
   [
     {
       context: 'Workspace',
