@@ -48,6 +48,14 @@ std.flattenArrays([
     ctx.vim_normal(map.hydra(leader, {
       '/': 'workspace::NewSearch',
       ',': 'tab_switcher::Toggle',
+      'c f': 'editor::Format',
+    })),
+
+    // Search commands.
+    ctx.vim_normal(map.hydra(leader + ' s', {
+      w: 'workspace::NewSearch',
+      s: 'outline::Toggle',
+      r: 'editor::FindAllReferences',
     })),
   ],
 ])

@@ -192,7 +192,7 @@
       "ctrl-tab": "pane::ActivateNextItem",
       "ctrl-y": "workspace::ToggleRightDock"
     },
-    "context": "Dock || Terminal || VimControl"
+    "context": "Dock || Terminal || VimControl || EmptyPane"
   },
   {
     "bindings": {
@@ -211,7 +211,16 @@
   {
     "bindings": {
       "space ,": "tab_switcher::Toggle",
-      "space /": "workspace::NewSearch"
+      "space /": "workspace::NewSearch",
+      "space c f": "editor::Format"
+    },
+    "context": "Editor && VimControl && !VimWaiting && !menu"
+  },
+  {
+    "bindings": {
+      "space s r": "editor::FindAllReferences",
+      "space s s": "outline::Toggle",
+      "space s w": "workspace::NewSearch"
     },
     "context": "Editor && VimControl && !VimWaiting && !menu"
   }
