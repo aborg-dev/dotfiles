@@ -43,6 +43,7 @@ std.flattenArrays([
       n: 'search::SelectNextMatch',
       'shift-n': 'search::SelectPrevMatch',
       [local_leader + ' q']: 'pane::CloseActiveItem',
+      [local_leader + ' w']: 'workspace::Save',
     }),
 
     ctx.vim_normal(map.hydra(leader, {
@@ -54,8 +55,28 @@ std.flattenArrays([
     // Search commands.
     ctx.vim_normal(map.hydra(leader + ' s', {
       w: 'workspace::NewSearch',
+      // Symbols in a buffer.
       s: 'outline::Toggle',
+      S: 'project_symbols::Toggle',
       r: 'editor::FindAllReferences',
+    })),
+
+    // Project commands.
+    ctx.vim_normal(map.hydra(leader + ' p', {
+      o: 'projects::OpenRecent',
+      r: 'projects::OpenRemote',
+    })),
+
+    // Task commands.
+    ctx.vim_normal(map.hydra(leader + ' t', {
+      s: 'task::Spawn',
+      r: 'task::Rerun',
+    })),
+
+    // Settings that can be toggled.
+    ctx.vim_normal(map.hydra(leader + ' u', {
+      w: 'editor::ToggleSoftWrap',
+      h: 'editor::ToggleInlayHints',
     })),
   ],
 ])

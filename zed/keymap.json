@@ -203,6 +203,7 @@
   {
     "bindings": {
       ", q": "pane::CloseActiveItem",
+      ", w": "workspace::Save",
       "n": "search::SelectNextMatch",
       "shift-n": "search::SelectPrevMatch"
     },
@@ -218,9 +219,31 @@
   },
   {
     "bindings": {
+      "space s S": "project_symbols::Toggle",
       "space s r": "editor::FindAllReferences",
       "space s s": "outline::Toggle",
       "space s w": "workspace::NewSearch"
+    },
+    "context": "Editor && VimControl && !VimWaiting && !menu"
+  },
+  {
+    "bindings": {
+      "space p o": "projects::OpenRecent",
+      "space p r": "projects::OpenRemote"
+    },
+    "context": "Editor && VimControl && !VimWaiting && !menu"
+  },
+  {
+    "bindings": {
+      "space t r": "task::Rerun",
+      "space t s": "task::Spawn"
+    },
+    "context": "Editor && VimControl && !VimWaiting && !menu"
+  },
+  {
+    "bindings": {
+      "space u h": "editor::ToggleInlayHints",
+      "space u w": "editor::ToggleSoftWrap"
     },
     "context": "Editor && VimControl && !VimWaiting && !menu"
   }
