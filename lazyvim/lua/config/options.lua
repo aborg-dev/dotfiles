@@ -4,6 +4,7 @@
 
 vim.g.maplocalleader = ","
 vim.opt.relativenumber = false -- Disable relative line numbers.
+vim.opt.shell = "fish"
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
 vim.cmd([[cab cc CodeCompanion]])

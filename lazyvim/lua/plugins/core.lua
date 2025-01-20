@@ -31,4 +31,10 @@ return {
       require("hunk").setup()
     end,
   },
+  {
+    "sindrets/diffview.nvim",
+    keys = {
+      { "<Leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Repo diff" },
+    },
+  },
 }
