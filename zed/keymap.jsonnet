@@ -77,6 +77,7 @@ std.flattenArrays([
     ctx.vim_normal(map.hydra(leader + ' u', {
       w: 'editor::ToggleSoftWrap',
       h: 'editor::ToggleInlayHints',
+      b: 'editor::ToggleGitBlame',
     })),
   ],
 ])

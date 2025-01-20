@@ -239,6 +239,7 @@
   },
   {
     "bindings": {
+      "space u b": "editor::ToggleGitBlame",
       "space u h": "editor::ToggleInlayHints",
       "space u w": "editor::ToggleSoftWrap"
     },
