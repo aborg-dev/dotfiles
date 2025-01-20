@@ -165,17 +165,6 @@
   },
   {
     "bindings": {
-      "shift-ctrl-r": [
-        "task::Spawn",
-        {
-          "task_name": "Update keymap"
-        }
-      ]
-    },
-    "context": "Workspace"
-  },
-  {
-    "bindings": {
       "escape": "pane::CloseActiveItem"
     },
     "context": "ProjectSearchBar"
@@ -228,7 +217,8 @@
   },
   {
     "bindings": {
-      "space p o": "projects::OpenRecent",
+      "space p o": "outline_panel::ToggleFocus",
+      "space p p": "projects::OpenRecent",
       "space p r": "projects::OpenRemote"
     },
     "context": "Editor && VimControl && !VimWaiting && !menu"
@@ -236,7 +226,7 @@
   {
     "bindings": {
       "space t r": "task::Rerun",
-      "space t s": "task::Spawn"
+      "space t t": "task::Spawn"
     },
     "context": "Editor && VimControl && !VimWaiting && !menu"
   },

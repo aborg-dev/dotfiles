@@ -10,13 +10,6 @@ std.flattenArrays([
   (import 'actions.lib.jsonnet')(prefix='g'),
   [
     {
-      context: 'Workspace',
-      bindings: {
-        'shift-ctrl-r': ['task::Spawn', { task_name: 'Update keymap' }],
-      },
-    },
-
-    {
       context: 'ProjectSearchBar',
       bindings: {
         escape: 'pane::CloseActiveItem',
@@ -63,13 +56,14 @@ std.flattenArrays([
 
     // Project commands.
     ctx.vim_normal(map.hydra(leader + ' p', {
-      o: 'projects::OpenRecent',
+      p: 'projects::OpenRecent',
+      o: 'outline_panel::ToggleFocus',
       r: 'projects::OpenRemote',
     })),
 
     // Task commands.
     ctx.vim_normal(map.hydra(leader + ' t', {
-      s: 'task::Spawn',
+      t: 'task::Spawn',
       r: 'task::Rerun',
     })),
 
