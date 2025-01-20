@@ -19,6 +19,7 @@
   home.packages = with pkgs; [
     ripgrep
     fd
+    fzf
     eza
     ranger
     # Fonts that I'm using in my terminal.
