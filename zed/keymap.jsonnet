@@ -61,6 +61,12 @@ std.flattenArrays([
       r: 'projects::OpenRemote',
     })),
 
+    // Buffer/tab commands.
+    ctx.vim_normal(map.hydra(leader + ' b', {
+      p: 'pane::TogglePinTab',
+      c: 'pane::CloseAllItems',
+    })),
+
     // Task commands.
     ctx.vim_normal(map.hydra(leader + ' t', {
       t: 'task::Spawn',

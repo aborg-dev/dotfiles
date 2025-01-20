@@ -225,6 +225,13 @@
   },
   {
     "bindings": {
+      "space b c": "pane::CloseAllItems",
+      "space b p": "pane::TogglePinTab"
+    },
+    "context": "Editor && VimControl && !VimWaiting && !menu"
+  },
+  {
+    "bindings": {
       "space t r": "task::Rerun",
       "space t t": "task::Spawn"
     },
