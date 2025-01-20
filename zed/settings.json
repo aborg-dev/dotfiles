@@ -41,7 +41,7 @@
     "quick_actions": false
   },
   "tab_bar": {
-    "show": false,
+    "show": true,
     "show_nav_history_buttons": false
   },
   "format_on_save": "off"
