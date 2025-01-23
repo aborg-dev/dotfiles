@@ -20,6 +20,8 @@ return {
     opts = function(_, opts)
       -- Disable the help string.
       opts.defaults.header = false
+      -- Don't show hidden files by default.
+      opts.files.fd_opts = [[--color=never --type f --follow --exclude .git --exclude .jj]]
     end,
   },
 }
