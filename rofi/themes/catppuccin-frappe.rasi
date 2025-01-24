@@ -9,8 +9,8 @@
     grey: #737994;
 
 
-    width: 900;
-    font: "JetBrainsMono Nerd Font 17";
+    width: 500;
+    font: "JetBrainsMono Nerd Font 12";
 }
 
 element-text, element-icon , mode-switcher {
@@ -19,7 +19,7 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height: 500px;
+    height: 300px;
     border: 2px;
     border-color: @border-col;
     background-color: @bg-col;
@@ -38,10 +38,10 @@ inputbar {
 
 prompt {
     background-color: @blue;
-    padding: 6px;
+    padding: 3px;
     text-color: @bg-col;
     border-radius: 3px;
-    margin: 20px 0px 0px 20px;
+    margin: 10px 0px 0px 10px;
 }
 
 textbox-prompt-colon {
@@ -50,29 +50,29 @@ textbox-prompt-colon {
 }
 
 entry {
-    padding: 6px;
-    margin: 20px 0px 0px 10px;
+    padding: 3px;
+    margin: 10px 0px 0px 5px;
     text-color: @fg-col;
     background-color: @bg-col;
 }
 
 listview {
     border: 0px 0px 0px;
-    padding: 6px 0px 0px;
-    margin: 10px 0px 0px 20px;
+    padding: 3px 0px 0px;
+    margin: 5px 0px 0px 10px;
     columns: 1;
     lines: 7;
     background-color: @bg-col;
 }
 
 element {
-    padding: 5px;
+    padding: 2px;
     background-color: @bg-col;
     text-color: @fg-col  ;
 }
 
 element-icon {
-    size: 25px;
+    size: 20px;
 }
 
 element selected {
@@ -85,7 +85,7 @@ mode-switcher {
   }
 
 button {
-    padding: 10px;
+    padding: 5px;
     background-color: @bg-col-light;
     text-color: @grey;
     vertical-align: 0.5; 
@@ -105,8 +105,8 @@ message {
 }
 
 textbox {
-    padding: 6px;
-    margin: 20px 0px 0px 20px;
+    padding: 3px;
+    margin: 10px 0px 0px 10px;
     text-color: @blue;
     background-color: @bg-col-light;
 }
