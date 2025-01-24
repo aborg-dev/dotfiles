@@ -12,3 +12,7 @@ vim.keymap.set("n", "<localleader>p", '"+p', { silent = true })
 
 -- Easier to exit insert mode.
 vim.keymap.set("i", "kj", "<esc>")
+
+-- Switch between tabs with Ctrl-Tab
+vim.keymap.set({ "n", "t" }, "<C-Tab>", ":tabnext<CR>", { silent = true })
+vim.keymap.set({ "n", "t" }, "<C-S-Tab>", ":tabprev<CR>", { silent = true })

@@ -36,5 +36,13 @@ return {
     keys = {
       { "<Leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Repo diff" },
     },
+    {
+      "ahmedkhalf/project.nvim",
+      opts = {
+        patterns = { ".git", ".jj" },
+        manual_mode = false,
+        silent_chdir = false,
+      },
+    },
   },
 }

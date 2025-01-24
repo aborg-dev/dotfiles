@@ -5,6 +5,7 @@
 vim.g.maplocalleader = ","
 vim.opt.relativenumber = false -- Disable relative line numbers.
 vim.opt.shell = "fish"
+vim.opt.guifont = "JetBrainsMono Nerd Font:h12"
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
 vim.cmd([[cab cc CodeCompanion]])
