@@ -114,24 +114,9 @@
       # Ideally, I would use J and K here, but this conflicts with Tmux-navigator.
       bind -M insert \cp up-or-search
       bind -M insert \cn down-or-search
-      bind -M insert \cf complete
 
       # Set the path of default zk notebook.
       set -gx ZK_NOTEBOOK_DIR ~/notes
-
-      # Start pyenv lazily to speed-up shell startup.
-      function pyenv
-          set command $argv[1]
-          set -e argv[1]
-
-          switch "$command"
-              case rehash shell
-                  source (pyenv "sh-$command" $argv | psub)
-
-              case \*
-                  command pyenv "$command" $argv
-          end
-      end
 
       # Zed editor
       if test "$TERM_PROGRAM" = "zed"

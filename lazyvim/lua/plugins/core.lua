@@ -24,4 +24,11 @@ return {
       opts.files.fd_opts = [[--color=never --type f --follow --exclude .git --exclude .jj]]
     end,
   },
+  {
+    "julienvincent/hunk.nvim",
+    cmd = { "DiffEditor" },
+    config = function()
+      require("hunk").setup()
+    end,
+  },
 }
