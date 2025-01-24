@@ -8,9 +8,7 @@ return {
     shell = "~/.nix-profile/bin/fish",
     -- I don't need mappings in insert mode.
     insert_mappings = false,
-    direction = "float",
-    float_opts = {
-      border = "curved",
-    },
+    direction = "tab",
+    shade_terminals = false,
   },
 }
