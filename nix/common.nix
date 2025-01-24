@@ -234,6 +234,11 @@
     recursive = true;
   };
 
+  xdg.configFile."ghostty" = {
+    source = ../ghostty;
+    recursive = true;
+  };
+
   programs.tmux = {
     enable = true;
     prefix = "C-a";
