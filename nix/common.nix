@@ -150,6 +150,9 @@
       jd = "jj diff";
       jf = "jj git fetch";
       jp = "jj bookmark set master -r @- && jj git push";
+      jr = "jj rebase -r ";
+      sps = "sudo pacman -S ";
+      spu = "sudo pacman -Syu";
     };
 
     # TODO: Learn how to update versions automatically.
@@ -195,12 +198,6 @@
     vimAlias = true;
     vimdiffAlias = true;
     withPython3 = true;
-  };
-
-  xdg.configFile."nvim_notes" = {
-    source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/repos/dotfiles/nvim";
-    recursive = true;
   };
 
   xdg.configFile."nvim" = {
