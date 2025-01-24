@@ -1,12 +1,17 @@
 return {
-  "nvim-telescope/telescope.nvim",
-  keys = {
-    {
-      "<leader><space>",
-      function()
-        require("telescope.builtin").find_files({ root = false })
-      end,
-      desc = "Find Files (cwd)",
+  {
+    "nvim-telescope/telescope.nvim",
+  },
+  {
+    "zschreur/telescope-jj.nvim",
+    keys = {
+      {
+        "<Leader>jd",
+        function()
+          require("telescope").extensions.jj.diff()
+        end,
+        desc = "jj diff",
+      },
     },
   },
 }
