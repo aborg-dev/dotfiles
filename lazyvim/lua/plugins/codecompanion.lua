@@ -1,3 +1,5 @@
+local anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")
+
 return {
   "olimorris/codecompanion.nvim",
   dependencies = {
@@ -11,28 +13,28 @@ return {
       return "You are helping me with my codebase"
     end,
     adapters = {
-      gemini = function()
-        return require("codecompanion.adapters").extend("gemini", {
-          schema = {
-            model = {
-              default = "gemini-1.5-pro-latest",
-            },
-          },
+      anthropic = function()
+        return require("codecompanion.adapters").extend("anthropic", {
           env = {
-            api_key = os.getenv("GEMINI_API_KEY"),
+            api_key = anthropic_api_key,
           },
         })
       end,
     },
     strategies = {
       chat = {
-        adapter = "gemini",
+        adapter = "anthropic",
+        slash_commands = {
+          ["file"] = {
+            opts = {
+              -- ref: https://github.com/olimorris/codecompanion.nvim/discussions/276
+              provider = "telescope",
+            },
+          },
+        },
       },
       inline = {
-        adapter = "gemini",
-      },
-      agent = {
-        adapter = "gemini",
+        adapter = "anthropic",
       },
     },
     display = {
