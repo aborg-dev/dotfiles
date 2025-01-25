@@ -5,3 +5,8 @@ command = fish
 shell-integration-features = no-cursor
 window-inherit-working-directory = true
 window-decoration = false
+
+# Key bindings.
+keybind = ctrl+backspace=text:\x17
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+h=goto_split:left
