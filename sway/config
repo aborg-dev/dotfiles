@@ -24,7 +24,8 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term ghostty
+set $editor ghostty -e nvim
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -34,10 +35,6 @@ set $menu rofi -modes "drun,run" -show drun
 exec_always i3-focus-last server
 bindsym $mod+Tab exec i3-focus-last
 bindsym $mod+m exec i3-focus-last menu
-
-# Clipboard manager and quick picker through rofi.
-exec wl-paste -t text --watch clipman store
-bindsym $mod+p exec clipman pick -t rofi
 
 ### Output configuration
 #
@@ -80,6 +77,8 @@ input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
 #
     # Start a terminal
     bindsym $mod+t exec $term
+    # Start an editor
+    bindsym $mod+p exec $editor
 
     # Kill focused window
     bindsym $mod+Shift+q kill
