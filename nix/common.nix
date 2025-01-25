@@ -150,8 +150,8 @@
       jd = "jj diff";
       jf = "jj git fetch";
       jp = "jj bookmark set master -r @- && jj git push";
-      jr = "jj rebase -r ";
-      sps = "sudo pacman -S ";
+      jr = "jj rebase -d";
+      sps = "sudo pacman -S";
       spu = "sudo pacman -Syu";
     };
 
