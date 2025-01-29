@@ -10,3 +10,4 @@ window-decoration = false
 keybind = ctrl+backspace=text:\x17
 keybind = ctrl+shift+l=goto_split:right
 keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+enter=unbind
