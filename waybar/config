@@ -2,10 +2,11 @@
 		// Global config.
     "bar_id": "bar-0",
     "ipc": true,
+    "layer": "top",
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 20, // Waybar height (to be removed for auto height)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-left": ["sway/workspaces", "sway/mode", "niri/workspaces"],
     "modules-center": [],
     "modules-right": ["network", "battery", "clock", "tray"],
     // Modules configuration
@@ -19,6 +20,16 @@
             "3": " code",
             "4": " chat",
             "5": " media",
+        }
+    },
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5": "5",
         }
     },
     "sway/mode": {
