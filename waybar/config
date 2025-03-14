@@ -8,7 +8,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "niri/workspaces"],
     "modules-center": [],
-    "modules-right": ["network", "battery", "clock", "tray"],
+    "modules-right": ["niri/language", "network", "battery", "clock", "tray"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,

@@ -61,6 +61,7 @@
 #custom-keyboard-layout,
 #memory,
 #mode,
+#language,
 #network,
 #pulseaudio,
 #temperature,
@@ -137,6 +138,10 @@
     border-top: 2px solid white;
     /* To compensate for the top border and still have vertical centering */
     padding-bottom: 2px;
+}
+
+#language {
+    color: white;
 }
 
 #network {

@@ -212,6 +212,12 @@
     recursive = true;
   };
 
+  xdg.configFile."niri" = {
+    source = config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/repos/dotfiles/niri";
+    recursive = true;
+  };
+
   xdg.configFile."stylua/stylua.toml".text = ''
     column_width = 100
     line_endings = "Unix"
