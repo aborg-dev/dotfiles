@@ -335,6 +335,7 @@ binds {
     Mod+T { spawn "ghostty"; }
     Mod+Space { spawn "rofi" "-modes" "drun,run" "-show" "drun"; }
     Super+Alt+L { spawn "swaylock"; }
+    Mod+Semicolon { spawn "~/repos/dotfiles/scripts/toggle_notes.sh"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
