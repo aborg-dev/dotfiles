@@ -154,7 +154,7 @@
 }
 
 #pulseaudio {
-    /* No styles */
+    color: white;
 }
 
 #pulseaudio.muted {
