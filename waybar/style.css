@@ -64,6 +64,7 @@
 #language,
 #network,
 #pulseaudio,
+#backlight,
 #temperature,
 #tray {
     padding-left: 10px;
@@ -159,6 +160,10 @@
 
 #pulseaudio.muted {
     /* No styles */
+}
+
+#backlight {
+    color: white;
 }
 
 #temperature {

@@ -8,7 +8,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "niri/workspaces"],
     "modules-center": [],
-    "modules-right": ["niri/language", "network", "battery", "pulseaudio", "clock", "tray"],
+    "modules-right": ["niri/language", "network", "battery", "pulseaudio", "backlight", "clock", "tray"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
@@ -59,7 +59,6 @@
         "format": "{}% "
     },
     "backlight": {
-        // "device": "acpi_video1",
         "format": "{percent}% {icon}",
         "format-icons": ["", ""]
     },
