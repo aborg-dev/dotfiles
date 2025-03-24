@@ -307,7 +307,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T { spawn "ghostty"; }
-    Mod+P { spawn "ghostty" "-e" "fish" "-c" "nvim"; }
+    Mod+P { spawn "ghostty" "--working-directory=/home/aborg/notes" "-e" "fish" "-c" "nvim"; }
     Mod+Space { spawn "rofi" "-modes" "drun,run" "-show" "drun"; }
     Super+Alt+L { spawn "swaylock"; }
     Mod+Semicolon { spawn "~/repos/dotfiles/scripts/toggle_notes.sh"; }
