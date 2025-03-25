@@ -479,6 +479,7 @@ binds {
     Mod+Ctrl+R { reset-window-height; }
     Mod+O { maximize-column; }
     Mod+Shift+O { fullscreen-window; }
+    Mod+Ctrl+O { spawn "toggle_default_sink.sh"; }
 
     // Expand the focused column to space not taken up by other fully visible columns.
     // Makes the column "fill the rest of the space".
