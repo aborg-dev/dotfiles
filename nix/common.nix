@@ -306,6 +306,16 @@
 
   programs.zoxide = { enable = true; };
 
+  programs.yazi = {
+    enable = true;
+    catppuccin.enable = true;
+  };
+
+  programs.starship = {
+    enable = true;
+    catppuccin.enable = true;
+  };
+
   fonts.fontconfig.enable = true;
 
   # Enables linux-specific env variables, e.g. XDG paths.
