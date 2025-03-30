@@ -314,6 +314,13 @@
   programs.starship = {
     enable = true;
     catppuccin.enable = true;
+    settings = {
+      character = {
+        success_symbol = "[](green)";
+        error_symbol = "[](red)";
+        vimcmd_symbol = "[](purple)";
+      };
+    };
   };
 
   fonts.fontconfig.enable = true;
