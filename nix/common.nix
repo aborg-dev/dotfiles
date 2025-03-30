@@ -13,7 +13,14 @@
     };
   };
 
-  catppuccin.flavor = "frappe";
+  catppuccin = {
+    flavor = "frappe";
+    bat.enable = true;
+    fish.enable = true;
+    yazi.enable = true;
+    starship.enable = true;
+    btop.enable = true;
+  };
 
   # Packages to install.
   home.packages = with pkgs; [
@@ -51,12 +58,10 @@
 
   programs.bat = {
     enable = true;
-    catppuccin.enable = true;
   };
 
   programs.btop = {
     enable = true;
-    catppuccin.enable = true;
   };
 
   programs.git = {
@@ -83,7 +88,6 @@
 
   programs.fish = {
     enable = true;
-    catppuccin.enable = true;
     loginShellInit = ''
       # Run Firefox under Wayland.
       set -x MOZ_ENABLE_WAYLAND 1
@@ -308,12 +312,10 @@
 
   programs.yazi = {
     enable = true;
-    catppuccin.enable = true;
   };
 
   programs.starship = {
     enable = true;
-    catppuccin.enable = true;
     settings = {
       character = {
         success_symbol = "[](green)";
