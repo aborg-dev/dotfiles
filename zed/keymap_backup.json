@@ -2,20 +2,20 @@
   {
     "bindings": {
       "space w ": null,
-      "space w +": "vim::ResizePaneUp",
-      "space w -": "vim::ResizePaneDown",
-      "space w <": "vim::ResizePaneLeft",
+      "space w +": ["vim::ResizePane", "Lengthen"],
+      "space w -": ["vim::ResizePane", "Shorten"],
+      "space w <": ["vim::ResizePane", "Narrow"],
       "space w =": "vim::ResetPaneSizes",
-      "space w >": "vim::ResizePaneRight",
+      "space w >": ["vim::ResizePane", "Widen"],
       "space w _": "vim::MaximizePane",
       "space w c": "pane::CloseAllItems",
       "space w ctrl-c": "pane::CloseAllItems",
-      "space w ctrl-g shift-t": "pane::ActivatePreviousItem",
+      "space w ctrl-g shift-t": "pane::ActivatePrevItem",
       "space w ctrl-g t": "pane::ActivateNextItem",
-      "space w ctrl-h": "workspace::ActivatePaneLeft",
-      "space w ctrl-j": "workspace::ActivatePaneDown",
-      "space w ctrl-k": "workspace::ActivatePaneUp",
-      "space w ctrl-l": "workspace::ActivatePaneRight",
+      "space w ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "space w ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "space w ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "space w ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
       "space w ctrl-n": "workspace::NewFileSplitHorizontal",
       "space w ctrl-o": "workspace::CloseInactiveTabsAndPanes",
       "space w ctrl-p": "workspace::ActivatePreviousPane",
@@ -24,31 +24,31 @@
       "space w ctrl-shift-w": "workspace::ActivatePreviousPane",
       "space w ctrl-v": "pane::SplitVertical",
       "space w ctrl-w": "workspace::ActivateNextPane",
-      "space w down": "workspace::ActivatePaneDown",
-      "space w g shift-t": "pane::ActivatePreviousItem",
+      "space w down": ["workspace::ActivatePaneInDirection", "Down"],
+      "space w g shift-t": "pane::ActivatePrevItem",
       "space w g t": "pane::ActivateNextItem",
-      "space w h": "workspace::ActivatePaneLeft",
-      "space w j": "workspace::ActivatePaneDown",
-      "space w k": "workspace::ActivatePaneUp",
-      "space w l": "workspace::ActivatePaneRight",
-      "space w left": "workspace::ActivatePaneLeft",
+      "space w h": ["workspace::ActivatePaneInDirection", "Left"],
+      "space w j": ["workspace::ActivatePaneInDirection", "Down"],
+      "space w k": ["workspace::ActivatePaneInDirection", "Up"],
+      "space w l": ["workspace::ActivatePaneInDirection", "Right"],
+      "space w left": ["workspace::ActivatePaneInDirection", "Left"],
       "space w n": "workspace::NewFileSplitHorizontal",
       "space w o": "workspace::CloseInactiveTabsAndPanes",
       "space w p": "workspace::ActivatePreviousPane",
       "space w q": "pane::CloseAllItems",
-      "space w right": "workspace::ActivatePaneRight",
+      "space w right": ["workspace::ActivatePaneInDirection", "Right"],
       "space w s": "pane::SplitHorizontal",
-      "space w shift-down": "workspace::SwapPaneDown",
-      "space w shift-h": "workspace::SwapPaneLeft",
-      "space w shift-j": "workspace::SwapPaneDown",
-      "space w shift-k": "workspace::SwapPaneUp",
-      "space w shift-l": "workspace::SwapPaneRight",
-      "space w shift-left": "workspace::SwapPaneLeft",
-      "space w shift-right": "workspace::SwapPaneRight",
+      "space w shift-down": ["workspace::SwapPaneInDirection", "Down"],
+      "space w shift-h": ["workspace::SwapPaneInDirection", "Left"],
+      "space w shift-j": ["workspace::SwapPaneInDirection", "Down"],
+      "space w shift-k": ["workspace::SwapPaneInDirection", "Up"],
+      "space w shift-l": ["workspace::SwapPaneInDirection", "Right"],
+      "space w shift-left": ["workspace::SwapPaneInDirection", "Left"],
+      "space w shift-right": ["workspace::SwapPaneInDirection", "Right"],
       "space w shift-s": "pane::SplitHorizontal",
-      "space w shift-up": "workspace::SwapPaneUp",
+      "space w shift-up": ["workspace::SwapPaneInDirection", "Up"],
       "space w shift-w": "workspace::ActivatePreviousPane",
-      "space w up": "workspace::ActivatePaneUp",
+      "space w up": ["workspace::ActivatePaneInDirection", "Up"],
       "space w v": "pane::SplitVertical",
       "space w w": "workspace::ActivateNextPane"
     },
@@ -56,12 +56,32 @@
   },
   {
     "bindings": {
-      "g #": ["vim::MoveToPrev", { "partial_word": true }],
-      "g $": ["vim::EndOfLine", { "display_lines": true }],
-      "g *": ["vim::MoveToNext", { "partial_word": true }],
+      "g #": [
+        "vim::MoveToPrev",
+        {
+          "partialWord": true
+        }
+      ],
+      "g $": [
+        "vim::EndOfLine",
+        {
+          "displayLines": true
+        }
+      ],
+      "g *": [
+        "vim::MoveToNext",
+        {
+          "partialWord": true
+        }
+      ],
       "g ,": "vim::ChangeListNewer",
       "g .": "editor::ToggleCodeActions",
-      "g 0": ["vim::StartOfLine", { "display_lines": true }],
+      "g 0": [
+        "vim::StartOfLine",
+        {
+          "displayLines": true
+        }
+      ],
       "g ;": "vim::ChangeListOlder",
       "g <": [
         "editor::SelectPrevious",
@@ -75,20 +95,50 @@
           "replace_newest": true
         }
       ],
-      "g [": "editor::GoToPreviousDiagnostic",
+      "g [": "editor::GoToPrevDiagnostic",
       "g ]": "editor::GoToDiagnostic",
-      "g ^": ["vim::FirstNonWhitespace", { "display_lines": true }],
+      "g ^": [
+        "vim::FirstNonWhitespace",
+        {
+          "displayLines": true
+        }
+      ],
       "g a": "editor::SelectAllMatches",
       "g d": "editor::GoToDefinition",
-      "g down": ["vim::Down", { "display_lines": true }],
-      "g end": ["vim::EndOfLine", { "display_lines": true }],
+      "g down": [
+        "vim::Down",
+        {
+          "displayLines": true
+        }
+      ],
+      "g end": [
+        "vim::EndOfLine",
+        {
+          "displayLines": true
+        }
+      ],
       "g f": "editor::OpenFile",
       "g g": "vim::StartOfDocument",
       "g h": "editor::Hover",
-      "g home": ["vim::StartOfLine", { "display_lines": true }],
+      "g home": [
+        "vim::StartOfLine",
+        {
+          "displayLines": true
+        }
+      ],
       "g i": "vim::InsertAtPrevious",
-      "g j": ["vim::Down", { "display_lines": true }],
-      "g k": ["vim::Up", { "display_lines": true }],
+      "g j": [
+        "vim::Down",
+        {
+          "displayLines": true
+        }
+      ],
+      "g k": [
+        "vim::Up",
+        {
+          "displayLines": true
+        }
+      ],
       "g l": "vim::SelectNext",
       "g n": "vim::SelectNextMatch",
       "g s": "outline::Toggle",
@@ -98,10 +148,15 @@
       "g shift-l": "vim::SelectPrevious",
       "g shift-n": "vim::SelectPreviousMatch",
       "g shift-s": "project_symbols::Toggle",
-      "g shift-t": "pane::ActivatePreviousItem",
+      "g shift-t": "pane::ActivatePrevItem",
       "g space": "editor::OpenExcerpts",
       "g t": "pane::ActivateNextItem",
-      "g up": ["vim::Up", { "display_lines": true }],
+      "g up": [
+        "vim::Up",
+        {
+          "displayLines": true
+        }
+      ],
       "g v": "vim::RestoreVisualSelection",
       "g x": "editor::OpenUrl",
       "g y": "editor::GoToTypeDefinition"
@@ -117,11 +172,11 @@
   {
     "bindings": {
       "ctrl-e": "workspace::ToggleLeftDock",
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-j": "workspace::ActivatePaneDown",
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-l": "workspace::ActivatePaneRight",
-      "ctrl-shift-tab": "pane::ActivatePreviousItem",
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-shift-tab": "pane::ActivatePrevItem",
       "ctrl-t": "workspace::ToggleBottomDock",
       "ctrl-tab": "pane::ActivateNextItem",
       "ctrl-y": "workspace::ToggleRightDock"
@@ -139,7 +194,7 @@
       ", q": "pane::CloseActiveItem",
       ", w": "workspace::Save",
       "n": "search::SelectNextMatch",
-      "shift-n": "search::SelectPreviousMatch"
+      "shift-n": "search::SelectPrevMatch"
     },
     "context": "Editor && VimControl && !VimWaiting && !menu"
   },

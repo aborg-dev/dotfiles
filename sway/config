@@ -40,7 +40,7 @@ bindsym $mod+m exec i3-focus-last menu
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg ~/pictures/wallpapers/golden.jpg fill
-output * color_profile icc /usr/share/color/icc/colord/BOE0CB4.icm
+# output * color_profile icc /usr/share/color/icc/colord/BOE0CB4.icm
 
 # Example configuration:
 #
