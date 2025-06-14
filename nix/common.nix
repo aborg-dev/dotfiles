@@ -137,6 +137,7 @@
       g = "git";
       j = "jj";
       e = "zeditor";
+      hx = "helix";
     };
 
     # These will be substituted right in the command before execution.
@@ -237,7 +238,8 @@
   };
 
   xdg.configFile."helix" = {
-    source = ../helix;
+    source = config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/repos/dotfiles/helix";
     recursive = true;
   };
 
