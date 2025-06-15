@@ -8,6 +8,8 @@ cursorline = true
 k = { j = "normal_mode" } # Maps `jk` to exit insert mode
 
 [keys.normal]
-"," = { q = ":quit", w = ":write" }
+"C-s" = [":write"]
+"C-q" = [":quit"]
+
 "space" = { space = "file_picker_in_current_directory", "," = "buffer_picker" }
 "ret" = "goto_word"
