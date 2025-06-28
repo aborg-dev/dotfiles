@@ -319,6 +319,7 @@
   programs.starship = {
     enable = true;
     settings = {
+      format = "$directory$character";
       character = {
         success_symbol = "[](green)";
         error_symbol = "[](red)";
