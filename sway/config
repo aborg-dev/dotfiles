@@ -42,7 +42,8 @@ bindsym $mod+m exec i3-focus-last menu
 output * bg ~/pictures/wallpapers/golden.jpg fill
 # output * color_profile icc /usr/share/color/icc/colord/BOE0CB4.icm
 
-output * scale 2
+# Gives the right size, but the XWayland apps are blurry.
+# output * scale 2
 
 # Example configuration:
 #
