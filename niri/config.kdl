@@ -222,6 +222,14 @@ layout {
 // spawn-at-startup "alacritty" "-e" "fish"
 spawn-at-startup "wlsunset"
 
+spawn-at-startup "xwayland-satellite"
+// Or, if you built it by hand:
+// spawn-at-startup "~/path/to/code/target/release/xwayland-satellite"
+
+environment {
+    DISPLAY ":0"
+}
+
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
