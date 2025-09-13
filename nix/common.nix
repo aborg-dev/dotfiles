@@ -242,6 +242,7 @@
       editor = {
         rulers = [100];
         cursorline = true;
+        true-color = true;
       };
       keys.insert = {
         k = { j = "normal_mode"; };
