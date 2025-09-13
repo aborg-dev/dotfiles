@@ -137,7 +137,6 @@
       g = "git";
       j = "jj";
       e = "zeditor";
-      hx = "helix";
     };
 
     # These will be substituted right in the command before execution.
