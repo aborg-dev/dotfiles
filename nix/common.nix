@@ -236,10 +236,61 @@
     recursive = true;
   };
 
-  xdg.configFile."helix" = {
-    source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/repos/dotfiles/helix";
-    recursive = true;
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "catppuccin_frappe";
+      editor = {
+        rulers = [100];
+        cursorline = true;
+      };
+      keys.insert = {
+        k = { j = "normal_mode"; };
+      };
+      keys.normal = {
+        "C-s" = [":write"];
+        "C-q" = [":quit"];
+        space = { 
+          space = "file_picker_in_current_directory";
+          "," = "buffer_picker";
+        };
+        ret = "goto_word";
+      };
+    };
+    languages = {
+      language = [
+        {
+          name = "rust";
+          auto-format = true;
+        }
+        {
+          name = "html";
+          language-servers = [ "vscode-html-language-server" "tailwindcss-ls" ];
+        }
+        {
+          name = "css"; 
+          language-servers = [ "vscode-css-language-server" "tailwindcss-ls" ];
+        }
+        {
+          name = "jsx";
+          language-servers = [ "typescript-language-server" "tailwindcss-ls" ];
+        }
+        {
+          name = "tsx";
+          language-servers = [ "typescript-language-server" "tailwindcss-ls" ];
+        }
+        {
+          name = "svelte";
+          language-servers = [ "svelteserver" "tailwindcss-ls" ];
+        }
+      ];
+      language-server = {
+        tailwindcss-ls = {
+          command = "tailwindcss-language-server";
+          args = ["--stdio"];
+        };
+      };
+    };
   };
 
   xdg.configFile."ghostty" = {
