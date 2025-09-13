@@ -86,6 +86,19 @@
     };
   };
 
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user = {
+        email = "git@aborg.dev";
+        name = "Andrew Borg";
+      };
+      aliases = {
+        tug = ["bookmark" "move" "--from" "heads(::@- & bookmarks())" "--to" "@-"];
+      };
+    };
+  };
+
   programs.fish = {
     enable = true;
     loginShellInit = ''
