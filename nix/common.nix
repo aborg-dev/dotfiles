@@ -20,6 +20,7 @@
     yazi.enable = true;
     starship.enable = true;
     btop.enable = true;
+    delta.enable = true;
   };
 
   # Packages to install.
@@ -64,6 +65,15 @@
     enable = true;
   };
 
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      navigate = true;
+      line-numbers = true;
+    };
+  };
+
   programs.git = {
     enable = true;
     settings = {
@@ -93,6 +103,10 @@
       };
       aliases = {
         tug = ["bookmark" "move" "--from" "heads(::@- & bookmarks())" "--to" "@-"];
+      };
+      ui = {
+        pager = "delta";
+        diff-formatter = ":git";
       };
     };
   };
