@@ -275,11 +275,16 @@
           auto-format = true;
         }
         {
+          name = "nix";
+          auto-format = true;
+          language-servers = [ "nixd" ];
+        }
+        {
           name = "html";
           language-servers = [ "vscode-html-language-server" "tailwindcss-ls" ];
         }
         {
-          name = "css"; 
+          name = "css";
           language-servers = [ "vscode-css-language-server" "tailwindcss-ls" ];
         }
         {
