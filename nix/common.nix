@@ -399,7 +399,12 @@
   programs.starship = {
     enable = true;
     settings = {
-      format = "$directory$character";
+      format = "$hostname$directory$character";
+      hostname = {
+        ssh_only = false;
+        format = "[$hostname]($style) ";
+        style = "bold blue";
+      };
       character = {
         success_symbol = "[](green)";
         error_symbol = "[](red)";
