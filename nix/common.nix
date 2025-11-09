@@ -66,13 +66,12 @@
 
   programs.git = {
     enable = true;
-    userEmail = "git@aborg.dev";
-    userName = "Andrew Borg";
-    aliases = {
-      lg =
-        "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
-    };
-    extraConfig = {
+    settings = {
+      user = {
+        email = "git@aborg.dev";
+        name = "Andrew Borg";
+        signingkey = "~/.ssh/id_ed25519.pub";
+      };
       # Always push the local branch to a remote branch with the same name.
       push = { default = "current"; };
       # Use a more convenient 3-way diff algorithm.
@@ -82,7 +81,6 @@
       # Sign all commits using ssh key
       commit.gpgsign = true;
       gpg.format = "ssh";
-      user.signingkey = "~/.ssh/id_ed25519.pub";
     };
   };
 
