@@ -1,7 +1,10 @@
 { ... }:
 
 {
-  imports = [ ./common.nix ./desktop.nix ];
+  imports = [
+    ./common.nix
+    ./desktop.nix
+  ];
 
   home = {
     username = "polygon";

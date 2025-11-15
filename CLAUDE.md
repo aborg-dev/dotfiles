@@ -49,8 +49,10 @@ Then apply with `home-manager switch`.
 ### Format Nix Files
 
 ```bash
-nixfmt-classic <file.nix>
+nix fmt
 ```
+
+This will format all Nix files in the repository using `nixfmt-tree`.
 
 ### Restore Broken Environment
 

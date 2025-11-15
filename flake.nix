@@ -12,56 +12,82 @@
     catppuccin.url = "github:catppuccin/nix";
   };
 
-  outputs = { nixpkgs, home-manager, catppuccin, ... }: {
-    defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
-    defaultPackage.aarch64-darwin = home-manager.defaultPackage.aarch64-darwin;
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      catppuccin,
+      ...
+    }:
+    {
+      defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
+      defaultPackage.aarch64-darwin = home-manager.defaultPackage.aarch64-darwin;
 
-    homeConfigurations."aborg@glados" =
-      home-manager.lib.homeManagerConfiguration {
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
+      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-tree;
+
+      homeConfigurations."aborg@glados" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [ ./nix/glados.nix catppuccin.homeModules.catppuccin ];
+        modules = [
+          ./nix/glados.nix
+          catppuccin.homeModules.catppuccin
+        ];
       };
 
-    homeConfigurations."aborg@spire" =
-      home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."aborg@spire" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [ ./nix/spire.nix catppuccin.homeModules.catppuccin ];
+        modules = [
+          ./nix/spire.nix
+          catppuccin.homeModules.catppuccin
+        ];
       };
 
-    homeConfigurations."polygon@spire" =
-      home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."polygon@spire" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules =
-          [ ./nix/polygon.nix catppuccin.homeModules.catppuccin ];
+        modules = [
+          ./nix/polygon.nix
+          catppuccin.homeModules.catppuccin
+        ];
       };
 
-    homeConfigurations."aborg@tuxedo" =
-      home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."aborg@tuxedo" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [ ./nix/tuxedo.nix catppuccin.homeModules.catppuccin ];
+        modules = [
+          ./nix/tuxedo.nix
+          catppuccin.homeModules.catppuccin
+        ];
       };
 
-    homeConfigurations."aborg@hermes" =
-      home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."aborg@hermes" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-        modules = [ ./nix/osx.nix catppuccin.homeModules.catppuccin ];
+        modules = [
+          ./nix/osx.nix
+          catppuccin.homeModules.catppuccin
+        ];
       };
 
-    homeConfigurations."aborg@odroid" =
-      home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."aborg@odroid" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [ ./nix/odroid.nix catppuccin.homeModules.catppuccin ];
+        modules = [
+          ./nix/odroid.nix
+          catppuccin.homeModules.catppuccin
+        ];
       };
 
-    homeConfigurations."aborg@theseus" =
-      home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."aborg@theseus" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [ ./nix/theseus.nix catppuccin.homeModules.catppuccin ];
+        modules = [
+          ./nix/theseus.nix
+          catppuccin.homeModules.catppuccin
+        ];
       };
 
-    homeConfigurations."aborg" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-      modules = [ ./nix/osx.nix catppuccin.homeModules.catppuccin ];
+      homeConfigurations."aborg" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        modules = [
+          ./nix/osx.nix
+          catppuccin.homeModules.catppuccin
+        ];
+      };
     };
-  };
 }

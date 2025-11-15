@@ -36,11 +36,11 @@
     zk
     atuin
     stylua
-    nixfmt-classic
     fnlfmt
     nodePackages.typescript
     nodePackages.typescript-language-server
-    # Nix language server.
+    # Nix formatter and language server.
+    nixfmt-rfc-style
     nixd
   ];
 
@@ -83,11 +83,17 @@
         signingkey = "~/.ssh/id_ed25519.pub";
       };
       # Always push the local branch to a remote branch with the same name.
-      push = { default = "current"; };
+      push = {
+        default = "current";
+      };
       # Use a more convenient 3-way diff algorithm.
-      merge = { conflictStyle = "zdiff3"; };
+      merge = {
+        conflictStyle = "zdiff3";
+      };
       # Always pull with rebase.
-      pull = { rebase = "true"; };
+      pull = {
+        rebase = "true";
+      };
       # Sign all commits using ssh key
       commit.gpgsign = true;
       gpg.format = "ssh";
@@ -102,7 +108,14 @@
         name = "Andrew Borg";
       };
       aliases = {
-        tug = ["bookmark" "move" "--from" "heads(::@- & bookmarks())" "--to" "@-"];
+        tug = [
+          "bookmark"
+          "move"
+          "--from"
+          "heads(::@- & bookmarks())"
+          "--to"
+          "@-"
+        ];
       };
       ui = {
         pager = "delta";
@@ -229,20 +242,17 @@
   };
 
   xdg.configFile."nvim" = {
-    source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/repos/dotfiles/lazyvim";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/dotfiles/lazyvim";
     recursive = true;
   };
 
   xdg.configFile."zed" = {
-    source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/repos/dotfiles/zed";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/dotfiles/zed";
     recursive = true;
   };
 
   xdg.configFile."niri" = {
-    source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/repos/dotfiles/niri";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/dotfiles/niri";
     recursive = true;
   };
 
@@ -265,17 +275,19 @@
     settings = {
       theme = "catppuccin_frappe";
       editor = {
-        rulers = [100];
+        rulers = [ 100 ];
         cursorline = true;
         true-color = true;
       };
       keys.insert = {
-        k = { j = "normal_mode"; };
+        k = {
+          j = "normal_mode";
+        };
       };
       keys.normal = {
-        "C-s" = [":write"];
-        "C-q" = [":quit"];
-        space = { 
+        "C-s" = [ ":write" ];
+        "C-q" = [ ":quit" ];
+        space = {
           space = "file_picker_in_current_directory";
           "," = "buffer_picker";
         };
@@ -291,33 +303,49 @@
         {
           name = "nix";
           auto-format = true;
+          formatter.command = "nixfmt";
           language-servers = [ "nixd" ];
         }
         {
           name = "html";
-          language-servers = [ "vscode-html-language-server" "tailwindcss-ls" ];
+          language-servers = [
+            "vscode-html-language-server"
+            "tailwindcss-ls"
+          ];
         }
         {
           name = "css";
-          language-servers = [ "vscode-css-language-server" "tailwindcss-ls" ];
+          language-servers = [
+            "vscode-css-language-server"
+            "tailwindcss-ls"
+          ];
         }
         {
           name = "jsx";
-          language-servers = [ "typescript-language-server" "tailwindcss-ls" ];
+          language-servers = [
+            "typescript-language-server"
+            "tailwindcss-ls"
+          ];
         }
         {
           name = "tsx";
-          language-servers = [ "typescript-language-server" "tailwindcss-ls" ];
+          language-servers = [
+            "typescript-language-server"
+            "tailwindcss-ls"
+          ];
         }
         {
           name = "svelte";
-          language-servers = [ "svelteserver" "tailwindcss-ls" ];
+          language-servers = [
+            "svelteserver"
+            "tailwindcss-ls"
+          ];
         }
       ];
       language-server = {
         tailwindcss-ls = {
           command = "tailwindcss-language-server";
-          args = ["--stdio"];
+          args = [ "--stdio" ];
         };
       };
     };
@@ -390,7 +418,9 @@
     '';
   };
 
-  programs.zoxide = { enable = true; };
+  programs.zoxide = {
+    enable = true;
+  };
 
   programs.yazi = {
     enable = true;
