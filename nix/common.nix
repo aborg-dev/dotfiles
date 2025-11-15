@@ -42,6 +42,7 @@
     # Nix formatter and language server.
     nixfmt-rfc-style
     nixd
+    just
   ];
 
   programs.direnv = {
