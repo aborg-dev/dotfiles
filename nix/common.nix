@@ -37,8 +37,8 @@
     atuin
     stylua
     fnlfmt
-    nodePackages.typescript
-    nodePackages.typescript-language-server
+    typescript
+    typescript-language-server
     # Nix formatter and language server.
     nixfmt
     nixd
