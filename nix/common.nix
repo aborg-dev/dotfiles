@@ -14,6 +14,8 @@
   };
 
   catppuccin = {
+    enable = true;
+    autoEnable = false;
     flavor = "frappe";
     bat.enable = true;
     fish.enable = true;
@@ -240,6 +242,8 @@
     vimAlias = true;
     vimdiffAlias = true;
     withPython3 = true;
+    # Load HM-generated lua via wrapper so it does not clash with the symlinked lazyvim init.lua
+    sideloadInitLua = true;
   };
 
   xdg.configFile."nvim" = {
@@ -447,7 +451,7 @@
   fonts.fontconfig.enable = true;
 
   # Enables linux-specific env variables, e.g. XDG paths.
-  targets.genericLinux.enable = pkgs.stdenv.isLinux;
+  targets.genericLinux.enable = pkgs.stdenv.hostPlatform.isLinux;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
