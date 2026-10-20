@@ -242,12 +242,12 @@
     vimAlias = true;
     vimdiffAlias = true;
     withPython3 = true;
-    # Load HM-generated lua via wrapper so it does not clash with the symlinked lazyvim init.lua
+    # Load HM-generated lua via wrapper so it does not clash with the symlinked nvim init.lua
     sideloadInitLua = true;
   };
 
   xdg.configFile."nvim" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/dotfiles/lazyvim";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/dotfiles/nvim";
     recursive = true;
   };
 

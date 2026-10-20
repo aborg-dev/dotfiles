@@ -22,7 +22,7 @@ Each machine configuration imports the Catppuccin Nix module for consistent them
 
 ### Configuration Deployment
 
-Most application configs live in their own directories (e.g., `lazyvim/`, `zed/`, `ghostty/`) and are symlinked via `xdg.configFile` in nix/common.nix. The symlinks point to the actual repository location using `config.lib.file.mkOutOfStoreSymlink` so configs can be edited in place without rebuilding.
+Most application configs live in their own directories (e.g., `nvim/`, `zed/`, `ghostty/`) and are symlinked via `xdg.configFile` in nix/common.nix. The symlinks point to the actual repository location using `config.lib.file.mkOutOfStoreSymlink` so configs can be edited in place without rebuilding.
 
 ## Commands
 
