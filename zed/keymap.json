@@ -56,7 +56,6 @@
   },
   {
     "bindings": {
-      "g #": ["vim::MoveToPrev", { "partial_word": true }],
       "g $": ["vim::EndOfLine", { "display_lines": true }],
       "g *": ["vim::MoveToNext", { "partial_word": true }],
       "g ,": "vim::ChangeListNewer",
@@ -82,7 +81,7 @@
       "g d": "editor::GoToDefinition",
       "g down": ["vim::Down", { "display_lines": true }],
       "g end": ["vim::EndOfLine", { "display_lines": true }],
-      "g f": "editor::OpenFile",
+      "g f": "editor::OpenSelectedFilename",
       "g g": "vim::StartOfDocument",
       "g h": "editor::Hover",
       "g home": ["vim::StartOfLine", { "display_lines": true }],
