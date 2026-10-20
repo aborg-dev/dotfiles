@@ -15,7 +15,7 @@ The repository uses a layered configuration approach:
 - **flake.nix**: Entry point defining all machine configurations as `homeConfigurations` outputs
 - **nix/common.nix**: Base configuration shared by all machines (packages, programs, shell setup)
 - **nix/desktop.nix**: Desktop environment configs (Sway, Waybar, Rofi) for Linux GUI machines
-- **nix/osx.nix**: macOS-specific configs (Yabai, SKHD, SketchyBar)
+- **nix/osx.nix**: macOS-specific settings (username and home directory)
 - **nix/{machine}.nix**: Individual machine configs that import common.nix and optionally desktop.nix/osx.nix
 
 Each machine configuration imports the Catppuccin Nix module for consistent theming.
@@ -102,11 +102,6 @@ Linux machines use:
 - **Waybar**: Status bar
 - **Niri**: Alternative compositor (config in niri/config.kdl)
 - **Ghostty**: Terminal emulator
-
-macOS machines use:
-- **Yabai**: Tiling window manager
-- **SKHD**: Hotkey daemon
-- **SketchyBar**: Status bar
 
 ### Theming
 
