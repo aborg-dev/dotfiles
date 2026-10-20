@@ -7,9 +7,6 @@ vim.opt.relativenumber = false -- Disable relative line numbers.
 vim.opt.shell = "fish"
 vim.opt.guifont = "JetBrainsMono Nerd Font:h19"
 
--- Expand 'cc' into 'CodeCompanion' in the command line
-vim.cmd([[cab cc CodeCompanion]])
-
 if vim.g.neovide then
   -- Lower value = faster animation.
   vim.g.neovide_cursor_animation_length = 0.02

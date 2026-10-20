@@ -2,7 +2,6 @@ return {
   -- Configure LazyVim to load Catpuccin colorscheme.
   {
     "catppuccin/nvim",
-    lazy = false,
     name = "catppuccin",
     opts = {
       term_colors = true,

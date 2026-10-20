@@ -3,7 +3,6 @@
 -- Add any additional keymaps here
 
 -- Common buffer shortcuts.
-vim.keymap.set("n", "<C-s>", ":write<cr>", { silent = true })
 vim.keymap.set("n", "<C-q>", ":quit<cr>", { silent = true })
 
 -- System clipboard cut and paste.
