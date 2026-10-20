@@ -14,7 +14,7 @@ The repository uses a layered configuration approach:
 
 - **flake.nix**: Entry point defining all machine configurations as `homeConfigurations` outputs
 - **nix/common.nix**: Base configuration shared by all machines (packages, programs, shell setup)
-- **nix/desktop.nix**: Desktop environment configs (Sway, Waybar, Alacritty, Rofi) for Linux GUI machines
+- **nix/desktop.nix**: Desktop environment configs (Sway, Waybar, Rofi) for Linux GUI machines
 - **nix/osx.nix**: macOS-specific configs (Yabai, SKHD, SketchyBar)
 - **nix/{machine}.nix**: Individual machine configs that import common.nix and optionally desktop.nix/osx.nix
 
@@ -101,7 +101,7 @@ Linux machines use:
 - **Sway**: Wayland compositor (config in sway/config)
 - **Waybar**: Status bar
 - **Niri**: Alternative compositor (config in niri/config.kdl)
-- **Ghostty/Alacritty**: Terminal emulators
+- **Ghostty**: Terminal emulator
 
 macOS machines use:
 - **Yabai**: Tiling window manager

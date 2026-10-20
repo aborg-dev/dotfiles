@@ -2,7 +2,7 @@
 
 # Environment {{{
 
-# Disable DPI scaling so that font size in Alacritty on laptop and desktop is the same.
+# Disable DPI scaling so that font size in the terminal on laptop and desktop is the same.
 export WINIT_HIDPI_FACTOR=1
 
 # This is where go modules will be downloaded.

@@ -2,12 +2,6 @@
 { ... }:
 
 {
-  xdg.configFile."alacritty/alacritty.toml".source = ../alacritty/alacritty.toml;
-  xdg.configFile."alacritty/themes" = {
-    source = ../alacritty/themes;
-    recursive = true;
-  };
-
   xdg.configFile."sway/config".source = ../sway/config;
   xdg.configFile."sway/themes" = {
     source = ../sway/themes;
