@@ -1,192 +1,75 @@
+// Zed keymap. Only overrides and additions on top of Zed's default vim keymap.
+// Defaults: run `zed: open default keymap` from the command palette.
 [
   {
+    // Window commands under the leader key: forwards to Zed's built-in `ctrl-w` bindings.
+    "context": "VimControl && !menu",
     "bindings": {
-      "space w ": null,
-      "space w +": "vim::ResizePaneUp",
-      "space w -": "vim::ResizePaneDown",
-      "space w <": "vim::ResizePaneLeft",
-      "space w =": "vim::ResetPaneSizes",
-      "space w >": "vim::ResizePaneRight",
-      "space w _": "vim::MaximizePane",
-      "space w c": "pane::CloseAllItems",
-      "space w ctrl-c": "pane::CloseAllItems",
-      "space w ctrl-g shift-t": "pane::ActivatePreviousItem",
-      "space w ctrl-g t": "pane::ActivateNextItem",
-      "space w ctrl-h": "workspace::ActivatePaneLeft",
-      "space w ctrl-j": "workspace::ActivatePaneDown",
-      "space w ctrl-k": "workspace::ActivatePaneUp",
-      "space w ctrl-l": "workspace::ActivatePaneRight",
-      "space w ctrl-n": "workspace::NewFileSplitHorizontal",
-      "space w ctrl-o": "workspace::CloseInactiveTabsAndPanes",
-      "space w ctrl-p": "workspace::ActivatePreviousPane",
-      "space w ctrl-q": "pane::CloseAllItems",
-      "space w ctrl-s": "pane::SplitHorizontal",
-      "space w ctrl-shift-w": "workspace::ActivatePreviousPane",
-      "space w ctrl-v": "pane::SplitVertical",
-      "space w ctrl-w": "workspace::ActivateNextPane",
-      "space w down": "workspace::ActivatePaneDown",
-      "space w g shift-t": "pane::ActivatePreviousItem",
-      "space w g t": "pane::ActivateNextItem",
-      "space w h": "workspace::ActivatePaneLeft",
-      "space w j": "workspace::ActivatePaneDown",
-      "space w k": "workspace::ActivatePaneUp",
-      "space w l": "workspace::ActivatePaneRight",
-      "space w left": "workspace::ActivatePaneLeft",
-      "space w n": "workspace::NewFileSplitHorizontal",
-      "space w o": "workspace::CloseInactiveTabsAndPanes",
-      "space w p": "workspace::ActivatePreviousPane",
-      "space w q": "pane::CloseAllItems",
-      "space w right": "workspace::ActivatePaneRight",
-      "space w s": "pane::SplitHorizontal",
-      "space w shift-down": "workspace::SwapPaneDown",
-      "space w shift-h": "workspace::SwapPaneLeft",
-      "space w shift-j": "workspace::SwapPaneDown",
-      "space w shift-k": "workspace::SwapPaneUp",
-      "space w shift-l": "workspace::SwapPaneRight",
-      "space w shift-left": "workspace::SwapPaneLeft",
-      "space w shift-right": "workspace::SwapPaneRight",
-      "space w shift-s": "pane::SplitHorizontal",
-      "space w shift-up": "workspace::SwapPaneUp",
-      "space w shift-w": "workspace::ActivatePreviousPane",
-      "space w up": "workspace::ActivatePaneUp",
-      "space w v": "pane::SplitVertical",
-      "space w w": "workspace::ActivateNextPane"
-    },
-    "context": "ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView"
+      "space w": ["workspace::SendKeystrokes", "ctrl-w"]
+    }
   },
   {
+    // Pane navigation (mirrors nvim/tmux), docks and tab cycling.
+    "context": "Dock || Terminal || VimControl || EmptyPane",
     "bindings": {
-      "g $": ["vim::EndOfLine", { "display_lines": true }],
-      "g *": ["vim::MoveToNext", { "partial_word": true }],
-      "g ,": "vim::ChangeListNewer",
-      "g .": "editor::ToggleCodeActions",
-      "g 0": ["vim::StartOfLine", { "display_lines": true }],
-      "g ;": "vim::ChangeListOlder",
-      "g <": [
-        "editor::SelectPrevious",
-        {
-          "replace_newest": true
-        }
-      ],
-      "g >": [
-        "editor::SelectNext",
-        {
-          "replace_newest": true
-        }
-      ],
-      "g [": "editor::GoToPreviousDiagnostic",
-      "g ]": "editor::GoToDiagnostic",
-      "g ^": ["vim::FirstNonWhitespace", { "display_lines": true }],
-      "g a": "editor::SelectAllMatches",
-      "g d": "editor::GoToDefinition",
-      "g down": ["vim::Down", { "display_lines": true }],
-      "g end": ["vim::EndOfLine", { "display_lines": true }],
-      "g f": "editor::OpenSelectedFilename",
-      "g g": "vim::StartOfDocument",
-      "g h": "editor::Hover",
-      "g home": ["vim::StartOfLine", { "display_lines": true }],
-      "g i": "vim::InsertAtPrevious",
-      "g j": ["vim::Down", { "display_lines": true }],
-      "g k": ["vim::Up", { "display_lines": true }],
-      "g l": "vim::SelectNext",
-      "g n": "vim::SelectNextMatch",
-      "g s": "outline::Toggle",
-      "g shift-a": "editor::FindAllReferences",
-      "g shift-d": "editor::GoToDeclaration",
-      "g shift-i": "editor::GoToImplementation",
-      "g shift-l": "vim::SelectPrevious",
-      "g shift-n": "vim::SelectPreviousMatch",
-      "g shift-s": "project_symbols::Toggle",
-      "g shift-t": "pane::ActivatePreviousItem",
-      "g space": "editor::OpenExcerpts",
-      "g t": "pane::ActivateNextItem",
-      "g up": ["vim::Up", { "display_lines": true }],
-      "g v": "vim::RestoreVisualSelection",
-      "g x": "editor::OpenUrl",
-      "g y": "editor::GoToTypeDefinition"
-    },
-    "context": "VimControl && !menu"
-  },
-  {
-    "bindings": {
-      "escape": "pane::CloseActiveItem"
-    },
-    "context": "ProjectSearchBar"
-  },
-  {
-    "bindings": {
-      "ctrl-e": "workspace::ToggleLeftDock",
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-j": "workspace::ActivatePaneDown",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-l": "workspace::ActivatePaneRight",
-      "ctrl-shift-tab": "pane::ActivatePreviousItem",
+      "ctrl-e": "workspace::ToggleLeftDock",
       "ctrl-t": "workspace::ToggleBottomDock",
+      "ctrl-y": "workspace::ToggleRightDock",
       "ctrl-tab": "pane::ActivateNextItem",
-      "ctrl-y": "workspace::ToggleRightDock"
-    },
-    "context": "Dock || Terminal || VimControl || EmptyPane"
+      "ctrl-shift-tab": "pane::ActivatePreviousItem"
+    }
   },
   {
+    "context": "ProjectSearchBar",
+    "bindings": {
+      "escape": "pane::CloseActiveItem"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
     "bindings": {
       "k j": ["workspace::SendKeystrokes", "escape"]
-    },
-    "context": "Editor && vim_mode == insert"
+    }
   },
   {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
     "bindings": {
+      // Local leader.
       ", q": "pane::CloseActiveItem",
       ", w": "workspace::Save",
-      "n": "search::SelectNextMatch",
-      "shift-n": "search::SelectPreviousMatch"
-    },
-    "context": "Editor && VimControl && !VimWaiting && !menu"
-  },
-  {
-    "bindings": {
-      "space ,": "tab_switcher::Toggle",
+
+      // Leader.
       "space /": "workspace::NewSearch",
-      "space c f": "editor::Format"
-    },
-    "context": "Editor && VimControl && !VimWaiting && !menu"
-  },
-  {
-    "bindings": {
+      "space ,": "tab_switcher::Toggle",
+      "space c f": "editor::Format",
+
+      // Search.
+      "space s w": "workspace::NewSearch",
+      "space s s": "outline::Toggle",
       "space s S": "project_symbols::Toggle",
       "space s r": "editor::FindAllReferences",
-      "space s s": "outline::Toggle",
-      "space s w": "workspace::NewSearch"
-    },
-    "context": "Editor && VimControl && !VimWaiting && !menu"
-  },
-  {
-    "bindings": {
-      "space p o": "outline_panel::ToggleFocus",
+
+      // Projects.
       "space p p": "projects::OpenRecent",
-      "space p r": "projects::OpenRemote"
-    },
-    "context": "Editor && VimControl && !VimWaiting && !menu"
-  },
-  {
-    "bindings": {
+      "space p o": "outline_panel::ToggleFocus",
+      "space p r": "projects::OpenRemote",
+
+      // Buffers/tabs.
       "space b c": "pane::CloseAllItems",
-      "space b p": "pane::TogglePinTab"
-    },
-    "context": "Editor && VimControl && !VimWaiting && !menu"
-  },
-  {
-    "bindings": {
+      "space b p": "pane::TogglePinTab",
+
+      // Tasks.
+      "space t t": "task::Spawn",
       "space t r": "task::Rerun",
-      "space t t": "task::Spawn"
-    },
-    "context": "Editor && VimControl && !VimWaiting && !menu"
-  },
-  {
-    "bindings": {
-      "space u b": "editor::ToggleGitBlame",
+
+      // Toggles.
+      "space u w": "editor::ToggleSoftWrap",
       "space u h": "editor::ToggleInlayHints",
-      "space u w": "editor::ToggleSoftWrap"
-    },
-    "context": "Editor && VimControl && !VimWaiting && !menu"
+      "space u b": "git::Blame"
+    }
   }
 ]
