@@ -181,7 +181,7 @@
   };
 
   # Linux only: macOS already runs a Keychain-backed agent via launchd.
-  services.ssh-agent.enable = pkgs.stdenv.isLinux;
+  services.ssh-agent.enable = pkgs.stdenv.hostPlatform.isLinux;
 
   home.file.".zshrc".source = ../zsh/zshrc.symlink;
 
