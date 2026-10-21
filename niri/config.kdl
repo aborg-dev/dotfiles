@@ -279,7 +279,7 @@ window-rule {
     open-floating true
 }
 
-// Notes scratchpad, toggled by scripts/toggle_notes.sh.
+// Notes scratchpad, toggled by scripts/toggle_notes.py.
 window-rule {
     match app-id=r#"^ghostty\.notes$"#
     open-floating true
@@ -326,7 +326,7 @@ binds {
     Mod+P { spawn "ghostty" "--working-directory=/home/aborg/notes" "-e" "fish" "-c" "nvim"; }
     Mod+Space { spawn "rofi" "-modes" "drun,run" "-show" "drun"; }
     Super+Alt+L { spawn "swaylock"; }
-    Mod+Semicolon { spawn "~/repos/dotfiles/scripts/toggle_notes.sh"; }
+    Mod+Semicolon { spawn "~/repos/dotfiles/scripts/toggle_notes.py"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
