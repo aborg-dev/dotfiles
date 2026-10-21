@@ -177,23 +177,15 @@
       b = "bat";
       g = "git";
       j = "jj";
-      e = "zeditor";
     };
 
     # These will be substituted right in the command before execution.
     shellAbbrs = {
-      gst = "git status";
-      gc = "git commit";
-      gd = "git diff";
-      ga = "git add";
-      gl = "git pull";
-      gco = "git checkout";
       hms = "home-manager switch";
       crr = "cargo run --release";
       jc = "jj commit";
       jd = "jj diff";
       jf = "jj git fetch";
-      jp = "jj bookmark set master -r @- && jj git push";
       jr = "jj rebase -d";
       sps = "sudo pacman -S";
       spu = "sudo pacman -Syu";
