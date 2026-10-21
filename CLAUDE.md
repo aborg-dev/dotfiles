@@ -84,7 +84,8 @@ nix run home-manager/master -- switch
 ### Shell Configuration
 
 - Primary shell: Fish with vi keybindings (`fish_vi_key_bindings`)
-- Key features: Atuin for history (Ctrl+R), z for directory jumping, ssh-agent plugin
+- Key features: Atuin for history (Ctrl+R only), zoxide for directory jumping (`z`)
+- No third-party fish plugins; ssh-agent runs as a systemd user service via `services.ssh-agent` (Linux)
 - Custom keybinding: `kj` in insert mode exits to normal mode
 - Shell abbreviations defined in nix/common.nix shellAbbrs (e.g., `hms` → `home-manager switch`)
 
@@ -105,12 +106,12 @@ Linux machines use:
 
 ### Theming
 
-All programs use Catppuccin Frappe theme via the catppuccin.nix module. Theme is automatically applied to Fish, Bat, Yazi, Starship, Btop, and Tmux through the catppuccin config block in common.nix.
+All programs use Catppuccin Frappe theme via the catppuccin.nix module. Theme is automatically applied to Fish, Bat, Yazi, Starship, Btop, and Delta through the catppuccin config block in common.nix. Tmux is the exception: it uses the catppuccin tmux plugin configured under `programs.tmux` (plugin v2 option names).
 
 ## Important Notes
 
 - Machine-specific font sizes handled via separate font.toml files (1080p_font.toml, 1440p_font.toml)
-- Custom PATH additions in Fish config: ~/.local/bin, ~/.yarn/bin, ~/.cargo/bin, /opt/homebrew/bin
+- Custom PATH additions in Fish config: ~/.local/bin, ~/.cargo/bin
 - Tmux prefix is Ctrl+A (not default Ctrl+B)
 - Helix and Stylua formatters configured to use 100-character line width
-- ZK notebook directory defaults to ~/notes (set via ZK_NOTEBOOK_DIR)
+- ZK notebook directory defaults to ~/notes (set via ZK_NOTEBOOK_DIR in home.sessionVariables)

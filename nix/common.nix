@@ -10,6 +10,8 @@
       EDITOR = "hx";
       VISUAL = "hx";
       MANPAGER = "bat -l man -p";
+      # Default notebook for zk.
+      ZK_NOTEBOOK_DIR = "${config.home.homeDirectory}/notes";
     };
   };
 
@@ -54,6 +56,8 @@
 
   programs.atuin = {
     enable = true;
+    # Only bind Ctrl+R; keep Up arrow as plain history.
+    flags = [ "--disable-up-arrow" ];
     settings = {
       dialect = "uk";
       show_help = false;
@@ -129,10 +133,6 @@
 
   programs.fish = {
     enable = true;
-    loginShellInit = ''
-      # Run Firefox under Wayland.
-      set -x MOZ_ENABLE_WAYLAND 1
-    '';
     interactiveShellInit = ''
       # Disable the greeting message.
       set -g fish_greeting
@@ -141,16 +141,7 @@
       fish_vi_key_bindings
 
       # Add paths to custom-built binaries.
-      fish_add_path ~/.local/bin ~/.yarn/bin ~/.cargo/bin
-      fish_add_path /opt/homebrew/bin
-      fish_add_path /usr/local/texlive/2024/bin/x86_64-linux
-
-      set -gx ATUIN_NOBIND "true"
-      atuin init fish | source
-
-      # bind to ctrl-r in normal and insert mode, add any other bindings you want here too
-      bind \cr _atuin_search
-      bind -M insert \cr _atuin_search
+      fish_add_path ~/.local/bin ~/.cargo/bin
 
       # More convenient shortcut to exit insert mode.
       bind -M insert kj 'set fish_bind_mode default; commandline -f repaint'
@@ -160,9 +151,6 @@
       bind -M insert \cp up-or-search
       bind -M insert \cn down-or-search
 
-      # Set the path of default zk notebook.
-      set -gx ZK_NOTEBOOK_DIR ~/notes
-
       # Zed editor
       if test "$TERM_PROGRAM" = "zed"
           set -x EDITOR zeditor --wait
@@ -171,9 +159,9 @@
     '';
 
     shellAliases = {
-      t = "tmux new-session -At";
+      t = "tmux new-session -As";
       v = "nvim";
-      l = "exa -l";
+      l = "eza -l";
       b = "bat";
       g = "git";
       j = "jj";
@@ -189,7 +177,6 @@
       jr = "jj rebase -d";
       sps = "sudo pacman -S";
       spu = "sudo pacman -Syu";
-      tmx = "tmux new -As";
     };
   };
 
