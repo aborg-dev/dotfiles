@@ -366,6 +366,13 @@
     prefix = "C-a";
     keyMode = "vi";
     historyLimit = 100000;
+    terminal = "tmux-256color";
+    # Start windows and panes at 1, not 0.
+    baseIndex = 1;
+    # Disable delay between sending an Escape key.
+    escapeTime = 0;
+    # Let Neovim notice focus changes (autoread, etc.).
+    focusEvents = true;
     # Resize window on monitor switch.
     aggressiveResize = true;
     plugins = with pkgs; [
@@ -373,23 +380,18 @@
       {
         plugin = tmuxPlugins.catppuccin;
         extraConfig = ''
-          set -g @catppuccin_flavour 'frappe'
-          set -g @catppuccin_window_default_fill "number"
-          set -g @catppuccin_window_default_text "#W"
-          set -g @catppuccin_window_current_fill "number"
-          set -g @catppuccin_window_current_text "#W"
-          set -g @catppuccin_status_justify "absolute-centre"
-
-          set -g @catppuccin_status_modules_right "session"
+          set -g @catppuccin_flavor "frappe"
+          # Same as the terminal background. "none" breaks the rounded pill caps.
+          set -g @catppuccin_status_background "#{@thm_bg}"
+          set -g @catppuccin_window_status_style "rounded"
+          set -g @catppuccin_window_text " #W"
+          set -g @catppuccin_window_current_text " #W"
         '';
       }
     ];
     extraConfig = ''
       # Upgrade terminal colors.
       set -ag terminal-overrides ",$TERM:RGB"
-
-      # Disable delay between sending an Escape key.
-      set -sg escape-time 0
 
       # Open new window with the same path.
       bind c new-window -c "#{pane_current_path}"
@@ -399,8 +401,12 @@
       # Avoid conflict with window navigation.
       bind e detach
 
-      # Move the status bar to the top.
+      # Status bar on top: windows centred, session name on the right.
+      # Must come after the catppuccin plugin, which defines the modules.
       set -g status-position top
+      set -g status-justify absolute-centre
+      set -g status-left ""
+      set -g status-right "#{E:@catppuccin_status_session}"
 
       # Fast window navigation on the split-keyboard.
       bind a select-window -t:1
@@ -408,10 +414,6 @@
       bind d select-window -t:3
       bind f select-window -t:4
       bind g select-window -t:5
-
-      # Start windows and panes at 1, not 0.
-      set -g base-index 1
-      setw -g pane-base-index 1
 
       # Renumber windows when a window is closed.
       set -g renumber-windows on
