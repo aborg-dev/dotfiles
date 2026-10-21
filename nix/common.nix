@@ -197,6 +197,7 @@
       jr = "jj rebase -d";
       sps = "sudo pacman -S";
       spu = "sudo pacman -Syu";
+      tmx = "tmux new -As";
     };
 
     # TODO: Learn how to update versions automatically.
