@@ -193,6 +193,8 @@
     withPython3 = true;
     # Load HM-generated lua via wrapper so it does not clash with the symlinked nvim init.lua
     sideloadInitLua = true;
+    # nvim-treesitter (main branch) builds parsers with the tree-sitter CLI.
+    extraPackages = [ pkgs.tree-sitter ];
   };
 
   xdg.configFile."nvim" = {
