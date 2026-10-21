@@ -279,6 +279,14 @@ window-rule {
     open-floating true
 }
 
+// Notes scratchpad, toggled by scripts/toggle_notes.sh.
+window-rule {
+    match app-id=r#"^ghostty\.notes$"#
+    open-floating true
+    default-column-width { proportion 0.6; }
+    default-window-height { proportion 0.7; }
+}
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
